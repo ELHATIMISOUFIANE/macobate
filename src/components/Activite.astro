@@ -1,0 +1,115 @@
+---
+// MarketSection.astro (Version française adaptée à MACOBATE)
+// Tableau des secteurs de marché directement dans le composant
+export const homeMarketSectors = [
+  {
+    id: 1,
+    title: "Charpente",
+    subtitle: "Métallique",
+    description:
+      "Chez MACOBATE, nous concevons et réalisons des structures métalliques alliant excellence d’ingénierie, précision de fabrication et expertise de montage sur site.",
+    icon: "flaticon-conveyor",
+    url: "/services/detailServices",
+  },
+  {
+    id: 2,
+    title: "Chaudronnerie",
+    subtitle: "Industrielle",
+    description:
+      "Chez MACOBATE, nous concevons et fabriquons tous types de réservoirs de stockage en aci-er, selon les normes internationales telles que API 650, API 620 ... ",
+    icon: "flaticon-demolishing",
+    url: "/services/detailServices",
+  },
+  {
+    id: 3,
+    title: "Équipements",
+    subtitle: "Hydromécaniques",
+    description:
+      "Chez MACOBATE, l’équipement hydromécanique est bien plus qu’un savoir-faire : c’est une passion transmise de génération en génération. En perçant les secrets de la conception ...",
+    icon: "flaticon-valve",
+    url: "/services/detailServices",
+  },
+  {
+    id: 4,
+    title: "Traitement",
+    subtitle: "des Eaux",
+    description:
+      "Fondée par Ing. M'hamed TOUNSI, expert reconnu dans le domaine du traitement de l’eau, MACOBATE a démarré son parcours industriel en participant à de grands projets dans ce domaine.",
+    icon: "flaticon-boat",
+    url: "/services/detailServices",
+  },
+  {
+    id: 5,
+    title: "Électricité & ",
+    subtitle: "Automatismes",
+    description:
+      "Chez MACOBATE, l’électricité et l’automatisme ne sont pas de simples disciplines secondaires ce sont des leviers stratégiques de performance. Nous intégrons des systèmes électriques et des automatismes intelligents ...",
+    icon: "flaticon-flasks",
+    url: "/services/detailServices",
+  },
+];
+
+// Vérification supplémentaire pour s'assurer que nous avons un tableau
+const safeMarketSectors = Array.isArray(homeMarketSectors)
+  ? homeMarketSectors
+  : [];
+---
+
+<!--Section Secteurs de Marché-->
+<section
+  class="market-section"
+  style="background-image:url(images/background/2.jpg)"
+>
+  <div  id="activite" class="auto-container">
+    <div class="row clearfix">
+      <!--Colonne-->
+      <div class="title-column m-block col-lg-4 col-md-12 col-sm-12 col-xs-12">
+        <div class="inner-column">
+          <div class="sec-title light">
+            <br><h2>Ce que nous faisons</h2>
+            <div class="separator"></div>
+          </div>
+          <div class="text">
+           <br> Forte de plus de 40 ans d’expérience, MACOBATE allie savoir-faire de terrain et rigueur tech-nique certifiée.
+          </div>
+          <a href="services/allServices" class="view_all"
+            ><span class="icon flaticon-right-arrow-1"></span> Voir tous nos secteurs</a
+          >
+        </div>
+      </div>
+
+      {
+        safeMarketSectors && safeMarketSectors.length > 0 ? (
+          safeMarketSectors.map((sector) => (
+            <div class="market-block m-block col-lg-4 col-md-6 col-sm-6 col-xs-12">
+              <div class="inner-box">
+                <h3>
+                  <a href={sector.url}>
+                    {sector.title} <br /> {sector.subtitle}
+                  </a>
+                </h3>
+                <div class="text">{sector.description}</div>
+                <div class="icon-box">
+                  <span class={`icon ${sector.icon}`} />
+                </div>
+                <a href={sector.url} class="view_all">
+                  Découvrir <span class="icon flaticon-right-arrow-1" />
+                </a>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div class="market-block m-block col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <h3>Secteurs en cours de mise à jour</h3>
+              <div class="text">
+                Veuillez revenir ultérieurement pour consulter nos secteurs d'activité.
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+<!--Fin Section Secteurs de Marché-->

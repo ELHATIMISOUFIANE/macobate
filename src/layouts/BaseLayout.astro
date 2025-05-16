@@ -1,0 +1,125 @@
+---
+import { getSchemaOrgMarkup } from "../lib/schema";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  pageType?: string;
+}
+
+const {
+  title = "Macobate - Solutions industrielles innovantes",
+  description = "Macobate vous propose des solutions industrielles innovantes et durables. Nos services incluent l'automatisation, la fabrication et plus encore.",
+  image = "/images/logo2.png",
+  canonicalURL = Astro.url.href,
+  pageType = "home", // Valeur par défaut: home (peut être: home, about, market, contact, blog, service, projects)
+} = Astro.props;
+
+
+// Obtenir le Schema.org markup approprié
+const schemaMarkup = getSchemaOrgMarkup(pageType);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="industrie, automatisation, fabrication, solutions industrielles, secteurs industriels"
+    />
+    <meta name="author" content="Macobate" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:site_name" content="Macobate" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Schema.org Markup - Inséré dynamiquement -->
+    <Fragment set:html={schemaMarkup} />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/plugins/revolution/css/settings.css" />
+    <link rel="stylesheet" href="/plugins/revolution/css/layers.css" />
+    <link rel="stylesheet" href="/plugins/revolution/css/navigation.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="shortcut icon" href="/images/logo2.png" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  </head>
+  <body>
+    
+    <div class="page-wrapper">
+      <div class="preloader"></div>
+      <slot />
+    </div>
+
+    <!-- 📍 Scripts JS placés ici (fin du <body>) -->
+    <script src="/js/jquery.js" defer></script>
+    <script
+      src="/plugins/revolution/js/jquery.themepunch.revolution.min.js"
+      defer></script>
+    <script src="/plugins/revolution/js/jquery.themepunch.tools.min.js" defer
+    ></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.actions.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.carousel.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.migration.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"  
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"
+      defer></script>
+    <script
+      src="/plugins/revolution/js/extensions/revolution.extension.video.min.js"
+      defer></script>
+    <script src="/js/main-slider-script.js" defer></script>
+    <script src="/js/bootstrap.min.js" defer></script>
+    <script src="/js/jquery.fancybox.js" defer></script>
+    <script src="/js/owl.js" defer></script>
+    <script src="/js/jquery-ui.js" defer></script>
+    <script src="/js/wow.js" defer></script>
+    <script src="/js/knob.js" defer></script>
+    <script src="/js/appear.js" defer></script>
+    <script src="/js/validate.js" defer></script>
+    <script src="/js/register-sw.js" defer></script>
+    <script src="/js/isotope.pkgd.min.js" defer></script>
+    <script src="/js/script.js" defer></script>
+  </body>
+</html>

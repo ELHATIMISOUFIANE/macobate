@@ -1,0 +1,483 @@
+---
+// HeaderOptimized.astro - Barre de navigation améliorée pour MACOBATE
+const mainMenuItems = [
+  {
+    title: "Accueil",
+    url: "/",
+    hasSubmenu: false,
+  },
+  {
+    title: "Qui sommes-nous",
+    url: "/about",
+    hasSubmenu: true,
+    submenu: [
+      { title: "Notre Histoire", url: "/about#histoire" },
+      { title: "Notre Équipe", url: "/about#equipe" },
+      { title: "Nos Valeurs", url: "/about#valeurs" },
+      { title: "Certifications", url: "/about#certifications" },
+    ],
+  },
+  {
+    title: "Activités",
+    url: "/market",
+    hasSubmenu: true,
+    submenu: [
+      {
+        title: "Construction Métallique",
+        url: "/market-single?sector=construction",
+      },
+      {
+        title: "Chaudronnerie Industrielle",
+        url: "/market-single?sector=chaudronnerie",
+      },
+      {
+        title: "Équipements Hydromécaniques",
+        url: "/market-single?sector=hydraulique",
+      },
+      { title: "Traitement des Eaux", url: "/market-single?sector=eau" },
+      {
+        title: "Maintenance Industrielle",
+        url: "/market-single?sector=maintenance",
+      },
+    ],
+  },
+  {
+    title: "Produits",
+    url: "/products",
+    hasSubmenu: true,
+    submenu: [
+      {
+        title: "Eau",
+        url: "/products/eau",
+        hasSubmenu: true,
+        childSubmenu: [
+          { title: "Vannes Segment", url: "/products/eau/vannes-segment" },
+          { title: "Vannes Wagon", url: "/products/eau/vannes-wagon" },
+          { title: "Batardeaux", url: "/products/eau/batardeaux" },
+          { title: "Grilles", url: "/products/eau/grilles" },
+        ],
+      },
+      {
+        title: "Environnement",
+        url: "/products/environnement",
+        hasSubmenu: true,
+        childSubmenu: [
+          { title: "Dégrilleurs", url: "/products/environnement/degrilleurs" },
+          { title: "Compacteurs", url: "/products/environnement/compacteurs" },
+          {
+            title: "Pont Racleur",
+            url: "/products/environnement/pont-racleur",
+          },
+        ],
+      },
+      {
+        title: "Industrie",
+        url: "/products/industrie",
+        hasSubmenu: true,
+        childSubmenu: [
+          { title: "Réservoirs", url: "/products/industrie/reservoirs" },
+          { title: "Silos", url: "/products/industrie/silos" },
+          { title: "Charpentes", url: "/products/industrie/charpentes" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Réalisations",
+    url: "/projects",
+    hasSubmenu: false,
+  },
+  {
+    title: "Actualités",
+    url: "/blog",
+    hasSubmenu: false,
+  },
+  {
+    title: "Contact",
+    url: "/contact",
+    hasSubmenu: false,
+  },
+];
+---
+
+<!-- En-tête Principal-->
+<header class="main-header">
+  <!-- Barre Supérieure -->
+  <div class="header-top">
+    <div class="auto-container">
+      <div class="top-outer clearfix">
+        <!--Section Gauche-->
+        <div class="top-left">
+          <ul class="links clearfix">
+            <li>
+              <a href="tel:+212537659646"
+                ><span class="icon fa fa-phone"></span>+212 5 37 65 96 46</a
+              >
+            </li>
+            <li>
+              <a href="mailto:contact@macobate.com"
+                ><span class="icon fa fa-envelope-o"
+                ></span>contact@macobate.com</a
+              >
+            </li>
+            <li>
+              <a href="https://www.google.com/maps?q=34.021972,-6.836359"
+                ><span class="icon flaticon-placeholder-2"></span>48, Zone
+                Industrielle Takadoum, Rabat</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!--Section Droite-->
+        <div class="top-right clearfix">
+          <ul class="clearfix">
+            <!--Langue-->
+            <li class="language dropdown">
+              <a
+                class="btn btn-default dropdown-toggle"
+                id="dropdownMenu2"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="true"
+                href="#"
+                ><span class="flag-img"
+                  ><img src="/images/icons/flag.jpg" alt="Drapeau" /></span
+                >Français &nbsp;<span class="fa fa-angle-down"></span></a
+              >
+              <ul
+                class="dropdown-menu style-one"
+                aria-labelledby="dropdownMenu2"
+              >
+                <li><a href="#">Français</a></li>
+                <li><a href="#">Anglais</a></li>
+                <li><a href="#">Arabe</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin Barre Supérieure -->
+
+  <!-- Boîte Principale -->
+  <div class="main-box">
+    <div class="auto-container">
+      <div class="outer-container clearfix">
+        <!--Boîte Logo-->
+        <div class="logo-box">
+          <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Logo MACOBATE" /></a>
+          </div>
+        </div>
+
+        <!--Navigation Externe-->
+        <div class="nav-outer clearfix">
+          <!-- Menu Principal avec sous-menus améliorés -->
+          <nav class="main-menu">
+            <div class="navbar-header">
+              <!-- Bouton Toggle -->
+              <button
+                type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <div class="navbar-collapse collapse clearfix">
+              <ul class="navigation clearfix">
+                {
+                  mainMenuItems.map((item) => (
+                    <li class={item.hasSubmenu ? "dropdown" : ""}>
+                      <a href={item.url}>
+                        {item.title}
+                        {item.hasSubmenu && <span class="fa fa-angle-down" />}
+                      </a>
+                      {item.hasSubmenu && (
+                        <ul>
+                          {item.submenu.map((subItem) => (
+                            <li class={subItem.hasSubmenu ? "dropdown" : ""}>
+                              <a href={subItem.url}>
+                                {subItem.title}
+                                {subItem.hasSubmenu && (
+                                  <span class="fa fa-angle-right" />
+                                )}
+                              </a>
+                              {subItem.hasSubmenu && (
+                                <ul>
+                                  {subItem.childSubmenu.map((childItem) => (
+                                    <li>
+                                      <a href={childItem.url}>
+                                        {childItem.title}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </nav>
+          <!-- Fin Menu Principal-->
+
+          <!--Boîte Externe-->
+          <div class="outer-box">
+            <a
+              href="#"
+              class="theme-btn quote-btn"
+              data-toggle="modal"
+              data-target="#schedule-box"
+              >Demander un devis<span class="icon"></span></a
+            >
+            <ul class="social-icon-one">
+              <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+              <li><a href="#"><span class="fa fa-youtube"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <!--Fin Navigation Externe-->
+      </div>
+    </div>
+  </div>
+
+  <!--En-tête Fixe-->
+  <div class="sticky-header">
+    <div class="auto-container">
+      <div class="outer-container clearfix">
+        <!--Boîte Logo-->
+        <div class="logo-box pull-left">
+          <div class="logo">
+            <a href="/"
+              ><img src="/images/logo-small.png" alt="Logo MACOBATE" /></a
+            >
+          </div>
+        </div>
+
+        <!--Navigation Externe-->
+        <div class="nav-outer clearfix">
+          <!-- Menu Principal -->
+          <nav class="main-menu">
+            <div class="navbar-header">
+              <!-- Bouton Toggle -->
+              <button
+                type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target=".navbar-collapse"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <div class="navbar-collapse collapse clearfix">
+              <ul class="navigation clearfix">
+                {
+                  mainMenuItems.map((item) => (
+                    <li class={item.hasSubmenu ? "dropdown" : ""}>
+                      <a href={item.url}>
+                        {item.title}
+                        {item.hasSubmenu && <span class="fa fa-angle-down" />}
+                      </a>
+                      {item.hasSubmenu && (
+                        <ul>
+                          {item.submenu.map((subItem) => (
+                            <li class={subItem.hasSubmenu ? "dropdown" : ""}>
+                              <a href={subItem.url}>
+                                {subItem.title}
+                                {subItem.hasSubmenu && (
+                                  <span class="fa fa-angle-right" />
+                                )}
+                              </a>
+                              {subItem.hasSubmenu && (
+                                <ul>
+                                  {subItem.childSubmenu.map((childItem) => (
+                                    <li>
+                                      <a href={childItem.url}>
+                                        {childItem.title}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </nav>
+          <!-- Fin Menu Principal-->
+        </div>
+        <!--Fin Navigation Externe-->
+      </div>
+    </div>
+  </div>
+  <!--Fin En-tête Fixe-->
+</header>
+<!--Fin En-tête Principal -->
+
+<style>
+  /* Styles pour les sous-menus améliorés */
+  .main-menu .navigation > li > ul {
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    width: 230px;
+    z-index: 100;
+    display: none;
+    background: #ffffff;
+    border-top: 3px solid #0f3182;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-menu .navigation > li > ul > li {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .main-menu .navigation > li > ul > li:last-child {
+    border-bottom: none;
+  }
+
+  .main-menu .navigation > li > ul > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+    text-align: left;
+    text-transform: capitalize;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+  }
+
+  .main-menu .navigation > li > ul > li:hover > a {
+    background: #0f3182;
+    color: #ffffff;
+  }
+
+  /* Sous-menus de niveau 3 */
+  .main-menu .navigation > li > ul > li > ul {
+    position: absolute;
+    left: 100%;
+    top: 0px;
+    width: 230px;
+    z-index: 100;
+    display: none;
+    background: #ffffff;
+    border-top: 3px solid #0f3182;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-menu .navigation > li > ul > li > ul > li {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .main-menu .navigation > li > ul > li > ul > li:last-child {
+    border-bottom: none;
+  }
+
+  .main-menu .navigation > li > ul > li > ul > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+    text-align: left;
+    text-transform: capitalize;
+    transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+  }
+
+  .main-menu .navigation > li > ul > li > ul > li:hover > a {
+    background: #0f3182;
+    color: #ffffff;
+  }
+
+  /* Afficher les sous-menus au survol */
+  .main-menu .navigation li:hover > ul {
+    display: block;
+  }
+
+  /* Indicateur de menu actif */
+  .main-menu .navigation > li.current > a,
+  .main-menu .navigation > li:hover > a {
+    color: #0f3182;
+    opacity: 1;
+  }
+
+  .main-menu .navigation > li > ul > li.current > a,
+  .main-menu .navigation > li > ul > li > ul > li.current > a {
+    background: #0f3182;
+    color: #ffffff;
+  }
+</style>
+
+<script is:inline>
+  // Script pour gérer l'état actif des liens de navigation
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll(".navigation li a");
+
+    navItems.forEach((item) => {
+      // Vérifier si le lien correspond au chemin actuel
+      if (item.getAttribute("href") === currentPath) {
+        item.parentElement.classList.add("current");
+
+        // Si l'élément est dans un sous-menu, marquer également le parent
+        const parentLi = item.parentElement.parentElement.parentElement;
+        if (parentLi.classList.contains("dropdown")) {
+          parentLi.classList.add("current");
+        }
+      }
+
+      // Vérifier les paramètres d'URL pour les pages de secteur
+      if (
+        currentPath.includes("market-single") ||
+        currentPath.includes("products")
+      ) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sector = urlParams.get("sector");
+
+        if (sector && item.getAttribute("href").includes(sector)) {
+          item.parentElement.classList.add("current");
+          const parentLi = item.parentElement.parentElement.parentElement;
+          if (parentLi.classList.contains("dropdown")) {
+            parentLi.classList.add("current");
+          }
+        }
+      }
+    });
+  });
+</script>

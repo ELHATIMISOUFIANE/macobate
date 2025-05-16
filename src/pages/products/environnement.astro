@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; 
+import Header from'../../components/Header.astro'; 
+import Footer from '../../components/Footer.astro';
+import AppointmentForm from "../../components/AppointmentForm.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+---
+<BaseLayout title="Secteur d'Activité - MACOBATE">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/produits">Produits</a></li>
+          <li>Environnement </li>
+        </ul>
+        <h1>Environnement</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+    
+
+
+
+
+     <CallToActionSection />
+      <AppointmentForm />
+  </main>
+  <Footer />
+</BaseLayout>

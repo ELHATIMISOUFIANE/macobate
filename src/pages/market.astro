@@ -1,0 +1,295 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Tableau des secteurs de marché
+const marketSectors = [
+  {
+    id: 1,
+    title: "Construction Métallique",
+    description: "Conception et réalisation de charpentes métalliques, bâtiments industriels et structures complexes sur mesure...",
+    image: "/images/resource/market-8.jpg",
+    icon: "flaticon-piston",
+    slug: "market-single",
+  },
+  {
+    id: 2,
+    title: "Chaudronnerie Industrielle",
+    description: "Fabrication de réservoirs, silos, cuves et équipements sous pression selon les normes internationales les plus strictes...",
+    image: "/images/resource/market-10.jpg",
+    icon: "flaticon-demolishing",
+    slug: "market-single",
+  },
+  {
+    id: 3,
+    title: "Énergie et Hydraulique",
+    description: "Équipements hydromécaniques pour barrages, centrales électriques et infrastructures de production d'énergie...",
+    image: "/images/resource/market-10.jpg",
+    icon: "flaticon-power",
+    slug: "market-single",
+  },
+  {
+    id: 4,
+    title: "Ingénierie des Matériaux",
+    description: "Sélection et mise en œuvre de matériaux adaptés aux environnements corrosifs, haute pression et conditions extrêmes...",
+    image: "/images/resource/market-11.jpg",
+    icon: "flaticon-flasks",
+    slug: "market-single",
+  },
+  {
+    id: 5,
+    title: "Traitement des Eaux",
+    description: "Solutions complètes pour stations d'épuration, de potabilisation et systèmes de traitement des eaux industrielles...",
+    image: "/images/resource/market-12.jpg",
+    icon: "flaticon-valve",
+    slug: "market-single",
+  },
+  {
+    id: 6,
+    title: "Infrastructures Portuaires",
+    description: "Équipements spécifiques pour ports, quais et installations maritimes répondant aux exigences des milieux salins...",
+    image: "/images/resource/market-13.jpg",
+    icon: "flaticon-boat",
+    slug: "market-single",
+  },
+  {
+    id: 7,
+    title: "Agro-industrie",
+    description: "Équipements de transformation et de stockage pour l'industrie agroalimentaire avec respect des normes sanitaires...",
+    image: "/images/resource/market-14.jpg",
+    icon: "flaticon-scythe",
+    slug: "market-single",
+  },
+  {
+    id: 8,
+    title: "Ouvrages d'Art",
+    description: "Structures métalliques pour ponts, passerelles et ouvrages d'art nécessitant une haute précision et résistance...",
+    image: "/images/resource/market-15.jpg",
+    icon: "flaticon-arched-bridge",
+    slug: "market-single",
+  },
+];
+
+// Tableau des autres services
+const otherServices = [
+  {
+    id: 1,
+    title: "Maintenance Industrielle",
+    subtitle: "services",
+    description:
+      "Prestations de maintenance préventive et corrective pour maximiser la durée de vie de vos installations industrielles et limiter les temps d'arrêt...",
+  },
+  {
+    id: 2,
+    title: "Systèmes Automatisés",
+    subtitle: "services",
+    description:
+      "Conception et intégration de systèmes de contrôle automatisés pour optimiser vos processus industriels et assurer un fonctionnement efficace...",
+  },
+  {
+    id: 3,
+    title: "Solutions d'Économie d'Énergie",
+    subtitle: "services",
+    description:
+      "Optimisation énergétique de vos installations existantes et conception de systèmes à haute efficacité pour réduire votre empreinte environnementale...",
+  },
+  {
+    id: 4,
+    title: "Bureau d'Études Techniques",
+    subtitle: "services",
+    description:
+      "Services d'études et de conception pour tous vos projets industriels, incluant calculs de structure, modélisation 3D et plans d'exécution détaillés...",
+  },
+];
+---
+
+<BaseLayout title="Secteurs d'Activité - Macobate" pageType="market">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Secteurs d'Activité</li>
+        </ul>
+        <h1>Secteurs d'Activité</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!--Market Page Section-->
+    <section class="market-page-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          {/* Boucle sur le tableau des secteurs de marché */}
+          {
+            marketSectors.map((sector) => (
+              <div class="market-block-four col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                  <div class="image">
+                    <a href={`/${sector.slug}`}>
+                      <img
+                        src={sector.image}
+                        alt={`Secteur: ${sector.title}`}
+                      />
+                    </a>
+                  </div>
+                  <div class="lower-content">
+                    <div class="icon-box">
+                      <span class={`icon ${sector.icon}`} />
+                    </div>
+                    <h3>
+                      <a href={`/${sector.slug}`}>{sector.title}</a>
+                    </h3>
+                    <div class="text">{sector.description}</div>
+                    <a class="link-box" href={`/${sector.slug}`}>
+                      Découvrir{" "}
+                      <span class="icon flaticon-arrow-pointing-to-right" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!--End Market Section Four-->
+
+    <!--Services Section-->
+    <section class="services-section-three">
+      <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+          <h2>Autres Services</h2>
+          <div class="separator"></div>
+        </div>
+        <div class="row clearfix">
+          {/* Boucle sur le tableau des autres services */}
+          {
+            otherServices.map((service) => (
+              <div class="services-block-three col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                  <h3>
+                    <a href="#">
+                      {service.title} <span>{service.subtitle}</span>
+                    </a>
+                  </h3>
+                  <div class="text">{service.description}</div>
+                  <a class="read-more" href="#">
+                    En savoir plus <span class="icon flaticon-right-arrow-1" />
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!--End Services Section-->
+
+    <!--Quote Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/api/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Construction Métallique</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Traitement des Eaux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."
+                        ></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Envoyer <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="backhome"
+        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>
+    <!-- End of Quote box -->
+  </main>
+  <Footer />
+</BaseLayout>

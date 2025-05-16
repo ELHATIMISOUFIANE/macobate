@@ -1,0 +1,49 @@
+---
+const { title = "macobate" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/plugins/revolution/css/settings.css" />
+    <link rel="stylesheet" href="/plugins/revolution/css/layers.css" />
+    <link rel="stylesheet" href="/plugins/revolution/css/navigation.css" />
+    <link rel="stylesheet" href="/css/responsive.css" /> 
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+	<!-- Responsive -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  </head>
+  <body>
+    <slot />
+	
+	
+    <!-- 📍 Scripts JS placés ici (fin du <body>) -->
+    <script src="/js/jquery.js" defer></script>
+    <script src="/plugins/revolution/js/jquery.themepunch.revolution.min.js" defer></script>
+    <script src="/plugins/revolution/js/jquery.themepunch.tools.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.actions.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.carousel.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.migration.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.navigation.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.parallax.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js" defer></script>
+    <script src="/plugins/revolution/js/extensions/revolution.extension.video.min.js" defer></script>
+    <script src="/js/main-slider-script.js" defer></script>
+    <script src="/js/bootstrap.min.js" defer></script>
+    <script src="/js/jquery.fancybox.js" defer></script>
+    <script src="/js/owl.js" defer></script>
+    <script src="/js/jquery-ui.js" defer></script>
+    <script src="/js/wow.js" defer></script>
+    <script src="/js/knob.js" defer></script>
+    <script src="/js/appear.js" defer></script>
+    <script src="/js/script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+---
+// TestimonialsSection.astro (Version française)
+// Création du tableau des témoignages adaptés au secteur industriel marocain
+const testimonials = [
+  {
+    id: 1,
+    name: "Office National de l'Électricité",
+    location: "Rabat, Maroc",
+    testimonial: "MACOBATE a livré des équipements hydromécaniques de haute qualité pour nos barrages, respectant les délais et les spécifications techniques rigoureuses. Une collaboration fiable que nous sommes heureux de poursuivre.",
+    image: "images/resource/author-1.png",
+    style: "" // Style normal (pour alterner les styles)
+  },
+  {
+    id: 2,
+    name: "Office National de l'Eau Potable",
+    location: "Casablanca, Maroc",
+    testimonial: "Les stations de traitement des eaux conçues et réalisées par MACOBATE fonctionnent parfaitement depuis leur installation. Leur équipe a fait preuve d'un professionnalisme remarquable et d'une expertise technique impressionnante.",
+    image: "images/resource/author-2.png",
+    style: "style-two" // Style alternatif
+  },
+  {
+    id: 3,
+    name: "Groupe OCP",
+    location: "Khouribga, Maroc",
+    testimonial: "Les constructions métalliques et équipements industriels fournis par MACOBATE pour nos sites de production répondent aux standards internationaux les plus exigeants. Une entreprise qui allie savoir-faire technique et rigueur.",
+    image: "images/resource/author-1.png",
+    style: ""
+  },
+  {
+    id: 4,
+    name: "Ministère de l'Équipement",
+    location: "Rabat, Maroc",
+    testimonial: "MACOBATE a démontré sa capacité à gérer des projets complexes d'infrastructures hydrauliques avec excellence. Leur approche innovante et leur réactivité en font un partenaire de choix pour les grands projets nationaux.",
+    image: "images/resource/author-2.png",
+    style: "style-two"
+  },
+  {
+    id: 5,
+    name: "Renault-Nissan",
+    location: "Tanger, Maroc",
+    testimonial: "Les structures métalliques et les systèmes industriels fournis par MACOBATE pour notre site de production automobile respectent les normes les plus strictes. Une collaboration fructueuse basée sur la qualité et la fiabilité.",
+    image: "images/resource/author-1.png",
+    style: ""
+  },
+  {
+    id: 6,
+    name: "SONEDE",
+    location: "Tunis, Tunisie",
+    testimonial: "Dans le cadre de nos projets de stations de traitement des eaux, MACOBATE a démontré son expertise internationale et sa capacité à livrer des équipements de qualité répondant parfaitement à nos exigences techniques.",
+    image: "images/resource/author-2.png",
+    style: "style-two"
+  }
+];
+---
+
+<!--Section Témoignages-->
+<section class="testimonial-section">
+  <div class="auto-container">
+    <div class="sec-title centered">
+      <h2>Témoignages</h2>
+      <div class="separator"></div>
+    </div>
+    <div class="testimonial-two-item owl-carousel owl-theme">
+      
+      {testimonials.map((testimonial) => (
+        <div class={`testimonial-block ${testimonial.style}`}>
+          <div class="inner-box">
+            <div class="author-img">
+              <img src={testimonial.image} alt={`Témoignage de ${testimonial.name}`} />
+            </div>
+            <div class="quote-icon">
+              <span class="icon flaticon-quotation"></span>
+            </div>
+            <h3>{testimonial.name}</h3>
+            <div class="location">{testimonial.location}</div>
+            <div class="text">
+              {testimonial.testimonial}
+            </div>
+            <a href="#" class="read">Lire la suite <span class="icon flaticon-right-arrow-1"></span></a>
+          </div>
+        </div>
+      ))}
+      
+    </div>
+  </div>
+</section>
+<!--Fin Section Témoignages-->

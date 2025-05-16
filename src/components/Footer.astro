@@ -1,0 +1,173 @@
+---
+// Composant Footer optimisé avec tableaux et boucles
+
+// Liens utiles dans le footer - première colonne
+const usefulLinks1 = [
+  { title: "Accueil", url: "/" },
+  { title: "Notre Équipe", url: "/about#team-section" },
+ 
+  {
+    title: "Demander un Devis",
+    url: "#",
+    dataToggle: "modal",
+    dataTarget: "#schedule-box",
+  },
+
+  { title: "Contact", url: "/contact" },
+];
+
+// Liens utiles dans le footer - deuxième colonne
+const usefulLinks2 = [
+  { title: "Secteurs d'Activité", url: "/market-sectors" },
+  { title: "Industries", url: "#" },
+  { title: "Actualités", url: "/blog" },
+  { title: "Pourquoi Nous Choisir", url: "#" },
+  { title: "Développement Durable", url: "#" },
+];
+
+// Liens de réseaux sociaux
+const socialLinks = [
+  { icon: "fa-facebook", url: "#" },
+  { icon: "fa-twitter", url: "#" },
+  { icon: "fa-linkedin", url: "#" },
+];
+
+// Documents et ressources
+const materials = [
+  {
+    icon: "flaticon-doc",
+    title: "Présentation Entreprise",
+    subtitle: "2025",
+    url: "#",
+  },
+  {
+    icon: "flaticon-doc",
+    title: "Formations Techniques",
+    subtitle: "Catalogue",
+    url: "#",
+  },
+  {
+    icon: "flaticon-pdf",
+    title: "Croissance de l'Entreprise",
+    subtitle: "Dernières Années",
+    url: "#",
+  },
+];
+---
+
+<!--Pied de Page Principal-->
+<footer class="main-footer">
+  <div class="auto-container">
+    <!--Section Widgets-->
+    <div class="widgets-section">
+      <div class="row clearfix">
+        <!--Colonne-->
+        <div class="column col-md-5 col-sm-6 col-xs-12">
+          <div class="footer-widget logo-widget">
+            <div class="logo">
+              <a href="/"
+                ><img src="/images/logo.png" alt="Logo MACOBATE - Pied de page" /></a
+              >
+            </div>
+            <div class="widget-content">
+              <div class="text">
+                48, Zone Industrielle Takadoum Quartier Bouregreg Rabat
+              </div>
+              <ul class="list">
+                <li>Tél: +212 5 37 65 96 46</li>
+                <li>Contact@macobate.com</li>
+              </ul>
+              <div class="timing">
+                <span>Horaires d'ouverture:</span>Lundi - Vendredi : 8h00 - 18h00
+              </div>
+              <ul class="social-icon-one">
+                {/* Boucle sur les liens sociaux */}
+                {
+                  socialLinks.map((link) => (
+                    <li>
+                      <a href={link.url}>
+                        <span class={`fa ${link.icon}`} />
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--Colonne-->
+        <div class="column col-md-4 col-sm-6 col-xs-12">
+          <div class="footer-widget links-widget">
+            <div class="footer-title">
+              <h2>Liens Rapides</h2>
+            </div>
+            <div class="row clearfix">
+              <div class="column col-md-6 col-sm-6 col-xs-12">
+                <ul class="links">
+                  {/* Boucle sur la première colonne de liens utiles */}
+                  {
+                    usefulLinks1.map((link) => (
+                      <li>
+                        {link.dataToggle ? (
+                          <a
+                            href={link.url}
+                            data-toggle={link.dataToggle}
+                            data-target={link.dataTarget}
+                          >
+                            {link.title}
+                          </a>
+                        ) : (
+                          <a href={link.url}>{link.title}</a>
+                        )}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <!-- <div class="column col-md-6 col-sm-6 col-xs-12">
+                <ul class="links">
+                  {/* Boucle sur la deuxième colonne de liens utiles */}
+                  {
+                    usefulLinks2.map((link) => (
+                      <li>
+                        <a href={link.url}>{link.title}</a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!--Colonne-->
+        <div class="column col-md-3 col-sm-6 col-xs-12">
+          <div class="footer-widget material-widget">
+            <div class="footer-title">
+              <h2>Nos Ressources</h2>
+            </div>
+            <ul class="list-style-two">
+              {/* Boucle sur les matériaux */}
+              {
+                materials.map((material) => (
+                  <li>
+                    <span class={`icon ${material.icon}`} />
+                    <a href={material.url}>{material.title}</a>
+                    {material.subtitle}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+      <div class="copyright">
+        Copyright © 2012-2025 <a href="#">Macobate</a> | Tous droits réservés.
+      </div>
+    </div>
+  </div>
+</footer> 

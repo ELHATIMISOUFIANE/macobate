@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; 
+import Header from'../components/Header.astro'; 
+import Footer from '../components/Footer.astro';
+import AppointmentForm from "../components/AppointmentForm.astro";
+---
+<BaseLayout title="Secteur d'Activité - MACOBATE">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/market-sectors">Secteurs d'Activité</a></li>
+          <li>Détails du Secteur</li>
+        </ul>
+        <h1>Construction Métallique</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+    <!-- Market Single Content -->
+    <section class="market-single-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <div class="content-column col-md-8 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <h2>Construction Métallique</h2>
+              <div class="text">
+                <p>
+                  MACOBATE est spécialisée dans la conception, la fabrication et
+                  le montage de structures métalliques pour les secteurs
+                  industriels, de l'eau et des infrastructures. Grâce à notre
+                  expertise technique et notre parc machines de dernière
+                  génération, nous réalisons des ouvrages métalliques complexes
+                  répondant aux normes internationales les plus strictes.
+                </p>
+
+                <p>
+                  Notre division Construction Métallique intervient dans les
+                  domaines suivants :
+                </p>
+
+                <ul>
+                  <li>
+                    <strong>Charpentes métalliques industrielles</strong> : bâtiments
+                    industriels, entrepôts, hangars, ateliers de fabrication
+                  </li>
+                  <li>
+                    <strong>Structures pour stations de traitement</strong> : supports
+                    d'équipements, passerelles, garde-corps, escaliers techniques
+                  </li>
+                  <li>
+                    <strong>Ouvrages spéciaux</strong> : ponts, passerelles piétonnes,
+                    pylônes, structures porteuses
+                  </li>
+                  <li>
+                    <strong>Réhabilitation de structures existantes</strong> : renforcement,
+                    extension, mise aux normes
+                  </li>
+                </ul>
+
+                <p>
+                  Notre bureau d'études intégré utilise les logiciels de
+                  modélisation 3D les plus performants pour optimiser la
+                  conception de nos structures et garantir leur résistance aux
+                  contraintes mécaniques, sismiques et environnementales
+                  spécifiques à chaque projet.
+                </p>
+
+                <p>
+                  Nous maîtrisons toute la chaîne de valeur, de l'étude de
+                  faisabilité à la maintenance :
+                </p>
+
+                <ol>
+                  <li>Études techniques et dimensionnement</li>
+                  <li>
+                    Fabrication en atelier (découpe, pliage, soudure,
+                    assemblage)
+                  </li>
+                  <li>
+                    Traitement anticorrosion (galvanisation, peinture
+                    industrielle)
+                  </li>
+                  <li>Transport et logistique</li>
+                  <li>Montage sur site</li>
+                  <li>Contrôle qualité et tests de conformité</li>
+                  <li>Maintenance préventive et corrective</li>
+                </ol>
+
+                <p>
+                  Tous nos processus sont certifiés ISO 9001:2015, garantissant
+                  une qualité constante et une traçabilité complète de nos
+                  fabrications. Notre personnel qualifié, nos soudeurs certifiés
+                  et nos équipes de montage expérimentées nous permettent de
+                  réaliser vos projets dans les délais convenus, en respectant
+                  les normes de sécurité les plus strictes.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-column col-md-4 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <!-- Sidebar content goes here -->
+              <div class="sidebar-widget">
+                <h3>Autres Secteurs</h3>
+                <ul>
+                  <li>
+                    <a href="/market-single">Chaudronnerie Industrielle</a>
+                  </li>
+                  <li>
+                    <a href="/market-single">Équipements Hydromécaniques</a>
+                  </li>
+                  <li><a href="/market-single">Traitement des Eaux</a></li>
+                  <li><a href="/market-single">Ingénierie des Matériaux</a></li>
+                </ul>
+              </div>
+
+              <div class="sidebar-widget">
+                <h3>Téléchargements</h3>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa fa-file-pdf-o"></i> Brochure Construction Métallique</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa fa-file-pdf-o"></i> Certifications</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa fa-file-pdf-o"></i> Fiche Technique</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="sidebar-widget">
+                <h3>Besoin d'assistance ?</h3>
+                <div class="text">
+                  Notre équipe commerciale est à votre disposition pour étudier
+                  votre projet et vous proposer la solution la plus adaptée à
+                  vos besoins.
+                </div>
+                <a href="/contact" class="theme-btn btn-style-one"
+                  >Contactez-nous <span
+                    class="icon flaticon-arrow-pointing-to-right"></span></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Market Single Content -->
+
+    <!-- Quote Modal HTML (inline) -->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou
+                        d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Construction Métallique</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Traitement des Eaux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."
+                        ></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Envoyer <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="backhome"
+        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>
+    <!-- End of Quote box -->
+      <AppointmentForm />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,749 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const teamMembers = [
+  {
+    id: 1,
+    name: "Achraf Tounsi",
+    position: "Directeur Général",
+    description:
+      "Plus de 15 ans d'expérience dans la direction d'entreprises industrielles et la gestion de projets complexes.",
+    image: "/images/resource/team-1.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 2,
+    name: "Saad Berrada",
+    position: "Directeur Technique",
+    description:
+      "Expert en conception d'équipements hydromécaniques et structures métalliques avec une solide formation d'ingénieur.",
+    image: "/images/resource/team-2.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 3,
+    name: "Mohsin El Hatimi",
+    position: "Chef de Projets",
+    description:
+      "Spécialiste de la gestion de projets industriels complexes avec une expertise en coordination d'équipes multidisciplinaires.",
+    image: "/images/resource/team-3.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 4,
+    name: "Latifa Bennani",
+    position: "Responsable Qualité",
+    description:
+      "Experte en systèmes de gestion de la qualité et certification ISO avec plus de 10 ans d'expérience dans le secteur industriel.",
+    image: "/images/resource/team-4.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+];
+
+// Création du tableau des points forts (highlights)
+const highlights = [
+  {
+    id: 1,
+    title: "Mission",
+    icon: "flaticon-target",
+    link: "#",
+  },
+  {
+    id: 2,
+    title: "Vision",
+    icon: "flaticon-graph",
+    link: "#",
+  },
+  {
+    id: 3,
+    title: "Valeurs",
+    icon: "flaticon-quality",
+    link: "#",
+  },
+  {
+    id: 4,
+    title: "Stratégie",
+    icon: "flaticon-idea",
+    link: "#",
+  },
+  {
+    id: 5,
+    title: "Innovation",
+    icon: "flaticon-loupe",
+    link: "#",
+  },
+  {
+    id: 6,
+    title: "Direction",
+    icon: "flaticon-people-1",
+    link: "#",
+  },
+];
+
+// Création du tableau des années d'histoire
+const historyYears = [
+  1984, 1989, 1991, 1993, 1996, 1998, 2007, 2008, 2010, 2011, 2013, 2015,
+];
+
+// Création du tableau des événements historiques
+const historyEvents = [
+  {
+    year: 1984,
+    title: "Création de la société MACOBATE",
+    date: "1984",
+    description:
+      "Création de la société Marocaine de la Construction de Bâtiments et de Traitement des Eaux « MACOBATE » et création du premier atelier de fabrication par Feu M'hamed TOUNSI, ancien Ingénieur Expert du traitement des Eaux à l'ONEP.",
+  },
+  {
+    year: 1989,
+    title: "Station d'épuration de Beni-Mellal",
+    date: "1989",
+    description:
+      "Fourniture et installation des équipements hydro-électromécaniques de la grande station d'épuration par lagunage de Beni-Mellal.",
+  },
+  {
+    year: 1991,
+    title: "Station de potabilisation AIN-ASSERDOUNE",
+    date: "1991",
+    description:
+      "Construction de la station de potabilisation de l'eau de la source AIN-ASSERDOUNE, pour le compte de la RADET Beni-Mellal.",
+  },
+  {
+    year: 1993,
+    title: "Extension des ateliers",
+    date: "1993",
+    description:
+      "Construction de l'extension N°1 des ateliers de fabrication de la société MACOBATE.",
+  },
+  {
+    year: 1996,
+    title: "Premier barrage Bouhouda & changement de direction",
+    date: "1996",
+    description:
+      "Réalisation des équipements hydro-électromécaniques du barrage Bouhouda dans la région de Taounate. Décès de M. M'hamed TOUNSI et accession de Mme Rachida TOUNSI à la tête de la société.",
+  },
+  {
+    year: 1998,
+    title: "Barrage Bab-Louta",
+    date: "1998",
+    description:
+      "Réalisation des équipements hydro-électromécaniques du barrage Bab-Louta dans la région de Taza pour le compte de la Direction des Aménagements Hydrauliques.",
+  },
+  {
+    year: 2007,
+    title: "Grand barrage Sfeissef",
+    date: "2007",
+    description:
+      "Étude, réalisation et installation des équipements hydro-électromécaniques du barrage Sfeissef dans la région de Figuig. Premier grand barrage réalisé par MACOBATE.",
+  },
+  {
+    year: 2008,
+    title: "Classe 2 - Secteur 9",
+    date: "2008",
+    description:
+      "Obtention de la classe 2 du secteur 9 du système de qualification et de classification du ministère de l'équipement et des transports.",
+  },
+  {
+    year: 2010,
+    title: "Croissance du chiffre d'affaires",
+    date: "2010",
+    description:
+      "Réalisation de plus de 65 Mdh de carnet de commande dans les divers secteurs d'activité de la société.",
+  },
+  {
+    year: 2011,
+    title: "Projet d'investissement et Certification ISO",
+    date: "2011",
+    description:
+      "Démarrage de l'extension N°2 : agrandissement des locaux, renouvellement de l'outil de production, recrutement et formation. Certification ISO 9001 – 2008.",
+  },
+  {
+    year: 2013,
+    title: "Agrément OCP",
+    date: "2013",
+    description:
+      "Agrément OCP dans les domaines de la chaudronnerie, de la charpente métallique et de la tuyauterie industrielle.",
+  },
+  {
+    year: 2015,
+    title: "Classe 1 - Secteur I",
+    date: "2015",
+    description:
+      "Obtention de la classe 1 du secteur I du système de qualification et de classification du ministère de l'équipement et des transports.",
+  },
+];
+
+// You can import additional components as needed
+---
+
+<BaseLayout title="À propos - Macobate " description="À propos de Macobate, leader de la construction métallique au Maroc" pageType="About">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>À propos</li>
+        </ul>
+        <h1>À propos</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!--Company Section-->
+    <section class="company-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Content Column-->
+          <div class="content-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Mot de la Direction</h2>
+                <div class="separator centered"></div>
+              </div>
+              <div class="bold-text">
+                Nous offrons les meilleures solutions industrielles pour
+                accompagner la croissance de nos clients depuis plus de 35 ans.
+              </div>
+              <div class="text">
+                <p>
+                  Prendre du recul pour contempler notre parcours est essentiel.
+                  Avec fierté, nous constatons que ce qui a débuté modestement
+                  il y a plus de 35 ans est aujourd'hui une référence dans le
+                  secteur, portée par notre famille et nos 50 collaborateurs
+                  dévoués.
+                </p>
+                <p>
+                  Leader reconnu en construction métallique, MACOBATE bénéficie
+                  de la confiance des plus grands opérateurs nationaux grâce à
+                  son expertise en études, fabrication et montage
+                  d'installations complexes clés en main pour les secteurs
+                  industriel, hydraulique et environnemental.
+                </p>
+                <p>
+                  Notre fierté s'accroît avec l'arrivée de la nouvelle
+                  génération de la famille TOUNSI, déterminée à poursuivre notre
+                  quête d'excellence. Cette relève dynamique relève des défis
+                  toujours plus ambitieux tout en restant fidèle à nos valeurs
+                  fondatrices : innover, construire, durer.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!--Image Column-->
+          <div class="image-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="image">
+                <img src="/images/resource/company.jpg" alt="MACOBATE - Installations" />
+              </div>
+              <div class="carousel-box">
+                <div class="single-item-carousel owl-carousel owl-box">
+                  <div class="testimonial-block-six">
+                    <div class="inner">
+                      <div class="quote-icon">
+                        <span class="icon flaticon-left-quote-sketch"></span>
+                      </div>
+                      <div class="text">
+                        Notre engagement envers l'excellence technique et l'innovation continue nous permet de maintenir notre position de leader dans notre secteur.
+                      </div>
+                      <div class="author-box">
+                        <div class="author-inner">
+                          <div class="image">
+                            <img src="/images/resource/" alt="Présidente Directrice Générale" />
+                          </div>
+                          <h3>Rachida Tounsi</h3>
+                          <div class="designation">Présidente Directrice Générale</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="testimonial-block-six">
+                    <div class="inner">
+                      <div class="quote-icon">
+                        <span class="icon flaticon-left-quote-sketch"></span>
+                      </div>
+                      <div class="text">
+                        Nous poursuivons la vision de notre fondateur en combinant savoir-faire traditionnel et technologies de pointe pour répondre aux défis industriels de demain.
+                      </div>
+                      <div class="author-box">
+                        <div class="author-inner">
+                          <div class="image">
+                            <img src="/images/resource/author-6.jpeg" alt="Directeur Général" />
+                          </div>
+                          <h3>Achraf Tounsi</h3>
+                          <div class="designation">Directeur Général</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="testimonial-block-six">
+                    <div class="inner">
+                      <div class="quote-icon">
+                        <span class="icon flaticon-left-quote-sketch"></span>
+                      </div>
+                      <div class="text">
+                        L'adaptation constante et l'investissement dans nos ressources humaines sont les piliers de notre réussite depuis plus de trois décennies.
+                      </div>
+                      <div class="author-box">
+                        <div class="author-inner">
+                          <div class="image">
+                            <img src="/images/resource/" alt="Directeur Technique" />
+                          </div>
+                          <h3>Saad Berrada</h3>
+                          <div class="designation">Directeur Technique</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Company Section-->
+
+    <!--Highlights Section-->
+    <section class="highlights-section">
+      <div
+        class="image-layer"
+        style="background-image:url(/images/background/10.jpg)"
+      >
+      </div>
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Content Column-->
+          <div class="content-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Nos Points Forts</h2>
+                <div class="separator centered"></div>
+              </div>
+
+              <div class="row clearfix">
+                {/* Boucle sur le tableau des points forts */}
+                {
+                  highlights.map((item) => (
+                    <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
+                      <div class="hightlight-inner">
+                        <div class="icon-box">
+                          <span class={`icon ${item.icon}`} />
+                        </div>
+                        <h3>{item.title}</h3>
+                        <a href={item.link} class="overlay-link" />
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <!--Services Column-->
+          <div class="services-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="upper-box">
+                <div class="icon flaticon-target"></div>
+                <h2>Notre Mission</h2>
+              </div>
+              <div class="text">
+                Concevoir, fabriquer et installer des équipements industriels de haute qualité qui répondent aux exigences les plus strictes de nos clients. MACOBATE s'engage à fournir des solutions innovantes, durables et adaptées aux besoins spécifiques des secteurs de l'eau, de l'industrie et de l'environnement, tout en maintenant les standards les plus élevés en matière de sécurité et de respect de l'environnement.
+              </div>
+              <a href="/market-sectors" class="services"
+                >Nos Services <span
+                  class="icon flaticon-arrow-pointing-to-right"></span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Highlights Section-->
+
+    <!--History Section-->
+    <section class="history-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Notre Histoire</h2>
+          <div class="separator"></div>
+        </div>
+
+        <div class="history-carousel">
+          <div class="carousel-outer">
+            <div class="thumbs-outer">
+              <ul class="thumbs-carousel owl-carousel owl-theme">
+                {/* Boucle sur le tableau des années */}
+                {historyYears.map((year) => <li>{year}</li>)}
+              </ul>
+            </div>
+            <div class="content-carousel owl-carousel owl-theme">
+              {/* Boucle sur le tableau des événements historiques */}
+              {
+                historyEvents.map((event) => (
+                  <div class="content-slide">
+                    <div class="content-inner">
+                      <h3>{event.title}</h3>
+                      <div class="date">{event.date}</div>
+                      <div class="text">{event.description}</div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End History Section-->
+
+    <!--Achived Section-->
+    <section
+      class="achived-section"
+      style="background-image:url(/images/background/11.jpg)"
+    >
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Title Column-->
+          <div class="title-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title light">
+                <h2>Nos Réalisations</h2>
+                <div class="separator"></div>
+              </div>
+              <div class="title">
+                La force et la croissance proviennent uniquement d'efforts continus.
+              </div>
+              <ul class="achived-list">
+                <li class="icon flaticon-engineer"></li>
+                <li class="number">50+</li>
+                <li><a href="#">Ingénieurs et Techniciens</a></li>
+              </ul>
+              <div class="text">
+                Depuis notre création en 1984, MACOBATE a contribué de manière significative au développement des infrastructures hydrauliques et industrielles du Maroc. Notre expertise dans la conception et la fabrication d'équipements hydromécaniques pour les barrages et les stations de traitement des eaux nous a permis de devenir un acteur incontournable du secteur.
+              </div>
+            </div>
+          </div>
+          <!--Graph Column-->
+          <div class="graph-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <!--Progress Levels-->
+              <div class="progress-levels">
+                <div class="row clearfix">
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="90">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="95">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Production</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="45">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="45">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Projets Clé en Main</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="85">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="85">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Marché National</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="15">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="15">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Marché International</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="90">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="100">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Satisfaction Client</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Achived Section-->
+
+    <!--Team Section-->
+    <!--Team Section-->
+    <!--<section class="team-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Notre Équipe Dirigeante</h2>
+          <div class="separator"></div>
+        </div>
+        <div class="row clearfix">
+          {/* Boucle sur le tableau des membres de l'équipe */}
+          {
+            teamMembers.map((member) => (
+              <div class="team-block col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                  <div class="image">
+                    <img src={member.image} alt={member.name} />
+                    <div class="overlay-box">
+                      <ul class="social-icon-two">
+                        <li>
+                          <a href={member.socialLinks.facebook}>
+                            <span class="fa fa-facebook" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href={member.socialLinks.linkedin}>
+                            <span class="fa fa-linkedin" />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="lower-content">
+                    <h3>
+                      <a href="#">
+                        {member.name.split(" ").map((part) => (
+                          <>
+                            {part} <br />
+                          </>
+                        ))}
+                      </a>
+                    </h3>
+                    <div class="designation">{member.position}</div>
+                    <div class="text">{member.description}</div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>-->
+    <!-- End Team Section--> 
+    <!--Call To Action Section-->
+    <section
+      class="call-to-action-section"
+      style="background-image:url(/images/background/5.jpg)"
+    >
+      <div class="auto-container">
+        <div class="row clearfix">
+          <div class="col-md-9 col-sm-12 col-xs-12">
+            <h2>
+              Solutions métalliques de qualité supérieure pour l'industrie et les infrastructures hydrauliques.
+            </h2>
+          </div>
+          <div class="link-column col-md-3 col-sm-12 col-xs-12">
+            <a
+              class="apointment"
+              href="#"
+              data-toggle="modal"
+              data-target="#schedule-box"
+              >Demander un Devis <span
+                class="icon flaticon-arrow-pointing-to-right"></span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Call To Action Section-->
+
+    <!--Quote Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Construction Métallique</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Traitement des Eaux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Envoyer <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="backhome"
+        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>
+    <!-- End of Quote box -->
+  </main>
+  <Footer />
+
+  <script>
+    // You can include client-side scripts here
+    // Or better yet, you can move them to the BaseLayout component
+  </script>
+</BaseLayout>

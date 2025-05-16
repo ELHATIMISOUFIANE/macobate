@@ -1,0 +1,95 @@
+---
+// NewsSection.astro (Version française)
+// Tableau des articles de blog adaptés à MACOBATE
+export const latestNews = [
+  {
+    id: 1,
+    title: "MACOBATE remporte un contrat majeur pour l'équipement d'un barrage",
+    author: "Service Communication",
+    date: "15 avril 2025",
+    excerpt:
+      "Notre entreprise a été sélectionnée pour fournir les équipements hydromécaniques du nouveau barrage de Sidi Mohammed Ben Abdellah...",
+    url: "blog/detailBlog#news-1",
+  },
+  {
+    id: 2,
+    title: "Inauguration de notre nouveau centre de R&D",
+    author: "Direction Générale",
+    date: "28 mars 2025",
+    excerpt:
+      "MACOBATE investit dans l'innovation avec un centre de recherche dédié aux technologies avancées pour les infrastructures hydrauliques...",
+    url: "blog/detailBlog#news-2",
+  },
+  {
+    id: 3,
+    title: "Certification ISO 14001 obtenue pour nos processus de production",
+    author: "Département Qualité",
+    date: "10 février 2025",
+    excerpt:
+      "Notre engagement envers l'environnement se concrétise par cette certification qui valide nos efforts en matière de développement durable...",
+    url: "blog/detailBlog#news-3",
+  },
+  {
+    id: 4,
+    title: "Expansion vers les marchés d'Afrique de l'Ouest",
+    author: "Direction Export",
+    date: "25 janvier 2025",
+    excerpt:
+      "MACOBATE signe un accord de partenariat stratégique pour renforcer sa présence en Afrique de l'Ouest avec des projets d'envergure...",
+    url: "blog/detailBlog#news-4",
+  },
+  {
+    id: 5,
+    title:
+      "Nouvelle ligne de production pour les équipements de traitement des eaux",
+    author: "Direction Technique",
+    date: "5 janvier 2025",
+    excerpt:
+      "Investissement dans une ligne automatisée qui augmente notre capacité de production tout en améliorant la précision et la qualité...",
+    url: "blog/detailBlog#news-5",
+  },
+  {
+    id: 6,
+    title:
+      "MACOBATE présent au Salon International de l'Eau et de l'Environnement",
+    author: "Service Marketing",
+    date: "12 décembre 2024",
+    excerpt:
+      "Notre stand a attiré de nombreux visiteurs internationaux intéressés par nos solutions innovantes pour le traitement des eaux...",
+    url: "blog/detailBlog#news-6",
+  },
+];
+---
+
+<!--Section Actualités-->
+<section class="news-section">
+  <div class="auto-container">
+    <div class="sec-title">
+      <h2>Dernières Actualités</h2>
+      <div class="separator"></div>
+    </div>
+    <div class="three-item-carousel owl-carousel owl-theme">
+      {
+        latestNews.map((news) => (
+          <div class="news-block">
+            <div class="inner-box">
+              <h2>
+                <a href={news.url}>{news.title}</a>
+              </h2>
+              <div class="title">Informations</div>
+              <div class="post-date">
+                Par {news.author}, Le {news.date}
+              </div>
+              <div class="text">{news.excerpt}</div>
+              <a class="read-more" href={news.url}>
+                Lire la suite{" "}
+                <span class="icon flaticon-arrow-pointing-to-right" />
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<!--Fin Section Actualités-->

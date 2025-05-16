@@ -1,0 +1,149 @@
+---
+ const highlights = [
+ {
+    id: 1,
+    title: "Ingénierie certifiée",
+    icon: "#", 
+    link: "#",
+  },
+  {
+    id: 2,
+    title: "Réalisation 100 % intégrée",
+    icon: "/images/icons/realisation.png",
+    link: "#",
+  },
+  {
+    id: 3,
+    title: "Atelier à la pointe de la technologie",
+    icon: "#", 
+    link: "#",
+  },
+  {
+    id: 4,
+    title: "Expertise en eau, énergie et industrie",
+    icon: "#", 
+    link: "#",
+  },
+  {
+    id: 5,
+    title: "Clients publics et partenaires internationaux",
+    icon: "#", 
+    link: "#",
+  },
+  {
+    id: 6,
+    title: "Direction",
+    icon: "#",
+    link: "#",
+  },
+];
+
+
+ ---
+ 
+ 
+ 
+ <section class="highlights-section">
+      <div
+        class="image-layer"
+        style="background-image:url(/images/background/10.jpg)"
+      >
+      </div>
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Content Column-->
+          <div class="content-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Nos Points Forts</h2>
+                <div class="separator centered"></div>
+              </div>
+
+              <div class="row clearfix">
+                {/* Boucle sur le tableau des points forts */}
+                {
+                  highlights.map((item) => (
+                    <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
+                      <div class="hightlight-inner">
+                        <div class="icon-box">
+                          <img src={item.icon} alt={item.title} />
+                        </div>
+                        <h3>{item.title}</h3>
+                        <a href={item.link} class="overlay-link" />
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <!--Services Column-->
+          <div class="services-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="upper-box">
+                <div class="icon flaticon-target"></div>
+                <h2>Pourquoi choisir MACOBATE ?</h2>
+              </div>
+              <div class="text">
+                <br>
+                  <br>
+               L’ingénierie marocaine a, au fil des siècles, donné naissance à des merveilles. De la maîtrise hydraulique de la fontaine de la Cour des Lions à l’ingéniosité architecturale de la Koutoubia ou de la Mosquée Hassan II, le Maroc a su allier l’art à la structure.
+              </div>
+              <a href="/quality" class="services"
+                >Voir Références & Certifications<span
+                  class="icon flaticon-arrow-pointing-to-right"></span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+.icon-box {
+  width: 56px;
+  height: 56px;
+  background-color: #f8f9fa; /* Gris très clair */
+  border: 1px solid #dee2e6; /* Bord léger */
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.icon-box img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.hightlight-inner {
+  text-align: center;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 6px;
+  transition: box-shadow 0.3s ease;
+}
+
+.hightlight-inner:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hightlight-inner h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #212529; /* Gris noir propre */
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.overlay-link {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+
+ </style>

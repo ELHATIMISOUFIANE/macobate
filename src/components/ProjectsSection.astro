@@ -1,0 +1,76 @@
+---
+// ProjectsSection.astro (Version française)
+const projects = [
+  {
+    image: "images/gallery/project-1.jpg",
+    title: "Barrage Sidi Mohammed Ben Abdellah",
+    description: "Équipements hydromécaniques et vannes de régulation",
+    link: "/projects/detailProjects#project-1"
+  },
+  {
+    image: "images/gallery/project-2.jpg",
+    title: "Station d'Épuration OCP Khouribga",
+    description: "Installation complète de traitement des eaux usées industrielles",
+    link: "/projects/detailProjects#project-2"
+  },
+  {
+    image: "images/gallery/project-3.jpg",
+    title: "Usine Automobile Tanger",
+    description: "Structures métalliques et systèmes de manutention",
+    link: "/projects/detailProjects#project-3"
+  }
+];
+---
+
+<!--Section Projets-->
+<section id="projects" class="projects-section">
+  <div class="auto-container">
+    <div class="sec-title">
+      <div class="row clearfix">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+          <h2>Dernières Réalisations</h2>
+          <div class="separator"></div>
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div class="row clearfix">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="text">
+                Notre entreprise a toujours embrassé l'innovation pour offrir un niveau d'excellence supérieur à nos clients.
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <a href="projects/allProjects" class="view_all"
+                >Voir tous nos projets <span
+                  class="icon flaticon-right-arrow-1"></span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      {projects.map((project) => (
+        <!--Bloc Projet-->
+        <div class="project-block col-md-6 col-sm-6 col-xs-12">
+          <div class="inner-box">
+            <div class="image">
+              <img src={project.image} alt={project.title} />
+              <div class="overlay-box">
+                <div class="content">
+                  <h3>
+                    <a href={project.link}>{project.title}</a>
+                  </h3>
+                  <div class="text">
+                    {project.description} <span
+                      class="icon flaticon-right-arrow-1"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<!--Fin Section Projets-->

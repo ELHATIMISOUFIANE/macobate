@@ -1,0 +1,335 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+// Tableau des projets adapté à MACOBATE
+const projects = [
+  {
+    id: 1,
+    title: "Barrage Sidi Mohammed Ben Abdellah",
+    location: "2023 / Rabat",
+    image: "/images/gallery/project-1.jpg",
+    url: "/detailProjects#project-1",
+  },
+  {
+    id: 2,
+    title: "Station d'Épuration OCP Khouribga",
+    location: "2022 / Khouribga",
+    image: "/images/gallery/project-2.jpg",
+    url: "/detailProjects#project-2",
+  },
+  {
+    id: 3,
+    title: "Usine Renault-Nissan",
+    location: "2021 / Tanger",
+    image: "/images/gallery/project-3.jpg",
+    url: "/detailProjects#project-3",
+  },
+  {
+    id: 4,
+    title: "Barrage Oued Martil",
+    location: "2020 / Tétouan",
+    image: "/images/gallery/20.jpg",
+    url: "/detailProjects#project-4",
+  },
+  {
+    id: 5,
+    title: "Station de Potabilisation Bouregreg",
+    location: "2019 / Rabat",
+    image: "/images/gallery/19.jpg",
+    url: "/detailProjects#project-5",
+  },
+  {
+    id: 6,
+    title: "Centrale Solaire Noor",
+    location: "2018 / Ouarzazate",
+    image: "/images/gallery/21.jpg",
+    url: "/detailProjects#project-6",
+  },
+  {
+    id: 7,
+    title: "Port de Tanger Med",
+    location: "2017 / Tanger",
+    image: "/images/gallery/22.jpg",
+    url: "/detailProjects#project-7",
+  },
+  {
+    id: 8,
+    title: "Barrage Moulay El Hassan",
+    location: "2016 / Taounate",
+    image: "/images/gallery/23.jpg",
+    url: "/detailProjects#project-8",
+  },
+  {
+    id: 9,
+    title: "Usine Lafarge Holcim",
+    location: "2015 / Casablanca",
+    image: "/images/gallery/24.jpg",
+    url: "/detailProjects#project-9",
+  },
+  
+];
+
+// Pagination
+const projectsPerPage = 9;
+const totalPages = Math.ceil(projects.length / projectsPerPage);
+const currentPage = 1; // Vous pourriez le récupérer depuis un paramètre d'URL
+const startIndex = (currentPage - 1) * projectsPerPage;
+const endIndex = startIndex + projectsPerPage;
+const currentProjects = projects.slice(startIndex, endIndex);
+---
+
+<BaseLayout title="Réalisations - Macobate" pageType="projects">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Nos Réalisations</li>
+        </ul>
+        <h1>Nos Réalisations</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!--Project Page Section-->
+    <section class="project-page-section">
+      <div class="auto-container">
+        <div class="outer-section">
+          <div class="masonry-items-container row clearfix">
+            {/* Boucle sur le tableau des projets */}
+            {
+              currentProjects.map((project) => (
+                <div class="project-block-five masonry-item col-md-4 col-sm-6 col-xs-12">
+                  <div class="inner-box">
+                    <div class="image">
+                      <img src={project.image} alt={project.title} />
+                      <div class="overlay-box">
+                        <div class="content">
+                          <h3>
+                            <a href={project.url}>{project.title}</a>
+                          </h3>
+                          <div class="location">
+                            {project.location}{" "}
+                            <span class="icon flaticon-right-arrow-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="text-center">
+            <a class="load-more" href="#"
+              >Voir Plus <span class="icon flaticon-right-arrow-1"></span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Project Page Section-->
+
+    <!--Quote Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/api/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Construction Métallique</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Traitement des Eaux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."
+                        ></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Envoyer <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="backhome"
+        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>
+    <!-- End of Quote box -->
+  </main>
+  <Footer />
+
+  <style>
+
+    /* style pro pour cards projet */
+.project-block-five {
+  margin-bottom: 30px;
+}
+
+.project-block-five .inner-box {
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+.project-block-five .inner-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.project-block-five .image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-block-five .overlay-box {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16px;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-block-five .inner-box:hover .overlay-box {
+  opacity: 1;
+}
+
+.project-block-five h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.project-block-five .location {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* Load more button */
+.load-more {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 24px;
+  background-color: #0056b3;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.load-more:hover {
+  background-color: #004094;
+}
+
+/* Section background and spacing */
+.project-page-section {
+  background-color: #f9fafb;
+  padding: 60px 0;
+}
+
+  </style>
+   <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // S'assurer que jQuery et Isotope sont chargés
+      if (typeof jQuery !== 'undefined' && typeof jQuery.fn.isotope !== 'undefined') {
+        const $container = jQuery('.masonry-items-container');
+        
+        setTimeout(function() {
+          $container.isotope({
+            itemSelector: '.masonry-item',
+            masonry: {
+              columnWidth: '.masonry-item'
+            }
+          });
+        }, 500); // Petit délai pour s'assurer que tout est chargé
+      }
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Fichiers et répertoires à exclure
+Disallow: /node_modules/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Sitemap
+Sitemap: https://votredomaine.com/sitemap.xml

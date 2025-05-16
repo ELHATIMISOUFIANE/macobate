@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Import des composants de sections
+import ScrollToTop from "../components/ScrollToTop.astro";
+import MainSlider from "../components/MainSlider.astro";
+import Brands from "../components/Brands.astro";
+import Activite from "../components/Activite.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import NewsSection from "../components/NewsSection.astro";
+import CareerSection from "../components/CareerSection.astro";
+import InformationsSection from "../components/InformationsSection.astro";
+import AchievementsSection from "../components/AchievementsSection.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
+import ClientsSection from "../components/ClientsSection.astro";
+import CallToActionSection from "../components/CallToActionSection.astro";
+import AppointmentForm from "../components/AppointmentForm.astro";
+import QualitySection from "src/components/QualitySection.astro";
+---
+
+<BaseLayout title="Home - Macobate " description="" pageType="Home">
+  <Header />
+  <main>
+    <MainSlider />
+    <Brands />
+    <Activite/>
+    <ProjectsSection />
+    <QualitySection/>
+    <CareerSection />
+    <NewsSection />
+    <ClientsSection />
+    <CallToActionSection />
+    <AppointmentForm />
+    <ScrollToTop />
+  </main>
+  <Footer />
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.scroll-to-projects');
+    const target = document.getElementById('projects');
+
+    if (button && target) {
+      button.addEventListener('click', () => {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center' // 👉 Centre verticalement dans la fenêtre
+        });
+      });
+    }
+  });
+</script>
+</BaseLayout>

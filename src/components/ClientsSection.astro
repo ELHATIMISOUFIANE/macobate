@@ -1,0 +1,90 @@
+---
+// ClientsSection.astro (Version française)
+// Création du tableau des clients/partenaires
+const clients = [
+  {
+    id: 1,
+    image: "images/clients/office.jpg",
+    name: "Office National de l'Électricité et de l'Eau Potable",
+    //link: "#",
+  },
+  {
+    id: 2,
+    image: "images/clients/5.png",
+    name: "Groupe OCP",
+    //link: "#",
+  },
+  {
+    id: 3,
+    image: "images/clients/6.png",
+    name: "Ministère de l'Équipement et de l'Eau",
+    //link: "#",
+  },
+  {
+    id: 4,
+    image: "images/clients/7.png",
+    name: "Renault-Nissan Maroc",
+    //link: "#",
+  },
+  {
+    id: 5,
+    image: "images/clients/8.png",
+    name: "Lafarge Holcim Maroc",
+    //link: "#",
+  },
+  {
+    id: 6,
+    image: "images/clients/9.png",
+    name: "Office Régional de Mise en Valeur Agricole",
+    //link: "#",
+  },
+  {
+    id: 7,
+    image: "images/clients/4.png",
+    name: "Marsa Maroc",
+    //link: "#",
+  },
+  {
+    id: 8,
+    image: "images/clients/5.png",
+    name: "Agence du Bassin Hydraulique",
+    //link: "#",
+  },
+  {
+    id: 9,
+    image: "images/clients/6.png",
+    name: "Maroc Telecom",
+    //link: "#",
+  },
+  {
+    id: 10,
+    image: "images/clients/7.png",
+    name: "Royal Air Maroc",
+    //link: "#",
+  },
+];
+---
+
+<!--Section Clients-->
+<section class="clients-section">
+  <div class="auto-container">
+    <div class="sponsors-outer">
+      <!--Carrousel Partenaires-->
+      <ul class="sponsors-carousel owl-carousel owl-theme">
+        {
+          clients.map((client) => (
+            <li class="slide-item">
+              <figure class="image-box">
+                <!-- a href=client.link -->
+                  <a>
+                  <img src={client.image} alt={client.name} />
+                </a>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+<!--Fin Section Clients-->
