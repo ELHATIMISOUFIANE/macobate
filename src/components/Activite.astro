@@ -1,4 +1,9 @@
 ---
+import {FaHandHoldingWater} from 'react-icons/fa';
+import { GiWaterRecycling, GiFactory , GiBarrel , GiScubaTanks ,GiElectricalResistance } from 'react-icons/gi';
+import { FaIndustry } from 'react-icons/fa';
+import { TbBuildingWarehouse } from "react-icons/tb";
+
 // MarketSection.astro (Version française adaptée à MACOBATE)
 // Tableau des secteurs de marché directement dans le composant
 export const homeMarketSectors = [
@@ -8,7 +13,7 @@ export const homeMarketSectors = [
     subtitle: "Métallique",
     description:
       "Chez MACOBATE, nous concevons et réalisons des structures métalliques alliant excellence d’ingénierie, précision de fabrication et expertise de montage sur site.",
-    icon: "flaticon-conveyor",
+    icon: 'TbBuildingWarehouse',
     url: "/services/detailServices",
   },
   {
@@ -17,7 +22,7 @@ export const homeMarketSectors = [
     subtitle: "Industrielle",
     description:
       "Chez MACOBATE, nous concevons et fabriquons tous types de réservoirs de stockage en aci-er, selon les normes internationales telles que API 650, API 620 ... ",
-    icon: "flaticon-demolishing",
+    icon: "GiBarrel",
     url: "/services/detailServices",
   },
   {
@@ -25,8 +30,8 @@ export const homeMarketSectors = [
     title: "Équipements",
     subtitle: "Hydromécaniques",
     description:
-      "Chez MACOBATE, l’équipement hydromécanique est bien plus qu’un savoir-faire : c’est une passion transmise de génération en génération. En perçant les secrets de la conception ...",
-    icon: "flaticon-valve",
+      "Chez MACOBATE, l’équipement hydromécanique est bien plus qu’un savoir-faire : c’est une passion transmise de génération en génération.",
+    icon: "GiScubaTanks",
     url: "/services/detailServices",
   },
   {
@@ -34,8 +39,8 @@ export const homeMarketSectors = [
     title: "Traitement",
     subtitle: "des Eaux",
     description:
-      "Fondée par Ing. M'hamed TOUNSI, expert reconnu dans le domaine du traitement de l’eau, MACOBATE a démarré son parcours industriel en participant à de grands projets dans ce domaine.",
-    icon: "flaticon-boat",
+      "Fondée par Ing. M'hamed TOUNSI, expert reconnu dans le domaine du traitement de l’eau, MACOBATE a démarré son parcours industriel en participant à de grands...",
+    icon: "GiWaterRecycling",
     url: "/services/detailServices",
   },
   {
@@ -43,8 +48,8 @@ export const homeMarketSectors = [
     title: "Électricité & ",
     subtitle: "Automatismes",
     description:
-      "Chez MACOBATE, l’électricité et l’automatisme ne sont pas de simples disciplines secondaires ce sont des leviers stratégiques de performance. Nous intégrons des systèmes électriques et des automatismes intelligents ...",
-    icon: "flaticon-flasks",
+      "Chez MACOBATE, l’électricité et l’automatisme ne sont pas de simples disciplines secondaires ce sont des leviers stratégiques de performance.",
+    icon: "GiElectricalResistance",
     url: "/services/detailServices",
   },
 ];
@@ -90,7 +95,15 @@ const safeMarketSectors = Array.isArray(homeMarketSectors)
                 </h3>
                 <div class="text">{sector.description}</div>
                 <div class="icon-box">
-                  <span class={`icon ${sector.icon}`} />
+                  {sector.icon && (
+                    <span class="icon">
+                       {sector.icon === 'TbBuildingWarehouse' && <TbBuildingWarehouse  color="#007bff" />}
+                       {sector.icon === 'GiBarrel' && <GiBarrel  color="#007bff" />}
+                        {sector.icon === 'GiScubaTanks' && <GiScubaTanks  color="#007bff" />}
+                        {sector.icon === 'GiWaterRecycling' && <GiWaterRecycling  color="#007bff" />} 
+                        {sector.icon === 'GiElectricalResistance' && <GiElectricalResistance   color="#007bff" />}
+                    </span>
+                    )}
                 </div>
                 <a href={sector.url} class="view_all">
                   Découvrir <span class="icon flaticon-right-arrow-1" />

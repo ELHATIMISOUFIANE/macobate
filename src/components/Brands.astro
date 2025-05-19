@@ -1,37 +1,38 @@
 ---
-// ServicesSection.astro (Version française améliorée)
+import { FaAnchor, FaShip, FaClock ,FaHandHoldingWater , FaPrescriptionBottle ,FaIndustry  } from 'react-icons/fa';
+import { GiPulleyHook,GiWaterTank , GiScubaTanks  } from "react-icons/gi";
+// Services avec des icônes sous forme de clés
 export const services = [
   {
-    image: "/images/resource/service-1.jpg",
-    icon: "flaticon-boat",
-    title: "ROBEX ",
+    image: "/images/gallery/robex-logo.png",
+    icon: 'GiScubaTanks ',  // Stocke seulement la clé du composant
+    title: "ROBEX",
     text: "Vannes et Équipements Hydromécaniques L'étanchéité au service de l'eau et de l'industrie.Conception et fabrication de vannes industrielles, vannes murales, batardeaux, pour barrages, réseaux urbains et industrie.",
-    link: "/market-single",
+    link: "/our-brands/robex",
   },
   {
-    image: "/images/resource/service-3.jpg",
-    icon: "flaticon-education",
+    image: "/images/gallery/cranex-logo.png",
+    icon: 'GiPulleyHook ', // Icône différente FaAnchor
     title: "CRANEX",
     text: "Solutions de Levage Intelligentes Élevez votre industrie. Grues, palans et systèmes de manutention pour l’industrie lourde, la logistique et l’énergie.",
-    link: "/market-single",
+    link: "/our-brands/cranex",
   },
   {
-    image: "/images/resource/service-2.jpg",
-    icon: "flaticon-time",
+    image: "/images/gallery/tanko-logo.png",
+    icon: 'GiWaterTank', // Icône différente
     title: "TANKO",
     text: "Réservoirs et Appareils à Pression de Précision Conçus pour contenir, construits pour durer. Réservoirs sous pression, cuves de process et systèmes de stockage pour les milieux exige-ants.",
-    link: "/market-single",
+    link: "/our-brands/tanko",
   },
   {
-    image: "/images/resource/service-3.jpg",
-    icon: "flaticon-engineer",
+    image: "/images/gallery/mws-logo.jpg",
+    icon: 'FaHandHoldingWater', // Pas d'icône pour 
     title: "MWS",
     text: "Stations Mobiles de Traitement d’Eau De l’eau, là où vous en avez besoin. Stations mobiles et modulaires pour eau potable, dessalement, assainissement, humanitaire ou rural.",
-    link: "/market-single",
+    link: "/our-brands/mws",
   },
 ];
 
-// Vérification que services est bien défini
 export const safeServices = services || [];
 ---
 
@@ -43,47 +44,55 @@ export const safeServices = services || [];
   <div class="auto-container">
     <div class="inner-container">
       <div class="row clearfix">
-        {
-          safeServices.map((service) => (
-            <div class="services-block col-md-3 col-sm-6 col-xs-12">
-              <div class="inner-box">
-                <div class="image">
-                  <img src={service.image} alt={service.title} />
+        {safeServices.map((service) => (
+          <div class="services-block col-md-3 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="image">
+                <img src={service.image} alt={service.title} />
+              </div>
+              <div class="lower-content">
+                <div class="icon-box">
+                  {/* Rend le composant d'icône en fonction de la clé */}
+                  {service.icon && (
+                    <span class="icon">
+                      {service.icon === 'GiPulleyHook ' && <GiPulleyHook color="#007bff" />}
+                      {service.icon === 'GiScubaTanks ' && <GiScubaTanks  color="#007bff"/>}
+                      {service.icon === 'FaHandHoldingWater' && <FaHandHoldingWater color="#007bff" />}
+                      {service.icon === 'FaShip' && <FaShip color="#007bff" />}
+                      {service.icon === 'FaAnchor' && <FaAnchor color="#007bff"/>}
+                      {service.icon === 'GiWaterTank' && <GiWaterTank color="#007bff"/>}
+                      
+                    </span>
+                  )}
                 </div>
-                <div class="lower-content">
-                  <div class="icon-box">
-                    <span class={`icon ${service.icon}`} />
+                <h3>{service.title}</h3>
+              </div>
+              
+              <!-- Overlay unique -->
+              <div class="overlay-box">
+                <div class="overlay-inner">
+                  <div class="overlay-icon">
+                    {/* Ajoute une icône dans l'overlay si disponible */}
+                    {service.icon && (
+                      <span class="icon">
+                        {service.icon === 'GiPulleyHook ' && <GiPulleyHook  />}
+                        {service.icon === 'GiScubaTanks ' && <GiScubaTanks  />}
+                        {service.icon === 'FaHandHoldingWater' && <FaHandHoldingWater />}
+                        {service.icon === 'GiWaterTank' && <GiWaterTank />}
+                        {service.icon === 'FaShip' && <FaShip />}
+                        {service.icon === 'FaAnchor' && <FaAnchor />}
+                     
+                      
+                      </span>
+                    )}
                   </div>
-                  <h3>{service.title}</h3>
-                </div>
-                <div class="overlay-box">
-                  <div class="overlay-inner">
-                    <div class="text">{service.text}</div>
-                   
-                    <div class="overlay-lower-inner">
-                      <div class={`overlay-icon ${service.icon}`} />
-                      <h4>
-                       {service.title}
-                      </h4>
-                    </div>
-                    <div class="overlay-box">
-                  <div class="overlay-inner">
-                    <div class="text">{service.text}</div>
-                    
-                    <div class="overlay-lower-inner">
-                      <div class={`overlay-icon ${service.icon}`} />
-                      <h4>
-                        <a href={service.link}>{service.title}</a>
-                      </h4>
-                    </div>
-                  </div>
-                </div>
-                  </div>
+                  <h4><a href={service.link}>{service.title}</a></h4>
+                  <p class="text">{service.text}</p>
                 </div>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -91,7 +100,6 @@ export const safeServices = services || [];
 
 <style>
   /* Style global pour la section Services */
-
 
 /* Bloques de services */
 .services-block {
@@ -118,15 +126,11 @@ export const safeServices = services || [];
 }
 
 /* Image du service */
-
-
 .services-block:hover .image img {
   transform: scale(1.1); /* Zoom sur l'image au survol */
 }
 
 /* Contenu bas visible avant le hover */
-
-
 .lower-content h3 {
   font-size: 22px;
   font-weight: bold;
@@ -165,8 +169,6 @@ export const safeServices = services || [];
   text-align: center;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
-
 
 .overlay-box .text {
   font-size: 16px;

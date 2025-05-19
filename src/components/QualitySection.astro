@@ -1,52 +1,51 @@
 ---
+import { FaCertificate, FaDraftingCompass, FaTools ,FaHandHoldingWater } from "react-icons/fa";
+import { GrAchievement } from "react-icons/gr";
+import { GiBoltDrop } from "react-icons/gi";
  const highlights = [
- {
+
+  {
     id: 1,
-    title: "Ingénierie certifiée",
-    icon: "#", 
+    title: "Atelier à la pointe de la technologie",
+    icon: "FaTools", 
     link: "#",
   },
   {
     id: 2,
-    title: "Réalisation 100 % intégrée",
-    icon: "/images/icons/realisation.png",
+    title: "Expertise en eau, énergie et industrie",
+    icon: "FaHandHoldingWater", 
     link: "#",
   },
   {
     id: 3,
-    title: "Atelier à la pointe de la technologie",
-    icon: "#", 
+    title: "Clients publics et partenaires internationaux",
+    icon: "GiBoltDrop", 
     link: "#",
   },
-  {
+   {
     id: 4,
-    title: "Expertise en eau, énergie et industrie",
-    icon: "#", 
+    title: "Ingénierie certifiée",
+    icon: 'FaDraftingCompass' , 
     link: "#",
   },
   {
     id: 5,
-    title: "Clients publics et partenaires internationaux",
-    icon: "#", 
+    title: "Réalisation 100 % intégrée",
+    icon: "GrAchievement",
     link: "#",
   },
-  {
-    id: 6,
-    title: "Direction",
-    icon: "#",
-    link: "#",
-  },
+  
 ];
 
 
- ---
+---
  
  
  
  <section class="highlights-section">
       <div
         class="image-layer"
-        style="background-image:url(/images/background/10.jpg)"
+        style="background-image:url(/images/background/point-fort.jpg)"
       >
       </div>
       <div class="auto-container">
@@ -65,9 +64,17 @@
                   highlights.map((item) => (
                     <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
                       <div class="hightlight-inner">
-                        <div class="icon-box">
-                          <img src={item.icon} alt={item.title} />
-                        </div>
+                         <div class="icon-box">
+                          {item.icon && (
+                          <span class="icon">
+                            {item.icon === 'FaDraftingCompass' && <FaDraftingCompass size={40} color="#007bff" />}
+                            {item.icon === 'GrAchievement' && <GrAchievement size={40} color="#007bff" />}
+                            {item.icon === 'FaTools' && <FaTools size={40} color="#007bff" />}
+                            {item.icon === 'FaHandHoldingWater' && <FaHandHoldingWater size={40} color="#007bff" />}
+                            {item.icon === 'GiBoltDrop' && <GiBoltDrop size={40} color="#007bff" />}
+                           </span>
+                    )}
+                          </div>
                         <h3>{item.title}</h3>
                         <a href={item.link} class="overlay-link" />
                       </div>

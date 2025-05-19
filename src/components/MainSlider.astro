@@ -83,8 +83,10 @@
               data-saveperformance="off"
               data-slotamount="default"
               data-thumb={slide.image}
+               data-delay="5000"
               data-title="Titre du Slide"
               data-transition="parallaxvertical"
+              
             >
               <img
                 alt=""
@@ -141,6 +143,7 @@
 </section>
 <!--Fin Slider Principal-->
 <script is:inline>
+
   document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll('.slide-button');
 
