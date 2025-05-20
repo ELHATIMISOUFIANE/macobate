@@ -1,0 +1,625 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import AppointmentForm from "../../components/AppointmentForm.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+
+// Définition des services avec leurs détails
+const services = [
+  {
+    id: "charpente-metallique",
+    title: "Charpente Métallique",
+    description: `
+      <p>Chez MACOBATE, nous concevons et réalisons des structures métalliques alliant excellence d'ingénierie, précision de fabrication et expertise de montage sur site. Notre division Charpente Métallique est reconnue pour sa capacité à créer des structures durables, esthétiques et parfaitement adaptées aux besoins industriels.</p>
+      
+      <p>Notre expertise couvre les domaines suivants :</p>
+      <ul>
+        <li><strong>Bâtiments industriels</strong> : Usines, entrepôts, hangars de stockage, ateliers de fabrication</li>
+        <li><strong>Structures spéciales</strong> : Supports d'équipements, passerelles industrielles, escaliers techniques</li>
+        <li><strong>Ossatures complexes</strong> : Structures porteuses pour industries lourdes, pylônes, mezzanines</li>
+        <li><strong>Extensions et réhabilitations</strong> : Renforcement de structures existantes, mise aux normes, agrandissements</li>
+      </ul>
+      
+      <p>Notre processus de production intègre toutes les étapes clés :</p>
+      <ol>
+        <li>Étude et conception 3D par notre bureau d'études</li>
+        <li>Fabrication précise en atelier (découpe, pliage, soudure, assemblage)</li>
+        <li>Traitement de surface (galvanisation, peinture industrielle)</li>
+        <li>Montage et installation sur site par nos équipes qualifiées</li>
+        <li>Contrôle qualité rigoureux et certification</li>
+      </ol>
+      
+      <p>Que ce soit pour des petites structures ou des projets à grande échelle, nous respectons des normes strictes de qualité et de sécurité, garantissant la longévité et la résistance de nos constructions, même dans des environnements difficiles.</p>
+    `,
+    image: "/images/gallery/14.jpg",
+    features: [
+      "Conception sur mesure",
+      "Fabrication en atelier certifié",
+      "Installation par équipes qualifiées",
+      "Conformité aux normes internationales",
+      "Solutions antisismiques disponibles",
+    ],
+  },
+  {
+    id: "appareils-pression",
+    title: "Appareils à pression",
+    description: `
+      <p>soufiane est un acteur majeur dans la conception et la fabrication d'appareils à pression répondant aux exigences les plus strictes des secteurs industriels. Notre expertise dans ce domaine hautement réglementé nous permet de fournir des équipements fiables, sécurisés et conformes aux normes internationales.</p>
+      
+      <p>Notre gamme d'appareils à pression comprend :</p>
+      <ul>
+        <li><strong>Échangeurs thermiques</strong> : À plaques, tubulaires, multitubulaires pour transferts thermiques optimisés</li>
+        <li><strong>Autoclaves industriels</strong> : Pour procédés thermiques et chimiques sous pression contrôlée</li>
+        <li><strong>Réacteurs sous pression</strong> : Pour industries chimiques, pharmaceutiques et agroalimentaires</li>
+        <li><strong>Séparateurs et filtres sous pression</strong> : Pour séparation multiphasique et filtration industrielle</li>
+        <li><strong>Colonnes de distillation</strong> : Pour procédés de raffinage et industrie pétrochimique</li>
+      </ul>
+      
+      <p>Nos appareils à pression sont fabriqués selon les codes et standards internationaux :</p>
+      <ul>
+        <li>Directive Équipements sous Pression (DESP) 2014/68/UE</li>
+        <li>ASME Section VIII Division 1 & 2</li>
+        <li>CODAP (Code français de construction des appareils à pression)</li>
+        <li>AD-Merkblätter (Allemagne)</li>
+      </ul>
+      
+      <p>Notre expertise intègre le choix des matériaux adaptés (aciers inoxydables, alliages spéciaux, matériaux résistants à la corrosion), les calculs de dimensionnement précis, les procédés de soudage qualifiés, et les contrôles non destructifs complets.</p>
+    `,
+    image: "/images/resource/service-pression.jpg",
+    features: [
+      "Conception selon codes internationaux",
+      "Fabrication avec procédés qualifiés",
+      "Tests hydrostatiques et de résistance",
+      "Documentation technique complète",
+      "Maintenance et inspections périodiques",
+    ],
+  },
+  {
+    id: "reservoirs-stockage",
+    title: "Réservoirs de Stockage",
+    description: `
+      <p>zakaria, nous concevons et fabriquons tous types de réservoirs de stockage en acier, selon les normes internationales telles que API 650, API 620 et sur la base des codes de calcul CODRES et EUROCODE. Notre expertise couvre l'ensemble des besoins de stockage des industries modernes.</p>
+      
+      <p>Notre gamme de réservoirs de stockage comprend :</p>
+      <ul>
+        <li><strong>Réservoirs à toit fixe</strong> : Pour stockage d'eau, produits chimiques, hydrocarbures peu volatils</li>
+        <li><strong>Réservoirs à toit flottant</strong> : Pour carburants et hydrocarbures volatils avec réduction des émissions</li>
+        <li><strong>Réservoirs sous pression</strong> : Pour gaz liquéfiés et produits nécessitant stockage pressurisé</li>
+        <li><strong>Silos métalliques</strong> : Pour stockage de produits en vrac, granulés, poudres industrielles</li>
+        <li><strong>Cuves spéciales</strong> : Avec revêtements intérieurs, isolation thermique, systèmes de chauffage/refroidissement</li>
+      </ul>
+      
+      <p>Chaque réservoir est conçu en tenant compte de:</p>
+      <ul>
+        <li>Nature du produit stocké (corrosivité, température, volatilité)</li>
+        <li>Contraintes environnementales (sismicité, vent, neige)</li>
+        <li>Exigences de sécurité (protection incendie, confinement)</li>
+        <li>Besoins opérationnels (jaugeage, instrumentation, maintenance)</li>
+      </ul>
+      
+      <p>Notre équipe d'ingénieurs spécialisés assure un service complet depuis la conception assistée par ordinateur jusqu'à l'installation et la mise en service. Nos réservoirs sont fabriqués dans nos ateliers avec des contrôles qualité rigoureux à chaque étape, assurant intégrité, étanchéité et durabilité.</p>
+    `,
+    image: "/images/resource/service-reservoirs.jpg",
+    features: [
+      "Conception sur mesure selon produit stocké",
+      "Fabrication selon normes API/CODRES",
+      "Installation et fondations adaptées",
+      "Systèmes anti-corrosion performants",
+      "Services de maintenance et réhabilitation",
+    ],
+  },
+  {
+    id: "equipements-hydromecaniques",
+    title: "Équipements Hydromécaniques",
+    description: `
+      <p>Chez MACOBATE, l'équipement hydromécanique est bien plus qu'un savoir-faire : c'est une passion transmise de génération en génération. Depuis plus de 35 ans, nous concevons, fabriquons et installons des équipements hydromécaniques de haute qualité pour les infrastructures hydrauliques du Maroc et de l'Afrique de l'Ouest.</p>
+      
+      <p>Notre expertise couvre l'ensemble des équipements nécessaires aux infrastructures hydrauliques :</p>
+      <ul>
+        <li><strong>Vannes de régulation</strong> : Vannes segment, vannes wagon, vannes papillon pour contrôle précis des débits</li>
+        <li><strong>Batardeaux et stop-logs</strong> : Solutions modulaires pour obturation temporaire ou permanente des ouvrages</li>
+        <li><strong>Dégrilleurs et nettoyeurs</strong> : Systèmes manuels ou automatisés pour protection des ouvrages contre les corps flottants</li>
+        <li><strong>Conduites forcées</strong> : Conception et fabrication de conduites à haute pression pour centrales hydroélectriques</li>
+        <li><strong>Blindages et pièces d'ancrage</strong> : Éléments intégrés au génie civil pour fixation des équipements mobiles</li>
+      </ul>
+      
+      <p>Nos équipements équipent les infrastructures hydrauliques stratégiques :</p>
+      <ul>
+        <li>Barrages et réservoirs</li>
+        <li>Stations de pompage</li>
+        <li>Centrales hydroélectriques</li>
+        <li>Stations de traitement des eaux</li>
+        <li>Systèmes d'irrigation</li>
+      </ul>
+      
+      <p>Chaque projet bénéficie d'une étude hydraulique poussée pour dimensionner précisément les équipements selon les contraintes spécifiques : débit, pression, charge hydraulique, environnement (eau douce, eau de mer, eaux usées). Nous assurons également la modernisation et la réhabilitation d'équipements existants.</p>
+    `,
+    image: "/images/resource/service-hydromecaniques.jpg",
+    features: [
+      "Conception hydraulique optimisée",
+      "Matériaux résistants à la corrosion",
+      "Systèmes d'étanchéité haute performance",
+      "Équipements de manœuvre adaptés",
+      "Installation et mise en service sur site",
+    ],
+  },
+  {
+    id: "traitement-eau",
+    title: "Traitement de l'eau",
+    description: `
+      <p>Fondée par Ing. M'hamed TOUNSI, expert reconnu dans le domaine du traitement de l'eau, MACOBATE a démarré son parcours industriel en participant à de grands projets hydrauliques au Maroc. Aujourd'hui, nous perpétuons cet héritage avec des solutions complètes de traitement d'eau pour les municipalités et industries.</p>
+      
+      <p>Notre expertise couvre l'ensemble des technologies de traitement :</p>
+      <ul>
+        <li><strong>Potabilisation</strong> : Clarification, filtration, désinfection pour production d'eau potable</li>
+        <li><strong>Traitement des eaux usées</strong> : Stations d'épuration urbaines et industrielles avec valorisation des boues</li>
+        <li><strong>Dessalement</strong> : Technologies d'osmose inverse pour conversion d'eau de mer en eau douce</li>
+        <li><strong>Traitement industriel</strong> : Solutions spécifiques pour industries (déminéralisation, adoucissement, recyclage)</li>
+        <li><strong>Stations compactes</strong> : Unités modulaires pour sites isolés ou applications temporaires</li>
+      </ul>
+      
+      <p>Notre approche intégrée comprend :</p>
+      <ol>
+        <li>Études de caractérisation et essais pilotes</li>
+        <li>Conception de process optimisés pour chaque type d'eau</li>
+        <li>Fabrication des équipements clés dans nos ateliers</li>
+        <li>Intégration de technologies de pointe et d'automatismes</li>
+        <li>Montage et mise en service par nos équipes spécialisées</li>
+        <li>Formation des opérateurs et maintenance préventive</li>
+      </ol>
+      
+      <p>Que ce soit pour une petite unité de traitement ou une grande station municipale, nous garantissons des solutions fiables, économes en énergie et respectueuses de l'environnement, avec une attention particulière à la qualité des matériaux utilisés pour assurer durabilité et performance.</p>
+    `,
+    image: "/images/resource/service-traitement-eau.jpg",
+    features: [
+      "Solutions complètes clé en main",
+      "Adaptations aux spécificités locales",
+      "Technologies écoénergétiques",
+      "Automatisation et contrôle avancés",
+      "Support technique permanent",
+    ],
+  },
+  {
+    id: "electricite-automatismes",
+    title: "Électricité & Automatismes",
+    description: `
+      <p>Chez MACOBATE, l'électricité et l'automatisme ne sont pas de simples disciplines secondaires : ce sont des leviers stratégiques de performance. Notre département dédié conçoit et met en œuvre des systèmes électriques et d'automatismes industriels qui apportent fiabilité, efficacité et intelligence à vos installations.</p>
+      
+      <p>Notre expertise couvre l'ensemble du spectre électrique industriel :</p>
+      <ul>
+        <li><strong>Armoires électriques</strong> : Conception et fabrication d'armoires de puissance, de distribution et de contrôle-commande</li>
+        <li><strong>Automatismes</strong> : Programmation d'automates (PLC), systèmes SCADA, interfaces homme-machine (IHM)</li>
+        <li><strong>Instrumentations</strong> : Capteurs, actionneurs, transmetteurs pour contrôle précis des processus</li>
+        <li><strong>Électricité industrielle</strong> : Installation de réseaux électriques, câblage, mise à la terre</li>
+        <li><strong>Variateurs de vitesse</strong> : Systèmes d'entraînement pour moteurs avec optimisation énergétique</li>
+      </ul>
+      
+      <p>Nos systèmes d'automatismes apportent des avantages concrets :</p>
+      <ul>
+        <li>Contrôle précis des processus industriels</li>
+        <li>Optimisation énergétique et réduction des consommations</li>
+        <li>Monitoring à distance et maintenance prédictive</li>
+        <li>Traçabilité et acquisition de données</li>
+        <li>Évolutivité et adaptabilité aux besoins futurs</li>
+      </ul>
+      
+      <p>Notre approche intégrée assure une parfaite coordination entre les aspects mécaniques, hydrauliques et électriques de vos installations. Nous concevons des solutions sur mesure, en privilégiant la fiabilité, la facilité de maintenance et l'évolutivité. Des audits aux installations complètes, notre équipe d'ingénieurs et de techniciens vous accompagne à chaque étape.</p>
+    `,
+    image: "/images/resource/service-electricite.jpg",
+    features: [
+      "Conception de systèmes sur mesure",
+      "Intégration multimarques",
+      "Programmation et mise en service",
+      "Documentation technique complète",
+      "Support et maintenance à distance",
+    ],
+  },
+];
+
+// Le service actuellement visualisé (via fragment d'URL ou premier par défaut)
+let activeServiceId = Astro.url.hash? Astro.url.hash.substring(1) : services[0].id;
+let activeService =
+services.find((service) => service.id === activeServiceId) || services[0];
+---
+
+<BaseLayout title={`${activeService.title} - MACOBATE Services`}>
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services/allServices">Services</a></li>
+          <li>{activeService.title}</li>
+        </ul>
+        <h1>Nos Services</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Services Section -->
+    <section class="services-detail-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!-- Sidebar Services Menu -->
+          <div class="sidebar-column col-lg-3 col-md-4 col-sm-12">
+            <div class="inner-column">
+              <div class="services-list">
+                <h3>Tous nos services</h3>
+                <ul>
+                  {
+                    services.map((service) => (
+                      <li
+                        class={service.id === activeServiceId ? "active" : ""}
+                      >
+                        <a href={`#${service.id}`} class="service-link">
+                          {service.title}
+                        </a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <div class="help-box">
+                <h4>Besoin d'aide ?</h4>
+                <p>
+                  Notre équipe commerciale est à votre disposition pour étudier
+                  votre projet.
+                </p>
+                <a
+                  href="#"
+                  class="theme-btn btn-style-one"
+                  data-toggle="modal"
+                  data-target="#schedule-box"
+                >
+                  Demander un devis <span
+                    class="icon flaticon-arrow-pointing-to-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Content Column -->
+          <div class="content-column col-lg-9 col-md-8 col-sm-12">
+            <div class="inner-column">
+              <!-- Service Content -->
+              <div id={activeService.id} class="service-detail">
+                <div class="service-header">
+                  <h2 class="service-title">{activeService.title}</h2>
+                  <div class="separator"></div>
+                </div>
+
+                <div class="service-image">
+                  <img
+                    src={activeService.image}
+                    alt={activeService.title}
+                    class="img-fluid"
+                  />
+                </div>
+
+                <div
+                  class="text-content"
+                  set:html={activeService.description}
+                />
+
+                <div class="features-box">
+                  <h3>Points clés de notre service</h3>
+                  <div class="features-list">
+                    {
+                      activeService.features.map((feature) => (
+                        <div class="feature-item">
+                          <span class="icon flaticon-tick" />
+                          <span class="feature-text">{feature}</span>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+
+                <div class="action-box">
+                  <a
+                    href="#"
+                    class="theme-btn btn-style-one"
+                    data-toggle="modal"
+                    data-target="#schedule-box"
+                  >
+                    Demander un devis pour ce service <span
+                      class="icon flaticon-arrow-pointing-to-right"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CallToActionSection />
+    <AppointmentForm />
+    
+  </main>
+  <script id="services-data" type="application/json">
+      {JSON.stringify(services)}
+</script>
+  <Footer />
+</BaseLayout>
+
+
+
+
+<style>
+  /* Styles pour la section de détail des services */
+  .services-detail-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+  }
+
+  /* Styles pour la liste des services dans la sidebar */
+  .services-list {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .services-list h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 15px;
+    color: #333;
+  }
+
+  .services-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .services-list ul li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.3s ease;
+  }
+
+  .services-list ul li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .services-list ul li a {
+    padding: 10px 0;
+    display: block;
+    color: #555;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 15px;
+  }
+
+  .services-list ul li a:before {
+    content: "\f105";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #1720d7;
+  }
+
+  .services-list ul li.active a,
+  .services-list ul li a:hover {
+    color: #1720d7;
+    font-weight: 600;
+  }
+
+  /* Boîte d'aide */
+  .help-box {
+    background-color: #1720d7;
+    color: white;
+    border-radius: 6px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .help-box h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  .help-box p {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .help-box .theme-btn {
+    background-color: white;
+    color: #1720d7;
+  }
+
+  /* Contenu du service */
+  .service-detail {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .service-header {
+    margin-bottom: 30px;
+  }
+
+  .service-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .service-image {
+    margin-bottom: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .service-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .text-content {
+    margin-bottom: 30px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .text-content p {
+    margin-bottom: 20px;
+  }
+
+  .text-content ul,
+  .text-content ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .text-content li {
+    margin-bottom: 10px;
+  }
+
+  .text-content strong {
+    color: #333;
+    font-weight: 600;
+  }
+
+  /* Points clés du service */
+  .features-box {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .features-box h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-item .icon {
+    color: #1720d7;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .feature-text {
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Boîte d'action */
+  .action-box {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  /* Responsive */
+  @media (max-width: 991px) {
+    .service-detail {
+      padding: 20px;
+    }
+
+    .features-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const services = JSON.parse(document.getElementById('services-data').textContent);
+
+    const getServiceById = (id) => {
+      return services.find(service => service.id === id);
+    };
+
+    const updateServiceContent = (serviceId) => {
+      const service = getServiceById(serviceId);
+      if (!service) return;
+
+      // Mise à jour du contenu sans rechargement
+      const detail = document.querySelector('.service-detail');
+      detail.id = service.id;
+      detail.querySelector('.service-title').textContent = service.title;
+      detail.querySelector('.service-image img').src = service.image;
+      detail.querySelector('.service-image img').alt = service.title;
+      detail.querySelector('.text-content').innerHTML = service.description;
+
+      const featuresBox = detail.querySelector('.features-list');
+      featuresBox.innerHTML = '';
+      service.features.forEach(feature => {
+        const div = document.createElement('div');
+        div.className = 'feature-item';
+        div.innerHTML = `
+          <span class="icon flaticon-tick"></span>
+          <span class="feature-text">${feature}</span>
+        `;
+        featuresBox.appendChild(div);
+      });
+
+      // Mise à jour de l'état actif dans la sidebar
+      document.querySelectorAll('.services-list ul li').forEach(li => {
+        li.classList.remove('active');
+      });
+      const activeLink = document.querySelector(`.services-list ul li a[href="#${serviceId}"]`);
+      if (activeLink) {
+        activeLink.parentElement.classList.add('active');
+      }
+
+      // Mettre à jour l’URL sans rechargement
+      history.pushState(null, '', `#${serviceId}`);
+    };
+
+    // Gestion des clics sur la sidebar
+    const serviceLinks = document.querySelectorAll('.service-link');
+    serviceLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const serviceId = link.getAttribute('href').substring(1);
+        updateServiceContent(serviceId);
+      });
+    });
+
+    // Chargement du contenu si une ancre est présente au chargement
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      updateServiceContent(hash);
+    }
+  });
+</script>
+
+
+
+

@@ -55,25 +55,25 @@ const mainMenuItems = [
     submenu: [
       {
         title: "Charpente Métallique",
-        url: "/services/detailServices?sector=construction",
+        url: "/services/detailServices#charpente-metallique",
       },
       {
         title: "Appareils à pression",
-        url: "/services/detailServices?sector=chaudronnerie",
+        url: "/services/detailServices#appareils-pression",
       },
       {
         title: "Réservoirs de Stockage",
-        url: "/services/detailServices?sector=hydraulique",
+        url: "/services/detailServices#reservoirs-stockage",
       },
       { title: "Équipements Hydromécaniques", 
-        url: "/services/detailServices?sector=eau" },
+        url: "/services/detailServices#equipements-hydromecaniques" },
       {
         title: "Traitement de l'eau",
-        url: "/services/detailServices?sector=maintenance",
+        url: "/services/detailServices#traitement-eau",
       },
       {
         title: "Électricité & Automatismes",
-        url: "/services/detailServices?sector=maintenance",
+        url: "/services/detailServices#electricite-automatismes",
       },
       {
     title: "Projets",
@@ -84,48 +84,50 @@ const mainMenuItems = [
     ],
   },
   
-  {
-    title: "Produits",
-    url: "/products",
-    hasSubmenu: true,
-    showInMainOnly: true,
-    submenu: [
-      {
-        title: "Eau",
-        url: "/products/eau",
-        hasSubmenu: true,
-        childSubmenu: [
-          { title: "Vannes Segment", url: "/products/eau#vannes-segment" },
-          { title: "Vannes Wagon", url: "/products/eau#vannes-wagon" },
-          { title: "Batardeaux", url: "/products/eau#batardeaux" },
-          { title: "Grilles", url: "/products/eau#grilles" },
-        ],
-      },
-      {
-        title: "Environnement",
-        url: "/products/environnement",
-        hasSubmenu: true,
-        childSubmenu: [
-          { title: "Dégrilleurs", url: "/products/environnement#degrilleurs" },
-          { title: "Compacteurs", url: "/products/environnement#compacteurs" },
-          {
-            title: "Pont Racleur",
-            url: "/products/environnement#pont-racleur",
-          },
-        ],
-      },
-      {
-        title: "Industrie",
-        url: "/products/industrie",
-        hasSubmenu: true,
-        childSubmenu: [
-          { title: "Réservoirs", url: "/products/industrie#reservoirs" },
-          { title: "Silos", url: "/products/industrie#silos" },
-          { title: "Charpentes", url: "/products/industrie#charpentes" },
-        ],
-      },
-    ],
-  },
+  // {
+  //   title: "Produits",
+  //   url: "/products",
+  //   hasSubmenu: true,
+  //   showInMainOnly: true,
+  //   submenu: [
+  //     {
+  //       title: "Eau",
+  //       url: "/products/eau",
+  //       hasSubmenu: true,
+  //       childSubmenu: [
+  //         { title: "Vannes Segment", url: "/products/eau#vannes-segment" },
+  //         { title: "Vannes Wagon", url: "/products/eau#vannes-wagon" },
+  //         { title: "Batardeaux", url: "/products/eau#batardeaux" },
+  //         { title: "Grilles", url: "/products/eau#grilles" },
+  //       ],
+  //     },
+  //     {
+  //       title: "Environnement",
+  //       url: "/products/environnement",
+  //       hasSubmenu: true,
+  //       childSubmenu: [
+  //         { title: "Dégrilleurs", url: "/products/environnement#degrilleurs" },
+  //         { title: "Compacteurs", url: "/products/environnement#compacteurs" },
+  //         {
+  //           title: "Pont Racleur",
+  //           url: "/products/environnement#pont-racleur",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       title: "Industrie",
+  //       url: "/products/industrie",
+  //       hasSubmenu: true,
+  //       childSubmenu: [
+  //         { title: "Réservoirs", url: "/products/industrie#reservoirs" },
+  //         { title: "Silos", url: "/products/industrie#silos" },
+  //         { title: "Charpentes", url: "/products/industrie#charpentes" },
+  //       ],
+  //     },
+  //   ],
+  // }, 
+
+
   {
     title: "Actualités",
     url: "/blog/allBlog",
@@ -520,9 +522,14 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
       "history-section": document.querySelector('.history-section'),
       "achived-section": document.querySelector('.achived-section'),
       "team-section": document.querySelector('.team-section'),
-      "allServices": document.querySelector('.services')
+      "allServices": document.querySelector('.services'),
+      "charpente-metallique": document.querySelector('.charpente-metallique'),
+      "electricite-automatismes": document.querySelector('.electricite-automatismes')
+     
+
     };
-    
+    // Mettre à jour l’URL sans rechargement
+      history.pushState(null, '', `#${serviceId}`);
     // Ajouter les IDs aux sections s'ils existent
     for (const [id, section] of Object.entries(sections)) {
       if (section) section.id = id;

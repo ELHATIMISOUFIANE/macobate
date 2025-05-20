@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import AppointmentForm from "../../components/AppointmentForm.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+
+const services = [
+  /* garde tes objets de service comme avant ici */
+];
+---
+
+<BaseLayout title="Nos Services - MACOBATE">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/services/allServices">Services</a></li>
+          <li>Nos Services</li>
+        </ul>
+        <h1>Nos Services</h1>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-detail-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!-- Sidebar Services Menu -->
+          <div class="sidebar-column col-lg-3 col-md-4 col-sm-12">
+            <div class="inner-column">
+              <div class="services-list">
+                <h3>Tous nos services</h3>
+                <ul>
+                  {
+                    services.map((service) => (
+                      <li>
+                        <a href={`#${service.id}`} class="service-link">
+                          {service.title}
+                        </a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <div class="help-box">
+                <h4>Besoin d'aide ?</h4>
+                <p>
+                  Notre équipe commerciale est à votre disposition pour étudier
+                  votre projet.
+                </p>
+                <a
+                  href="#"
+                  class="theme-btn btn-style-one"
+                  data-toggle="modal"
+                  data-target="#schedule-box"
+                >
+                  Demander un devis <span
+                    class="icon flaticon-arrow-pointing-to-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Content Column -->
+          <div class="content-column col-lg-9 col-md-8 col-sm-12">
+            <div class="inner-column">
+              {
+                services.map((service) => (
+                  <div id={service.id} class="service-detail hidden">
+                    <div class="service-header">
+                      <h2 class="service-title">{service.title}</h2>
+                      <div class="separator" />
+                    </div>
+
+                    <div class="service-image">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        class="img-fluid"
+                      />
+                    </div>
+
+                    <div class="text-content" set:html={service.description} />
+
+                    <div class="features-box">
+                      <h3>Points clés de notre service</h3>
+                      <div class="features-list">
+                        {service.features.map((feature) => (
+                          <div class="feature-item">
+                            <span class="icon flaticon-tick" />
+                            <span class="feature-text">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="action-box">
+                      <a
+                        href="#"
+                        class="theme-btn btn-style-one"
+                        data-toggle="modal"
+                        data-target="#schedule-box"
+                      >
+                        Demander un devis pour ce service{" "}
+                        <span class="icon flaticon-arrow-pointing-to-right" />
+                      </a>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CallToActionSection />
+    <AppointmentForm />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Ton style d’origine + dynamique */
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .services-list ul li a.active {
+    color: #1720d7;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".service-link");
+    const sections = document.querySelectorAll(".service-detail");
+
+    function showService(id) {
+      // Activer la bonne section
+      sections.forEach((section) => {
+        if (section.id === id) {
+          section.classList.add("active");
+          section.classList.remove("hidden");
+        } else {
+          section.classList.remove("active");
+          section.classList.add("hidden");
+        }
+      });
+
+      // Mettre à jour la classe active sur les liens
+      links.forEach((link) => {
+        const href = link.getAttribute("href").substring(1);
+        if (href === id) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const id = this.getAttribute("href").substring(1);
+        window.location.hash = id;
+        showService(id);
+      });
+    });
+
+    // Afficher le bon service au chargement
+    const hash = window.location.hash.substring(1);
+    const defaultId = sections[0]?.id;
+    showService(hash || defaultId);
+  });
+</script>

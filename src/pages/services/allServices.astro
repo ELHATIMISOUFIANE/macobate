@@ -7,68 +7,53 @@ import Footer from "../../components/Footer.astro";
 const marketSectors = [
   {
     id: 1,
-    title: "Construction Métallique",
+    title: "Charpente Métallique",
     description: "Conception et réalisation de charpentes métalliques, bâtiments industriels et structures complexes sur mesure...",
-    image: "/images/resource/market-8.jpg",
+    image: "/images/gallery/charpente-metallique.jpg",
     icon: "flaticon-piston",
-    slug: "services/detailServices#Construction-Métallique",
+    slug: "services/detailServices#charpente-metallique",
   },
   {
     id: 2,
-    title: "Chaudronnerie Industrielle",
+    title: "Appareils à pression",
     description: "Fabrication de réservoirs, silos, cuves et équipements sous pression selon les normes internationales les plus strictes...",
-    image: "/images/resource/market-10.jpg",
+    image: "/images/gallery/appareil-pression.jpeg",
     icon: "flaticon-demolishing",
-    slug: "services/detailServices",
+    slug: "services/detailServices#appareils-pression",
   },
   {
     id: 3,
-    title: "Énergie et Hydraulique",
+    title: "Réservoirs de Stockage",
     description: "Équipements hydromécaniques pour barrages, centrales électriques et infrastructures de production d'énergie...",
-    image: "/images/resource/market-10.jpg",
+    image: "/images/gallery/reservoirs.png",
     icon: "flaticon-power",
-    slug: "services/detailServices",
+    slug: "services/detailServices#reservoirs-stockage",
   },
   {
     id: 4,
-    title: "Ingénierie des Matériaux",
+    title: "Équipements Hydromécaniques",
     description: "Sélection et mise en œuvre de matériaux adaptés aux environnements corrosifs, haute pression et conditions extrêmes...",
-    image: "/images/resource/market-11.jpg",
+    image: "/images/gallery/equipements-hydromecaniques.jpeg",
     icon: "flaticon-flasks",
-    slug: "services/detailServices",
+    slug: "services/detailServices#equipements-hydromecaniques",
   },
   {
     id: 5,
-    title: "Traitement des Eaux",
+    title: "Traitement de l'eau",
     description: "Solutions complètes pour stations d'épuration, de potabilisation et systèmes de traitement des eaux industrielles...",
-    image: "/images/resource/market-12.jpg",
+    image: "/images/gallery/traitement-eau.jpg",
     icon: "flaticon-valve",
-    slug: "services/detailServices",
+    slug: "services/detailServices#traitement-eau",
   },
   {
     id: 6,
-    title: "Infrastructures Portuaires",
+    title: "Électricité & Automatismes",
     description: "Équipements spécifiques pour ports, quais et installations maritimes répondant aux exigences des milieux salins...",
-    image: "/images/resource/market-13.jpg",
+    image: "/images/gallery/electricite-automatismes.jpg",
     icon: "flaticon-boat",
-    slug: "services/detailServices",
+    slug: "services/detailServices#electricite-automatismes",
   },
-  {
-    id: 7,
-    title: "Agro-industrie",
-    description: "Équipements de transformation et de stockage pour l'industrie agroalimentaire avec respect des normes sanitaires...",
-    image: "/images/resource/market-14.jpg",
-    icon: "flaticon-scythe",
-    slug: "services/detailServices#Agro-industrie",
-  },
-  {
-    id: 8,
-    title: "Ouvrages d'Art",
-    description: "Structures métalliques pour ponts, passerelles et ouvrages d'art nécessitant une haute précision et résistance...",
-    image: "/images/resource/market-15.jpg",
-    icon: "flaticon-arched-bridge",
-    slug: "services/detailServices#Ouvrages-d'Art",
-  },
+  
 ];
 
 // Tableau des autres services
@@ -302,8 +287,9 @@ const otherServices = [
 
 .sector-image {
   width: 100%;
-  height: auto;
-
+  height: 200px; /* Tu peux ajuster selon ton design */
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 </style>

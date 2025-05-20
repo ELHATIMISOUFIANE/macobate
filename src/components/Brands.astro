@@ -43,14 +43,14 @@ export const safeServices = services || [];
 >
   <div class="auto-container">
     <div class="inner-container">
-      <div class="row clearfix">
+      <div  id="our-brands"  class="row clearfix">
         {safeServices.map((service) => (
           <div class="services-block col-md-3 col-sm-6 col-xs-12">
             <div class="inner-box">
               <div class="image">
                 <img src={service.image} alt={service.title} />
               </div>
-              <div class="lower-content">
+              <div  class="lower-content">
                 <div class="icon-box">
                   {/* Rend le composant d'icône en fonction de la clé */}
                   {service.icon && (

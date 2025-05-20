@@ -4,6 +4,9 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import AppointmentForm from "../../components/AppointmentForm.astro";
 import CallToActionSection from "../../components/CallToActionSection.astro";
+import { GiValve } from "react-icons/gi";
+import { PiEngineBold } from "react-icons/pi";
+import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
 ---
 
 <BaseLayout title="ROBEX - Vannes et Équipements Hydromécaniques | MACOBATE">
@@ -17,7 +20,7 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
       <div class="auto-container">
         <ul class="page-breadcrumb">
           <li><a href="/">Accueil</a></li>
-          <li><a href="/our-brands">Nos Marques</a></li>
+          <li><a href="/#our-brands">Nos Marques</a></li>
           <li>ROBEX</li>
         </ul>
         <h1>ROBEX</h1>
@@ -52,12 +55,10 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
                   l'industrie.
                 </p>
 
-                <h3>Notre expertise</h3>
+                <h3>⚙️ Expertise & Capacités</h3>
+                <br>
                 <p>
-                  Avec plus de 35 ans d'expertise, ROBEX fournit des solutions
-                  d'étanchéité fiables et durables pour les infrastructur es
-                  hydrauliques les plus exigeantes du Maroc et de l'Afrique de
-                  l'Ouest.
+                 Forte de plus de 40 ans d'expérience, ROBEX propose des solutions innovantes et fiables pour la gestion de l'eau et les applications industrielles.
                 </p>
                 <ul class="list-style-two">
                   <li>Ingénierie : Conception sur mesure adaptée aux spécifications des clients</li>
@@ -65,83 +66,78 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
                   <li>Réhabilitation : Modernisation et rénovation des installations existantes</li>
                   <li>Mise en service : Installation sur site et assistance à la mise en service</li>
                 </ul>
-                <h3>Nos produits</h3>
-
+                <br>
+                <h3>🛠️ Gamme de Produits</h3>
+                      
                 <div class="products-grid">
                   <div class="product-item">
                     <div class="product-icon">
-                      <span class="icon flaticon-valve"></span>
+                      <span ><GiValve size={50} color="#002bed" /></span>
                     </div>
-                    <h4>Vannes Segment</h4>
+                    <h4>Vannes pour l'eau & industrielles</h4>
                     <ul class="list-style-one">
-                      <li>Contrôle précis des débits dans les barrages</li>
-                      <li>Conception robuste pour une longue durée de vie</li>
-                      <li>Système d'étanchéité haute performance</li>
-                      <li>Adaptation aux grandes pressions</li>
+                      <li>Vannes althimétriques</li>
+                      <li>Vannes de régulation de débit</li>
+                      <li>Sréducteurs de pression</li>
+                      <li> Vannes à opercule</li>
+                      <li>vannes papillon</li>
+                      <li>vannes à soupape</li>
+                    <br>  
                     </ul>
                   </div>
 
                   <div class="product-item">
                     <div class="product-icon">
-                      <span class="icon flaticon-valve"></span>
+                      <span ><PiEngineBold size={50} color="#002bed"/></span>
                     </div>
-                    <h4>Vannes Wagon</h4>
+                    <h4>Équipements hydromécaniques</h4>
                     <ul class="list-style-one">
-                      <li>Idéales pour les canalisations de grande section</li>
-                      <li>
-                        Étanchéité parfaite même après des années d'utilisation
-                      </li>
-                      <li>Maintenance simplifiée</li>
-                      <li>Fabrication sur mesure selon vos besoins</li>
+                      <li>Vannes murales</li>
+                      <li>vannes segment </li>
+                      <li>batardeaux</li>
+                      
                     </ul>
                   </div>
 
                   <div class="product-item">
                     <div class="product-icon">
-                      <span class="icon flaticon-construction"></span>
+                      <span ><BsFillMotherboardFill  size={50} color="#002bed"/></span>
                     </div>
-                    <h4>Batardeaux</h4>
+                    <h4>Servomoteurs</h4>
                     <ul class="list-style-one">
                       <li>Solutions temporaires ou permanentes</li>
                       <li>
-                        Installation rapide sans moyens de levage complexes
+                        hydrauliques pour l'automatisation des vannes
                       </li>
-                      <li>
-                        Compatible avec tous types d'ouvrages hydrauliques
-                      </li>
-                      <li>Résistance à la corrosion maximale</li>
+                      
                     </ul>
                   </div>
 
                   <div class="product-item">
                     <div class="product-icon">
-                      <span class="icon flaticon-demolishing"></span>
+                      <span ><BsSpeedometer size={50} color="#002bed"/></span>
                     </div>
-                    <h4>Grilles</h4>
+                    <h4>Débitmètres électromagnétiques</h4>
                     <ul class="list-style-one">
                       <li>
-                        Protection des ouvrages contre les corps flottants
+                        Champ magnétique
                       </li>
-                      <li>Nettoyage manuel ou automatisé</li>
-                      <li>Fabrication en acier inoxydable ou galvanisé</li>
+                      <li>Fluide conducteur</li>
+                      <li>Tension induite</li>
                       <li>
-                        Adaptation aux débits et aux contraintes spécifiques
+                       Mesure
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <h3>Références</h3>
-                <p>
-                  ROBEX équipe les plus grands ouvrages hydrauliques du Royaume
-                  :
-                </p>
+                <h3>🧭 Applications</h3>
+               <br>
                 <ul class="list-style-two">
-                  <li>Barrage Sidi Mohammed Ben Abdellah</li>
-                  <li>Barrage Oued Martil</li>
-                  <li>Station de pompage Bouregreg</li>
-                  <li>Stations d'épuration OCP</li>
-                  <li>Réseaux urbains des grandes villes</li>
+                  <li>Infrastructures hydrauliques : Barrages, réservoirs et stations de traitement de l'eau</li>
+                  <li>Installations industrielles : Secteurs chimique, pétrochimique et énergétique</li>
+                  <li>Systèmes municipaux : Distribution d'eau urbaine et gestion des eaux usées</li>
+                  
                 </ul>
 
                 <h3>Certification et qualité</h3>
