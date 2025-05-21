@@ -1,0 +1,819 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import AppointmentForm from "../../components/AppointmentForm.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+
+const projects = [
+  {
+    id: "barrages-amenagements-hydrauliques",
+    title: "Barrages & Aménagements Hydrauliques",
+    description: `
+      <p>MACOBATE est l'un des principaux acteurs dans le domaine de l'ingénierie hydraulique au Maroc. Notre expertise couvre la conception, la fabrication et l'installation d'équipements hydromécaniques pour les barrages, les centrales hydroélectriques et les infrastructures hydrauliques.</p>
+      
+      <p>Notre expertise inclut :</p>
+      <ul>
+        <li><strong>Vannes de tous types</strong> : segments, murales, papillon</li>
+        <li><strong>Conduites forcées</strong> et revêtements en acier</li>
+        <li><strong>Grilles de prise d'eau et dégrilleurs</strong></li>
+        <li><strong>Systèmes de levage et contrôle</strong></li>
+      </ul>
+      
+      <p>Projets phares réalisés :</p>
+      <ol>
+        <li><strong>Barrage Oued El Makhazine</strong> : Équipements hydromécaniques complets pour l'évacuateur de crues</li>
+        <li><strong>Barrage Al Massira</strong> : Rénovation des vannes segment et systèmes de contrôle</li>
+        <li><strong>Barrage Lalla Takerkoust</strong> : Installation de conduites forcées et bifurcations</li>
+        <li><strong>Barrage Sidi Mohamed Ben Abdellah</strong> : Vannes et équipements de régulation</li>
+      </ol>
+      
+      <p>Chaque projet est réalisé selon les plus hauts standards de qualité, avec des tests rigoureux et une attention particulière à la durabilité dans des conditions d'exploitation exigeantes. Nous assurons également la maintenance et la réhabilitation des équipements existants pour prolonger leur durée de vie.</p>
+    `,
+    image: "/images/projects/barrages-hydrauliques.jpg",
+    features: [
+      "Plus de 30 barrages équipés au Maroc",
+      "Expertise complète du composant au système intégré",
+      "Capacité d'intervention dans des conditions difficiles",
+      "Solutions sur mesure pour chaque projet",
+      "Maintenance préventive et réhabilitation",
+    ],
+    client: "Ministère de l'Équipement et de l'Eau, ONEE",
+    location: "Plusieurs régions du Maroc",
+    year: "1980-présent",
+  },
+  {
+    id: "stations-pompage-traitement",
+    title: "Stations de Pompage & Traitement",
+    description: `
+      <p>MACOBATE conçoit et réalise des stations de pompage et de traitement d'eau complètes, depuis les études jusqu'à la mise en service. Notre approche intégrée combine expertise mécanique, hydraulique, électrique et automatisme pour livrer des solutions performantes et durables.</p>
+      
+      <p>Nos réalisations comprennent :</p>
+      <ul>
+        <li><strong>Stations de pompage d'eau potable</strong> de petite à grande capacité</li>
+        <li><strong>Stations de traitement d'eau conventionnelles</strong> et modulaires</li>
+        <li><strong>Stations d'épuration des eaux usées</strong></li>
+        <li><strong>Stations de dessalement</strong> à osmose inverse</li>
+      </ul>
+      
+      <p>Projets de référence :</p>
+      <ol>
+        <li><strong>Station de pompage SP2 - Agadir</strong> : Conception et réalisation d'une station de pompage d'eau potable de 1000 l/s avec équipements électromécaniques complets</li>
+        <li><strong>Station de traitement Bouskoura</strong> : Installation d'une station modulaire MWS pour eau potable de 100 l/s</li>
+        <li><strong>Station de pompage Skhirat-Témara</strong> : Équipements hydromécaniques et électriques pour station de 500 l/s</li>
+        <li><strong>Station d'épuration El Jadida</strong> : Fourniture et installation des équipements mécaniques et électriques</li>
+      </ol>
+      
+      <p>Nos stations se distinguent par leur fiabilité, leur efficacité énergétique et leur facilité d'exploitation. Nous intégrons des technologies avancées d'automatisation et de contrôle à distance, permettant une supervision optimale et une maintenance préventive.</p>
+    `,
+    image: "/images/projects/stations-pompage.jpg",
+    features: [
+      "Conception hydraulique optimisée",
+      "Fabrication locale des équipements mécaniques",
+      "Solutions clé en main jusqu'à la mise en service",
+      "Systèmes de contrôle intelligents",
+      "Efficacité énergétique et durabilité",
+    ],
+    client: "ONEE, Régies Autonomes, Collectivités Territoriales",
+    location: "National & International",
+    year: "1990-présent",
+  },
+  {
+    id: "infrastructures-industrielles",
+    title: "Infrastructures Industrielles",
+    description: `
+      <p>MACOBATE développe des projets industriels complexes pour divers secteurs stratégiques. Notre expertise en construction métallique, équipements sous pression et intégration de process nous permet de réaliser des infrastructures industrielles complètes et performantes.</p>
+      
+      <p>Notre offre couvre :</p>
+      <ul>
+        <li><strong>Bâtiments industriels</strong> et structures métalliques</li>
+        <li><strong>Réservoirs et silos</strong> de stockage</li>
+        <li><strong>Unités de process</strong> et équipements spéciaux</li>
+        <li><strong>Tuyauteries industrielles</strong> et réseaux complexes</li>
+      </ul>
+      
+      <p>Réalisations majeurs :</p>
+      <ol>
+        <li><strong>Usine de phosphates Jorf Lasfar</strong> : Construction de charpentes métalliques, racks de tuyauterie et équipements de process</li>
+        <li><strong>Terminal portuaire Tanger Med</strong> : Structures métalliques et réservoirs de stockage</li>
+        <li><strong>Unité de dessalement Agadir</strong> : Fabrication et installation de réservoirs sous pression et systèmes de tuyauterie</li>
+        <li><strong>Cimenterie Settat</strong> : Silos métalliques et structures de convoyage</li>
+      </ol>
+      
+      <p>Notre engagement pour la qualité et la sécurité est au cœur de chaque projet. Nous intervenons dans des environnements industriels exigeants avec des standards élevés de fabrication et d'installation, garantissant la conformité aux normes internationales et la pérennité des installations.</p>
+    `,
+    image: "/images/projects/infrastructures-industrielles.jpg",
+    features: [
+      "Intégration multi-métiers : mécanique, électricité, process",
+      "Expertise en environnements ATEX et conditions sévères",
+      "Fabrication certifiée ISO 9001, EN 1090, ASME",
+      "Solutions d'optimisation énergétique",
+      "Respect strict des plannings industriels",
+    ],
+    client: "OCP, ONEE, Industriels privés",
+    location: "Maroc & Export",
+    year: "1985-présent",
+  },
+  {
+    id: "energie-renouvelable",
+    title: "Énergie Renouvelable",
+    description: `
+      <p>MACOBATE s'engage dans la transition énergétique en développant des projets d'énergies renouvelables adaptés aux besoins spécifiques des clients. Notre expertise technique nous permet d'intégrer des solutions énergétiques durables dans des projets industriels et d'infrastructure.</p>
+      
+      <p>Nos domaines d'intervention comprennent :</p>
+      <ul>
+        <li><strong>Systèmes de pompage solaire</strong> autonomes et hybrides</li>
+        <li><strong>Stations d'énergie hybrides</strong> (solaire-diesel) pour sites isolés</li>
+        <li><strong>Équipements pour petites centrales hydroélectriques</strong></li>
+        <li><strong>Solutions d'efficacité énergétique</strong> pour installations industrielles</li>
+      </ul>
+      
+      <p>Projets représentatifs :</p>
+      <ol>
+        <li><strong>Station de pompage solaire Taroudant</strong> : Installation de pompes alimentées par énergie solaire pour irrigation, capacité 50 kWc</li>
+        <li><strong>Système hybride pour station de traitement d'eau Dakhla</strong> : Intégration de 100 kWc solaire avec backup diesel</li>
+        <li><strong>Micro-centrale hydroélectrique Ifrane</strong> : Équipements hydromécaniques pour valorisation énergétique</li>
+        <li><strong>Projet d'électrification rurale Tafilalet</strong> : Systèmes autonomes pour villages isolés</li>
+      </ol>
+      
+      <p>Notre approche vise à maximiser l'autonomie énergétique de nos clients tout en réduisant leur empreinte carbone. Nous concevons des systèmes robustes, adaptés aux conditions locales et faciles à maintenir, avec un focus particulier sur le transfert de compétences aux équipes d'exploitation.</p>
+    `,
+    image: "/images/projects/energie-renouvelable.jpg",
+    features: [
+      "Solutions énergétiques sur mesure",
+      "Intégration optimisée dans les processus existants",
+      "Systèmes de monitoring et d'optimisation de production",
+      "Approche coût total de possession (TCO)",
+      "Expertise en sites isolés et conditions climatiques difficiles",
+    ],
+    client: "ONEE, MASEN, Collectivités, Secteur privé",
+    location: "Maroc & Afrique subsaharienne",
+    year: "2010-présent",
+  },
+  {
+    id: "projets-export-afrique",
+    title: "Projets Export & Afrique",
+    description: `
+      <p>MACOBATE exporte son savoir-faire marocain à travers l'Afrique, apportant des solutions adaptées aux défis spécifiques du continent. Notre expertise multidisciplinaire nous permet de réaliser des projets complets dans des environnements complexes et des zones reculées.</p>
+      
+      <p>Notre offre export comprend :</p>
+      <ul>
+        <li><strong>Stations de traitement d'eau mobiles</strong> MWS adaptées aux contextes africains</li>
+        <li><strong>Équipements hydromécaniques</strong> pour barrages et ouvrages hydrauliques</li>
+        <li><strong>Solutions énergétiques autonomes</strong> pour zones non connectées</li>
+        <li><strong>Infrastructures industrielles</strong> et équipements de process</li>
+      </ul>
+      
+      <p>Projets emblématiques :</p>
+      <ol>
+        <li><strong>Station de traitement d'eau Bamako (Mali)</strong> : Fourniture et installation de stations modulaires MWS pour eau potable</li>
+        <li><strong>Équipements hydromécaniques - Barrage de Kandadji (Niger)</strong> : Vannes et dispositifs de contrôle</li>
+        <li><strong>Unités de dessalement Mauritanie</strong> : Solutions de traitement d'eau pour zones côtières</li>
+        <li><strong>Systèmes de pompage solaire Sénégal</strong> : Installations pour villages ruraux</li>
+      </ol>
+      
+      <p>Notre approche africaine se distingue par l'adaptation aux réalités locales : conception robuste pour environnements difficiles, facilité de maintenance, formation approfondie des équipes locales et service après-vente réactif. Nous contribuons activement au transfert de technologie et au développement de compétences locales.</p>
+    `,
+    image: "/images/projects/projets-export-afrique.jpg",
+    features: [
+      "Solutions adaptées aux contextes africains",
+      "Équipes d'intervention mobiles pour toute l'Afrique",
+      "Formation approfondie des opérateurs locaux",
+      "Logistique internationale maîtrisée",
+      "Respect des standards internationaux en contexte local",
+    ],
+    client:
+      "Gouvernements africains, Agences de développement, Entreprises locales",
+    location: "Afrique de l'Ouest et Centrale",
+    year: "2000-présent",
+  },
+  {
+    id: "equipements-maritimes",
+    title: "Équipements Maritimes",
+    description: `
+      <p>MACOBATE conçoit et fabrique des équipements spécialisés pour les infrastructures portuaires et maritimes. Notre expertise dans le travail des métaux en environnement marin nous permet de fournir des solutions durables adaptées aux conditions côtières exigeantes.</p>
+      
+      <p>Notre gamme de produits comprend :</p>
+      <ul>
+        <li><strong>Structures métalliques portuaires</strong> et supports d'équipements</li>
+        <li><strong>Conduites sous-marines et émissaires</strong> en acier protégé</li>
+        <li><strong>Vannes et équipements hydrauliques maritimes</strong></li>
+        <li><strong>Systèmes de dessalement pour zones côtières</strong></li>
+      </ul>
+      
+      <p>Projets significatifs :</p>
+      <ol>
+        <li><strong>Port de Casablanca</strong> : Fabrication et installation de structures métalliques spéciales</li>
+        <li><strong>Émissaire marin Tanger</strong> : Conduites et équipements de protection</li>
+        <li><strong>Système de prise d'eau de mer Jorf Lasfar</strong> : Équipements hydromécaniques et structures</li>
+        <li><strong>Terminal portuaire Nador West Med</strong> : Composants métalliques spécialisés</li>
+      </ol>
+      
+      <p>Nos équipements maritimes sont conçus avec une attention particulière à la résistance à la corrosion, utilisant des matériaux adaptés (acier inoxydable duplex, revêtements spéciaux) et des techniques de protection cathodique avancées. Nous assurons une durabilité exceptionnelle même dans les environnements les plus agressifs.</p>
+    `,
+    image: "/images/projects/equipements-maritimes.jpg",
+    features: [
+      "Expertise en corrosion marine et protection",
+      "Conception spécifique pour conditions côtières",
+      "Utilisation d'aciers spéciaux et alliages résistants",
+      "Certifications marines internationales",
+      "Équipes spécialisées en interventions portuaires",
+    ],
+    client: "ANP, Ministère de l'Équipement, Opérateurs portuaires",
+    location: "Zones côtières du Maroc",
+    year: "1995-présent",
+  },
+  {
+    id: "industrie-process",
+    title: "Industrie & Process",
+    description: `
+      <p>MACOBATE développe des solutions industrielles complètes incluant la conception et la réalisation d'équipements de process sur mesure. Notre expertise multidisciplinaire nous permet d'intervenir dans des secteurs variés nécessitant des équipements spécifiques et performants.</p>
+      
+      <p>Notre offre industrielle comprend :</p>
+      <ul>
+        <li><strong>Réacteurs et cuves de process</strong> en différents matériaux</li>
+        <li><strong>Échangeurs thermiques</strong> et équipements de transfert de chaleur</li>
+        <li><strong>Skids de process intégrés</strong> et unités modulaires</li>
+        <li><strong>Systèmes de filtration et séparation</strong> industriels</li>
+      </ul>
+      
+      <p>Réalisations industrielles marquantes :</p>
+      <ol>
+        <li><strong>Unité de traitement d'acide phosphorique OCP</strong> : Fabrication de réacteurs et échangeurs spéciaux</li>
+        <li><strong>Skids de process pour industrie alimentaire Marrakech</strong> : Unités en acier inoxydable avec automatisation</li>
+        <li><strong>Équipements pour industrie chimique Mohammedia</strong> : Fabrication d'appareils à pression et réacteurs</li>
+        <li><strong>Systèmes de filtration industrielle Tanger</strong> : Unités complètes pour zone franche</li>
+      </ol>
+      
+      <p>Notre force repose sur notre capacité à intégrer la conception process, la fabrication mécanique et l'automatisation dans des solutions industrielles clé en main. Nous garantissons le respect des normes sectorielles (pharmaceutique, alimentaire, chimique) et la traçabilité complète de nos fabrications.</p>
+    `,
+    image: "/images/projects/industrie-process.jpg",
+    features: [
+      "Maîtrise des procédés industriels complexes",
+      "Capacité de fabrication locale d'équipements spéciaux",
+      "Expertise en matériaux spécifiques (inox, duplex, alliages)",
+      "Automatisation et contrôle-commande intégrés",
+      "Documentation technique complète et validation de performance",
+    ],
+    client: "Secteurs industriels diversifiés (chimie, agroalimentaire, mines)",
+    location: "Maroc & International",
+    year: "1985-présent",
+  },
+];
+
+// Liste des ID des projets pour vérification
+const projectIds = projects.map((project) => project.id);
+---
+
+<BaseLayout title="Nos Projets - MACOBATE">
+  <Header />
+  <main>
+    <!-- Page Title -->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb" aria-label="Fil d'Ariane">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/projects/allProjects">Projets</a></li>
+          <li>Nos Projets</li>
+        </ul>
+        <h1>Nos Projets</h1>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-detail-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!-- Sidebar Projects Menu -->
+          <div class="sidebar-column col-lg-3 col-md-4 col-sm-12">
+            <div class="inner-column">
+              <div class="projects-list">
+                <h3>Tous nos projets</h3>
+                <ul aria-label="Liste des projets">
+                  {
+                    projects.map((project) => (
+                      <li id={`menu-item-${project.id}`}>
+                        <a
+                          href={`#${project.id}`}
+                          class="project-link"
+                          data-project-id={project.id}
+                        >
+                          {project.title}
+                        </a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <div class="help-box">
+                <h4>Besoin d'assistance?</h4>
+                <p>
+                  Notre équipe commerciale est à votre disposition pour étudier
+                  votre projet.
+                </p>
+                <a
+                  href="#"
+                  class="theme-btn btn-style-one"
+                  data-toggle="modal"
+                  data-target="#schedule-box"
+                >
+                  Demander un devis <span
+                    class="icon flaticon-arrow-pointing-to-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Content Column -->
+          <div class="content-column col-lg-9 col-md-8 col-sm-12">
+            <div class="inner-column">
+              {
+                projects.map((project, index) => (
+                  <div id={project.id} class="project-detail">
+                    <div class="project-header">
+                      <h2 class="project-title">{project.title}</h2>
+                      <div class="project-meta">
+                        <div class="meta-item">
+                          <span class="label">Client:</span>
+                          <span class="value">{project.client}</span>
+                        </div>
+                        <div class="meta-item">
+                          <span class="label">Localisation:</span>
+                          <span class="value">{project.location}</span>
+                        </div>
+                        <div class="meta-item">
+                          <span class="label">Année:</span>
+                          <span class="value">{project.year}</span>
+                        </div>
+                      </div>
+                      <div class="separator" />
+                    </div>
+
+                    <div class="project-image">
+                      <img
+                        src={project.image}
+                        alt={"Illustration du projet " + project.title}
+                        class="img-fluid"
+                      />
+                    </div>
+
+                    <div class="text-content" set:html={project.description} />
+
+                    <div class="features-box">
+                      <h3>Points forts du projet</h3>
+                      <div class="features-list">
+                        {project.features.map((feature) => (
+                          <div class="feature-item">
+                            <span
+                              class="icon flaticon-tick"
+                              aria-hidden="true"
+                            />
+                            <span class="feature-text">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div class="action-box">
+                      <a
+                        href="#"
+                        class="theme-btn btn-style-one"
+                        data-toggle="modal"
+                        data-target="#schedule-box"
+                      >
+                        Discuter d'un projet similaire
+                        <span
+                          class="icon flaticon-arrow-pointing-to-right"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CallToActionSection />
+    <AppointmentForm />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Styles pour la section de détail des projets */
+  .projects-detail-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+  }
+
+  /* Styles pour la liste des projets dans la sidebar */
+  .projects-list {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .projects-list h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 15px;
+    color: #333;
+  }
+
+  .projects-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .projects-list ul li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.3s ease;
+  }
+
+  .projects-list ul li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .projects-list ul li a {
+    padding: 10px 0;
+    display: block;
+    color: #555;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 15px;
+  }
+
+  .projects-list ul li a:before {
+    content: "\f105";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #1720d7;
+  }
+
+  .projects-list ul li a.active,
+  .projects-list ul li a:hover {
+    color: #1720d7;
+    font-weight: 600;
+  }
+
+  /* Style amélioré pour le lien actif */
+  .projects-list ul li a.active {
+    color: #1720d7;
+    font-weight: 700;
+    background-color: rgba(23, 32, 215, 0.05);
+    display: block;
+    border-radius: 4px;
+    padding-left: 15px;
+  }
+
+  .projects-list ul li a.active:before {
+    color: #1720d7;
+    font-weight: bold;
+  }
+
+  /* Boîte d'aide */
+  .help-box {
+    background-color: #1720d7;
+    color: white;
+    border-radius: 6px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .help-box h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  .help-box p {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .help-box .theme-btn {
+    background-color: white;
+    color: #1720d7;
+  }
+
+  /* Contenu du projet */
+  .project-detail {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    display: none; /* Tous les projets sont cachés par défaut */
+  }
+
+  .project-detail.active {
+    display: block; /* Seulement le projet actif est affiché */
+  }
+
+  .project-header {
+    margin-bottom: 30px;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 15px;
+  }
+
+  .meta-item {
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .meta-item .label {
+    font-weight: 600;
+    color: #333;
+    margin-right: 5px;
+  }
+
+  .meta-item .value {
+    color: #555;
+  }
+
+  .project-image {
+    margin-bottom: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .text-content {
+    margin-bottom: 30px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .text-content p {
+    margin-bottom: 20px;
+  }
+
+  .text-content ul,
+  .text-content ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .text-content li {
+    margin-bottom: 10px;
+  }
+
+  .text-content strong {
+    color: #333;
+    font-weight: 600;
+  }
+
+  /* Points forts du projet */
+  .features-box {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .features-box h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-item .icon {
+    color: #1720d7;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .feature-text {
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Boîte d'action */
+  .action-box {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  /* Responsive */
+  @media (max-width: 991px) {
+    .project-detail {
+      padding: 20px;
+    }
+
+    .features-list {
+      grid-template-columns: 1fr;
+    }
+
+    .project-meta {
+      flex-direction: column;
+    }
+
+    .meta-item {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll(".project-link");
+    const sections = document.querySelectorAll(".project-detail");
+
+    // Fonction pour afficher un projet spécifique
+    function showProject(id) {
+      // Vérifier si l'ID existe
+      const targetElement = document.getElementById(id);
+      if (!targetElement) {
+        console.warn(`Projet avec l'ID ${id} non trouvé`);
+        // Afficher le premier projet par défaut si l'ID demandé n'existe pas
+        if (sections.length > 0) {
+          const defaultId = sections[0].id;
+          showProject(defaultId);
+        }
+        return;
+      }
+
+      // Cacher tous les projets
+      sections.forEach((section) => {
+        section.classList.remove("active");
+        section.style.display = "none";
+      });
+
+      // Afficher le projet demandé
+      targetElement.classList.add("active");
+      targetElement.style.display = "block";
+
+      // Mettre à jour l'état actif des liens
+      links.forEach((link) => {
+        link.classList.remove("active");
+        // Récupérer l'élément parent (li)
+        const parentLi = link.parentElement;
+        parentLi.classList.remove("active-item");
+
+        // Vérifier si c'est le lien actif
+        const linkId = link.getAttribute("data-project-id");
+        if (linkId === id) {
+          link.classList.add("active");
+          parentLi.classList.add("active-item");
+        }
+      });
+
+      // Mise à jour de l'URL sans recharger la page
+      history.pushState(null, "", `#${id}`);
+
+      // Mettre à jour les liens dans le menu principal si présents
+      try {
+        // Chercher les liens du menu principal
+        const mainMenuLinks = document.querySelectorAll(
+          ".main-menu .navigation a"
+        );
+        mainMenuLinks.forEach((menuLink) => {
+          const href = menuLink.getAttribute("href");
+          if (href && href.includes(id)) {
+            // Trouver l'élément parent le plus proche avec la classe dropdown
+            let parentLi = menuLink.closest("li");
+
+            // Ajouter la classe active
+            if (parentLi) {
+              // D'abord réinitialiser tous les liens
+              document
+                .querySelectorAll(".main-menu .navigation li")
+                .forEach((li) => {
+                  if (li !== parentLi && !li.contains(parentLi)) {
+                    li.classList.remove("current");
+                  }
+                });
+
+              // Puis ajouter la classe active
+              parentLi.classList.add("current");
+
+              // Si le lien est dans un sous-menu, ajouter également la classe au parent
+              const parentDropdown = parentLi.closest(".dropdown");
+              if (parentDropdown) {
+                parentDropdown.classList.add("current");
+              }
+            }
+          }
+        });
+      } catch (e) {
+        console.warn("Navigation menu links not found or error occurred", e);
+      }
+    }
+
+    // Ajouter les écouteurs d'événements aux liens
+    links.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const id = this.getAttribute("data-project-id");
+        showProject(id);
+      });
+    });
+
+    // Gérer les changements de hash dans l'URL
+    window.addEventListener("hashchange", function () {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showProject(hash);
+      }
+    });
+
+    // Initialisation: afficher le projet correspondant au hash ou le premier projet
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      showProject(hash);
+    } else if (sections.length > 0) {
+      showProject(sections[0].id);
+    }
+
+    // Amélioration: mettre à jour les liens du header si correspondance avec les projets
+    function updateHeaderLinks() {
+      const currentHash = window.location.hash.substring(1);
+      if (!currentHash) return;
+
+      try {
+        // Trouver tous les liens du menu principal qui peuvent contenir les ID de projets
+        const headerMenuLinks = document.querySelectorAll(
+          ".main-menu .navigation a"
+        );
+
+        headerMenuLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href && href.includes(currentHash)) {
+            // Ajouter la classe 'current' à l'élément li parent
+            const parentLi = link.closest("li");
+            if (parentLi) {
+              parentLi.classList.add("current");
+
+              // Si le parent est dans un dropdown, marquer également le dropdown
+              const parentDropdown = parentLi.closest(".dropdown");
+              if (parentDropdown && parentDropdown !== parentLi) {
+                parentDropdown.classList.add("current");
+              }
+            }
+          }
+        });
+      } catch (e) {
+        console.warn("Error updating header links", e);
+      }
+    }
+
+    // Appeler cette fonction lors du chargement initial
+    updateHeaderLinks();
+
+    // Pour tester si le header existe et contient les éléments attendus
+    const header = document.querySelector(".main-header");
+    if (header) {
+      console.log("Header trouvé, synchronisation des menus activée");
+    }
+  });
+</script>

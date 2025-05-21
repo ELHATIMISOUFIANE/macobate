@@ -1,5 +1,5 @@
 ---
-// HeaderOptimized.astro - Barre de navigation améliorée pour MACOBATE
+// Header.astro - Barre de navigation améliorée pour MACOBATE
 const mainMenuItems = [
   {
     title: "Accueil",
@@ -40,11 +40,9 @@ const mainMenuItems = [
       },
       {
         title: "TANKO",
-        url: "/our-brands/tano",
+        url: "/our-brands/tanko",
       },
-      { title: "MWS", 
-        url: "/our-brands/mws" },
-      
+      { title: "MWS", url: "/our-brands/mws" },
     ],
   },
   {
@@ -65,8 +63,10 @@ const mainMenuItems = [
         title: "Réservoirs de Stockage",
         url: "/services/detailServices#reservoirs-stockage",
       },
-      { title: "Équipements Hydromécaniques", 
-        url: "/services/detailServices#equipements-hydromecaniques" },
+      {
+        title: "Équipements Hydromécaniques",
+        url: "/services/detailServices#equipements-hydromecaniques",
+      },
       {
         title: "Traitement de l'eau",
         url: "/services/detailServices#traitement-eau",
@@ -76,66 +76,17 @@ const mainMenuItems = [
         url: "/services/detailServices#electricite-automatismes",
       },
       {
-    title: "Projets",
-     
-    url: "/projects/allProjects",
-   
-  },
+        title: "Projets",
+        url: "/projects/allProjects",
+      },
     ],
   },
-  
-  // {
-  //   title: "Produits",
-  //   url: "/products",
-  //   hasSubmenu: true,
-  //   showInMainOnly: true,
-  //   submenu: [
-  //     {
-  //       title: "Eau",
-  //       url: "/products/eau",
-  //       hasSubmenu: true,
-  //       childSubmenu: [
-  //         { title: "Vannes Segment", url: "/products/eau#vannes-segment" },
-  //         { title: "Vannes Wagon", url: "/products/eau#vannes-wagon" },
-  //         { title: "Batardeaux", url: "/products/eau#batardeaux" },
-  //         { title: "Grilles", url: "/products/eau#grilles" },
-  //       ],
-  //     },
-  //     {
-  //       title: "Environnement",
-  //       url: "/products/environnement",
-  //       hasSubmenu: true,
-  //       childSubmenu: [
-  //         { title: "Dégrilleurs", url: "/products/environnement#degrilleurs" },
-  //         { title: "Compacteurs", url: "/products/environnement#compacteurs" },
-  //         {
-  //           title: "Pont Racleur",
-  //           url: "/products/environnement#pont-racleur",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       title: "Industrie",
-  //       url: "/products/industrie",
-  //       hasSubmenu: true,
-  //       childSubmenu: [
-  //         { title: "Réservoirs", url: "/products/industrie#reservoirs" },
-  //         { title: "Silos", url: "/products/industrie#silos" },
-  //         { title: "Charpentes", url: "/products/industrie#charpentes" },
-  //       ],
-  //     },
-  //   ],
-  // }, 
-
-
   {
     title: "Actualités",
     url: "/blog/allBlog",
     hasSubmenu: false,
     showInMainOnly: true,
   },
-  
-  
   {
     title: "Contact",
     url: "/contact",
@@ -240,11 +191,13 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
 
             <div class="navbar-collapse collapse clearfix">
               <ul class="navigation clearfix">
-                {/* Menu principal filtré - seulement 5 éléments */}
+                {
+                  /* Menu principal filtré - seulement les éléments principaux */
+                }
                 {
                   mainMenuFiltered.map((item) => (
                     <li class={item.hasSubmenu ? "dropdown" : ""}>
-                      <a href={item.url}>
+                      <a href={item.url} class="menu-link" data-url={item.url}>
                         {item.title}
                         {item.hasSubmenu && <span class="fa fa-angle-down" />}
                       </a>
@@ -252,7 +205,11 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                         <ul>
                           {item.submenu.map((subItem) => (
                             <li class={subItem.hasSubmenu ? "dropdown" : ""}>
-                              <a href={subItem.url}>
+                              <a
+                                href={subItem.url}
+                                class="menu-link"
+                                data-url={subItem.url}
+                              >
                                 {subItem.title}
                                 {subItem.hasSubmenu && (
                                   <span class="fa fa-angle-right" />
@@ -262,7 +219,11 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                                 <ul>
                                   {subItem.childSubmenu.map((childItem) => (
                                     <li>
-                                      <a href={childItem.url}>
+                                      <a
+                                        href={childItem.url}
+                                        class="menu-link"
+                                        data-url={childItem.url}
+                                      >
                                         {childItem.title}
                                       </a>
                                     </li>
@@ -284,14 +245,16 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
           <!--Boîte Externe-->
           <div class="outer-box">
             <a
-              href="#"
+              href="/formDevis"
               class="theme-btn quote-btn"
-              data-toggle="modal"
-              data-target="#schedule-box"
+              
               >Demander un devis<span class="icon"></span></a
             >
             <ul class="social-icon-one">
-              <li><a href="https://www.facebook.com/macobate/#"><span class="fa fa-facebook"></span></a></li>
+              <li>
+                <a href="https://www.facebook.com/macobate/#"
+                  ><span class="fa fa-facebook"></span></a>
+              </li>
               <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
               <li><a href="#"><span class="fa fa-youtube"></span></a></li>
             </ul>
@@ -339,7 +302,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                 {
                   mainMenuItems.map((item) => (
                     <li class={item.hasSubmenu ? "dropdown" : ""}>
-                      <a href={item.url}>
+                      <a href={item.url} class="menu-link" data-url={item.url}>
                         {item.title}
                         {item.hasSubmenu && <span class="fa fa-angle-down" />}
                       </a>
@@ -347,7 +310,11 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                         <ul>
                           {item.submenu.map((subItem) => (
                             <li class={subItem.hasSubmenu ? "dropdown" : ""}>
-                              <a href={subItem.url}>
+                              <a
+                                href={subItem.url}
+                                class="menu-link"
+                                data-url={subItem.url}
+                              >
                                 {subItem.title}
                                 {subItem.hasSubmenu && (
                                   <span class="fa fa-angle-right" />
@@ -357,7 +324,11 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                                 <ul>
                                   {subItem.childSubmenu.map((childItem) => (
                                     <li>
-                                      <a href={childItem.url}>
+                                      <a
+                                        href={childItem.url}
+                                        class="menu-link"
+                                        data-url={childItem.url}
+                                      >
                                         {childItem.title}
                                       </a>
                                     </li>
@@ -394,7 +365,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     z-index: 100;
     display: none;
     background: #ffffff;
-    border-top: 3px solid #206dd3;
+    border-top: 3px solid #2e80fa;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
 
@@ -426,7 +397,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
   }
 
   .main-menu .navigation > li > ul > li:hover > a {
-    background: #206dd3;
+    background: #2e80fa;
     color: #ffffff;
   }
 
@@ -439,7 +410,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     z-index: 100;
     display: none;
     background: #ffffff;
-    border-top: 3px solid #206dd3;
+    border-top: 3px solid #2e80fa;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
 
@@ -471,7 +442,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
   }
 
   .main-menu .navigation > li > ul > li > ul > li:hover > a {
-    background: #206dd3;
+    background: #2e80fa;
     color: #ffffff;
   }
 
@@ -483,199 +454,332 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
   /* Indicateur de menu actif */
   .main-menu .navigation > li.current > a,
   .main-menu .navigation > li:hover > a {
-    color: #206dd3;
+    color: #2e80fa;
     opacity: 1;
   }
 
   .main-menu .navigation > li > ul > li.current > a,
   .main-menu .navigation > li > ul > li > ul > li.current > a {
-    background: #206dd3;
+    background: #0b56b9;
     color: #ffffff;
   }
+
+  /* Styles améliorés pour les éléments actifs */
+  .main-menu .navigation > li.current {
+    position: relative;
+  }
+
+  .main-menu .navigation > li.current:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #2e80fa;
+    transition: all 0.3s ease;
+  }
+
+  .main-menu .navigation > li.current > a {
+    color: #2e80fa;
+    font-weight: 600;
+  }
+
+  /* Animation pour le survol des liens */
+  .main-menu .navigation > li > a {
+    transition: all 0.3s ease;
+  }
+
+  .main-menu .navigation > li:hover > a {
+    color: #2e80fa;
+  }
 </style>
-<script is:inline>
-  // Script pour gérer l'état actif des liens de navigation et le défilement vers les ancres
-  document.addEventListener('DOMContentLoaded', function() {
+
+<script>
+  // Script amélioré pour gérer l'état actif des liens de navigation
+  document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer les informations sur l'URL actuelle
     const currentPath = window.location.pathname;
     const currentHash = window.location.hash;
-    const navItems = document.querySelectorAll('.navigation li a');
-    
-    // Fonction pour faire défiler en douceur vers les ancres
-    const smoothScroll = function(targetId) {
+    const currentUrl = currentPath + (currentHash || "");
+
+    // Fonction pour marquer un élément comme actif
+    function markAsActive(element) {
+      // Trouver le li parent le plus proche
+      const parentLi = element.closest("li");
+      if (parentLi) {
+        // Ajouter la classe 'current' au li
+        parentLi.classList.add("current");
+
+        // Si le parent est dans un dropdown, marquer également le dropdown
+        const parentDropdown = parentLi.closest(".dropdown");
+        if (parentDropdown && parentDropdown !== parentLi) {
+          parentDropdown.classList.add("current");
+        }
+      }
+    }
+
+    // Fonction pour marquer les liens correspondant à l'URL actuelle
+    function markActiveLinks() {
+      // Sélectionner tous les liens dans le menu
+      const navLinks = document.querySelectorAll(".navigation .menu-link");
+
+      navLinks.forEach((link) => {
+        const linkUrl = link.getAttribute("href");
+
+        // Vérifier les correspondances exactes
+        if (linkUrl === currentPath) {
+          markAsActive(link);
+        }
+
+        // Vérifier les correspondances avec hash
+        if (currentHash && linkUrl === currentUrl) {
+          markAsActive(link);
+        }
+
+        // Vérifier les URL contenant un hash spécifique
+        if (currentHash && linkUrl.includes(currentHash)) {
+          markAsActive(link);
+        }
+
+        // Vérifier si nous sommes sur la page de services/detailServices avec un hash
+        if (
+          currentPath.includes("/services/detailServices") &&
+          linkUrl.includes("/services/detailServices#")
+        ) {
+          const linkHash = linkUrl.split("#")[1];
+          if (currentHash && currentHash.substring(1) === linkHash) {
+            markAsActive(link);
+          }
+        }
+      });
+    }
+
+    // Fonction de défilement fluide pour les ancres
+    function smoothScroll(targetId) {
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         const headerOffset = 100; // Hauteur de l'en-tête fixe
         const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }
-    };
-    
-    // Ajouter l'ID aux sections pour les ancres
-    const sections = {
-      "company-section": document.querySelector('.company-section'),
-      "highlights-section": document.querySelector('.highlights-section'),
-      "history-section": document.querySelector('.history-section'),
-      "achived-section": document.querySelector('.achived-section'),
-      "team-section": document.querySelector('.team-section'),
-      "allServices": document.querySelector('.services'),
-      "charpente-metallique": document.querySelector('.charpente-metallique'),
-      "electricite-automatismes": document.querySelector('.electricite-automatismes')
-     
+    }
 
-    };
-    // Mettre à jour l’URL sans rechargement
-      history.pushState(null, '', `#${serviceId}`);
-    // Ajouter les IDs aux sections s'ils existent
-    for (const [id, section] of Object.entries(sections)) {
-      if (section) section.id = id;
-    }
-    
-    // Traitement des liens d'ancrage
-    navItems.forEach(item => {
-      // Vérifier si le lien a une ancre
-      if (item.getAttribute('href').includes('#')) {
-        item.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          
-          // Si nous sommes sur la même page que l'ancre
-          if (href.startsWith('#') || (currentPath === href.split('#')[0])) {
-            e.preventDefault();
-            const targetId = href.split('#')[1];
-            smoothScroll(targetId);
-            
-            // Mettre à jour l'URL sans rechargement
-            history.pushState(null, null, href);
-          }
-        });
-      }
-      
-      // Vérifier si le lien correspond au chemin actuel
-      if (item.getAttribute('href') === currentPath || 
-          (currentHash && item.getAttribute('href') === currentPath + currentHash)) {
-        item.parentElement.classList.add('current');
-        
-        // Si l'élément est dans un sous-menu, marquer également le parent
-        const parentLi = item.parentElement.parentElement.parentElement;
-        if (parentLi && parentLi.classList.contains('dropdown')) {
-          parentLi.classList.add('current');
-        }
-      }
-      
-      // Vérifier les paramètres d'URL pour les pages de secteur
-      if (currentPath.includes('services/detailServices') || currentPath.includes('products/detailProducts')) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const sector = urlParams.get('sector');
-        
-        if (sector && item.getAttribute('href').includes(sector)) {
-          item.parentElement.classList.add('current');
-          const parentLi = item.parentElement.parentElement.parentElement;
-          if (parentLi && parentLi.classList.contains('dropdown')) {
-            parentLi.classList.add('current');
-          }
-        }
-      }
-    });
-    
-    // Si nous arrivons directement sur une page avec une ancre, faire défiler vers cette ancre
-    if (currentHash) {
-      setTimeout(function() {
-        smoothScroll(currentHash.substring(1));
-      }, 500);
-    }
-    
-    // Script pour transformer les sous-menus en accordéon sur mobile
-    if (window.innerWidth <= 991) {
-      // Ajouter des boutons +/- pour les sous-menus sur mobile
-      document.querySelectorAll('.navigation li.dropdown').forEach(function(item) {
-        const dropdownBtn = document.createElement('div');
-        dropdownBtn.className = 'dropdown-btn';
-        dropdownBtn.innerHTML = '+';
-        item.appendChild(dropdownBtn);
-        
-        dropdownBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const subMenu = this.parentElement.querySelector('ul');
-          if (subMenu) {
-            if (subMenu.style.display === 'block') {
-              subMenu.style.display = 'none';
-              this.innerHTML = '+';
-            } else {
-              subMenu.style.display = 'block';
-              this.innerHTML = '-';
-            }
-          }
-        });
-      });
-    }
-  });
-  
-  // Gestion du header sticky
-  // Ajouter cette fonction pour une animation plus professionnelle du menu sticky
-window.addEventListener('scroll', function() {
-  const stickyHeader = document.querySelector('.sticky-header');
-  const mainHeader = document.querySelector('.main-header');
-  
-  if (window.innerWidth > 767) {
-    if (window.pageYOffset > 150) { // Augmenter légèrement le seuil
-      stickyHeader.classList.add('is-sticky');
-      stickyHeader.style.display = 'block';
-      stickyHeader.style.position = 'fixed';
-      stickyHeader.style.top = '0';
-      stickyHeader.style.left = '0';
-      stickyHeader.style.right = '0';
-      stickyHeader.style.zIndex = '999';
-      stickyHeader.style.animation = 'fadeIn 0.4s ease-out forwards';
-      
-      // Ajouter une petite classe au header principal
-      mainHeader.classList.add('has-sticky-active');
-    } else {
-      stickyHeader.classList.remove('is-sticky');
-      stickyHeader.style.display = 'none';
-      mainHeader.classList.remove('has-sticky-active');
-    }
+    const sectionMap = {
+  "company-section": ".company-section",
+  "highlights-section": ".highlights-section",
+  "history-section": ".history-section",
+  "achived-section": ".achived-section",
+  "team-section": ".team-section",
+  "allServices": ".services",
+  "charpente-metallique": ".charpente-metallique",
+  "electricite-automatismes": ".electricite-automatismes"
+};
+
+if (window.location.pathname === "/about") {
+  for (const [id, selector] of Object.entries(sectionMap)) {
+    const section = document.querySelector(selector);
+    if (section) section.id = id;
   }
-});
-
-// Amélioration de l'interaction des sous-menus sur desktop
-if (window.innerWidth > 991) {
-  document.querySelectorAll('.navigation li.dropdown').forEach(function(item) {
-    item.addEventListener('mouseenter', function() {
-      const subMenu = this.querySelector('ul');
-      if (subMenu) {
-        subMenu.style.display = 'block';
-        subMenu.style.opacity = '0';
-        subMenu.style.transform = 'translateY(10px)';
-        
-        // Forcer un reflow
-        subMenu.offsetHeight;
-        
-        // Animer l'apparition
-        subMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        subMenu.style.opacity = '1';
-        subMenu.style.transform = 'translateY(0)';
-      }
-    });
-    
-    item.addEventListener('mouseleave', function() {
-      const subMenu = this.querySelector('ul');
-      if (subMenu) {
-        subMenu.style.opacity = '0';
-        subMenu.style.transform = 'translateY(10px)';
-        
-        setTimeout(function() {
-          if (!item.matches(':hover')) {
-            subMenu.style.display = 'none';
-          }
-        }, 300);
-      }
-    });
-  });
 }
+
+
+
+    // Gérer les clics sur les liens d'ancrage
+    document.querySelectorAll(".menu-link").forEach((link) => {
+      link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+        // Si le lien contient un hash
+        if (href.includes("#")) {
+          const parts = href.split("#");
+          const pagePath = parts[0];
+          const targetId = parts[1];
+        
+          // Si nous sommes déjà sur la bonne page ou si c'est juste une ancre
+          // if (pagePath === "" || pagePath === currentPath) {
+          //   e.preventDefault();
+
+          //   // Marquer ce lien comme actif
+          //   document.querySelectorAll(".navigation li").forEach((li) => {
+          //     li.classList.remove("current");
+          //   });
+          //   markAsActive(this);
+
+          //   // Faire défiler jusqu'à l'ancre
+          //   smoothScroll(targetId);
+
+          //   // Mettre à jour l'URL sans recharger la page
+          //   history.pushState(null, null, `#${targetId}`);
+            
+          // }
+          
+        }
+      });
+    });
+
+    // Gérer les changements de hash dans l'URL
+    window.addEventListener("hashchange", function () {
+      const newHash = window.location.hash;
+      if (newHash) {
+        const targetId = newHash.substring(1);
+
+        // Mettre à jour les liens actifs
+        document.querySelectorAll(".navigation li").forEach((li) => {
+          li.classList.remove("current");
+        });
+
+        const matchingLinks = document.querySelectorAll(
+          `.menu-link[href$="#${targetId}"]`
+        );
+        matchingLinks.forEach((link) => {
+          markAsActive(link);
+        });
+
+        // Faire défiler jusqu'à l'ancre
+        smoothScroll(targetId);
+      }
+    });
+
+    // Initialiser les liens actifs
+    markActiveLinks();
+
+    // Ajouter des boutons +/- pour les sous-menus sur mobile
+    if (window.innerWidth <= 991) {
+      document
+        .querySelectorAll(".navigation li.dropdown")
+        .forEach(function (item) {
+          const dropdownBtn = document.createElement("div");
+          dropdownBtn.className = "dropdown-btn";
+          dropdownBtn.innerHTML = "+";
+          item.appendChild(dropdownBtn);
+
+          dropdownBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const subMenu = this.parentElement.querySelector("ul");
+            if (subMenu) {
+              if (subMenu.style.display === "block") {
+                subMenu.style.display = "none";
+                this.innerHTML = "+";
+              } else {
+                subMenu.style.display = "block";
+                this.innerHTML = "-";
+              }
+            }
+          });
+        });
+    }
+
+    // Gestion du header sticky
+    window.addEventListener("scroll", function () {
+      const stickyHeader = document.querySelector(".sticky-header");
+      const mainHeader = document.querySelector(".main-header");
+
+      if (window.innerWidth > 767) {
+        if (window.pageYOffset > 150) {
+          stickyHeader.classList.add("is-sticky");
+          stickyHeader.style.display = "block";
+          stickyHeader.style.position = "fixed";
+          stickyHeader.style.top = "0";
+          stickyHeader.style.left = "0";
+          stickyHeader.style.right = "0";
+          stickyHeader.style.zIndex = "999";
+          stickyHeader.style.animation = "fadeIn 0.4s ease-out forwards";
+
+          // Ajouter une classe au header principal
+          mainHeader.classList.add("has-sticky-active");
+        } else {
+          stickyHeader.classList.remove("is-sticky");
+          stickyHeader.style.display = "none";
+          mainHeader.classList.remove("has-sticky-active");
+        }
+      }
+    });
+
+    // Animation des sous-menus sur desktop
+    if (window.innerWidth > 991) {
+      document
+        .querySelectorAll(".navigation li.dropdown")
+        .forEach(function (item) {
+          item.addEventListener("mouseenter", function () {
+            const subMenu = this.querySelector("ul");
+            if (subMenu) {
+              subMenu.style.display = "block";
+              subMenu.style.opacity = "0";
+              subMenu.style.transform = "translateY(10px)";
+
+              // Forcer un reflow
+              subMenu.offsetHeight;
+
+              // Animer l'apparition
+              subMenu.style.transition =
+                "opacity 0.3s ease, transform 0.3s ease";
+              subMenu.style.opacity = "1";
+              subMenu.style.transform = "translateY(0)";
+            }
+          });
+
+          item.addEventListener("mouseleave", function () {
+            const subMenu = this.querySelector("ul");
+            if (subMenu) {
+              subMenu.style.opacity = "0";
+              subMenu.style.transform = "translateY(10px)";
+
+              setTimeout(function () {
+                if (!item.matches(":hover")) {
+                  subMenu.style.display = "none";
+                }
+              }, 300);
+            }
+          });
+        });
+    }
+
+    // Synchronisation avec d'autres sections du site
+    // Cette fonction vérifie si d'autres éléments de la page (comme un menu latéral)
+    // ont besoin d'être synchronisés avec le menu principal
+    function syncWithSidebarMenu() {
+      try {
+        // Regarder s'il y a un menu latéral (comme dans la page services)
+        const sidebarLinks = document.querySelectorAll(".service-link");
+        if (sidebarLinks.length > 0) {
+          // Si un hash est présent dans l'URL
+          if (currentHash) {
+            const serviceId = currentHash.substring(1);
+
+            // Mettre à jour l'état actif dans le menu latéral
+            sidebarLinks.forEach((link) => {
+              link.classList.remove("active");
+              const linkId = link.getAttribute("data-service-id");
+              if (linkId === serviceId) {
+                link.classList.add("active");
+
+                // Trouver le li parent et ajouter aussi la classe active
+                const parentLi = link.closest("li");
+                if (parentLi) {
+                  parentLi.classList.add("active-item");
+                }
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn("Error syncing with sidebar menu", e);
+      }
+    }
+
+    // Exécuter la synchronisation au chargement
+    syncWithSidebarMenu();
+
+    // Synchroniser également lorsque le hash de l'URL change
+    window.addEventListener("hashchange", syncWithSidebarMenu);
+  });
 </script>

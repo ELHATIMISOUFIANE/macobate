@@ -1,0 +1,29 @@
+{
+  "name": "MACOBATE - Solutions d'ingénierie industrielle",
+  "short_name": "MACOBATE",
+  "description": "MACOBATE, entreprise marocaine d'ingénierie industrielle spécialisée dans la charpente métallique, les équipements hydromécaniques, les appareils à pression et le traitement d'eau.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1720d7",
+  "icons": [
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "lang": "fr-MA",
+  "categories": ["engineering", "business", "industry"],
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": []
+}

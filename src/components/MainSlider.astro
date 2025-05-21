@@ -1,49 +1,68 @@
 ---
-// MainSlider.astro (Version française améliorée)
+// MainSlider.astro (Version optimisée pour SEO et responsive)
+
 // Tableau des slides avec contenu optimisé pour MACOBATE
- const slides = [
+const slides = [
   {
     index: "1",
-    title:
-      "L’ingénierie de demain, <br /> dès aujourd’hui ",
+    title: "L'ingénierie de demain, dès aujourd'hui",
+    titleHTML: "L'ingénierie de demain, <br /> dès aujourd'hui",
     description:
-      "MACOBATE est une entreprise marocaine d’ingénierie industrielle, spécialisée dans <br />les pro-jets complexes : charpente métallique, équipements hydromécaniques, <br /> appareils à pression, stations de traitement d’eau et projets EPC.",
+      "MACOBATE est une entreprise marocaine d'ingénierie industrielle, spécialisée dans les projets complexes : charpente métallique, équipements hydromécaniques, appareils à pression, stations de traitement d'eau et projets EPC.",
+    descriptionHTML:
+      "MACOBATE est une entreprise marocaine d'ingénierie industrielle, spécialisée dans <br />les projets complexes : charpente métallique, équipements hydromécaniques, <br /> appareils à pression, stations de traitement d'eau et projets EPC.",
     buttonText: "Découvrez notre savoir-faire",
     buttonLink: "#projects",
     image: "images/main-slider/image-1.jpg",
+    imageAlt:
+      "Projet d'ingénierie industrielle MACOBATE - structures métalliques et équipements",
     alignment: "left",
   },
   {
     index: "2",
     title:
+      "Solutions complètes en structures métalliques et équipements industriels",
+    titleHTML:
       "Solutions complètes <br /> en structures métalliques <br /> et équipements industriels",
     description:
-     "Forte de plus de 40 ans d’expérience,MACOBATE allie savoir-faire de terrain et<br /> rigueur tech-nique certifiée.",
+      "Forte de plus de 40 ans d'expérience, MACOBATE allie savoir-faire de terrain et rigueur technique certifiée.",
+    descriptionHTML:
+      "Forte de plus de 40 ans d'expérience, MACOBATE allie savoir-faire de terrain et<br /> rigueur technique certifiée.",
     buttonText: "Nos secteurs d'activité",
     buttonLink: "#activite",
     image: "images/main-slider/image-2.jpg",
+    imageAlt:
+      "Structures métalliques et équipements industriels MACOBATE - 40 ans d'expertise",
     alignment: "right",
   },
   {
     index: "3",
     title:
+      "MACOBATE, leader des équipements hydromécaniques pour les infrastructures hydroélectriques",
+    titleHTML:
       "MACOBATE, leader des <br />équipements hydromécaniques<br />pour les infrastructures<br />hydroélectriques",
     description:
       "Conception, fabrication et installation d'équipements pour barrages et stations de traitement des eaux",
+    descriptionHTML:
+      "Conception, fabrication et installation d'équipements pour barrages et stations de traitement des eaux",
     buttonText: "Rejoignez l'équipe MACOBATE",
-    buttonLink: "#Rejoignez-l'équipe",
+    buttonLink: "#rejoignez-equipe",
     image: "images/main-slider/image-3.jpg",
+    imageAlt:
+      "Équipements hydromécaniques MACOBATE pour barrages et infrastructures hydrauliques",
     alignment: "left",
   },
 ];
 
 // Vérification de sécurité que slides est bien défini
- const safeSlides = slides || [];
-
+const safeSlides = slides || [];
 ---
 
 <!--Slider Principal-->
-<section class="main-slider">
+<section
+  class="main-slider"
+  aria-label="Carrousel des projets et solutions MACOBATE"
+>
   <div
     class="rev_slider_wrapper fullwidthbanner-container"
     id="rev_slider_one_wrapper"
@@ -59,7 +78,7 @@
           safeSlides.map((slide, i) => (
             <li
               key={i}
-              data-description="Description du Slide"
+              data-description={slide.description}
               data-easein="default"
               data-easeout="default"
               data-fsmasterspeed="1500"
@@ -83,13 +102,12 @@
               data-saveperformance="off"
               data-slotamount="default"
               data-thumb={slide.image}
-               data-delay="5000"
-              data-title="Titre du Slide"
+              data-delay="5000"
+              data-title={slide.title}
               data-transition="parallaxvertical"
-              
             >
               <img
-                alt=""
+                alt={slide.imageAlt}
                 class="rev-slidebg"
                 data-bgfit="cover"
                 data-bgparallax="10"
@@ -97,40 +115,82 @@
                 data-bgrepeat="no-repeat"
                 data-no-retina=""
                 src={slide.image}
+                loading={i === 0 ? "eager" : "lazy"}
               />
 
               <div
-                class="tp-caption"
+                class="tp-caption slide-title"
                 data-x={slide.alignment}
+                data-hoffset={
+                  slide.alignment === "left"
+                    ? "['30','30','30','20']"
+                    : "['30','30','30','20']"
+                }
                 data-y="middle"
-                data-voffset="['-80','-90','-70','-80']"
+                data-voffset="['-80','-90','-60','-50']"
+                data-fontsize="['48','42','34','24']"
+                data-lineheight="['60','52','44','36']"
+                data-width="['700','600','500','320']"
+                data-height="none"
+                data-whitespace="normal"
+                data-type="text"
+                data-responsive_offset="on"
                 data-frames='[{"from":"y:[100%];z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0;y:0;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"}]'
                 style="z-index: 7;"
               >
-                <h2 set:html={slide.title} />
+                <h2 set:html={slide.titleHTML} />
               </div>
 
               <div
-                class="tp-caption"
+                class="tp-caption slide-description"
                 data-x={slide.alignment}
+                data-hoffset={
+                  slide.alignment === "left"
+                    ? "['30','30','30','20']"
+                    : "['30','30','30','20']"
+                }
                 data-y="middle"
-                data-voffset="['80','60','60','40']"
+                data-voffset="['80','60','40','40']"
+                data-fontsize="['18','16','14','13']"
+                data-lineheight="['30','26','22','20']"
+                data-width="['700','600','500','320']"
+                data-height="none"
+                data-whitespace="normal"
+                data-type="text"
+                data-responsive_offset="on"
                 data-frames='[{"from":"y:[100%];","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","ease":"Power3.easeInOut"}]'
                 style="z-index: 7;"
               >
-                <div class="text" set:html={slide.description} />
+                <div class="text" set:html={slide.descriptionHTML} />
               </div>
 
               <div
-                class="tp-caption"
+                class="tp-caption slide-button-container"
                 data-x={slide.alignment}
+                data-hoffset={
+                  slide.alignment === "left"
+                    ? "['30','30','30','20']"
+                    : "['30','30','30','20']"
+                }
                 data-y="middle"
-                data-voffset="['150','130','130','130']"
+                data-voffset="['150','130','100','90']"
+                data-width="['700','600','500','320']"
+                data-height="none"
+                data-whitespace="normal"
+                data-type="text"
+                data-responsive_offset="on"
                 data-frames='[{"from":"y:[100%];","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","ease":"Power3.easeInOut"}]'
                 style="z-index: 7;"
               >
-                <a href={slide.buttonLink} class="slide-button  know_more">
-                  <span class="icon flaticon-right-arrow-1" />{" "}
+                <a
+                  href={slide.buttonLink}
+                  class="slide-button know_more"
+                  aria-label={slide.buttonText}
+                >
+                  <span
+                    class="icon flaticon-right-arrow-1"
+                    aria-hidden="true"
+                  />
                   {slide.buttonText}
                 </a>
               </div>
@@ -140,29 +200,160 @@
       </ul>
     </div>
   </div>
+
+  <!-- Indicateurs de navigation (dots) -->
+  <div class="slider-navigation">
+    <div class="slider-dots">
+      {
+        safeSlides.map((_, i) => (
+          <button
+            class={`slider-dot ${i === 0 ? "active" : ""}`}
+            data-slide={i}
+            aria-label={`Aller au slide ${i + 1}`}
+          />
+        ))
+      }
+    </div>
+  </div>
 </section>
 <!--Fin Slider Principal-->
-<script is:inline>
 
+<style>
+  /* Styles spécifiques pour le responsive */
+  .main-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider-navigation {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .slider-dot.active {
+    background-color: #fff;
+    transform: scale(1.2);
+  }
+
+  /* Styles responsives pour le slider */
+  @media only screen and (max-width: 767px) {
+    .slide-button {
+      padding: 10px 20px !important;
+      font-size: 14px !important;
+    }
+
+    .slider-dots {
+      gap: 8px;
+    }
+
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .slide-button {
+      padding: 8px 15px !important;
+      font-size: 12px !important;
+    }
+
+    .slider-navigation {
+      bottom: 15px;
+    }
+  }
+</style>
+
+<script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll('.slide-button');
+    // Gestion du défilement fluide pour les boutons du slider
+    const buttons = document.querySelectorAll(".slide-button");
 
     buttons.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        const targetSelector = btn.getAttribute('href');
+      btn.addEventListener("click", (e) => {
+        const targetSelector = btn.getAttribute("href");
 
-        if (targetSelector.startsWith('#')) {
+        if (targetSelector && targetSelector.startsWith("#")) {
           const target = document.querySelector(targetSelector);
           if (target) {
             e.preventDefault();
             target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center' 
+              behavior: "smooth",
+              block: "center",
             });
           }
         }
       });
     });
+
+    // Gestion des points de navigation du slider
+    const dots = document.querySelectorAll(".slider-dot");
+
+    // Fonction pour naviguer vers un slide spécifique
+    const goToSlide = (index) => {
+      try {
+        // Si RevSlider est chargé
+        if (window.jQuery && jQuery.fn.revolution) {
+          const slider = jQuery("#rev_slider_one");
+          if (slider.length && typeof slider.revshowslide === "function") {
+            slider.revshowslide(parseInt(index) + 1);
+          }
+        }
+
+        // Mettre à jour l'état actif des points
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === parseInt(index));
+        });
+      } catch (error) {
+        console.warn("Erreur lors de la navigation du slider:", error);
+      }
+    };
+
+    // Ajouter des écouteurs d'événements aux points
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const slideIndex = dot.getAttribute("data-slide");
+        if (slideIndex !== null) {
+          goToSlide(slideIndex);
+        }
+      });
+    });
+
+    // Ajouter un écouteur d'événements pour le changement de slide
+    if (window.jQuery && jQuery.fn.revolution) {
+      jQuery("#rev_slider_one").on(
+        "revolution.slide.onchange",
+        function (e, data) {
+          if (data && typeof data.slideIndex !== "undefined") {
+            // Mettre à jour l'état actif des points
+            const actualIndex = data.slideIndex - 1;
+            dots.forEach((dot, i) => {
+              dot.classList.toggle("active", i === actualIndex);
+            });
+          }
+        }
+      );
+    }
   });
 </script>
-

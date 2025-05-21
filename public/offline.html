@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hors connexion - MACOBATE</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 90%;
+            width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            margin-bottom: 30px;
+            max-width: 200px;
+        }
+        h1 {
+            color: #1720d7;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #1720d7;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #1720d7;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #141ba6;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/images/logo.png" alt="MACOBATE" class="logo">
+        <div class="icon">⚠️</div>
+        <h1>Vous êtes hors connexion</h1>
+        <p>Il semble que vous ayez perdu votre connexion Internet. Vérifiez votre connexion et réessayez.</p>
+        <p>Vous pouvez toujours consulter les pages déjà chargées si elles ont été mises en cache.</p>
+        <a href="/" class="btn">Retour à l'accueil</a>
+    </div>
+    <script>
+        // Vérifiez périodiquement si la connexion est rétablie
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+        
+        document.querySelector('.btn').addEventListener('click', (e) => {
+            if (!navigator.onLine) {
+                e.preventDefault();
+                alert('Vous êtes toujours hors connexion. Veuillez vérifier votre connexion Internet.');
+            }
+        });
+    </script>
+</body>
+</html>

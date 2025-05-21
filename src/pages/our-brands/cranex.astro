@@ -1,9 +1,25 @@
-    ---
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import AppointmentForm from "../../components/AppointmentForm.astro";
 import CallToActionSection from "../../components/CallToActionSection.astro";
+import { PiEngineBold } from "react-icons/pi";
+import { BsFillMotherboardFill, BsSpeedometer } from "react-icons/bs";
+import {
+  FaAnchor,
+  FaShip,
+  FaClock,
+  FaHandHoldingWater,
+  FaPrescriptionBottle,
+  FaIndustry,
+} from "react-icons/fa";
+import {
+  GiPulleyHook,
+  GiWaterTank,
+  GiScubaTanks,
+  GiValve,
+} from "react-icons/gi";
 ---
 
 <BaseLayout title="CRANEX - Vannes et Équipements Hydromécaniques | MACOBATE">
@@ -12,7 +28,8 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
     <!--Page Title-->
     <section
       class="page-title"
-      style="background-image:url(/images/background/6.jpg)"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
@@ -39,124 +56,80 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
                   />
                 </div>
                 <div class="brand-intro">
-                  <h2>L'étanchéité au service de l'eau et de l'industrie</h2>
+                  <h2>Élevez votre industrie.</h2>
                   <div class="separator"></div>
                 </div>
               </div>
 
               <div class="text">
                 <p class="lead">
-                  <strong>CRANEX</strong> est la marque phare de MACOBATE dédiée à
-                  la conception et à la fabrication de vannes industrielles, vannes
-                  murales et batardeaux pour les barrages, les réseaux urbains et
-                  l'industrie.
+                  <strong>CRANEX</strong> est la marque de MACOBATE dédiée aux systèmes
+                  de levage et de manutention avancés. Nous concevons, fabriquons
+                  et installons des grues performantes adaptées aux secteurs industriel,
+                  infrastruc-turel et énergétique. Nos solutions allient ingénierie
+                  de précision, sécurité et automatisation intelligente.
                 </p>
 
-                <h3>Notre expertise</h3>
-                <p>
-                  Avec plus de 35 ans d'expertise, CRANEX fournit des solutions
-                  d'étanchéité fiables et durables pour les infrastructur es
-                  hydrauliques les plus exigeantes du Maroc et de l'Afrique de
-                  l'Ouest.
-                </p>
+                <h3>Expertise & Capacités</h3>
                 <ul class="list-style-two">
-                  <li>Ingénierie : Conception sur mesure adaptée aux spécifications des clients</li>
-                  <li>Fabrication : Production en interne garantissant qualité et traçabilité</li>
-                  <li>Réhabilitation : Modernisation et rénovation des installations existantes</li>
-                  <li>Mise en service : Installation sur site et assistance à la mise en service</li>
-                </ul>
-                <h3>Nos produits</h3>
-
-                <div class="products-grid">
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-valve"></span>
-                    </div>
-                    <h4>Vannes Segment</h4>
-                    <ul class="list-style-one">
-                      <li>Contrôle précis des débits dans les barrages</li>
-                      <li>Conception robuste pour une longue durée de vie</li>
-                      <li>Système d'étanchéité haute performance</li>
-                      <li>Adaptation aux grandes pressions</li>
-                    </ul>
-                  </div>
-
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-valve"></span>
-                    </div>
-                    <h4>Vannes Wagon</h4>
-                    <ul class="list-style-one">
-                      <li>Idéales pour les canalisations de grande section</li>
-                      <li>
-                        Étanchéité parfaite même après des années d'utilisation
-                      </li>
-                      <li>Maintenance simplifiée</li>
-                      <li>Fabrication sur mesure selon vos besoins</li>
-                    </ul>
-                  </div>
-
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-construction"></span>
-                    </div>
-                    <h4>Batardeaux</h4>
-                    <ul class="list-style-one">
-                      <li>Solutions temporaires ou permanentes</li>
-                      <li>
-                        Installation rapide sans moyens de levage complexes
-                      </li>
-                      <li>
-                        Compatible avec tous types d'ouvrages hydrauliques
-                      </li>
-                      <li>Résistance à la corrosion maximale</li>
-                    </ul>
-                  </div>
-
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-demolishing"></span>
-                    </div>
-                    <h4>Grilles</h4>
-                    <ul class="list-style-one">
-                      <li>
-                        Protection des ouvrages contre les corps flottants
-                      </li>
-                      <li>Nettoyage manuel ou automatisé</li>
-                      <li>Fabrication en acier inoxydable ou galvanisé</li>
-                      <li>
-                        Adaptation aux débits et aux contraintes spécifiques
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <h3>Références</h3>
-                <p>
-                  CRANEX équipe les plus grands ouvrages hydrauliques du Royaume
-                  :
-                </p>
-                <ul class="list-style-two">
-                  <li>Barrage Sidi Mohammed Ben Abdellah</li>
-                  <li>Barrage Oued Martil</li>
-                  <li>Station de pompage Bouregreg</li>
-                  <li>Stations d'épuration OCP</li>
-                  <li>Réseaux urbains des grandes villes</li>
+                  <li>
+                    Ingénierie : Conception sur mesure et analyse structurelle
+                  </li>
+                  <li>
+                    Fabrication : Production interne avec qualité certifiée
+                  </li>
+                  <li>
+                    Automatisation : Intégration de PLC, commande à distance et
+                    systèmes IoT
+                  </li>
+                  <li>Installation : Assemblage et mise en service sur site</li>
+                  <li>Maintenance : Services préventifs et correctifs</li>
                 </ul>
 
-                <h3>Certification et qualité</h3>
-                <p>
-                  Tous nos produits sont fabriqués selon les normes
-                  internationales les plus strictes et bénéficient d'une
-                  traçabilité complète, de tests rigoureux et d'une
-                  documentation technique exhaustive.
-                </p>
+                <h3>Gamme de Produits</h3>
+                <ul class="list-style-two">
+                  <li>
+                    Ponts Roulants : Monopoutre et bipoutre jusqu'à 150 tonnes
+                  </li>
+                  <li>
+                    Portiques : Grues portiques mobiles et fixes pour
+                    applications lourdes
+                  </li>
+                  <li>
+                    Potences : Murales et sur fût pour l'efficacité des postes
+                    de travail
+                  </li>
+                  <li>
+                    Monorails : Pour la manutention linéaire des matériaux
+                  </li>
+                  <li>Palans : À câble et à chaîne électriques</li>
+                  <li>
+                    Composants de Grue : Chariots d'extrémité, blocs de roues et
+                    systèmes de contrôle
+                  </li>
+                </ul>
 
-                <h3>Service après-vente</h3>
+                <h3>Applications</h3>
+                <ul class="list-style-two">
+                  <li>
+                    Industrie Manufacturière : Lignes d'assemblage, entrepôts
+                  </li>
+                  <li>
+                    Construction : Béton préfabriqué, structures métalliques
+                  </li>
+                  <li>
+                    Secteur Énergétique : Centrales électriques, assemblage
+                    d'éoliennes
+                  </li>
+                  <li>Logistique : Ports, terminaux de fret</li>
+                </ul>
+
+                <h3>Assurance Qualité</h3>
                 <p>
-                  Notre équipe de maintenance assure le suivi, l'entretien et la
-                  réhabilitation de nos équipements pour garantir leur
-                  performance optimale tout au long de leur cycle de vie.
+                  Les produits CRANEX sont conformes aux normes internationales
+                  telles que ISO 9001, CE et les classifications FEM,
+                  garantissant sécurité et fiabilité dans des environnements
+                  exigeants.
                 </p>
               </div>
             </div>
@@ -170,20 +143,22 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
                 <ul class="brand-links">
                   <li>
                     <a href="/our-brands/cranex"
-                      ><span class="icon flaticon-engineer"></span> ROBEX</a>
+                      ><span class="icon flaticon-engineer"></span> ROBEX</a
+                    >
                   </li>
                   <li>
                     <a href="/our-brands/tanko"
-                      ><span class="icon flaticon-demolishing"></span> TANKO</a>
+                      ><span class="icon flaticon-demolishing"></span> TANKO</a
+                    >
                   </li>
                   <li>
                     <a href="/our-brands/mws"
-                      ><span class="icon flaticon-boat"></span> MWS</a>
+                      ><span class="icon flaticon-boat"></span> MWS</a
+                    >
                   </li>
                 </ul>
               </div>
 
-             
               <div class="sidebar-widget">
                 <div class="project-widget">
                   <div class="widget-content">
@@ -482,23 +457,23 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
   }
 
   .gallery-item .image {
-     width: 100%;
-  aspect-ratio: 4 / 3; /* ou 1 / 1 pour carré */
-  overflow: hidden;
-  position: relative;
-  border-radius: 8px;
-  background-color: #ddd;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* ou 1 / 1 pour carré */
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    background-color: #ddd;
   }
 
   .gallery-item .image img {
     width: 100%;
-  height: 100%;
-  object-fit: cover; /* remplissage sans déformation */
-  object-position: center;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+    height: 100%;
+    object-fit: cover; /* remplissage sans déformation */
+    object-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .gallery-item .overlay-box {
@@ -555,5 +530,15 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
       grid-template-columns: 1fr;
     }
   }
+  .brand-links li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-links li a span {
+    display: flex;
+    align-items: center;
+    margin-right: 15px; /* ajuste la valeur à ton besoin */
+  }
 </style>
- 

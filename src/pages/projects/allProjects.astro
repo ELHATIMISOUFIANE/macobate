@@ -3,72 +3,92 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
-// Tableau des projets adapté à MACOBATE
+// Tableau des projets adapté à MACOBATE avec URLs liées aux sections de detailProjects.astro
 const projects = [
   {
     id: 1,
     title: "Barrage Sidi Mohammed Ben Abdellah",
     location: "2023 / Rabat",
     image: "/images/gallery/project-1.jpg",
-    url: "/detailProjects#project-1",
+    url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
   },
   {
     id: 2,
     title: "Station d'Épuration OCP Khouribga",
     location: "2022 / Khouribga",
     image: "/images/gallery/project-2.jpg",
-    url: "/detailProjects#project-2",
+    url: "/projects/detailProjects#stations-pompage-traitement",
   },
   {
     id: 3,
     title: "Usine Renault-Nissan",
     location: "2021 / Tanger",
     image: "/images/gallery/project-3.jpg",
-    url: "/detailProjects#project-3",
+    url: "/projects/detailProjects#infrastructures-industrielles",
   },
   {
     id: 4,
     title: "Barrage Oued Martil",
     location: "2020 / Tétouan",
     image: "/images/gallery/20.jpg",
-    url: "/detailProjects#project-4",
+    url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
   },
   {
     id: 5,
     title: "Station de Potabilisation Bouregreg",
     location: "2019 / Rabat",
     image: "/images/gallery/19.jpg",
-    url: "/detailProjects#project-5",
+    url: "/projects/detailProjects#stations-pompage-traitement",
   },
   {
     id: 6,
     title: "Centrale Solaire Noor",
     location: "2018 / Ouarzazate",
     image: "/images/gallery/21.jpg",
-    url: "/detailProjects#project-6",
+    url: "/projects/detailProjects#energie-renouvelable",
   },
   {
     id: 7,
     title: "Port de Tanger Med",
     location: "2017 / Tanger",
     image: "/images/gallery/22.jpg",
-    url: "/detailProjects#project-7",
+    url: "/projects/detailProjects#equipements-maritimes",
   },
   {
     id: 8,
     title: "Barrage Moulay El Hassan",
     location: "2016 / Taounate",
     image: "/images/gallery/23.jpg",
-    url: "/detailProjects#project-8",
+    url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
   },
   {
     id: 9,
     title: "Usine Lafarge Holcim",
     location: "2015 / Casablanca",
     image: "/images/gallery/24.jpg",
-    url: "/detailProjects#project-9",
+    url: "/projects/detailProjects#industrie-process",
   },
-  
+  {
+    id: 10,
+    title: "Projet d'Eau Potable Bamako",
+    location: "2019 / Mali",
+    image: "/images/gallery/25.jpg",
+    url: "/projects/detailProjects#projets-export-afrique",
+  },
+  {
+    id: 11,
+    title: "Station de Pompage Agadir",
+    location: "2020 / Agadir",
+    image: "/images/gallery/26.jpg",
+    url: "/projects/detailProjects#stations-pompage-traitement",
+  },
+  {
+    id: 12,
+    title: "Système Hybride Dakhla",
+    location: "2021 / Dakhla",
+    image: "/images/gallery/27.jpg",
+    url: "/projects/detailProjects#energie-renouvelable",
+  },
 ];
 
 // Pagination
@@ -86,7 +106,8 @@ const currentProjects = projects.slice(startIndex, endIndex);
     <!--Page Title-->
     <section
       class="page-title"
-      style="background-image:url(/images/background/6.jpg)"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
@@ -128,11 +149,13 @@ const currentProjects = projects.slice(startIndex, endIndex);
             }
           </div>
 
-          <div class="text-center">
-            <a class="load-more" href="#"
-              >Voir Plus <span class="icon flaticon-right-arrow-1"></span></a
-            >
-          </div>
+          {totalPages > 1 && (
+            <div class="text-center">
+              <a class="load-more" href="#"
+                >Voir Plus <span class="icon flaticon-right-arrow-1"></span></a
+              >
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -202,9 +225,13 @@ const currentProjects = projects.slice(startIndex, endIndex);
                       <div class="form-group col-md-6 col-sm-6 col-xs-12">
                         <select class="custom-select-box" name="service">
                           <option>Sélectionnez le Service Souhaité</option>
-                          <option>Construction Métallique</option>
+                          <option>Charpente Métallique</option>
+                          <option>Appareils à pression</option>
+                          <option>Réservoirs de Stockage</option>
                           <option>Équipements Hydromécaniques</option>
-                          <option>Traitement des Eaux</option>
+                          <option>Projets Clé en Main</option>
+                          <option>Traitement de l'eau</option>
+                          <option>Électricité & Automatismes</option>
                         </select>
                       </div>
                       <div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -239,83 +266,109 @@ const currentProjects = projects.slice(startIndex, endIndex);
   <Footer />
 
   <style>
-
     /* style pro pour cards projet */
-.project-block-five {
-  margin-bottom: 30px;
-}
+    .project-block-five {
+      margin-bottom: 30px;
+    }
 
-.project-block-five .inner-box {
-  border: 1px solid #e9ecef;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff;
-}
+    .project-block-five .inner-box {
+      border: 1px solid #e9ecef;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+    }
 
-.project-block-five .inner-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
+    .project-block-five .inner-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
 
-.project-block-five .image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+    .project-block-five .image {
+      position: relative;
+      overflow: hidden;
+    }
 
-.project-block-five .overlay-box {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 16px;
-  color: #fff;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+    .project-block-five .image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
 
-.project-block-five .inner-box:hover .overlay-box {
-  opacity: 1;
-}
+    .project-block-five .inner-box:hover .image img {
+      transform: scale(1.05);
+    }
 
-.project-block-five h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-}
+    .project-block-five .overlay-box {
+      background: rgba(23, 32, 215, 0.85);
+      padding: 16px;
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-.project-block-five .location {
-  font-size: 14px;
-  opacity: 0.85;
-}
+    .project-block-five .inner-box:hover .overlay-box {
+      opacity: 1;
+    }
 
-/* Load more button */
-.load-more {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 24px;
-  background-color: #0056b3;
-  color: white;
-  font-weight: 500;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
+    .project-block-five h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+      margin-bottom: 5px;
+    }
 
-.load-more:hover {
-  background-color: #004094;
-}
+    .project-block-five h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
 
-/* Section background and spacing */
-.project-page-section {
-  background-color: #f9fafb;
-  padding: 60px 0;
-}
+    .project-block-five h3 a:hover {
+      color: #f1f1f1;
+    }
 
+    .project-block-five .location {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* Load more button */
+    .load-more {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 28px;
+      background-color: #1720d7;
+      color: white;
+      font-weight: 500;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .load-more:hover {
+      background-color: #12189c;
+    }
+
+    /* Section background and spacing */
+    .project-page-section {
+      background-color: #f9fafb;
+      padding: 80px 0;
+    }
+
+    @media (max-width: 767px) {
+      .project-page-section {
+        padding: 50px 0;
+      }
+    }
   </style>
-   <script is:inline>
+  
+  <script is:inline>
     document.addEventListener('DOMContentLoaded', function() {
       // S'assurer que jQuery et Isotope sont chargés
       if (typeof jQuery !== 'undefined' && typeof jQuery.fn.isotope !== 'undefined') {
@@ -330,6 +383,15 @@ const currentProjects = projects.slice(startIndex, endIndex);
           });
         }, 500); // Petit délai pour s'assurer que tout est chargé
       }
+      
+      // Gérer le clic sur le bouton "Voir Plus"
+      document.querySelector('.load-more')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Ici, vous pouvez implémenter la logique pour charger plus de projets
+        // Par exemple, en ajoutant un paramètre à l'URL ou en utilisant fetch pour charger plus de contenu
+        // Pour l'instant, rediriger vers une deuxième page
+        window.location.href = '/projects/allProjects?page=2';
+      });
     });
   </script>
 </BaseLayout>

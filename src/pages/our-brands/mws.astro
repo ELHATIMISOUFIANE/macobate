@@ -4,23 +4,28 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import AppointmentForm from "../../components/AppointmentForm.astro";
 import CallToActionSection from "../../components/CallToActionSection.astro";
+import { PiEngineBold } from "react-icons/pi";
+import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
+import { FaAnchor, FaShip, FaClock ,FaHandHoldingWater , FaPrescriptionBottle ,FaIndustry  } from 'react-icons/fa';
+import { GiPulleyHook,GiWaterTank , GiScubaTanks ,GiValve  } from "react-icons/gi";
 ---
 
-<BaseLayout title="ROBEX - Vannes et Équipements Hydromécaniques | MACOBATE">
+<BaseLayout title="MWS - Unités Mobiles de Traitement de l’Eau | MACOBATE">
   <Header />
   <main>
     <!--Page Title-->
     <section
       class="page-title"
-      style="background-image:url(/images/background/6.jpg)"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
           <li><a href="/">Accueil</a></li>
           <li><a href="/#our-brands">Nos Marques</a></li>
-          <li>ROBEX</li>
+          <li>MWS</li>
         </ul>
-        <h1>ROBEX</h1>
+        <h1>MWS</h1>
       </div>
     </section>
     <!--End Page Title-->
@@ -33,130 +38,87 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
             <div class="inner-column">
               <div class="brand-header">
                 <div class="brand-logo">
-                  <img
-                    src="/images/gallery/mws-logo.jpg"
-                    alt="ROBEX Logo"
-                  />
+                  <img src="/images/gallery/mws-logo.jpg" alt="MWS Logo" />
                 </div>
                 <div class="brand-intro">
-                  <h2>L'étanchéité au service de l'eau et de l'industrie</h2>
+                  <h2>De l’eau, là où vous en avez besoin.</h2>
                   <div class="separator"></div>
                 </div>
               </div>
 
               <div class="text">
                 <p class="lead">
-                  <strong>ROBEX</strong> est la marque phare de MACOBATE dédiée à
-                  la conception et à la fabrication de vannes industrielles, vannes
-                  murales et batardeaux pour les barrages, les réseaux urbains et
-                  l'industrie.
+                  <strong>MWS</strong> est la marque dédiée de <strong
+                    >MACOBATE</strong
+                  > pour les unités mobiles de traitement de l’eau. Conçues pour
+                  être rapidement déployées dans des environnements complexes, les
+                  stations MWS offrent des solutions sûres, automatisées et modulables.
                 </p>
 
-                <h3>Notre expertise</h3>
-                <p>
-                  Avec plus de 35 ans d'expertise, ROBEX fournit des solutions
-                  d'étanchéité fiables et durables pour les infrastructur es
-                  hydrauliques les plus exigeantes du Maroc et de l'Afrique de
-                  l'Ouest.
-                </p>
+                <h3>Applications principales</h3>
                 <ul class="list-style-two">
-                  <li>Ingénierie : Conception sur mesure adaptée aux spécifications des clients</li>
-                  <li>Fabrication : Production en interne garantissant qualité et traçabilité</li>
-                  <li>Réhabilitation : Modernisation et rénovation des installations existantes</li>
-                  <li>Mise en service : Installation sur site et assistance à la mise en service</li>
-                </ul>
-                <h3>Nos produits</h3>
-
-                <div class="products-grid">
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-valve"></span>
-                    </div>
-                    <h4>Vannes Segment</h4>
-                    <ul class="list-style-one">
-                      <li>Contrôle précis des débits dans les barrages</li>
-                      <li>Conception robuste pour une longue durée de vie</li>
-                      <li>Système d'étanchéité haute performance</li>
-                      <li>Adaptation aux grandes pressions</li>
-                    </ul>
-                  </div>
-
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-valve"></span>
-                    </div>
-                    <h4>Vannes Wagon</h4>
-                    <ul class="list-style-one">
-                      <li>Idéales pour les canalisations de grande section</li>
-                      <li>
-                        Étanchéité parfaite même après des années d'utilisation
-                      </li>
-                      <li>Maintenance simplifiée</li>
-                      <li>Fabrication sur mesure selon vos besoins</li>
-                    </ul>
-                  </div>
-
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-construction"></span>
-                    </div>
-                    <h4>Batardeaux</h4>
-                    <ul class="list-style-one">
-                      <li>Solutions temporaires ou permanentes</li>
-                      <li>
-                        Installation rapide sans moyens de levage complexes
-                      </li>
-                      <li>
-                        Compatible avec tous types d'ouvrages hydrauliques
-                      </li>
-                      <li>Résistance à la corrosion maximale</li>
-                    </ul>
-                  </div>
-
-                  <div class="product-item">
-                    <div class="product-icon">
-                      <span class="icon flaticon-demolishing"></span>
-                    </div>
-                    <h4>Grilles</h4>
-                    <ul class="list-style-one">
-                      <li>
-                        Protection des ouvrages contre les corps flottants
-                      </li>
-                      <li>Nettoyage manuel ou automatisé</li>
-                      <li>Fabrication en acier inoxydable ou galvanisé</li>
-                      <li>
-                        Adaptation aux débits et aux contraintes spécifiques
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <h3>Références</h3>
-                <p>
-                  ROBEX équipe les plus grands ouvrages hydrauliques du Royaume
-                  :
-                </p>
-                <ul class="list-style-two">
-                  <li>Barrage Sidi Mohammed Ben Abdellah</li>
-                  <li>Barrage Oued Martil</li>
-                  <li>Station de pompage Bouregreg</li>
-                  <li>Stations d'épuration OCP</li>
-                  <li>Réseaux urbains des grandes villes</li>
+                  <li> Zones arides et isolées</li>
+                  <li> Réponses d’urgence et missions humanitaires</li>
+                  <li> Traitement des eaux industrielles</li>
+                  <li> Collectivités urbaines et rurales</li>
                 </ul>
 
-                <h3>Certification et qualité</h3>
+                <h3>Caractéristiques techniques</h3>
+                <ul class="list-style-two">
+                  <li>Skids modulaires et empilables</li>
+                  <li>
+                    Automatisation complète avec pilotage à distance (smartphone
+                    ou SCADA)
+                  </li>
+                  <li>
+                    Processus de traitement en plusieurs étapes : filtration,
+                    ultrafiltration, osmose inverse, désinfection
+                  </li>
+                  <li>Débits modulaires de 5 à 200 m³/h</li>
+                  <li>Fabrication certifiée ISO</li>
+                </ul>
+
+                <h3>Points forts</h3>
+                <ul class="list-style-two">
+                  <li>Déploiement Plug & Play</li>
+                  <li>Faible consommation énergétique</li>
+                  <li>Maintenance réduite</li>
+                  <li>Livraison rapide</li>
+                  <li>Résistance aux environnements sévères</li>
+                </ul>
+
+                <h3>Usages et domaines</h3>
+                <ul class="list-style-two">
+                  <li>Production d’eau potable</li>
+                  <li>Dessalement d’eau saumâtre ou de mer</li>
+                  <li>Traitement et réutilisation des eaux usées</li>
+                  <li>Appui à l’irrigation et à l’agriculture</li>
+                </ul>
+
+                <h3>Références terrain</h3>
                 <p>
-                  Tous nos produits sont fabriqués selon les normes
-                  internationales les plus strictes et bénéficient d'une
-                  traçabilité complète, de tests rigoureux et d'une
-                  documentation technique exhaustive.
+                  Les unités <strong>MWS</strong> ont été déployées avec succès au
+                  Maroc et en Afrique de l’Ouest dans le cadre de :
+                </p>
+                <ul class="list-style-two">
+                  <li>Programmes de lutte contre la sécheresse</li>
+                  <li>Installation dans des camps de réfugiés</li>
+                  <li>Alimentation en eau des zones rurales et nomades</li>
+                  <li>Soutien aux sites miniers industriels</li>
+                </ul>
+
+                <h3>Qualité et certification</h3>
+                <p>
+                  Chaque unité MWS est conçue et fabriquée selon les standards
+                  internationaux, avec une traçabilité complète, des tests en
+                  atelier et une documentation exhaustive.
                 </p>
 
                 <h3>Service après-vente</h3>
                 <p>
-                  Notre équipe de maintenance assure le suivi, l'entretien et la
-                  réhabilitation de nos équipements pour garantir leur
-                  performance optimale tout au long de leur cycle de vie.
+                  Une équipe dédiée assure l’assistance, la maintenance et le
+                  suivi technique, pour garantir des performances optimales tout
+                  au long du cycle de vie de nos équipements.
                 </p>
               </div>
             </div>
@@ -168,30 +130,20 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
               <div class="sidebar-widget">
                 <h3>Nos autres marques</h3>
                 <ul class="brand-links">
-                  <li>
-                    <a href="/our-brands/cranex"
-                      ><span class="icon flaticon-engineer"></span> CRANEX</a>
-                  </li>
-                  <li>
-                    <a href="/our-brands/tanko"
-                      ><span class="icon flaticon-demolishing"></span> TANKO</a>
-                  </li>
-                  <li>
-                    <a href="/our-brands/mws"
-                      ><span class="icon flaticon-boat"></span> MWS</a>
-                  </li>
+                   <li><a href="/our-brands/robex"><span ><GiScubaTanks size={20} color="#007bff"/></span> ROBEX</a></li>
+                  <li><a href="/our-brands/cranex"><span><GiPulleyHook size={20} color="#007bff"/></span> CRANEX</a></li>
+                  <li><a href="/our-brands/tanko"><span><GiWaterTank size={20} color="#007bff"/></span> TANKO</a></li>
                 </ul>
               </div>
 
-             
               <div class="sidebar-widget">
                 <div class="project-widget">
                   <div class="widget-content">
-                    <h3>Besoin d'un devis ?</h3>
+                    <h3>Besoin d’un devis ?</h3>
                     <p>
                       Notre équipe commerciale est à votre disposition pour
-                      étudier votre projet et vous proposer la solution ROBEX
-                      adaptée à vos besoins.
+                      étudier votre projet et vous proposer la solution MWS la
+                      plus adaptée.
                     </p>
                     <a
                       href="#"
@@ -215,7 +167,7 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
                       96 46
                     </li>
                     <li>
-                      <span class="icon flaticon-envelope-1"></span> robex@macobate.com
+                      <span class="icon flaticon-envelope-1"></span> mws@macobate.com
                     </li>
                   </ul>
                 </div>
@@ -225,74 +177,6 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
         </div>
       </div>
     </section>
-    <!-- End Brand Detail Section -->
-
-    <!-- Project Gallery Section -->
-    <section class="project-gallery-section">
-      <div class="auto-container">
-        <div class="sec-title centered">
-          <h2>Nos Réalisations ROBEX</h2>
-          <div class="separator"></div>
-        </div>
-
-        <div class="row clearfix">
-          <div class="gallery-item col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <div class="image">
-                <img
-                  src="/images/gallery/robex-project-1.jpg"
-                  alt="Vanne segment barrage"
-                />
-                <div class="overlay-box">
-                  <div class="overlay-inner">
-                    <div class="content">
-                      <h3>
-                        Vanne segment - Barrage Sidi Mohammed Ben Abdellah
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <div class="image">
-                <img
-                  src="/images/gallery/robex-project-2.jpg"
-                  alt="Vanne wagon"
-                />
-                <div class="overlay-box">
-                  <div class="overlay-inner">
-                    <div class="content">
-                      <h3>Vannes wagon - Station de pompage Bouregreg</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item col-lg-4 col-md-6 col-sm-12">
-            <div class="inner-box">
-              <div class="image">
-                <img
-                  src="/images/gallery/robex-project-3.jpg"
-                  alt="Batardeaux"
-                />
-                <div class="overlay-box">
-                  <div class="overlay-inner">
-                    <div class="content">
-                      <h3>Batardeaux - Barrage Oued Martil</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Project Gallery Section -->
 
     <CallToActionSection />
     <AppointmentForm />
@@ -482,23 +366,23 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
   }
 
   .gallery-item .image {
-     width: 100%;
-  aspect-ratio: 4 / 3; /* ou 1 / 1 pour carré */
-  overflow: hidden;
-  position: relative;
-  border-radius: 8px;
-  background-color: #ddd;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* ou 1 / 1 pour carré */
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    background-color: #ddd;
   }
 
   .gallery-item .image img {
     width: 100%;
-  height: 100%;
-  object-fit: cover; /* remplissage sans déformation */
-  object-position: center;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+    height: 100%;
+    object-fit: cover; /* remplissage sans déformation */
+    object-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .gallery-item .overlay-box {
@@ -555,4 +439,15 @@ import CallToActionSection from "../../components/CallToActionSection.astro";
       grid-template-columns: 1fr;
     }
   }
+.brand-links li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+  .brand-links li a span {
+  display: flex;
+  align-items: center;
+   margin-right: 15px; /* ajuste la valeur à ton besoin */
+}
 </style>

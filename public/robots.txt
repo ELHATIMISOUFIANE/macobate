@@ -1,10 +1,26 @@
 User-agent: *
 Allow: /
 
-# Fichiers et répertoires à exclure
+# Répertoires privés ou techniques
 Disallow: /node_modules/
-Disallow: /*.js$
-Disallow: /*.css$
+Disallow: /src/
+Disallow: /api/
+Disallow: /dist/
+Disallow: /build/
+Disallow: /tmp/
+Disallow: /admin/
+
+# Ne pas indexer les fichiers de développement
+Disallow: /*.json$
+Disallow: /*.map$
+Disallow: /*.astro$
+Disallow: /*.ts$
+Disallow: /*.tsx$
+Disallow: /*.jsx$
+
+# Permettre CSS et JavaScript minifiés pour les crawlers modernes
+Allow: /*.css$
+Allow: /*.js$
 
 # Sitemap
-Sitemap: https://votredomaine.com/sitemap.xml
+Sitemap: https://macobate.com/sitemap.xml

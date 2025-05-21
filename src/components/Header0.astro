@@ -1,5 +1,5 @@
 ---
-// HeaderResponsive.astro - Barre de navigation responsive avec liens ancrés
+// HeaderOptimized.astro - Barre de navigation améliorée pour MACOBATE
 const mainMenuItems = [
   {
     title: "Accueil",
@@ -17,88 +17,125 @@ const mainMenuItems = [
       { title: "Nos Points Forts", url: "/about#highlights-section" },
       { title: "Notre Histoire", url: "/about#history-section" },
       { title: "Nos Réalisations", url: "/about#achived-section" },
-      { title: "Notre Équipe", url: "/about#team-section" },
+      //{ title: "Notre Équipe", url: "/about#team-section" },
+      {
+        title: "Services",
+        url: "/services/allServices",
+      },
+    ],
+  },
+  {
+    title: "Nos-Marques",
+    url: "/our-brands",
+    hasSubmenu: true,
+    showInMainOnly: false,
+    submenu: [
+      {
+        title: "ROBEX",
+        url: "/our-brands/robex",
+      },
+      {
+        title: "CRANEX",
+        url: "/our-brands/cranex",
+      },
+      {
+        title: "TANKO",
+        url: "/our-brands/tanko",
+      },
+      { title: "MWS", 
+        url: "/our-brands/mws" },
+      
     ],
   },
   {
     title: "Activités",
-    url: "/market",
+    url: "/services",
     hasSubmenu: true,
     showInMainOnly: false,
     submenu: [
       {
-        title: "Construction Métallique",
-        url: "/market-single?sector=construction",
+        title: "Charpente Métallique",
+        url: "/services/detailServices#charpente-metallique",
       },
       {
-        title: "Chaudronnerie Industrielle",
-        url: "/market-single?sector=chaudronnerie",
+        title: "Appareils à pression",
+        url: "/services/detailServices#appareils-pression",
       },
       {
-        title: "Équipements Hydromécaniques",
-        url: "/market-single?sector=hydraulique",
+        title: "Réservoirs de Stockage",
+        url: "/services/detailServices#reservoirs-stockage",
       },
-      { title: "Traitement des Eaux", url: "/market-single?sector=eau" },
+      { title: "Équipements Hydromécaniques", 
+        url: "/services/detailServices#equipements-hydromecaniques" },
       {
-        title: "Maintenance Industrielle",
-        url: "/market-single?sector=maintenance",
+        title: "Traitement de l'eau",
+        url: "/services/detailServices#traitement-eau",
       },
+      {
+        title: "Électricité & Automatismes",
+        url: "/services/detailServices#electricite-automatismes",
+      },
+      {
+    title: "Projets",
+     
+    url: "/projects/allProjects",
+   
+  },
     ],
   },
-  {
-    title: "Produits",
-    url: "/products",
-    hasSubmenu: true,
-    showInMainOnly: false,
-    submenu: [
-      {
-        title: "Eau",
-        url: "/products/eau",
-        hasSubmenu: true,
-        childSubmenu: [
-          { title: "Vannes Segment", url: "/products/eau/vannes-segment" },
-          { title: "Vannes Wagon", url: "/products/eau/vannes-wagon" },
-          { title: "Batardeaux", url: "/products/eau/batardeaux" },
-          { title: "Grilles", url: "/products/eau/grilles" },
-        ],
-      },
-      {
-        title: "Environnement",
-        url: "/products/environnement",
-        hasSubmenu: true,
-        childSubmenu: [
-          { title: "Dégrilleurs", url: "/products/environnement/degrilleurs" },
-          { title: "Compacteurs", url: "/products/environnement/compacteurs" },
-          {
-            title: "Pont Racleur",
-            url: "/products/environnement/pont-racleur",
-          },
-        ],
-      },
-      {
-        title: "Industrie",
-        url: "/products/industrie",
-        hasSubmenu: true,
-        childSubmenu: [
-          { title: "Réservoirs", url: "/products/industrie/reservoirs" },
-          { title: "Silos", url: "/products/industrie/silos" },
-          { title: "Charpentes", url: "/products/industrie/charpentes" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Réalisations",
-    url: "/projects",
-    hasSubmenu: false,
-    showInMainOnly: true,
-  },
+  
+  // {
+  //   title: "Produits",
+  //   url: "/products",
+  //   hasSubmenu: true,
+  //   showInMainOnly: true,
+  //   submenu: [
+  //     {
+  //       title: "Eau",
+  //       url: "/products/eau",
+  //       hasSubmenu: true,
+  //       childSubmenu: [
+  //         { title: "Vannes Segment", url: "/products/eau#vannes-segment" },
+  //         { title: "Vannes Wagon", url: "/products/eau#vannes-wagon" },
+  //         { title: "Batardeaux", url: "/products/eau#batardeaux" },
+  //         { title: "Grilles", url: "/products/eau#grilles" },
+  //       ],
+  //     },
+  //     {
+  //       title: "Environnement",
+  //       url: "/products/environnement",
+  //       hasSubmenu: true,
+  //       childSubmenu: [
+  //         { title: "Dégrilleurs", url: "/products/environnement#degrilleurs" },
+  //         { title: "Compacteurs", url: "/products/environnement#compacteurs" },
+  //         {
+  //           title: "Pont Racleur",
+  //           url: "/products/environnement#pont-racleur",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       title: "Industrie",
+  //       url: "/products/industrie",
+  //       hasSubmenu: true,
+  //       childSubmenu: [
+  //         { title: "Réservoirs", url: "/products/industrie#reservoirs" },
+  //         { title: "Silos", url: "/products/industrie#silos" },
+  //         { title: "Charpentes", url: "/products/industrie#charpentes" },
+  //       ],
+  //     },
+  //   ],
+  // }, 
+
+
   {
     title: "Actualités",
-    url: "/blog",
+    url: "/blog/allBlog",
     hasSubmenu: false,
     showInMainOnly: true,
   },
+  
+  
   {
     title: "Contact",
     url: "/contact",
@@ -111,7 +148,7 @@ const mainMenuItems = [
 const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
 ---
 
-<!-- En-tête Principal Responsive-->
+<!-- En-tête Principal-->
 <header class="main-header">
   <!-- Barre Supérieure -->
   <div class="header-top">
@@ -122,18 +159,19 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
           <ul class="links clearfix">
             <li>
               <a href="tel:+212537659646"
-                ><span class="icon fa fa-phone"></span><span class="contact-text">+212 5 37 65 96 46</span></a
+                ><span class="icon fa fa-phone"></span>+212 5 37 65 96 46</a
               >
             </li>
             <li>
               <a href="mailto:contact@macobate.com"
                 ><span class="icon fa fa-envelope-o"
-                ></span><span class="contact-text">contact@macobate.com</span></a
+                ></span>contact@macobate.com</a
               >
             </li>
-            <li class="hide-on-mobile">
+            <li>
               <a href="https://www.google.com/maps?q=34.021972,-6.836359"
-                ><span class="icon flaticon-placeholder-2"></span><span class="contact-text">Zone Industrielle Takadoum, Rabat</span></a
+                ><span class="icon flaticon-placeholder-2"></span>48, Zone
+                Industrielle Takadoum, Rabat</a
               >
             </li>
           </ul>
@@ -152,8 +190,8 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                 aria-expanded="true"
                 href="#"
                 ><span class="flag-img"
-                  ><img src="/images/icons/flag.jpg" alt="Drapeau" /></span
-                ><span class="language-text">Français</span> &nbsp;<span class="fa fa-angle-down"></span></a
+                  ><img src="/images/icons/fr.gif" alt="Drapeau" /></span
+                >Français &nbsp;<span class="fa fa-angle-down"></span></a
               >
               <ul
                 class="dropdown-menu style-one"
@@ -175,8 +213,8 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
   <div class="main-box">
     <div class="auto-container">
       <div class="outer-container clearfix">
-        <!--Boîte Logo avec classe ajustée-->
-        <div class="logo-box ">
+        <!--Boîte Logo-->
+        <div class="logo-box">
           <div class="logo">
             <a href="/"><img src="/images/logo.png" alt="Logo MACOBATE" /></a>
           </div>
@@ -187,7 +225,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
           <!-- Menu Principal avec sous-menus améliorés -->
           <nav class="main-menu">
             <div class="navbar-header">
-              <!-- Bouton Toggle Mobile -->
+              <!-- Bouton Toggle -->
               <button
                 type="button"
                 class="navbar-toggle"
@@ -203,50 +241,57 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
             <div class="navbar-collapse collapse clearfix">
               <ul class="navigation clearfix">
                 {/* Menu principal filtré - seulement 5 éléments */}
-                {mainMenuFiltered.map((item) => (
-                  <li class={item.hasSubmenu ? "dropdown" : ""}>
-                    <a href={item.url}>
-                      {item.title}
-                      {item.hasSubmenu && <span class="fa fa-angle-down"></span>}
-                    </a>
-                    {item.hasSubmenu && (
-                      <ul>
-                        {item.submenu.map((subItem) => (
-                          <li class={subItem.hasSubmenu ? "dropdown" : ""}>
-                            <a href={subItem.url}>
-                              {subItem.title}
-                              {subItem.hasSubmenu && <span class="fa fa-angle-right"></span>}
-                            </a>
-                            {subItem.hasSubmenu && (
-                              <ul>
-                                {subItem.childSubmenu.map((childItem) => (
-                                  <li><a href={childItem.url}>{childItem.title}</a></li>
-                                ))}
-                              </ul>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
+                {
+                  mainMenuFiltered.map((item) => (
+                    <li class={item.hasSubmenu ? "dropdown" : ""}>
+                      <a href={item.url}>
+                        {item.title}
+                        {item.hasSubmenu && <span class="fa fa-angle-down" />}
+                      </a>
+                      {item.hasSubmenu && (
+                        <ul>
+                          {item.submenu.map((subItem) => (
+                            <li class={subItem.hasSubmenu ? "dropdown" : ""}>
+                              <a href={subItem.url}>
+                                {subItem.title}
+                                {subItem.hasSubmenu && (
+                                  <span class="fa fa-angle-right" />
+                                )}
+                              </a>
+                              {subItem.hasSubmenu && (
+                                <ul>
+                                  {subItem.childSubmenu.map((childItem) => (
+                                    <li>
+                                      <a href={childItem.url}>
+                                        {childItem.title}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </nav>
           <!-- Fin Menu Principal-->
 
           <!--Boîte Externe-->
-          <div class="outer-box">
+          <div >
             <a
-              href="#"
-              class="theme-btn quote-btn"
-              data-toggle="modal"
-              data-target="#schedule-box"
+              href="/formDevis"
+             
+              
               >Demander un devis<span class="icon"></span></a
             >
-            <ul class="social-icon-one hide-on-mobile">
-              <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+            <ul class="social-icon-one">
+              <li><a href="https://www.facebook.com/macobate/#"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="/formDevis"><span class="fa fa-linkedin"></span></a></li>
               <li><a href="#"><span class="fa fa-youtube"></span></a></li>
             </ul>
           </div>
@@ -256,14 +301,16 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     </div>
   </div>
 
-  <!--En-tête Fixe avec alignement ajusté-->
+  <!--En-tête Fixe-->
   <div class="sticky-header">
     <div class="auto-container">
       <div class="outer-container clearfix">
-        <!--Boîte Logo avec classe ajustée-->
-        <div class="logo-box logo-aligned pull-left">
+        <!--Boîte Logo-->
+        <div class="logo-box pull-left">
           <div class="logo">
-            <a href="/"><img src="/images/logo-small.png" alt="Logo MACOBATE" /></a>
+            <a href="/"
+              ><img src="/images/logo-small.png" alt="Logo MACOBATE" /></a
+            >
           </div>
         </div>
 
@@ -272,7 +319,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
           <!-- Menu Principal -->
           <nav class="main-menu">
             <div class="navbar-header">
-              <!-- Bouton Toggle Mobile -->
+              <!-- Bouton Toggle -->
               <button
                 type="button"
                 class="navbar-toggle"
@@ -288,33 +335,41 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
             <div class="navbar-collapse collapse clearfix">
               <ul class="navigation clearfix">
                 {/* Menu complet - tous les éléments */}
-                {mainMenuItems.map((item) => (
-                  <li class={item.hasSubmenu ? "dropdown" : ""}>
-                    <a href={item.url}>
-                      {item.title}
-                      {item.hasSubmenu && <span class="fa fa-angle-down"></span>}
-                    </a>
-                    {item.hasSubmenu && (
-                      <ul>
-                        {item.submenu.map((subItem) => (
-                          <li class={subItem.hasSubmenu ? "dropdown" : ""}>
-                            <a href={subItem.url}>
-                              {subItem.title}
-                              {subItem.hasSubmenu && <span class="fa fa-angle-right"></span>}
-                            </a>
-                            {subItem.hasSubmenu && (
-                              <ul>
-                                {subItem.childSubmenu.map((childItem) => (
-                                  <li><a href={childItem.url}>{childItem.title}</a></li>
-                                ))}
-                              </ul>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
+                {
+                  mainMenuItems.map((item) => (
+                    <li class={item.hasSubmenu ? "dropdown" : ""}>
+                      <a href={item.url}>
+                        {item.title}
+                        {item.hasSubmenu && <span class="fa fa-angle-down" />}
+                      </a>
+                      {item.hasSubmenu && (
+                        <ul>
+                          {item.submenu.map((subItem) => (
+                            <li class={subItem.hasSubmenu ? "dropdown" : ""}>
+                              <a href={subItem.url}>
+                                {subItem.title}
+                                {subItem.hasSubmenu && (
+                                  <span class="fa fa-angle-right" />
+                                )}
+                              </a>
+                              {subItem.hasSubmenu && (
+                                <ul>
+                                  {subItem.childSubmenu.map((childItem) => (
+                                    <li>
+                                      <a href={childItem.url}>
+                                        {childItem.title}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </nav>
@@ -329,50 +384,6 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
 <!--Fin En-tête Principal -->
 
 <style>
-  /* Styles pour le positionnement du logo */
-  .logo-box {
-    position: relative;
-    padding-right: 30px; /* Ajoute un espace à droite du logo */
-    margin-right: 20px; /* Augmente la marge à droite */
-  }
-  
-  .logo-aligned {
-    margin-left: -15px; /* Déplace légèrement le logo vers la gauche */
-    position: relative;
-  }
-  
-  .logo {
-    position: relative;
- 
-  }
-  
-  .logo img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Ajustement pour l'alignement avec le menu */
-  .main-box .outer-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap; /* Important pour responsive */
-  }
-  
-  .main-box .nav-outer {
-    flex: 1;
-    padding-left: 20px; /* Espace entre le logo et le menu */
-  }
-  
-  /* Ajustement pour le header sticky */
-  .sticky-header .logo-box {
-    padding-right: 15px;
-    margin-right: 10px;
-  }
-  
-  .sticky-header .logo-aligned {
-    margin-left: -10px; /* Ajustement pour le logo dans le header sticky */
-  }
-  
   /* Styles pour les sous-menus améliorés */
   .main-menu .navigation > li > ul {
     position: absolute;
@@ -382,20 +393,20 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     z-index: 100;
     display: none;
     background: #ffffff;
-    border-top: 3px solid #0f3182;
+    border-top: 3px solid #206dd3;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   .main-menu .navigation > li > ul > li {
     position: relative;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   .main-menu .navigation > li > ul > li:last-child {
     border-bottom: none;
   }
-  
+
   .main-menu .navigation > li > ul > li > a {
     position: relative;
     display: block;
@@ -412,12 +423,12 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
   }
-  
+
   .main-menu .navigation > li > ul > li:hover > a {
-    background: #0f3182;
+    background: #206dd3;
     color: #ffffff;
   }
-  
+
   /* Sous-menus de niveau 3 */
   .main-menu .navigation > li > ul > li > ul {
     position: absolute;
@@ -427,20 +438,20 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     z-index: 100;
     display: none;
     background: #ffffff;
-    border-top: 3px solid #0f3182;
+    border-top: 3px solid #206dd3;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   .main-menu .navigation > li > ul > li > ul > li {
     position: relative;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   .main-menu .navigation > li > ul > li > ul > li:last-child {
     border-bottom: none;
   }
-  
+
   .main-menu .navigation > li > ul > li > ul > li > a {
     position: relative;
     display: block;
@@ -457,220 +468,30 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
   }
-  
+
   .main-menu .navigation > li > ul > li > ul > li:hover > a {
-    background: #0f3182;
+    background: #206dd3;
     color: #ffffff;
   }
-  
+
   /* Afficher les sous-menus au survol */
   .main-menu .navigation li:hover > ul {
     display: block;
   }
-  
+
   /* Indicateur de menu actif */
   .main-menu .navigation > li.current > a,
   .main-menu .navigation > li:hover > a {
-    color: #0f3182;
+    color: #206dd3;
     opacity: 1;
   }
-  
+
   .main-menu .navigation > li > ul > li.current > a,
   .main-menu .navigation > li > ul > li > ul > li.current > a {
-    background: #0f3182;
+    background: #206dd3;
     color: #ffffff;
   }
-  
-  /* Ajustement de l'espacement des éléments de menu */
-  .main-menu .navigation > li {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  
-  /* Améliorer l'alignement du menu avec le logo */
-  @media (min-width: 992px) {
-    .main-box .nav-outer {
-      display: flex;
-      align-items: center;
-    }
-    
-    .main-menu {
-      margin-left: -15px; /* Ajuster pour aligner avec le logo */
-    }
-    
-    /* Cacher le bouton mobile sur desktop */
-    .navbar-toggle {
-      display: none;
-    }
-  }
-  
-  /* STYLES RESPONSIVES */
-  
-  /* Tablettes et petits écrans */
-  @media (max-width: 991px) {
-    .logo-box {
-      padding: 15px 0;
-      width: 180px;
-    }
-    
-    .main-box .outer-container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .main-box .nav-outer {
-      width: 100%;
-      padding-left: 0;
-    }
-    
-    .main-menu .navbar-collapse {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    
-    .main-menu .navigation > li > ul, 
-    .main-menu .navigation > li > ul > li > ul {
-      position: static;
-      width: 100%;
-      box-shadow: none;
-      display: none;
-    }
-    
-    .main-menu .navigation > li.dropdown > a:after {
-      display: none;
-    }
-    
-    .main-menu .navigation {
-      padding-top: 15px;
-    }
-    
-    .main-menu .navigation > li {
-      margin: 0;
-      display: block;
-      width: 100%;
-    }
-    
-    .main-menu .navigation > li > a {
-      padding: 10px 15px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    /* Transformation des sous-menus en accordéon */
-    .main-menu .navigation li.dropdown .dropdown-btn {
-      position: absolute;
-      right: 10px;
-      top: 6px;
-      width: 34px;
-      height: 30px;
-      border: 1px solid #dddddd;
-      text-align: center;
-      font-size: 16px;
-      line-height: 28px;
-      background: #ffffff;
-      cursor: pointer;
-      z-index: 5;
-    }
-    
-    .outer-box {
-      position: absolute;
-      right: 60px;
-      top: 0;
-      z-index: 12;
-    }
-    
-    .sticky-header .logo-box {
-      width: 160px;
-    }
-  }
-  
-  /* Mobiles */
-  @media (max-width: 767px) {
-    .header-top .top-left .contact-text,
-    .header-top .top-right .language-text,
-    .hide-on-mobile {
-      display: none;
-    }
-    
-    .header-top .top-left {
-      width: 100%;
-      text-align: center;
-    }
-    
-    .header-top .top-left .links li {
-      margin: 0 10px;
-      display: inline-block;
-      float: none;
-    }
-    
-    .header-top .top-right {
-      width: 100%;
-      text-align: center;
-      margin-top: 5px;
-    }
-    
-    .header-top .language.dropdown {
-      display: inline-block;
-      float: none;
-    }
-    
-    .sticky-header {
-      display: none !important;
-    }
-    
-    .main-box .logo-box {
-      width: 150px;
-      margin: 0 auto;
-      padding: 10px 0;
-      float: none;
-      text-align: center;
-    }
-    
-    .main-box .outer-box {
-      position: static;
-      width: 100%;
-      margin: 10px 0;
-      text-align: center;
-    }
-    
-    .main-box .outer-box .quote-btn {
-      display: block;
-      margin: 0 auto;
-      width: 200px;
-    }
-    
-    .main-box .nav-outer {
-      margin-top: 15px;
-    }
-    
-    .navbar-toggle {
-      display: block;
-      float: none;
-      margin: 0 auto;
-    }
-  }
-  
-  /* Très petits écrans */
-  @media (max-width: 479px) {
-    .header-top .top-left .links li {
-      margin: 0 5px;
-    }
-    
-    .main-box .logo-box {
-      width: 120px;
-    }
-    
-    .main-box .outer-box .quote-btn {
-      width: 180px;
-      font-size: 12px;
-      padding: 8px 15px;
-    }
-    
-    .navbar-toggle {
-      padding: 6px 8px;
-    }
-  }
 </style>
-
 <script is:inline>
   // Script pour gérer l'état actif des liens de navigation et le défilement vers les ancres
   document.addEventListener('DOMContentLoaded', function() {
@@ -699,9 +520,15 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
       "highlights-section": document.querySelector('.highlights-section'),
       "history-section": document.querySelector('.history-section'),
       "achived-section": document.querySelector('.achived-section'),
-      "team-section": document.querySelector('.team-section')
+      "team-section": document.querySelector('.team-section'),
+      "allServices": document.querySelector('.services'),
+      "charpente-metallique": document.querySelector('.charpente-metallique'),
+      "electricite-automatismes": document.querySelector('.electricite-automatismes')
+     
+
     };
-    
+    // Mettre à jour l’URL sans rechargement
+      history.pushState(null, '', `#${serviceId}`);
     // Ajouter les IDs aux sections s'ils existent
     for (const [id, section] of Object.entries(sections)) {
       if (section) section.id = id;
@@ -739,7 +566,7 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
       }
       
       // Vérifier les paramètres d'URL pour les pages de secteur
-      if (currentPath.includes('market-single') || currentPath.includes('products')) {
+      if (currentPath.includes('services/detailServices') || currentPath.includes('products/detailProducts')) {
         const urlParams = new URLSearchParams(window.location.search);
         const sector = urlParams.get('sector');
         

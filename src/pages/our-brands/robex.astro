@@ -4,9 +4,10 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import AppointmentForm from "../../components/AppointmentForm.astro";
 import CallToActionSection from "../../components/CallToActionSection.astro";
-import { GiValve } from "react-icons/gi";
 import { PiEngineBold } from "react-icons/pi";
 import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
+import { FaAnchor, FaShip, FaClock ,FaHandHoldingWater , FaPrescriptionBottle ,FaIndustry  } from 'react-icons/fa';
+import { GiPulleyHook,GiWaterTank , GiScubaTanks ,GiValve  } from "react-icons/gi";
 ---
 
 <BaseLayout title="ROBEX - Vannes et Équipements Hydromécaniques | MACOBATE">
@@ -15,7 +16,8 @@ import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
     <!--Page Title-->
     <section
       class="page-title"
-      style="background-image:url(/images/background/6.jpg)"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
@@ -164,18 +166,10 @@ import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
               <div class="sidebar-widget">
                 <h3>Nos autres marques</h3>
                 <ul class="brand-links">
-                  <li>
-                    <a href="/our-brands/cranex"
-                      ><span class="icon flaticon-engineer"></span> CRANEX</a>
-                  </li>
-                  <li>
-                    <a href="/our-brands/tanko"
-                      ><span class="icon flaticon-demolishing"></span> TANKO</a>
-                  </li>
-                  <li>
-                    <a href="/our-brands/mws"
-                      ><span class="icon flaticon-boat"></span> MWS</a>
-                  </li>
+                  
+                  <li><a href="/our-brands/cranex"><span><GiPulleyHook size={20} color="#007bff"/></span> CRANEX</a></li>
+                   <li><a href="/our-brands/tanko"><span ><GiWaterTank size={20} color="#007bff"/></span> TANKO</a></li>
+                  <li><a href="/our-brands/mws"><span><FaHandHoldingWater size={20} color="#007bff"/></span> MWS</a></li>
                 </ul>
               </div>
 
@@ -297,6 +291,7 @@ import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
 </BaseLayout>
 
 <style>
+  
   /* Styles spécifiques pour la page de marque */
   .brand-section {
     padding: 80px 0;
@@ -551,4 +546,15 @@ import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
       grid-template-columns: 1fr;
     }
   }
+.brand-links li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-links li a span {
+  display: flex;
+  align-items: center;
+   margin-right: 15px; /* ajuste la valeur à ton besoin */
+}
 </style>
