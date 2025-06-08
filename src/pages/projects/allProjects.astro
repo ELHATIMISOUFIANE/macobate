@@ -9,22 +9,22 @@ const projects = [
     id: 1,
     title: "Barrage Sidi Mohammed Ben Abdellah",
     location: "2023 / Rabat",
-    image: "/images/gallery/project-1.jpg",
+    image: "/images/projects/barrages-hydrauliques.jpg",
     url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
   },
   {
     id: 2,
     title: "Station d'Épuration OCP Khouribga",
     location: "2022 / Khouribga",
-    image: "/images/gallery/project-2.jpg",
+    image: "/images/projects/stations-pompage-traitement.jpg",
     url: "/projects/detailProjects#stations-pompage-traitement",
   },
-  {
+   {
     id: 3,
-    title: "Usine Renault-Nissan",
-    location: "2021 / Tanger",
-    image: "/images/gallery/project-3.jpg",
-    url: "/projects/detailProjects#infrastructures-industrielles",
+    title: "Centrale Solaire Noor",
+    location: "2018 / Ouarzazate",
+    image: "/images/gallery/21.jpg",
+    url: "/projects/detailProjects#energie-renouvelable",
   },
   {
     id: 4,
@@ -40,55 +40,15 @@ const projects = [
     image: "/images/gallery/19.jpg",
     url: "/projects/detailProjects#stations-pompage-traitement",
   },
-  {
+ 
+{
     id: 6,
-    title: "Centrale Solaire Noor",
-    location: "2018 / Ouarzazate",
-    image: "/images/gallery/21.jpg",
+    title: "Station de pompage solaire Taroudant",
+    location: "2018 / Taroudant",
+    image: "/images/projects/energie-renouvelable.jpg",
     url: "/projects/detailProjects#energie-renouvelable",
   },
-  {
-    id: 7,
-    title: "Port de Tanger Med",
-    location: "2017 / Tanger",
-    image: "/images/gallery/22.jpg",
-    url: "/projects/detailProjects#equipements-maritimes",
-  },
-  {
-    id: 8,
-    title: "Barrage Moulay El Hassan",
-    location: "2016 / Taounate",
-    image: "/images/gallery/23.jpg",
-    url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
-  },
-  {
-    id: 9,
-    title: "Usine Lafarge Holcim",
-    location: "2015 / Casablanca",
-    image: "/images/gallery/24.jpg",
-    url: "/projects/detailProjects#industrie-process",
-  },
-  {
-    id: 10,
-    title: "Projet d'Eau Potable Bamako",
-    location: "2019 / Mali",
-    image: "/images/gallery/25.jpg",
-    url: "/projects/detailProjects#projets-export-afrique",
-  },
-  {
-    id: 11,
-    title: "Station de Pompage Agadir",
-    location: "2020 / Agadir",
-    image: "/images/gallery/26.jpg",
-    url: "/projects/detailProjects#stations-pompage-traitement",
-  },
-  {
-    id: 12,
-    title: "Système Hybride Dakhla",
-    location: "2021 / Dakhla",
-    image: "/images/gallery/27.jpg",
-    url: "/projects/detailProjects#energie-renouvelable",
-  },
+
 ];
 
 // Pagination
@@ -149,13 +109,15 @@ const currentProjects = projects.slice(startIndex, endIndex);
             }
           </div>
 
-          {totalPages > 1 && (
-            <div class="text-center">
-              <a class="load-more" href="#"
-                >Voir Plus <span class="icon flaticon-right-arrow-1"></span></a
-              >
-            </div>
-          )}
+          {
+            totalPages > 1 && (
+              <div class="text-center">
+                <a class="load-more" href="#">
+                  Voir Plus <span class="icon flaticon-right-arrow-1" />
+                </a>
+              </div>
+            )
+          }
         </div>
       </div>
     </section>
@@ -187,7 +149,8 @@ const currentProjects = projects.slice(startIndex, endIndex);
                     </div>
                     <div class="pull-left">
                       <div class="text">
-                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
+                        Obtenez un devis gratuit pour vos projets industriels ou
+                        d'ingénierie. Nous sommes disponibles 24h/7j.
                       </div>
                     </div>
                   </div>
@@ -275,7 +238,9 @@ const currentProjects = projects.slice(startIndex, endIndex);
       border: 1px solid #e9ecef;
       border-radius: 6px;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
       background-color: #fff;
     }
 
@@ -301,7 +266,6 @@ const currentProjects = projects.slice(startIndex, endIndex);
     }
 
     .project-block-five .overlay-box {
-      background: rgba(23, 32, 215, 0.85);
       padding: 16px;
       color: #fff;
       position: absolute;
@@ -343,7 +307,7 @@ const currentProjects = projects.slice(startIndex, endIndex);
       display: inline-block;
       margin-top: 30px;
       padding: 12px 28px;
-      background-color: #1720d7;
+      
       color: white;
       font-weight: 500;
       border-radius: 4px;
@@ -352,7 +316,7 @@ const currentProjects = projects.slice(startIndex, endIndex);
     }
 
     .load-more:hover {
-      background-color: #12189c;
+     
     }
 
     /* Section background and spacing */
@@ -367,31 +331,36 @@ const currentProjects = projects.slice(startIndex, endIndex);
       }
     }
   </style>
-  
+
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", function () {
       // S'assurer que jQuery et Isotope sont chargés
-      if (typeof jQuery !== 'undefined' && typeof jQuery.fn.isotope !== 'undefined') {
-        const $container = jQuery('.masonry-items-container');
-        
-        setTimeout(function() {
+      if (
+        typeof jQuery !== "undefined" &&
+        typeof jQuery.fn.isotope !== "undefined"
+      ) {
+        const $container = jQuery(".masonry-items-container");
+
+        setTimeout(function () {
           $container.isotope({
-            itemSelector: '.masonry-item',
+            itemSelector: ".masonry-item",
             masonry: {
-              columnWidth: '.masonry-item'
-            }
+              columnWidth: ".masonry-item",
+            },
           });
         }, 500); // Petit délai pour s'assurer que tout est chargé
       }
-      
+
       // Gérer le clic sur le bouton "Voir Plus"
-      document.querySelector('.load-more')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Ici, vous pouvez implémenter la logique pour charger plus de projets
-        // Par exemple, en ajoutant un paramètre à l'URL ou en utilisant fetch pour charger plus de contenu
-        // Pour l'instant, rediriger vers une deuxième page
-        window.location.href = '/projects/allProjects?page=2';
-      });
+      document
+        .querySelector(".load-more")
+        ?.addEventListener("click", function (e) {
+          e.preventDefault();
+          // Ici, vous pouvez implémenter la logique pour charger plus de projets
+          // Par exemple, en ajoutant un paramètre à l'URL ou en utilisant fetch pour charger plus de contenu
+          // Pour l'instant, rediriger vers une deuxième page
+          window.location.href = "/projects/allProjects?page=2";
+        });
     });
   </script>
 </BaseLayout>

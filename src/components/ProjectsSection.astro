@@ -1,23 +1,32 @@
 ---
-// ProjectsSection.astro (Version française)
+// ProjectsSection.astro - Version internationalisée
+import { getTranslations } from '../../i18n/translations.js';
+
+// Récupération de la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith('/fr');
+const lang = isfrench ? 'fr' : 'en';
+const t = getTranslations(lang);
+
+// Projets avec les liens (les liens restent constants)
 const projects = [
   {
-    image: "images/gallery/project-1.jpg",
-    title: "Barrage Sidi Mohammed Ben Abdellah",
-    description: "Équipements hydromécaniques et vannes de régulation",
-    link: "/projects/detailProjects#project-1"
+    image: "/images/projects/barrages-hydrauliques.jpg",
+    title: t.projects.projectsList[0].title,
+    description: t.projects.projectsList[0].description,
+    link: "projects/detailProjects#project-1"
   },
   {
-    image: "images/gallery/project-2.jpg",
-    title: "Station d'Épuration OCP Khouribga",
-    description: "Installation complète de traitement des eaux usées industrielles",
-    link: "/projects/detailProjects#project-2"
+    image: "/images/projects/stations-pompage-traitement.jpg",
+    title: t.projects.projectsList[1].title,
+    description: t.projects.projectsList[1].description,
+    link: "projects/detailProjects#stations-pompage-traitement"
   },
   {
-    image: "images/gallery/project-3.jpg",
-    title: "Usine Automobile Tanger",
-    description: "Structures métalliques et systèmes de manutention",
-    link: "/projects/detailProjects#project-3"
+    image: "/images/projects/energie-renouvelable.jpg",
+    title: t.projects.projectsList[2].title,
+    description: t.projects.projectsList[2].description,
+    link: "projects/detailProjects#energie-renouvelable"
   }
 ];
 ---
@@ -28,21 +37,20 @@ const projects = [
     <div class="sec-title">
       <div class="row clearfix">
         <div class="col-md-3 col-sm-12 col-xs-12">
-          <h2>Dernières Réalisations</h2>
+          <h2>{t.projects.title}</h2>
           <div class="separator"></div>
         </div>
         <div class="col-md-9 col-sm-12 col-xs-12">
           <div class="row clearfix">
             <div class="col-md-8 col-sm-12 col-xs-12">
               <div class="text">
-                Notre entreprise a toujours embrassé l'innovation pour offrir un niveau d'excellence supérieur à nos clients.
+                {t.projects.description}
               </div>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
-              <a href="projects/allProjects" class="view_all"
-                >Voir tous nos projets <span
-                  class="icon flaticon-right-arrow-1"></span></a
-              >
+              <a href="projects/detailProjects" class="view_all">
+                {t.projects.viewAll} <span class="icon flaticon-right-arrow-1"></span>
+              </a>
             </div>
           </div>
         </div>
@@ -61,8 +69,7 @@ const projects = [
                     <a href={project.link}>{project.title}</a>
                   </h3>
                   <div class="text">
-                    {project.description} <span
-                      class="icon flaticon-right-arrow-1"></span>
+                    {project.description} <span class="icon flaticon-right-arrow-1"></span>
                   </div>
                 </div>
               </div>

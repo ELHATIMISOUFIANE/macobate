@@ -1,0 +1,1019 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+import { MdEngineering } from "react-icons/md";
+import { GiAbstract047 } from "react-icons/gi";
+import { LuChartNoAxesCombined } from "react-icons/lu";
+import { FaSearch , FaEnvelope } from "react-icons/fa";
+
+
+// Données des avantages de carrière -
+const careerBenefits = [
+  {
+    id: "impact",
+    icon: "MdEngineering",
+    title: "Donne de l'impact à ton ingénierie",
+    description: "Chez MACOBATE, ton travail contribue directement à des projets d'envergure nationale et continentale :",
+    items: [
+      "Barrages et centrales hydroélectriques",
+      "Usines industrielles et canalisations",
+      "Traitement de l'eau et structures métalliques"
+    ],
+    conclusion: "Chaque mission est une opportunité de marquer durablement l'infrastructure du futur."
+  },
+  {
+    id: "excellence",
+    icon: "🏗️",
+    title: "Rejoins une culture d'excellence technique",
+    description: "MACOBATE est une entreprise pilotée par l'ingénierie. Nous valorisons :",
+    items: [
+      "L'expérience terrain associée à l'expertise de bureau d'études",
+      "La collaboration interdisciplinaire",
+      "L'exécution basée sur l'excellence technique et les normes internationales"
+    ]
+  },
+  {
+    id: "development",
+    icon: "📈",
+    title: "Développe tes compétences et ton avenir",
+    description: "Nous offrons une réelle évolution professionnelle à travers :",
+    items: [
+      "L'apprentissage sur le terrain et le mentorat d'experts",
+      "Des opportunités de certification (ISO, soudage, DAO...)",
+      "Des parcours vers la gestion de projet, la spécialisation technique ou l'international"
+    ]
+  },
+  {
+    id: "profiles",
+    icon: "🔍",
+    title: "Profils recherchés",
+    items: [
+      "Jeunes ingénieurs ambitieux et curieux (génie civil, mécanique, électrique, industriel)",
+      "Techniciens terrain et soudeurs",
+      "Professionnels motivés à apprendre, innover et construire"
+    ]
+  }
+];
+
+// Données des offres d'emploi - 
+const jobOffers = [
+  {
+    id: "ingenieur-genie-civil",
+    title: "Ingénieur Génie Civil",
+    location: "Rabat, Maroc",
+    type: "CDI - Temps plein",
+    summary: "Nous recherchons un ingénieur en génie civil pour rejoindre notre équipe travaillant sur des projets d'infrastructures hydrauliques.",
+    description: `
+      <h4>Description du poste</h4>
+      <p>En tant qu'Ingénieur Génie Civil, vous serez responsable de la conception, du dimensionnement et du suivi d'exécution de barrages et d'ouvrages hydrauliques. Vous travaillerez en étroite collaboration avec nos équipes multidisciplinaires pour garantir la qualité et la sécurité de nos réalisations.</p>
+      
+      <h4>Responsabilités</h4>
+      <ul>
+        <li>Réaliser les études techniques et les calculs de dimensionnement des structures</li>
+        <li>Élaborer les plans et les documents d'exécution</li>
+        <li>Assurer le suivi technique des chantiers et la coordination avec les entreprises</li>
+        <li>Participer aux réunions d'avancement et aux visites de terrain</li>
+        <li>Veiller au respect des normes et des standards de qualité</li>
+      </ul>
+      
+      <h4>Profil recherché</h4>
+      <ul>
+        <li>Diplôme d'ingénieur en génie civil (bac+5)</li>
+        <li>Expérience de 3 à 5 ans dans des projets hydrauliques</li>
+        <li>Maîtrise des logiciels de calcul et de modélisation (AutoCAD, Robot, etc.)</li>
+        <li>Connaissance des normes de construction</li>
+        <li>Capacité à travailler en équipe et sur le terrain</li>
+        <li>Français et arabe courants, anglais technique apprécié</li>
+      </ul>
+      
+      <h4>Nous offrons</h4>
+      <ul>
+        <li>Un environnement de travail stimulant sur des projets d'envergure</li>
+        <li>Des opportunités de développement professionnel</li>
+        <li>Un package salarial compétitif</li>
+        <li>Une formation continue et un encadrement par des experts</li>
+      </ul>
+    `
+  },
+  {
+    id: "technicien-soudage",
+    title: "Technicien en Soudage",
+    location: "Casablanca, Maroc",
+    type: "CDI - Temps plein",
+    summary: "Expert en soudage pour nos projets de construction métallique et industrielle.",
+    description: `
+      <h4>Description du poste</h4>
+      <p>En tant que Technicien en Soudage, vous serez responsable de la réalisation et du contrôle des soudures sur différents types de métaux selon les normes internationales. Vous travaillerez sur des projets variés allant des structures métalliques aux équipements hydrauliques.</p>
+      
+      <h4>Responsabilités</h4>
+      <ul>
+        <li>Réaliser des soudures de haute qualité sur différents métaux</li>
+        <li>Contrôler la qualité des assemblages soudés</li>
+        <li>Préparer les surfaces et les pièces à souder</li>
+        <li>Lire et interpréter les plans techniques</li>
+        <li>Respecter les normes de sécurité et de qualité</li>
+      </ul>
+      
+      <h4>Profil recherché</h4>
+      <ul>
+        <li>Formation technique en soudure (CAP, BTS ou équivalent)</li>
+        <li>Expérience de 3 ans minimum dans le soudage industriel</li>
+        <li>Maîtrise des procédés TIG, MIG-MAG, et électrode enrobée</li>
+        <li>Connaissance des normes ISO 9606, ASME ou équivalentes</li>
+        <li>Rigueur, précision et souci du détail</li>
+        <li>Capacité à travailler en équipe</li>
+      </ul>
+      
+      <h4>Nous offrons</h4>
+      <ul>
+        <li>Un atelier à la pointe de la technologie</li>
+        <li>Des projets diversifiés et stimulants</li>
+        <li>Un salaire attractif selon expérience</li>
+        <li>Des possibilités d'évolution et de certification</li>
+      </ul>
+    `
+  },
+  // {
+  //   id: "ingenieur-electromecanique",
+  //   title: "Ingénieur Électromécanique",
+  //   location: "Dakar, Sénégal",
+  //   type: "CDI - Temps plein",
+  //   summary: "Pour notre expansion en Afrique de l'Ouest, nous recherchons un ingénieur électromécanique expérimenté.",
+  //   description: `
+  //     <h4>Description du poste</h4>
+  //     <p>Dans le cadre de notre expansion en Afrique de l'Ouest, nous recherchons un Ingénieur Électromécanique pour superviser l'installation et la maintenance d'équipements industriels dans nos projets hydrauliques et de traitement des eaux au Sénégal.</p>
+      
+  //     <h4>Responsabilités</h4>
+  //     <ul>
+  //       <li>Superviser l'installation des équipements électromécaniques sur les sites</li>
+  //       <li>Coordonner les essais et la mise en service des installations</li>
+  //       <li>Assurer la maintenance préventive et corrective des équipements</li>
+  //       <li>Former les équipes locales aux procédures d'exploitation</li>
+  //       <li>Optimiser les performances des installations existantes</li>
+  //     </ul>
+      
+  //     <h4>Profil recherché</h4>
+  //     <ul>
+  //       <li>Diplôme d'ingénieur en électromécanique ou équivalent</li>
+  //       <li>Expérience de 5 ans minimum dans des projets hydrauliques</li>
+  //       <li>Maîtrise des systèmes de contrôle-commande</li>
+  //       <li>Connaissance des automates programmables et variateurs de vitesse</li>
+  //       <li>Capacité à gérer des équipes multiculturelles</li>
+  //       <li>Français courant, connaissance de l'anglais technique</li>
+  //       <li>Disponibilité pour des déplacements fréquents</li>
+  //     </ul>
+      
+  //     <h4>Nous offrons</h4>
+  //     <ul>
+  //       <li>Un poste à responsabilités avec une grande autonomie</li>
+  //       <li>Un package attractif incluant logement et avantages expatriés</li>
+  //       <li>Des perspectives d'évolution au sein du groupe</li>
+  //       <li>La participation à des projets d'infrastructure majeurs</li>
+  //     </ul>
+  //   `
+  // }
+];
+
+// Données des témoignages d'employés
+const employeeTestimonials = [
+  {
+    name: "Karim Tazi",
+    position: "Ingénieur de projet",
+    years: "3 ans chez MACOBATE",
+    image: "/images/resource/author-11.jpg",
+    quote: "Rejoindre MACOBATE a été une décision déterminante dans ma carrière. Les projets sur lesquels je travaille ont un impact réel sur les infrastructures du pays, et j'apprends chaque jour au contact d'experts reconnus dans leur domaine."
+  },
+  {
+    name: "Fatima Zahra ",
+    position: "Chef de projet",
+    years: "7 ans chez MACOBATE",
+    image: "/images/team/team-2.jpg",
+    quote: "Ce qui me plaît chez MACOBATE, c'est l'équilibre parfait entre l'autonomie qu'on nous donne et le soutien de l'équipe. J'ai pu développer des compétences techniques pointues tout en évoluant vers des responsabilités de gestion de projet."
+  },
+  {
+    name: "Mehdi Benani",
+    position: "Ingénieur électromécanique",
+    years: "5 ans chez MACOBATE",
+    image: "/images/resource/author-13.jpg",
+    quote: "La formation continue et le mentorat sont des valeurs fortes chez MACOBATE. J'ai commencé comme technicien et j'ai pu évoluer vers un poste d'ingénieur grâce aux opportunités de développement que l'entreprise m'a offertes."
+  }
+];
+---
+
+<BaseLayout title="Carrières | MACOBATE">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/7.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Carrières</li>
+        </ul>
+        <h1>Carrières</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Career Intro Section -->
+    <section class="career-intro-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Rejoignez notre équipe</h2>
+          <div class="separator"></div>
+          <div class="text">
+            MACOBATE recherche constamment des talents passionnés pour renforcer ses équipes. Nous vous offrons l'opportunité de contribuer à des projets d'envergure qui façonnent l'avenir des infrastructures en Afrique et au-delà.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Career Intro Section -->
+
+    <!-- Career Benefits Section -->
+    <section class="career-benefits-section">
+      <div class="auto-container">
+        <div class="benefits-container">
+          <!-- Première ligne de cartes (2 premières) -->
+          <div class="benefits-row">
+            <div class="benefit-card">
+              <div class="benefit-header">
+                <span class="benefit-icon"><MdEngineering /></span>
+                <h3 class="benefit-title">{careerBenefits[0].title}</h3>
+                <div class="separator"></div>
+              </div>
+              <div class="benefit-content">
+                {careerBenefits[0].description && <p>{careerBenefits[0].description}</p>}
+                <ul class="list-style-two">
+                  {careerBenefits[0].items.map(item => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                {careerBenefits[0].conclusion && <p class="benefit-conclusion">{careerBenefits[0].conclusion}</p>}
+              </div>
+            </div>
+            
+            <div class="benefit-card">
+              <div class="benefit-header">
+                <span class="benefit-icon"><GiAbstract047/></span>
+                <h3 class="benefit-title">{careerBenefits[1].title}</h3>
+                <div class="separator"></div>
+              </div>
+              <div class="benefit-content">
+                {careerBenefits[1].description && <p>{careerBenefits[1].description}</p>}
+                <ul class="list-style-two">
+                  {careerBenefits[1].items.map(item => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                {careerBenefits[1].conclusion && <p class="benefit-conclusion">{careerBenefits[1].conclusion}</p>}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Deuxième ligne de cartes (2 dernières) -->
+          <div class="benefits-row">
+            <div class="benefit-card">
+              <div class="benefit-header">
+                <span class="benefit-icon"><LuChartNoAxesCombined/></span>
+                <h3 class="benefit-title">{careerBenefits[2].title}</h3>
+                <div class="separator"></div>
+              </div>
+              <div class="benefit-content">
+                {careerBenefits[2].description && <p>{careerBenefits[2].description}</p>}
+                <ul class="list-style-two">
+                  {careerBenefits[2].items.map(item => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                {careerBenefits[2].conclusion && <p class="benefit-conclusion">{careerBenefits[2].conclusion}</p>}
+              </div>
+            </div>
+            
+            <div class="benefit-card">
+              <div class="benefit-header">
+                <span class="benefit-icon"><FaSearch/></span>
+                <h3 class="benefit-title">{careerBenefits[3].title}</h3>
+                <div class="separator"></div>
+              </div>
+              <div class="benefit-content">
+                {careerBenefits[3].description && <p>{careerBenefits[3].description}</p>}
+                <ul class="list-style-two">
+                  {careerBenefits[3].items.map(item => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                {careerBenefits[3].conclusion && <p class="benefit-conclusion">{careerBenefits[3].conclusion}</p>}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Career Benefits Section -->
+
+    <!-- Application CTA Section -->
+    <section class="application-cta-section">
+      <div class="auto-container">
+        <div class="application-cta-box">
+          <div class="row clearfix">
+            <div class="col-lg-8 col-md-12">
+              <div class="sec-title light">
+                <h2><FaEnvelope/>  Candidature</h2>
+                <div class="separator"></div>
+              </div>
+              <div class="text">
+                <p>
+                  Postule aux offres en ligne ou envoie une candidature spontanée à notre adresse email dédiée au recrutement.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+              <div class="btn-box">
+                <a href="mailto:careers@macobate.com" class="theme-btn btn-style-one">
+                  careers@macobate.com
+                  <span class="icon flaticon-arrow-pointing-to-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Application CTA Section -->
+
+    <!-- Current Openings Section -->
+    <section class="current-openings-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Offres d'emploi actuelles</h2>
+          <div class="separator"></div>
+        </div>
+        
+        <div class="job-listings">
+          <!-- Génération dynamique des offres d'emploi -->
+          {jobOffers.map(job => (
+            <div class="job-block" id={`job-${job.id}`}>
+              <div class="inner-box">
+                <div class="content">
+                  <h3>{job.title}</h3>
+                  <div class="job-info">
+                    <div class="info-item">
+                      <span class="icon flaticon-pin"></span>
+                      <span class="text">{job.location}</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="icon flaticon-clock"></span>
+                      <span class="text">{job.type}</span>
+                    </div>
+                  </div>
+                  <div class="text">
+                    {job.summary}
+                  </div>
+                  <div class="btn-box">
+                    <button type="button" class="theme-btn btn-style-three job-details-btn" data-job-id={job.id}>
+                      Voir détails
+                      <span class="icon flaticon-arrow-pointing-to-right"></span>
+                    </button>
+                  </div>
+                  
+                  <!-- Section de détails (cachée par défaut) -->
+                  <div class="job-details" id={`details-${job.id}`} style="display: none;">
+                    <div class="separator" style="margin: 20px 0;"></div>
+                    <div class="job-detail-content" set:html={job.description}></div>
+                    <div class="apply-btn-box" style="margin-top: 30px;">
+                      <a href={`mailto:careers@macobate.com?subject=Candidature pour le poste de ${job.title}`} class="theme-btn btn-style-one">
+                        Postuler maintenant
+                        <span class="icon flaticon-arrow-pointing-to-right"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Spontaneous Application -->
+        <div class="spontaneous-application">
+          <div class="inner-box">
+            <div class="sec-title centered">
+              <h2>Candidature spontanée</h2>
+              <div class="separator"></div>
+            </div>
+            <div class="text centered">
+              <p>
+                Vous ne trouvez pas le poste qui vous correspond ? N'hésitez pas à nous envoyer votre CV et lettre de motivation. Nous sommes toujours à la recherche de talents pour renforcer nos équipes.
+              </p>
+            </div>
+            <div class="btn-box text-center">
+              <a href="mailto:careers@macobate.com?subject=Candidature spontanée" class="theme-btn btn-style-one">
+                Postuler maintenant
+                <span class="icon flaticon-arrow-pointing-to-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Current Openings Section -->
+
+    <!-- Employee Testimonials Section -->
+    <section class="employee-testimonials-section" style="background-color: #f8f9fa;">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Témoignages de nos collaborateurs</h2>
+          <div class="separator"></div>
+        </div>
+
+        <div class="testimonials-carousel owl-carousel owl-theme">
+          <!-- Génération dynamique des témoignages -->
+          {employeeTestimonials.map(testimonial => (
+            <div class="testimonial-block">
+              <div class="inner-box">
+                <div class="image-box">
+                  <img src={testimonial.image} alt={testimonial.name} />
+                </div>
+                <div class="quote-icon">
+                  <span class="icon flaticon-quote"></span>
+                </div>
+                <div class="text">
+                  "{testimonial.quote}"
+                </div>
+                <div class="author-info">
+                  <h4>{testimonial.name}</h4>
+                  <div class="designation">{testimonial.position}, {testimonial.years}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    <!-- End Employee Testimonials Section -->
+
+    <!-- CTA Component -->
+    <CallToActionSection />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Career Intro Section */
+  .career-intro-section {
+    position: relative;
+    padding: 80px 0 40px;
+  }
+
+  /* Career Benefits Section */
+  .career-benefits-section {
+    position: relative;
+    padding: 0 0 80px;
+  }
+
+  .benefits-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .benefits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .benefit-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    transition: all 0.3s ease;
+    border-top: 4px solid #1720d7;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefit-header {
+    margin-bottom: 20px;
+  }
+
+  .benefit-icon {
+    font-size: 36px;
+    margin-right: 10px;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .benefit-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .benefit-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .benefit-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .list-style-two {
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .list-style-two li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #666;
+  }
+
+  .list-style-two li:before {
+    content: "\f00c";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+  }
+
+  .benefit-conclusion {
+    font-style: italic;
+    color: #555;
+    border-left: 3px solid #1720d7;
+    padding-left: 15px;
+    margin-top: auto;
+  }
+  
+  /* Responsive pour les cartes d'avantages */
+  @media only screen and (max-width: 991px) {
+    .benefits-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Application CTA Section */
+  .application-cta-section {
+    position: relative;
+    padding: 0 0 80px;
+  }
+
+  .application-cta-box {
+    position: relative;
+    background-color: #1720d7;
+    border-radius: 8px;
+    padding: 50px;
+    overflow: hidden;
+  }
+
+  .application-cta-box:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    background: url(/images/background/pattern-1.png) right center no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+  }
+
+  .sec-title.light h2 {
+    color: #fff;
+  }
+
+  .sec-title.light .separator:after {
+    background-color: #fff;
+  }
+
+  .application-cta-box .text {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 0;
+  }
+
+  .application-cta-box .btn-box {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* Current Openings Section */
+  .current-openings-section {
+    position: relative;
+    padding: 80px 0;
+  }
+
+  .job-listings {
+    position: relative;
+    margin-top: 50px;
+  }
+
+  .job-block {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .job-block .inner-box {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-left: 5px solid #1720d7;
+  }
+
+  .job-block .inner-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .job-block .content {
+    position: relative;
+    padding: 30px;
+  }
+
+  .job-block h3 {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+  }
+
+  .job-block .job-info {
+    position: relative;
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  .job-block .info-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
+
+  .job-block .info-item .icon {
+    position: relative;
+    font-size: 16px;
+    line-height: 1;
+    margin-right: 8px;
+    color: #1720d7;
+  }
+
+  .job-block .info-item .text {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .job-block .text {
+    position: relative;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .job-block .btn-box {
+    position: relative;
+  }
+
+  .job-block .job-details {
+    position: relative;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  .job-block .job-detail-content {
+    position: relative;
+  }
+
+  .job-block .job-detail-content h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    margin-top: 25px;
+  }
+
+  .job-block .job-detail-content h4:first-child {
+    margin-top: 0;
+  }
+
+  .job-block .job-detail-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .job-block .job-detail-content ul {
+    margin-bottom: 20px;
+  }
+
+  .job-block .job-detail-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #666;
+  }
+
+  .job-block .job-detail-content ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+    font-size: 16px;
+  }
+
+  /* Buttons */
+  .theme-btn.btn-style-three {
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 30px;
+    color: #1720d7;
+    padding: 5px 20px;
+    font-weight: 600;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #1720d7;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .theme-btn.btn-style-three:hover {
+    background-color: #1720d7;
+    color: #ffffff;
+  }
+
+  .job-details-btn {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .job-details-btn .icon {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .job-details-btn:hover .icon {
+    transform: translateX(3px);
+  }
+
+  /* Spontaneous Application */
+  .spontaneous-application {
+    position: relative;
+    margin-top: 50px;
+    padding: 50px 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+  }
+
+  .spontaneous-application .text {
+    max-width: 800px;
+    margin: 0 auto 30px;
+  }
+
+  .text.centered {
+    text-align: center;
+  }
+
+  /* Employee Testimonials Section */
+  .employee-testimonials-section {
+    position: relative;
+    padding: 80px 0;
+  }
+
+  .testimonial-block {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .testimonial-block .inner-box {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .testimonial-block .inner-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .testimonial-block .image-box {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 3px solid #1720d7;
+  }
+
+  .testimonial-block .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonial-block .quote-icon {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+
+  .testimonial-block .quote-icon .icon {
+    font-size: 30px;
+    color: #1720d7;
+    opacity: 0.2;
+  }
+
+  .testimonial-block .text {
+    position: relative;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+    min-height: 115px;
+  }
+
+  .testimonial-block .author-info {
+    position: relative;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+  }
+
+  .testimonial-block .author-info h4 {
+    position: relative;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .testimonial-block .author-info .designation {
+    position: relative;
+    font-size: 14px;
+    color: #1720d7;
+  }
+
+  /* Animation for job details */
+  .job-details {
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  /* Responsive Styles */
+  @media only screen and (max-width: 991px) {
+    .application-cta-box {
+      padding: 40px 30px;
+    }
+
+    .application-cta-box .btn-box {
+      justify-content: flex-start;
+      margin-top: 20px;
+    }
+
+    .testimonial-block .text {
+      min-height: auto;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .application-cta-box {
+      padding: 30px 20px;
+    }
+
+    .application-cta-box:before {
+      display: none;
+    }
+
+    .job-block .content {
+      padding: 20px;
+    }
+
+    .job-block .job-info {
+      flex-direction: column;
+    }
+
+    .job-block .info-item {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    .spontaneous-application {
+      padding: 30px 20px;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Fonction pour initialiser les boutons de détails des offres
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner tous les boutons de détails des offres
+    const jobDetailButtons = document.querySelectorAll('.job-details-btn');
+    
+    // Ajouter un écouteur d'événement à chaque bouton
+    jobDetailButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Récupérer l'ID de l'offre
+        const jobId = this.getAttribute('data-job-id');
+        // Sélectionner la section de détails correspondante
+        const detailsSection = document.getElementById(`details-${jobId}`);
+        
+        // Si la section est cachée, on l'affiche
+        if (detailsSection.style.display === 'none') {
+          // On ferme d'abord toutes les sections ouvertes
+          document.querySelectorAll('.job-details').forEach(section => {
+            section.style.display = 'none';
+          });
+          
+          // Réinitialiser le texte de tous les boutons
+          document.querySelectorAll('.job-details-btn').forEach(btn => {
+            btn.innerHTML = 'Voir détails <span class="icon flaticon-arrow-pointing-to-right"></span>';
+          });
+          
+          // Puis on ouvre celle qu'on veut voir
+          detailsSection.style.display = 'block';
+          
+          // On change le texte du bouton
+          this.innerHTML = 'Masquer les détails <span class="icon flaticon-arrow-pointing-to-right"></span>';
+          
+          // On scroll jusqu'à la section de détails
+          setTimeout(() => {
+            detailsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        } else {
+          // Si la section est visible, on la cache
+          detailsSection.style.display = 'none';
+          
+          // On remet le texte original du bouton
+          this.innerHTML = 'Voir détails <span class="icon flaticon-arrow-pointing-to-right"></span>';
+        }
+      });
+    });
+    
+    // Initialisation du carousel pour les témoignages (si Owl Carousel est disponible)
+    if (typeof jQuery !== 'undefined' && typeof jQuery.fn.owlCarousel !== 'undefined') {
+      jQuery('.testimonials-carousel').owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: true,
+        smartSpeed: 500,
+        autoplay: true,
+        navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1024: {
+            items: 3
+          }
+        }
+      });
+    }
+  });
+</script>

@@ -1,112 +1,117 @@
 ---
-import { FaCertificate, FaDraftingCompass, FaTools ,FaHandHoldingWater } from "react-icons/fa";
+// QualitySection.astro - Version internationalisée
+import { FaCertificate, FaDraftingCompass, FaTools, FaHandHoldingWater } from "react-icons/fa";
 import { GrAchievement } from "react-icons/gr";
 import { GiBoltDrop } from "react-icons/gi";
- const highlights = [
+import { getTranslations } from '../../i18n/translations.js';
 
+// Récupération de la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith('/fr');
+const lang = isfrench ? 'fr' : 'en';
+const t = getTranslations(lang);
+
+// Points forts avec traductions
+const highlights = [
   {
     id: 1,
-    title: "Atelier à la pointe de la technologie",
+    title: t.quality.highlights[0].title,
     icon: "FaTools", 
-    link: "#",
+    link: "quality",
   },
   {
     id: 2,
-    title: "Expertise en eau, énergie et industrie",
+    title: t.quality.highlights[1].title,
     icon: "FaHandHoldingWater", 
-    link: "#",
+    link: "quality",
   },
   {
     id: 3,
-    title: "Clients publics et partenaires internationaux",
+    title: t.quality.highlights[2].title,
     icon: "GiBoltDrop", 
-    link: "#",
+    link: "quality",
   },
-   {
+  {
     id: 4,
-    title: "Ingénierie certifiée",
-    icon: 'FaDraftingCompass' , 
-    link: "#",
+    title: t.quality.highlights[3].title,
+    icon: 'FaDraftingCompass', 
+    link: "quality",
   },
   {
     id: 5,
-    title: "Réalisation 100 % intégrée",
+    title: t.quality.highlights[4].title,
     icon: "GrAchievement",
-    link: "#",
+    link: "quality",
   },
-  
 ];
-
-
 ---
- 
- 
- 
- <section class="highlights-section">
-      <div
-        class="image-layer"
-        style="background-image:url(/images/background/point-fort.jpg)"
-      >
-      </div>
-      <div class="auto-container">
-        <div class="row clearfix">
-          <!--Content Column-->
-          <div class="content-column col-md-6 col-sm-12 col-xs-12">
-            <div class="inner-column">
-              <div class="sec-title">
-                <h2>Nos Points Forts</h2>
-                <div class="separator centered"></div>
-              </div>
 
-              <div class="row clearfix">
-                {/* Boucle sur le tableau des points forts */}
-                {
-                  highlights.map((item) => (
-                    <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
-                      <div class="hightlight-inner">
-                         <div class="icon-box">
-                          {item.icon && (
-                          <span class="icon">
-                            {item.icon === 'FaDraftingCompass' && <FaDraftingCompass size={40} color="#007bff" />}
-                            {item.icon === 'GrAchievement' && <GrAchievement size={40} color="#007bff" />}
-                            {item.icon === 'FaTools' && <FaTools size={40} color="#007bff" />}
-                            {item.icon === 'FaHandHoldingWater' && <FaHandHoldingWater size={40} color="#007bff" />}
-                            {item.icon === 'GiBoltDrop' && <GiBoltDrop size={40} color="#007bff" />}
-                           </span>
-                    )}
-                          </div>
-                        <h3>{item.title}</h3>
-                        <a href={item.link} class="overlay-link" />
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
+<section class="highlights-section">
+  <div
+    id="rejoignez-equipe"
+    class="image-layer"
+    style="background-image:url(/images/background/point-fort.jpg)"
+  >
+  </div>
+  <div class="auto-container">
+    <div class="row clearfix">
+      <!--Content Column-->
+      <div class="content-column col-md-6 col-sm-12 col-xs-12">
+        <div class="inner-column">
+          <div class="sec-title">
+            <h2>{t.quality.title}</h2>
+            <div class="separator centered"></div>
           </div>
 
-          <!--Services Column-->
-          <div class="services-column col-md-6 col-sm-12 col-xs-12">
-            <div class="inner-column">
-              <div class="upper-box">
-                <div class="icon flaticon-target"></div>
-                <h2>Pourquoi choisir MACOBATE ?</h2>
-              </div>
-              <div class="text">
-                <br>
-                  <br>
-               L’ingénierie marocaine a, au fil des siècles, donné naissance à des merveilles. De la maîtrise hydraulique de la fontaine de la Cour des Lions à l’ingéniosité architecturale de la Koutoubia ou de la Mosquée Hassan II, le Maroc a su allier l’art à la structure.
-              </div>
-              <a href="/quality" class="services"
-                >Voir Références & Certifications<span
-                  class="icon flaticon-arrow-pointing-to-right"></span></a
-              >
-            </div>
+          <div class="row clearfix">
+            {/* Boucle sur le tableau des points forts */}
+            {
+              highlights.map((item) => (
+                <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
+                  <div class="hightlight-inner">
+                    <div class="icon-box">
+                      {item.icon && (
+                        <span class="icon">
+                          {item.icon === 'FaDraftingCompass' && <FaDraftingCompass size={40} color="#007bff" />}
+                          {item.icon === 'GrAchievement' && <GrAchievement size={40} color="#007bff" />}
+                          {item.icon === 'FaTools' && <FaTools size={40} color="#007bff" />}
+                          {item.icon === 'FaHandHoldingWater' && <FaHandHoldingWater size={40} color="#007bff" />}
+                          {item.icon === 'GiBoltDrop' && <GiBoltDrop size={40} color="#007bff" />}
+                        </span>
+                      )}
+                    </div>
+                    <h3>{item.title}</h3>
+                    <a href={item.link} class="overlay-link" />
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
-    </section>
-    <style>
+
+      <!--Services Column-->
+      <div class="services-column col-md-6 col-sm-12 col-xs-12">
+        <div class="inner-column">
+          <div class="upper-box">
+            <div class="icon flaticon-target"></div>
+            <h2>{t.quality.subtitle}</h2>
+          </div>
+          <div class="text">
+            <br>
+            <br>
+            {t.quality.description}
+          </div>
+          <a href="quality" class="services">
+            {t.quality.viewReferences}<span class="icon flaticon-arrow-pointing-to-right"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
 .icon-box {
   width: 56px;
   height: 56px;
@@ -130,27 +135,4 @@ import { GiBoltDrop } from "react-icons/gi";
   padding: 16px;
   background-color: #ffffff;
   border: 1px solid #f1f1f1;
-  border-radius: 6px;
-  transition: box-shadow 0.3s ease;
-}
-
-.hightlight-inner:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.hightlight-inner h3 {
-  font-size: 16px;
-  font-weight: 500;
-  color: #212529; /* Gris noir propre */
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-
-.overlay-link {
-  display: block;
-  position: absolute;
-  inset: 0;
-}
-
-
- </style>
+  border-radius:

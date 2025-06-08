@@ -1,0 +1,447 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import AppointmentForm from "../../../components/AppointmentForm.astro";
+import CallToActionSection from "../../../components/CallToActionSection.astro";
+import { PiEngineBold } from "react-icons/pi";
+import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
+import { FaAnchor, FaShip, FaClock ,FaHandHoldingWater , FaPrescriptionBottle ,FaIndustry ,FaDraftingCompass } from 'react-icons/fa';
+import { GiPulleyHook,GiWaterTank , GiScubaTanks ,GiValve ,GiBarrel,GiAirtightHatch  } from "react-icons/gi";
+---
+
+<BaseLayout title="TANKO - Vannes et Équipements Hydromécaniques | MACOBATE">
+  <Header />
+  <main>
+    <!-- Page Title -->
+    <section class="page-title" style="background-image:url(/images/background/6.jpg);
+    filter: brightness(1.5)">
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/#our-brands">Nos Marques</a></li>
+          <li>TANKO</li>
+        </ul>
+        <h1>TANKO</h1>
+      </div>
+    </section>
+
+    <!-- Brand Detail Section -->
+    <section class="market-single-section brand-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!-- Main Content -->
+          <div class="content-column col-lg-8 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <div class="brand-header">
+                <div class="brand-logo">
+                  <img src="/images/gallery/tanko-logo.png" alt="Logo de la marque TANKO" />
+                </div>
+                <div class="brand-intro">
+                  <h2>Conçus pour contenir, construits pour durer.</h2>
+                  <div class="separator"></div>
+                </div>
+              </div>
+
+              <div class="text">
+                <p class="lead">
+                  <strong>TANKO</strong> est la marque spécialisée de MACOBATE pour la conception,
+                  la fabrication et l'installation de réservoirs sous pression et de cuves en acier
+                  de haute performance.
+                </p>
+
+                <h3>Notre expertise & capacités</h3>
+                <ul class="list-style-two">
+                  <li>Conception sur mesure conforme aux normes ASME, API et ISO</li>
+                  <li>Production interne avec procédures certifiées</li>
+                  <li>Acier au carbone, inox, alliages spéciaux</li>
+                  <li>Essais hydrostatiques, radiographiques et ultrasonores</li>
+                  <li>Revêtements anti-corrosion adaptés</li>
+                </ul>
+
+                <h3>Nos produits</h3>
+                <div class="products-grid">
+                  <div class="product-item">
+                    <div class="product-icon"><span class="icon "><GiBarrel/></span></div>
+                    <h4>Réservoirs sous pression</h4>
+                    <ul class="list-style-one">
+                      <li>Récepteurs d'air, séparateurs, réacteurs</li>
+                      <li>Conception ASME Section VIII</li>
+                      <li>Contrôle température & pression</li>
+                    </ul>
+                  </div>
+
+                  <div class="product-item">
+                    <div class="product-icon"><span class="icon "><FaPrescriptionBottle /></span></div>
+                    <h4>Cuves de stockage</h4>
+                    <ul class="list-style-one">
+                      <li>Cuves aériennes et enterrées</li>
+                      <li>Stockage eau, produits chimiques, carburants</li>
+                      <li>Robustesse et grande capacité</li>
+                    </ul>
+                  </div>
+
+                  <div class="product-item">
+                    <div class="product-icon"><span class="icon "><GiAirtightHatch /></span></div>
+                    <h4>Cuves de process</h4>
+                    <ul class="list-style-one">
+                      <li>Agitation, mélange, maintien thermique</li>
+                      <li>Conçues pour l’industrie</li>
+                      <li>Acier inoxydable</li>
+                    </ul>
+                  </div>
+
+                  <div class="product-item">
+                    <div class="product-icon"><span class="icon "><FaDraftingCompass/></span></div>
+                    <h4>Fabrications sur mesure</h4>
+                    <ul class="list-style-one">
+                      <li>Solutions spécifiques</li>
+                      <li>Adaptées aux environnements contraignants</li>
+                      <li>Projets clés en main</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3>Applications</h3>
+                <ul class="list-style-two">
+                  <li>Pétrole et gaz</li>
+                  <li>Chimie & matériaux dangereux</li>
+                  <li>Traitement des eaux</li>
+                  <li>Énergies & renouvelables</li>
+                </ul>
+
+                <h3>Certification et qualité</h3>
+                <p>
+                  Conformes aux normes ASME VIII, API 650, ISO 9001 – assurant sécurité et fiabilité.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="sidebar-column col-lg-4 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <div class="sidebar-widget">
+                <h3>Nos autres marques</h3>
+                <ul class="brand-links">
+                   <li><a href="/our-brands/robex"><span ><GiScubaTanks size={20} color="#007bff"/></span> ROBEX</a></li>
+                  <li><a href="/our-brands/cranex"><span><GiPulleyHook size={20} color="#007bff"/></span> CRANEX</a></li>
+                  <li><a href="/our-brands/mws"><span><FaHandHoldingWater size={20} color="#007bff"/></span> MWS</a></li>
+                 
+                </ul>
+              </div>
+
+              <div class="sidebar-widget">
+                <div class="project-widget">
+                  <div class="widget-content">
+                    <h3>Besoin d’un devis ?</h3>
+                    <p>Notre équipe commerciale vous accompagne sur vos projets hydromécaniques.</p>
+                    <a href="../formDevis" class="theme-btn btn-style-one">
+                      Demander un devis <span class="icon flaticon-arrow-pointing-to-right"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sidebar-widget">
+                <div class="contact-info">
+                  <h3>Contact direct</h3>
+                  <ul>
+                    <li><span class="icon flaticon-telephone"></span> +212 5 37 65 96 46</li>
+                    <li><span class="icon flaticon-envelope-1"></span> mws@macobate.com</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CallToActionSection />
+    <AppointmentForm />
+  </main>
+  <Footer />
+</BaseLayout>
+
+
+<style>
+  brand-links li a span {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+  .brand-links li.active a {
+  font-weight: bold;
+  color: #1720d7;
+}
+
+.brand-links li.active a .icon {
+  color: #1720d7;
+}
+  /* Styles spécifiques pour la page de marque */
+  .brand-section {
+    padding: 80px 0;
+  }
+
+  .brand-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .brand-logo {
+    flex: 0 0 200px;
+    margin-right: 30px;
+  }
+
+  .brand-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .brand-intro {
+    flex: 1;
+  }
+
+  .brand-intro h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #1720d7;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+  }
+
+  .product-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .product-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+  }
+
+  .product-icon {
+    margin-bottom: 20px;
+  }
+
+  .product-icon .icon {
+    font-size: 48px;
+    color: #1720d7;
+  }
+
+  .product-item h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .list-style-one li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .list-style-one li:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+  }
+
+  .list-style-two li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+
+  .list-style-two li:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+  }
+
+  .brand-links li,
+  .download-links li {
+    position: relative;
+    padding: 12px 0;
+    padding-left: 25px;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .brand-links li:last-child,
+  .download-links li:last-child {
+    border-bottom: none;
+  }
+
+  .brand-links li a,
+  .download-links li a {
+    position: relative;
+    display: block;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .brand-links li a:hover,
+  .download-links li a:hover {
+    color: #1720d7;
+  }
+
+  .brand-links li a span.icon {
+    margin-right: 10px;
+    color: #1720d7;
+  }
+
+  .download-links li a i {
+    margin-right: 10px;
+    color: #1720d7;
+  }
+
+  .project-widget {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .project-widget .widget-content {
+    padding: 30px;
+  }
+
+  .project-widget h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .project-widget p {
+    margin-bottom: 20px;
+  }
+
+  .contact-info ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .contact-info ul li span.icon {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    color: #1720d7;
+  }
+
+  .gallery-item {
+    margin-bottom: 30px;
+  }
+
+  .gallery-item .inner-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .gallery-item .image {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* ou 1 / 1 pour carré */
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    background-color: #ddd;
+  }
+
+  .gallery-item .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* remplissage sans déformation */
+    object-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .gallery-item .overlay-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(23, 32, 215, 0.8);
+    transition: all 0.3s ease;
+  }
+
+  .gallery-item:hover .overlay-box {
+    opacity: 1;
+  }
+
+  .gallery-item .overlay-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+    vertical-align: middle;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .gallery-item .content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .gallery-item .content h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  @media only screen and (max-width: 991px) {
+    .brand-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .brand-logo {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .brand-links li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-links li a span {
+  display: flex;
+  align-items: center;
+   margin-right: 15px; /* ajuste la valeur à ton besoin */
+}
+</style>

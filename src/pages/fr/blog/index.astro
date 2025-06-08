@@ -1,0 +1,297 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import CallToActionSection from "../../../components/CallToActionSection.astro";
+import { blogArticles, blogUtils } from "../../../data/blogFr.js";
+import { FaCalendarAlt, FaUser, FaTag, FaSearch } from "react-icons/fa";
+
+// Récupération des paramètres de l'URL
+const url = new URL(Astro.request.url);
+const currentPage = parseInt(url.searchParams.get("page") || "1");
+const selectedCategory = url.searchParams.get("category") || "";
+const searchQuery = url.searchParams.get("search") || "";
+
+// Configuration de la pagination
+const postsPerPage = 6;
+
+// Obtenir les articles paginés avec les filtres
+const { articles, totalPages, hasNextPage, hasPrevPage, totalArticles } =
+  blogUtils.getPaginatedArticles(currentPage, postsPerPage, {
+    category: selectedCategory,
+    search: searchQuery,
+  });
+
+// Obtenir les catégories et les articles récents pour la sidebar
+const categories = blogUtils.getUniqueCategories();
+const articleCountByCategory = blogUtils.getArticleCountByCategory();
+const recentArticles = blogUtils.getRecentArticles(3);
+const tags = blogUtils.getUniqueTags();
+---
+
+<BaseLayout
+  title="Blog & Actualités | MACOBATE"
+  description="Découvrez les dernières actualités, projets et innovations de MACOBATE dans le domaine industriel"
+  pageType="blog"
+>
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/7.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Blog</li>
+        </ul>
+        <h1>Blog & Actualités</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Blog Section -->
+    <section class="blog-page-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!-- Content Side -->
+          <div class="content-side col-lg-8 col-md-12 col-sm-12">
+            <div class="blog-classic">
+              <!-- Barre de recherche -->
+              {
+                searchQuery && (
+                  <div class="search-results-info">
+                    <h3>Résultats de recherche pour : "{searchQuery}"</h3>
+                    <p>
+                      {totalArticles} article{totalArticles > 1 ? "s" : ""}{" "}
+                      trouvé{totalArticles > 1 ? "s" : ""}
+                    </p>
+                    <a href="/blog" class="clear-search">
+                      Effacer la recherche
+                    </a>
+                  </div>
+                )
+              }
+
+              <!-- Articles -->
+              {
+                articles.length > 0 ? (
+                  articles.map((article) => (
+                    <div class="news-block-two">
+                      <div class="inner-box">
+                        <div class="image">
+                          <a href={`/blog/detail?id=${article.id}`}>
+                            <img src={article.image} alt={article.title} />
+                          </a>
+                          <div class="post-date">
+                            {article.date.split(" ")[0]}
+                            <span>{article.date.split(" ")[1]}</span>
+                          </div>
+                        </div>
+                        <div class="lower-content">
+                          <div class="post-meta">
+                            <ul>
+                              <li>
+                                <span class="icon">
+                                  <FaUser />
+                                </span>
+                                {article.author}
+                              </li>
+                              <li>
+                                <span class="icon">
+                                  <FaTag />
+                                </span>
+                                {article.category}
+                              </li>
+                            </ul>
+                          </div>
+                          <h3>
+                            <a href={`/blog/detail?id=${article.id}`}>
+                              {article.title}
+                            </a>
+                          </h3>
+                          <div class="text">{article.excerpt}</div>
+                          <a
+                            href={`/blog/detail?id=${article.id}`}
+                            class="read-more"
+                          >
+                            Lire la suite{" "}
+                            <span class="icon flaticon-arrow-pointing-to-right" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div class="no-results">
+                    <h3>Aucun article trouvé</h3>
+                    <p>
+                      Désolé, aucun article ne correspond à votre recherche.
+                    </p>
+                    <a href="/blog" class="theme-btn btn-style-one">
+                      Voir tous les articles
+                    </a>
+                  </div>
+                )
+              }
+
+              <!-- Pagination -->
+              {
+                totalPages > 1 && (
+                  <div class="styled-pagination">
+                    <ul class="clearfix">
+                      {hasPrevPage && (
+                        <li class="prev">
+                          <a
+                            href={`/blog?page=${currentPage - 1}${selectedCategory ? `&category=${selectedCategory}` : ""}${searchQuery ? `&search=${searchQuery}` : ""}`}
+                          >
+                            <span class="fa fa-angle-left" /> Précédent
+                          </a>
+                        </li>
+                      )}
+
+                      {[...Array(totalPages)].map((_, index) => {
+                        const pageNum = index + 1;
+                        return (
+                          <li class={pageNum === currentPage ? "active" : ""}>
+                            <a
+                              href={`/blog?page=${pageNum}${selectedCategory ? `&category=${selectedCategory}` : ""}${searchQuery ? `&search=${searchQuery}` : ""}`}
+                            >
+                              {pageNum}
+                            </a>
+                          </li>
+                        );
+                      })}
+
+                      {hasNextPage && (
+                        <li class="next">
+                          <a
+                            href={`/blog?page=${currentPage + 1}${selectedCategory ? `&category=${selectedCategory}` : ""}${searchQuery ? `&search=${searchQuery}` : ""}`}
+                          >
+                            Suivant <span class="fa fa-angle-right" />
+                          </a>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Sidebar Side -->
+          <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+            <aside class="sidebar default-sidebar">
+              <!-- Search -->
+              <div class="sidebar-widget search-box">
+                <form method="get" action="/blog">
+                  <div class="form-group">
+                    <input
+                      type="search"
+                      name="search"
+                      placeholder="Rechercher..."
+                      value={searchQuery}
+                    />
+                    <button type="submit"
+                      ><span class="icon fa fa-search"></span></button
+                    >
+                  </div>
+                </form>
+              </div>
+
+              <!-- Categories Widget -->
+             
+
+              <!-- Popular Posts -->
+              <div class="sidebar-widget popular-posts">
+                <div class="sidebar-title">
+                  <h3>Articles Récents</h3>
+                  <div class="separator"></div>
+                </div>
+                {
+                  recentArticles.map((article) => (
+                    <article class="post">
+                      <figure class="post-thumb">
+                        <a href={`/blog/detail?id=${article.id}`}>
+                          <img src={article.image} alt={article.title} />
+                        </a>
+                        <div class="overlay">
+                          <a
+                            href={`/blog/detail?id=${article.id}`}
+                            class="link"
+                          >
+                            <span class="icon fa fa-link" />
+                          </a>
+                        </div>
+                      </figure>
+                      <div class="text">
+                        <a href={`/blog/detail?id=${article.id}`}>
+                          {article.title}
+                        </a>
+                      </div>
+                      <div class="post-info">
+                        <span class="icon">
+                          <FaCalendarAlt />
+                        </span>{" "}
+                        {article.date}
+                      </div>
+                    </article>
+                  ))
+                }
+              </div>
+
+              <!-- Popular Tags -->
+              <!-- <div class="sidebar-widget popular-tags">
+                <div class="sidebar-title">
+                  <h3>Tags Populaires</h3>
+                  <div class="separator"></div>
+                </div>
+                <div class="tags">
+                  {tags.map((tag) => <a href={`/blog?search=${tag}`}>{tag}</a>)}
+                </div>
+              </div> -->
+
+              <!-- Newsletter Widget -->
+              <!-- <div class="sidebar-widget newsletter-widget">
+                <div class="sidebar-title">
+                  <h3>Newsletter</h3>
+                  <div class="separator"></div>
+                </div>
+                <div class="text">
+                  Inscrivez-vous pour recevoir nos dernières actualités
+                </div>
+                <form method="post" action="#">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Votre email..."
+                      required
+                    />
+                    <button type="submit" class="theme-btn btn-style-one">
+                      S'inscrire <span
+                        class="icon flaticon-arrow-pointing-to-right"></span>
+                    </button>
+                  </div>
+                </form>
+              </div> -->
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Blog Section -->
+
+    <!-- CTA Section -->
+    <CallToActionSection />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<link rel="stylesheet" href="../../../styles/blogs.css" />
+
+<style>
+  /* Import des styles du blog */
+  @import url("../../../styles/blogs.css");
+</style>

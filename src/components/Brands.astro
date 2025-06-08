@@ -1,35 +1,40 @@
 ---
 import { FaAnchor, FaShip, FaClock ,FaHandHoldingWater , FaPrescriptionBottle ,FaIndustry  } from 'react-icons/fa';
 import { GiPulleyHook,GiWaterTank , GiScubaTanks  } from "react-icons/gi";
+import { getTranslations } from '../../i18n/translations.js';
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fr') ? 'fr' : 'en';
+const t = getTranslations(lang);
 // Services avec des icônes sous forme de clés
 export const services = [
   {
     image: "/images/gallery/robex-logo.png",
     icon: 'GiScubaTanks ',  // Stocke seulement la clé du composant
     title: "ROBEX",
-    text: "Vannes et Équipements Hydromécaniques L'étanchéité au service de l'eau et de l'industrie.Conception et fabrication de vannes industrielles, vannes murales, batardeaux, pour barrages, réseaux urbains et industrie.",
-    link: "/our-brands/robex",
+    text: "des-robex" ,
+    link: "our-brands/robex",
   },
   {
     image: "/images/gallery/cranex-logo.png",
     icon: 'GiPulleyHook ', // Icône différente FaAnchor
     title: "CRANEX",
-    text: "Solutions de Levage Intelligentes Élevez votre industrie. Grues, palans et systèmes de manutention pour l’industrie lourde, la logistique et l’énergie.",
-    link: "/our-brands/cranex",
+    text: "des-cranex" ,
+    link: "our-brands/cranex",
   },
   {
     image: "/images/gallery/tanko-logo.png",
     icon: 'GiWaterTank', // Icône différente
     title: "TANKO",
-    text: "Réservoirs et Appareils à Pression de Précision Conçus pour contenir, construits pour durer. Réservoirs sous pression, cuves de process et systèmes de stockage pour les milieux exige-ants.",
-    link: "/our-brands/tanko",
+    text: "des-tanko" ,
+    link: "our-brands/tanko",
   },
   {
     image: "/images/gallery/mws-logo.jpg",
     icon: 'FaHandHoldingWater', // Pas d'icône pour 
     title: "MWS",
-    text: "Stations Mobiles de Traitement d’Eau De l’eau, là où vous en avez besoin. Stations mobiles et modulaires pour eau potable, dessalement, assainissement, humanitaire ou rural.",
-    link: "/our-brands/mws",
+    text: "des-mws" ,
+    link: "our-brands/mws",
   },
 ];
 
@@ -41,7 +46,7 @@ export const safeServices = services || [];
   class="services-section"
   style="background-image:url(/images/background/1.jpg); position: relative; z-index: 20; margin-top: -100px;"
 >
-  <div class="auto-container">
+  <div  class="auto-container">
     <div class="inner-container">
       <div  id="our-brands"  class="row clearfix">
         {safeServices.map((service) => (
@@ -87,7 +92,15 @@ export const safeServices = services || [];
                     )}
                   </div>
                   <h4><a href={service.link}>{service.title}</a></h4>
-                  <p class="text">{service.text}</p>
+                  <p class="text">
+  {
+    service.text === 'des-robex' ? t.brands.robex.description :
+    service.text === 'des-cranex' ? t.brands.cranex.description :
+    service.text === 'des-tanko' ? t.brands.tanko.description :
+    service.text === 'des-mws' ? t.brands.mws.description :
+    service.text
+  }
+</p>
                 </div>
               </div>
             </div>

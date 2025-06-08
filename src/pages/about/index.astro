@@ -1,0 +1,346 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+import QualitySection from "src/components/QualitySection.astro";
+import HistorySection from "src/components/HistorySection.astro";
+
+const teamMembers = [
+  {
+    id: 1,
+    name: "Achraf Tounsi",
+    position: "General Manager",
+    description:
+      "Over 15 years of experience in managing industrial companies and complex project management.",
+    image: "/images/resource/team-1.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 2,
+    name: "Saad Berrada",
+    position: "Technical Director",
+    description:
+      "Expert in hydromechanical equipment design and steel structures with solid engineering background.",
+    image: "/images/resource/team-2.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 3,
+    name: "Mohsin El Hatimi",
+    position: "Project Manager",
+    description:
+      "Specialist in complex industrial project management with expertise in multidisciplinary team coordination.",
+    image: "/images/resource/team-3.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 4,
+    name: "Latifa Bennani",
+    position: "Quality Manager",
+    description:
+      "Expert in quality management systems and ISO certification with over 10 years of experience in the industrial sector.",
+    image: "/images/resource/team-4.jpg",
+    socialLinks: {
+      facebook: "#",
+      linkedin: "#",
+    },
+  },
+];
+---
+
+<BaseLayout title="About Us - Macobate" description="About Macobate, leader in steel construction in Morocco" pageType="About">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg);
+       filter: brightness(1.5);"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li>About Us</li>
+        </ul>
+        <h1>About Us</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!--Company Section-->
+    <section class="company-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Content Column-->
+          <div class="content-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Management Message</h2>
+                <div class="separator centered"></div>
+              </div>
+              <h3>Who We Are</h3>
+              <div class="bold-text">
+                MACOBATE is a leading Moroccan company specialized in industrial engineering, metal construction, and complex turnkey projects.
+              </div>
+              <div class="text">
+                <p>
+                  Founded over 40 years ago by Ing. M'hamed TOUNSI, a pioneer in hydraulic and water infrastructure, MACOBATE has evolved into a multidisciplinary group with a strong footprint across Morocco and West Africa.
+                </p>
+                <p>
+                  From pressure vessels to dam gates, from structural steel to mobile water treatment systems — we design, manufacture, and integrate solutions that serve public and industrial needs with precision.
+                </p>
+                <h3>Our Mission</h3>
+                <p>
+                  To deliver integrated, certified, and high-performance engineering solutions that shape the infrastructures of tomorrow across Africa, with a commitment to quality, sustainability, and local impact.
+                </p>
+                <h3>Our Vision</h3>
+                <p>
+                  To become Africa's reference in multidisciplinary industrial engineering, by combining technical excellence, smart manufacturing, and a deep-rooted culture of innovation and responsibility.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!--Image Column-->
+          <div class="image-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="image">
+                <img src="/images/resource/image-123.jpg" alt="MACOBATE - Facilities" />
+              </div>
+              <div class="carousel-box">
+                <div class="single-item-carousel owl-carousel owl-box">
+                  <div class="testimonial-block-six">
+                    <div class="inner">
+                      <div class="quote-icon">
+                        <span class="icon flaticon-left-quote-sketch"></span>
+                      </div>
+                      <div class="text">
+                        Our commitment to technical excellence and continuous innovation allows us to maintain our leadership position in our sector.
+                      </div>
+                      <div class="author-box">
+                        <div class="author-inner">
+                          <div class="image">
+                            <img src="/images/resource/" alt="Chief Executive Officer" />
+                          </div>
+                          <h3>Rachida Tounsi</h3>
+                          <div class="designation">Chief Executive Officer</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="testimonial-block-six">
+                    <div class="inner">
+                      <div class="quote-icon">
+                        <span class="icon flaticon-left-quote-sketch"></span>
+                      </div>
+                      <div class="text">
+                        We continue our founder's vision by combining traditional expertise with cutting-edge technologies to meet tomorrow's industrial challenges.
+                      </div>
+                      <div class="author-box">
+                        <div class="author-inner">
+                          <div class="image">
+                            <img src="/images/resource/author-6.jpeg" alt="General Manager" />
+                          </div>
+                          <h3>Achraf Tounsi</h3>
+                          <div class="designation">General Manager</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="testimonial-block-six">
+                    <div class="inner">
+                      <div class="quote-icon">
+                        <span class="icon flaticon-left-quote-sketch"></span>
+                      </div>
+                      <div class="text">
+                        Constant adaptation and investment in our human resources are the pillars of our success for over three decades.
+                      </div>
+                      <div class="author-box">
+                        <div class="author-inner">
+                          <div class="image">
+                            <img src="/images/resource/" alt="Administrative Director" />
+                          </div>
+                          <h3>Houda Tounsi</h3>
+                          <div class="designation">Administrative Director</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Achieved Section-->
+    <section
+      class="achived-section"
+      style="background-image:url(/images/background/11.jpg)"
+    >
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Title Column-->
+          <div class="title-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title light">
+                <h2>Our Achievements</h2>
+                <div class="separator"></div>
+              </div>
+              <div class="title">
+                Strength and growth come only from continuous effort.
+              </div>
+              <ul class="achived-list">
+                <li class="icon flaticon-engineer"></li>
+                <li class="number">50+</li>
+                <li><a href="#">Engineers and Technicians</a></li>
+              </ul>
+              <div class="text">
+                Since our establishment in 1984, MACOBATE has significantly contributed to the development of Morocco's hydraulic and industrial infrastructure. Our expertise in designing and manufacturing hydromechanical equipment for dams and water treatment plants has made us an essential player in the sector.
+              </div>
+            </div>
+          </div>
+          <!--Graph Column-->
+          <div class="graph-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <!--Progress Levels-->
+              <div class="progress-levels">
+                <div class="row clearfix">
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="90">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="95">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Production</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="45">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="45">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Turnkey Projects</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="85">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="85">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">National Market</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="15">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="15">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">International Market</div>
+                    </div>
+                  </div>
+
+                  <!--Skill Box-->
+                  <div class="progress-box wow">
+                    <div class="inner count-box">
+                      <div class="bar">
+                        <div class="bar-innner">
+                          <div class="bar-fill" data-percent="90">
+                            <div class="skill-percent">
+                              <span
+                                class="count-text"
+                                data-speed="3000"
+                                data-stop="100">0</span
+                              >
+                              <span class="percent">%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">Client Satisfaction</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Achieved Section-->
+    <!--End Company Section-->
+
+    </div>
+    <HistorySection/>
+    <CallToActionSection/>
+    <!-- End of Quote box -->
+  </main>
+  <Footer />
+
+  <script>
+    // You can include client-side scripts here
+    // Or better yet, you can move them to the BaseLayout component
+  </script>
+</BaseLayout>

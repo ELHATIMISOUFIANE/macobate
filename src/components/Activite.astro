@@ -1,91 +1,82 @@
 ---
-import {FaHandHoldingWater} from 'react-icons/fa';
-import { GiWaterRecycling, GiFactory , GiBarrel , GiScubaTanks ,GiElectricalResistance } from 'react-icons/gi';
-import { FaIndustry } from 'react-icons/fa';
-import { TbBuildingWarehouse } from "react-icons/tb";
 
-// MarketSection.astro (Version française adaptée à MACOBATE)
-// Tableau des secteurs de marché directement dans le composant
-export const homeMarketSectors = [
+import { FaHandHoldingWater } from "react-icons/fa";
+import {
+  GiWaterRecycling,
+  GiFactory,
+  GiBarrel,
+  GiScubaTanks,
+  GiElectricalResistance,
+} from "react-icons/gi";
+import { FaIndustry } from "react-icons/fa";
+import { TbBuildingWarehouse } from "react-icons/tb";
+import { getTranslations } from "../../i18n/translations.js";
+
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fr') ? 'fr' : 'en';
+const t = getTranslations(lang);
+
+
+// Données statiques (icônes + URLs)
+const staticSectors = [
   {
-    id: 1,
-    title: "Charpente",
-    subtitle: "Métallique",
-    description:
-      "Chez MACOBATE, nous concevons et réalisons des structures métalliques alliant excellence d’ingénierie, précision de fabrication et expertise de montage sur site.",
-    icon: 'TbBuildingWarehouse',
-    url: "/services/detailServices#charpente-metallique",
+    icon: "TbBuildingWarehouse",
+    url: "services/detailServices#charpente-metallique",
   },
   {
-    id: 2,
-    title: "Réservoirs",
-    subtitle: "de Stockage",
-    description:
-      "Chez MACOBATE, nous concevons et fabriquons tous types de réservoirs de stockage en aci-er, selon les normes internationales telles que API 650, API 620 ... ",
     icon: "GiBarrel",
-    url: "/services/detailServices#appareils-pression",
+    url: "services/detailServices#appareils-pression",
   },
   {
-    id: 3,
-    title: "Équipements",
-    subtitle: "Hydromécaniques",
-    description:
-      "Chez MACOBATE, l’équipement hydromécanique est bien plus qu’un savoir-faire : c’est une passion transmise de génération en génération.",
     icon: "GiScubaTanks",
-    url: "/services/detailServices#equipements-hydromecaniques",
+    url: "services/detailServices#equipements-hydromecaniques",
   },
   {
-    id: 4,
-    title: "Traitement",
-    subtitle: "des Eaux",
-    description:
-      "Fondée par Ing. M'hamed TOUNSI, expert reconnu dans le domaine du traitement de l’eau, MACOBATE a démarré son parcours industriel en participant à de grands...",
     icon: "GiWaterRecycling",
-    url: "/services/detailServices#traitement-eau",
+    url: "services/detailServices#traitement-eau",
   },
   {
-    id: 5,
-    title: "Électricité & ",
-    subtitle: "Automatismes",
-    description:
-      "Chez MACOBATE, l’électricité et l’automatisme ne sont pas de simples disciplines secondaires ce sont des leviers stratégiques de performance.",
     icon: "GiElectricalResistance",
-    url: "/services/detailServices#electricite-automatismes",
+    url: "services/detailServices#electricite-automatismes",
   },
 ];
 
-// Vérification supplémentaire pour s'assurer que nous avons un tableau
-const safeMarketSectors = Array.isArray(homeMarketSectors)
-  ? homeMarketSectors
-  : [];
+// Fusion des traductions et des icônes
+const sectorsData =
+  t.marketSectors?.sectors?.map((sector,index) => ({
+    ...sector,
+    ...staticSectors[index],
+  })) || [];
 ---
 
-<!--Section Secteurs de Marché-->
+<!-- Section Secteurs de Marché -->
 <section
   class="market-section"
-  style="background-image:url(images/background/2.jpg)"
+  style="background-image:url(/images/background/2.jpg)"
 >
-  <div  id="activite" class="auto-container">
+  <div id="activite" class="auto-container">
     <div class="row clearfix">
-      <!--Colonne-->
+      <!-- Colonne de titre -->
       <div class="title-column m-block col-lg-4 col-md-12 col-sm-12 col-xs-12">
         <div class="inner-column">
           <div class="sec-title light">
-            <br><h2>Ce que nous faisons</h2>
+            <br /><h2>{t.marketSectors.sectionTitle}</h2>
             <div class="separator"></div>
           </div>
           <div class="text">
-           <br> Forte de plus de 40 ans d’expérience, MACOBATE allie savoir-faire de terrain et rigueur tech-nique certifiée.
+            <br />{t.marketSectors.sectionDescription}
           </div>
-          <a href="services/allServices" class="view_all"
-            ><span class="icon flaticon-right-arrow-1"></span> Voir tous nos secteurs</a
-          >
+          <a href="services/detailServices" class="view_all">
+            <span class="icon flaticon-right-arrow-1"></span>
+            {t.marketSectors.viewAll}
+          </a>
         </div>
       </div>
 
+      <!-- Liste des secteurs -->
       {
-        safeMarketSectors && safeMarketSectors.length > 0 ? (
-          safeMarketSectors.map((sector) => (
+        sectorsData.length > 0 ? (
+          sectorsData.map((sector) => (
             <div class="market-block m-block col-lg-4 col-md-6 col-sm-6 col-xs-12">
               <div class="inner-box">
                 <h3>
@@ -97,16 +88,27 @@ const safeMarketSectors = Array.isArray(homeMarketSectors)
                 <div class="icon-box">
                   {sector.icon && (
                     <span class="icon">
-                       {sector.icon === 'TbBuildingWarehouse' && <TbBuildingWarehouse  color="#007bff" />}
-                       {sector.icon === 'GiBarrel' && <GiBarrel  color="#007bff" />}
-                        {sector.icon === 'GiScubaTanks' && <GiScubaTanks  color="#007bff" />}
-                        {sector.icon === 'GiWaterRecycling' && <GiWaterRecycling  color="#007bff" />} 
-                        {sector.icon === 'GiElectricalResistance' && <GiElectricalResistance   color="#007bff" />}
+                      {sector.icon === "TbBuildingWarehouse" && (
+                        <TbBuildingWarehouse color="#007bff" />
+                      )}
+                      {sector.icon === "GiBarrel" && (
+                        <GiBarrel color="#007bff" />
+                      )}
+                      {sector.icon === "GiScubaTanks" && (
+                        <GiScubaTanks color="#007bff" />
+                      )}
+                      {sector.icon === "GiWaterRecycling" && (
+                        <GiWaterRecycling color="#007bff" />
+                      )}
+                      {sector.icon === "GiElectricalResistance" && (
+                        <GiElectricalResistance color="#007bff" />
+                      )}
                     </span>
-                    )}
+                  )}
                 </div>
                 <a href={sector.url} class="view_all">
-                  Découvrir <span class="icon flaticon-right-arrow-1" />
+                  {t.marketSectors.discover}{" "}
+                  <span class="icon flaticon-right-arrow-1" />
                 </a>
               </div>
             </div>
@@ -114,10 +116,8 @@ const safeMarketSectors = Array.isArray(homeMarketSectors)
         ) : (
           <div class="market-block m-block col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <div class="inner-box">
-              <h3>Secteurs en cours de mise à jour</h3>
-              <div class="text">
-                Veuillez revenir ultérieurement pour consulter nos secteurs d'activité.
-              </div>
+              <h3>{t.marketSectors.updating.title}</h3>
+              <div class="text">{t.marketSectors.updating.description}</div>
             </div>
           </div>
         )
@@ -125,4 +125,4 @@ const safeMarketSectors = Array.isArray(homeMarketSectors)
     </div>
   </div>
 </section>
-<!--Fin Section Secteurs de Marché-->
+<!-- Fin Section Secteurs de Marché -->

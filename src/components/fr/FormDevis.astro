@@ -1,0 +1,98 @@
+<!-- Composant anglais (à adapter) -->
+
+<!--Quote Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/api/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Construction Métallique</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Traitement des Eaux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."
+                        ></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Envoyer <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="backhome"
+        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>

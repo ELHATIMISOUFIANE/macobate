@@ -3,201 +3,167 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CallToActionSection from "../components/CallToActionSection.astro";
+import { MdEngineering } from "react-icons/md";
+import { GiAbstract047 } from "react-icons/gi";
+import { LuChartNoAxesCombined } from "react-icons/lu";
+import { FaSearch , FaEnvelope } from "react-icons/fa";
 
-// Données des avantages de carrière -
+
+// Career benefits data
 const careerBenefits = [
   {
     id: "impact",
-    icon: "🌍",
-    title: "Donne de l'impact à ton ingénierie",
-    description: "Chez MACOBATE, ton travail contribue directement à des projets d'envergure nationale et continentale :",
+    icon: "MdEngineering",
+    title: "Make an Impact With Your Engineering",
+    description: "At MACOBATE, your work directly contributes to national and continental-scale projects:",
     items: [
-      "Barrages et centrales hydroélectriques",
-      "Usines industrielles et canalisations",
-      "Traitement de l'eau et structures métalliques"
+      "Dams and hydropower plants",
+      "Industrial facilities and pipelines",
+      "Water treatment and steel structures"
     ],
-    conclusion: "Chaque mission est une opportunité de marquer durablement l'infrastructure du futur."
+    conclusion: "Each mission is an opportunity to leave a lasting mark on infrastructure development."
   },
   {
     id: "excellence",
     icon: "🏗️",
-    title: "Rejoins une culture d'excellence technique",
-    description: "MACOBATE est une entreprise pilotée par l'ingénierie. Nous valorisons :",
+    title: "Join a Culture of Engineering Excellence",
+    description: "MACOBATE is an engineering-first company. We value:",
     items: [
-      "L'expérience terrain associée à l'expertise de bureau d'études",
-      "La collaboration interdisciplinaire",
-      "L'exécution basée sur l'excellence technique et les normes internationales"
+      "Field experience combined with design expertise",
+      "Interdisciplinary collaboration",
+      "Execution based on technical excellence and international norms"
     ]
   },
   {
     id: "development",
     icon: "📈",
-    title: "Développe tes compétences et ton avenir",
-    description: "Nous offrons une réelle évolution professionnelle à travers :",
+    title: "Grow Your Skills & Your Future",
+    description: "We offer real career growth through:",
     items: [
-      "L'apprentissage sur le terrain et le mentorat d'experts",
-      "Des opportunités de certification (ISO, soudage, DAO...)",
-      "Des parcours vers la gestion de projet, la spécialisation technique ou l'international"
+      "On-site learning and expert mentorship",
+      "Opportunities to earn certifications (ISO, welding, CAD...)",
+      "Evolution toward project leadership, technical specialization, or international assignments"
     ]
   },
   {
     id: "profiles",
     icon: "🔍",
-    title: "Profils recherchés",
+    title: "What We're Looking For",
     items: [
-      "Jeunes ingénieurs ambitieux et curieux (génie civil, mécanique, électrique, industriel)",
-      "Techniciens terrain et soudeurs",
-      "Professionnels motivés à apprendre, innover et construire"
+      "Ambitious and curious young engineers (civil, mechanical, electrical, industrial)",
+      "Field-oriented technicians and welders",
+      "Professionals who want to learn, innovate, and build"
     ]
   }
 ];
 
-// Données des offres d'emploi - 
+// Job offers data
 const jobOffers = [
   {
-    id: "ingenieur-genie-civil",
-    title: "Ingénieur Génie Civil",
-    location: "Rabat, Maroc",
-    type: "CDI - Temps plein",
-    summary: "Nous recherchons un ingénieur en génie civil pour rejoindre notre équipe travaillant sur des projets d'infrastructures hydrauliques.",
+    id: "civil-engineer",
+    title: "Civil Engineer",
+    location: "Rabat, Morocco",
+    type: "Full-time",
+    summary: "We are looking for a civil engineer to join our team working on hydraulic infrastructure projects.",
     description: `
-      <h4>Description du poste</h4>
-      <p>En tant qu'Ingénieur Génie Civil, vous serez responsable de la conception, du dimensionnement et du suivi d'exécution de barrages et d'ouvrages hydrauliques. Vous travaillerez en étroite collaboration avec nos équipes multidisciplinaires pour garantir la qualité et la sécurité de nos réalisations.</p>
+      <h4>Job Description</h4>
+      <p>As a Civil Engineer, you will be responsible for the design, sizing and execution monitoring of dams and hydraulic structures. You will work closely with our multidisciplinary teams to ensure the quality and safety of our achievements.</p>
       
-      <h4>Responsabilités</h4>
+      <h4>Responsibilities</h4>
       <ul>
-        <li>Réaliser les études techniques et les calculs de dimensionnement des structures</li>
-        <li>Élaborer les plans et les documents d'exécution</li>
-        <li>Assurer le suivi technique des chantiers et la coordination avec les entreprises</li>
-        <li>Participer aux réunions d'avancement et aux visites de terrain</li>
-        <li>Veiller au respect des normes et des standards de qualité</li>
+        <li>Perform technical studies and structural sizing calculations</li>
+        <li>Develop plans and execution documents</li>
+        <li>Ensure technical monitoring of construction sites and coordination with companies</li>
+        <li>Participate in progress meetings and field visits</li>
+        <li>Ensure compliance with standards and quality standards</li>
       </ul>
       
-      <h4>Profil recherché</h4>
+      <h4>Required Profile</h4>
       <ul>
-        <li>Diplôme d'ingénieur en génie civil (bac+5)</li>
-        <li>Expérience de 3 à 5 ans dans des projets hydrauliques</li>
-        <li>Maîtrise des logiciels de calcul et de modélisation (AutoCAD, Robot, etc.)</li>
-        <li>Connaissance des normes de construction</li>
-        <li>Capacité à travailler en équipe et sur le terrain</li>
-        <li>Français et arabe courants, anglais technique apprécié</li>
+        <li>Engineering degree in civil engineering (Master's level)</li>
+        <li>3 to 5 years experience in hydraulic projects</li>
+        <li>Mastery of calculation and modeling software (AutoCAD, Robot, etc.)</li>
+        <li>Knowledge of construction standards</li>
+        <li>Ability to work in teams and in the field</li>
+        <li>Fluent French and Arabic, technical English appreciated</li>
       </ul>
       
-      <h4>Nous offrons</h4>
+      <h4>We Offer</h4>
       <ul>
-        <li>Un environnement de travail stimulant sur des projets d'envergure</li>
-        <li>Des opportunités de développement professionnel</li>
-        <li>Un package salarial compétitif</li>
-        <li>Une formation continue et un encadrement par des experts</li>
+        <li>A stimulating work environment on major projects</li>
+        <li>Professional development opportunities</li>
+        <li>A competitive salary package</li>
+        <li>Continuous training and supervision by experts</li>
       </ul>
     `
   },
   {
-    id: "technicien-soudage",
-    title: "Technicien en Soudage",
-    location: "Casablanca, Maroc",
-    type: "CDI - Temps plein",
-    summary: "Expert en soudage pour nos projets de construction métallique et industrielle.",
+    id: "welding-technician",
+    title: "Welding Technician",
+    location: "Casablanca, Morocco",
+    type: "Full-time",
+    summary: "Welding expert for our metal construction and industrial projects.",
     description: `
-      <h4>Description du poste</h4>
-      <p>En tant que Technicien en Soudage, vous serez responsable de la réalisation et du contrôle des soudures sur différents types de métaux selon les normes internationales. Vous travaillerez sur des projets variés allant des structures métalliques aux équipements hydrauliques.</p>
+      <h4>Job Description</h4>
+      <p>As a Welding Technician, you will be responsible for performing and controlling welds on different types of metals according to international standards. You will work on various projects ranging from metal structures to hydraulic equipment.</p>
       
-      <h4>Responsabilités</h4>
+      <h4>Responsibilities</h4>
       <ul>
-        <li>Réaliser des soudures de haute qualité sur différents métaux</li>
-        <li>Contrôler la qualité des assemblages soudés</li>
-        <li>Préparer les surfaces et les pièces à souder</li>
-        <li>Lire et interpréter les plans techniques</li>
-        <li>Respecter les normes de sécurité et de qualité</li>
+        <li>Perform high-quality welds on different metals</li>
+        <li>Control the quality of welded assemblies</li>
+        <li>Prepare surfaces and parts to be welded</li>
+        <li>Read and interpret technical drawings</li>
+        <li>Respect safety and quality standards</li>
       </ul>
       
-      <h4>Profil recherché</h4>
+      <h4>Required Profile</h4>
       <ul>
-        <li>Formation technique en soudure (CAP, BTS ou équivalent)</li>
-        <li>Expérience de 3 ans minimum dans le soudage industriel</li>
-        <li>Maîtrise des procédés TIG, MIG-MAG, et électrode enrobée</li>
-        <li>Connaissance des normes ISO 9606, ASME ou équivalentes</li>
-        <li>Rigueur, précision et souci du détail</li>
-        <li>Capacité à travailler en équipe</li>
+        <li>Technical training in welding (vocational or technical degree)</li>
+        <li>Minimum 3 years experience in industrial welding</li>
+        <li>Mastery of TIG, MIG-MAG, and stick electrode processes</li>
+        <li>Knowledge of ISO 9606, ASME or equivalent standards</li>
+        <li>Rigor, precision and attention to detail</li>
+        <li>Ability to work in a team</li>
       </ul>
       
-      <h4>Nous offrons</h4>
+      <h4>We Offer</h4>
       <ul>
-        <li>Un atelier à la pointe de la technologie</li>
-        <li>Des projets diversifiés et stimulants</li>
-        <li>Un salaire attractif selon expérience</li>
-        <li>Des possibilités d'évolution et de certification</li>
+        <li>A state-of-the-art workshop</li>
+        <li>Diverse and stimulating projects</li>
+        <li>Attractive salary according to experience</li>
+        <li>Opportunities for advancement and certification</li>
       </ul>
     `
   },
-  {
-    id: "ingenieur-electromecanique",
-    title: "Ingénieur Électromécanique",
-    location: "Dakar, Sénégal",
-    type: "CDI - Temps plein",
-    summary: "Pour notre expansion en Afrique de l'Ouest, nous recherchons un ingénieur électromécanique expérimenté.",
-    description: `
-      <h4>Description du poste</h4>
-      <p>Dans le cadre de notre expansion en Afrique de l'Ouest, nous recherchons un Ingénieur Électromécanique pour superviser l'installation et la maintenance d'équipements industriels dans nos projets hydrauliques et de traitement des eaux au Sénégal.</p>
-      
-      <h4>Responsabilités</h4>
-      <ul>
-        <li>Superviser l'installation des équipements électromécaniques sur les sites</li>
-        <li>Coordonner les essais et la mise en service des installations</li>
-        <li>Assurer la maintenance préventive et corrective des équipements</li>
-        <li>Former les équipes locales aux procédures d'exploitation</li>
-        <li>Optimiser les performances des installations existantes</li>
-      </ul>
-      
-      <h4>Profil recherché</h4>
-      <ul>
-        <li>Diplôme d'ingénieur en électromécanique ou équivalent</li>
-        <li>Expérience de 5 ans minimum dans des projets hydrauliques</li>
-        <li>Maîtrise des systèmes de contrôle-commande</li>
-        <li>Connaissance des automates programmables et variateurs de vitesse</li>
-        <li>Capacité à gérer des équipes multiculturelles</li>
-        <li>Français courant, connaissance de l'anglais technique</li>
-        <li>Disponibilité pour des déplacements fréquents</li>
-      </ul>
-      
-      <h4>Nous offrons</h4>
-      <ul>
-        <li>Un poste à responsabilités avec une grande autonomie</li>
-        <li>Un package attractif incluant logement et avantages expatriés</li>
-        <li>Des perspectives d'évolution au sein du groupe</li>
-        <li>La participation à des projets d'infrastructure majeurs</li>
-      </ul>
-    `
-  }
 ];
 
-// Données des témoignages d'employés
+// Employee testimonials data
 const employeeTestimonials = [
   {
     name: "Karim Tazi",
-    position: "Ingénieur de projet",
-    years: "3 ans chez MACOBATE",
-    image: "/images/team/team-1.jpg",
-    quote: "Rejoindre MACOBATE a été une décision déterminante dans ma carrière. Les projets sur lesquels je travaille ont un impact réel sur les infrastructures du pays, et j'apprends chaque jour au contact d'experts reconnus dans leur domaine."
+    position: "Project Engineer",
+    years: "3 years at MACOBATE",
+    image: "/images/resource/author-11.jpg",
+    quote: "Joining MACOBATE was a decisive decision in my career. The projects I work on have a real impact on the country's infrastructure, and I learn every day in contact with recognized experts in their field."
   },
   {
-    name: "Fatima Zahra Alami",
-    position: "Chef de projet",
-    years: "7 ans chez MACOBATE",
+    name: "Fatima Zahra",
+    position: "Project Manager",
+    years: "7 years at MACOBATE",
     image: "/images/team/team-2.jpg",
-    quote: "Ce qui me plaît chez MACOBATE, c'est l'équilibre parfait entre l'autonomie qu'on nous donne et le soutien de l'équipe. J'ai pu développer des compétences techniques pointues tout en évoluant vers des responsabilités de gestion de projet."
+    quote: "What I like about MACOBATE is the perfect balance between the autonomy we are given and the team support. I was able to develop advanced technical skills while evolving towards project management responsibilities."
   },
   {
     name: "Mehdi Benani",
-    position: "Ingénieur électromécanique",
-    years: "5 ans chez MACOBATE",
-    image: "/images/team/team-3.jpg",
-    quote: "La formation continue et le mentorat sont des valeurs fortes chez MACOBATE. J'ai commencé comme technicien et j'ai pu évoluer vers un poste d'ingénieur grâce aux opportunités de développement que l'entreprise m'a offertes."
+    position: "Electromechanical Engineer",
+    years: "5 years at MACOBATE",
+    image: "/images/resource/author-13.jpg",
+    quote: "Continuous training and mentorship are strong values at MACOBATE. I started as a technician and was able to evolve towards an engineering position thanks to the development opportunities the company offered me."
   }
 ];
 ---
 
-<BaseLayout title="Carrières | MACOBATE">
+<BaseLayout title="Careers | MACOBATE">
   <Header />
   <main>
     <!--Page Title-->
@@ -207,10 +173,10 @@ const employeeTestimonials = [
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
-          <li><a href="/">Accueil</a></li>
-          <li>Carrières</li>
+          <li><a href="/">Home</a></li>
+          <li>Careers</li>
         </ul>
-        <h1>Carrières</h1>
+        <h1>Careers</h1>
       </div>
     </section>
     <!--End Page Title-->
@@ -219,10 +185,10 @@ const employeeTestimonials = [
     <section class="career-intro-section">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Rejoignez notre équipe</h2>
+          <h2>Engineer Your Future With Us</h2>
           <div class="separator"></div>
           <div class="text">
-            MACOBATE recherche constamment des talents passionnés pour renforcer ses équipes. Nous vous offrons l'opportunité de contribuer à des projets d'envergure qui façonnent l'avenir des infrastructures en Afrique et au-delà.
+            MACOBATE is constantly looking for passionate talents to strengthen its teams. We offer you the opportunity to contribute to major projects that shape the future of infrastructure in Africa and beyond.
           </div>
         </div>
       </div>
@@ -233,11 +199,11 @@ const employeeTestimonials = [
     <section class="career-benefits-section">
       <div class="auto-container">
         <div class="benefits-container">
-          <!-- Première ligne de cartes (2 premières) -->
+          <!-- First row of cards (first 2) -->
           <div class="benefits-row">
             <div class="benefit-card">
               <div class="benefit-header">
-                <span class="benefit-icon">{careerBenefits[0].icon}</span>
+                <span class="benefit-icon"><MdEngineering /></span>
                 <h3 class="benefit-title">{careerBenefits[0].title}</h3>
                 <div class="separator"></div>
               </div>
@@ -254,7 +220,7 @@ const employeeTestimonials = [
             
             <div class="benefit-card">
               <div class="benefit-header">
-                <span class="benefit-icon">{careerBenefits[1].icon}</span>
+                <span class="benefit-icon"><GiAbstract047/></span>
                 <h3 class="benefit-title">{careerBenefits[1].title}</h3>
                 <div class="separator"></div>
               </div>
@@ -270,11 +236,11 @@ const employeeTestimonials = [
             </div>
           </div>
           
-          <!-- Deuxième ligne de cartes (2 dernières) -->
+          <!-- Second row of cards (last 2) -->
           <div class="benefits-row">
             <div class="benefit-card">
               <div class="benefit-header">
-                <span class="benefit-icon">{careerBenefits[2].icon}</span>
+                <span class="benefit-icon"><LuChartNoAxesCombined/></span>
                 <h3 class="benefit-title">{careerBenefits[2].title}</h3>
                 <div class="separator"></div>
               </div>
@@ -291,7 +257,7 @@ const employeeTestimonials = [
             
             <div class="benefit-card">
               <div class="benefit-header">
-                <span class="benefit-icon">{careerBenefits[3].icon}</span>
+                <span class="benefit-icon"><FaSearch/></span>
                 <h3 class="benefit-title">{careerBenefits[3].title}</h3>
                 <div class="separator"></div>
               </div>
@@ -318,12 +284,12 @@ const employeeTestimonials = [
           <div class="row clearfix">
             <div class="col-lg-8 col-md-12">
               <div class="sec-title light">
-                <h2>📩 Candidature</h2>
+                <h2><FaEnvelope/>  How to Apply</h2>
                 <div class="separator"></div>
               </div>
               <div class="text">
                 <p>
-                  Postule aux offres en ligne ou envoie une candidature spontanée à notre adresse email dédiée au recrutement.
+                  Apply to online positions or send a spontaneous application to our dedicated recruitment email address.
                 </p>
               </div>
             </div>
@@ -345,12 +311,12 @@ const employeeTestimonials = [
     <section class="current-openings-section">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Offres d'emploi actuelles</h2>
+          <h2>Current Job Openings</h2>
           <div class="separator"></div>
         </div>
         
         <div class="job-listings">
-          <!-- Génération dynamique des offres d'emploi -->
+          <!-- Dynamic generation of job offers -->
           {jobOffers.map(job => (
             <div class="job-block" id={`job-${job.id}`}>
               <div class="inner-box">
@@ -371,18 +337,18 @@ const employeeTestimonials = [
                   </div>
                   <div class="btn-box">
                     <button type="button" class="theme-btn btn-style-three job-details-btn" data-job-id={job.id}>
-                      Voir détails
+                      View details
                       <span class="icon flaticon-arrow-pointing-to-right"></span>
                     </button>
                   </div>
                   
-                  <!-- Section de détails (cachée par défaut) -->
+                  <!-- Details section (hidden by default) -->
                   <div class="job-details" id={`details-${job.id}`} style="display: none;">
                     <div class="separator" style="margin: 20px 0;"></div>
                     <div class="job-detail-content" set:html={job.description}></div>
                     <div class="apply-btn-box" style="margin-top: 30px;">
-                      <a href={`mailto:careers@macobate.com?subject=Candidature pour le poste de ${job.title}`} class="theme-btn btn-style-one">
-                        Postuler maintenant
+                      <a href={`mailto:careers@macobate.com?subject=Application for ${job.title} position`} class="theme-btn btn-style-one">
+                        Apply now
                         <span class="icon flaticon-arrow-pointing-to-right"></span>
                       </a>
                     </div>
@@ -397,17 +363,17 @@ const employeeTestimonials = [
         <div class="spontaneous-application">
           <div class="inner-box">
             <div class="sec-title centered">
-              <h2>Candidature spontanée</h2>
+              <h2>Spontaneous Application</h2>
               <div class="separator"></div>
             </div>
             <div class="text centered">
               <p>
-                Vous ne trouvez pas le poste qui vous correspond ? N'hésitez pas à nous envoyer votre CV et lettre de motivation. Nous sommes toujours à la recherche de talents pour renforcer nos équipes.
+                Can't find the position that suits you? Don't hesitate to send us your CV and cover letter. We are always looking for talent to strengthen our teams.
               </p>
             </div>
             <div class="btn-box text-center">
-              <a href="mailto:careers@macobate.com?subject=Candidature spontanée" class="theme-btn btn-style-one">
-                Postuler maintenant
+              <a href="mailto:careers@macobate.com?subject=Spontaneous application" class="theme-btn btn-style-one">
+                Apply now
                 <span class="icon flaticon-arrow-pointing-to-right"></span>
               </a>
             </div>
@@ -421,12 +387,12 @@ const employeeTestimonials = [
     <section class="employee-testimonials-section" style="background-color: #f8f9fa;">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Témoignages de nos collaborateurs</h2>
+          <h2>What Our Employees Say</h2>
           <div class="separator"></div>
         </div>
 
         <div class="testimonials-carousel owl-carousel owl-theme">
-          <!-- Génération dynamique des témoignages -->
+          <!-- Dynamic generation of testimonials -->
           {employeeTestimonials.map(testimonial => (
             <div class="testimonial-block">
               <div class="inner-box">
@@ -562,7 +528,7 @@ const employeeTestimonials = [
     margin-top: auto;
   }
   
-  /* Responsive pour les cartes d'avantages */
+  /* Responsive for benefit cards */
   @media only screen and (max-width: 991px) {
     .benefits-row {
       grid-template-columns: 1fr;
@@ -940,52 +906,52 @@ const employeeTestimonials = [
 </style>
 
 <script is:inline>
-  // Fonction pour initialiser les boutons de détails des offres
+  // Function to initialize job detail buttons
   document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionner tous les boutons de détails des offres
+    // Select all job detail buttons
     const jobDetailButtons = document.querySelectorAll('.job-details-btn');
     
-    // Ajouter un écouteur d'événement à chaque bouton
+    // Add event listener to each button
     jobDetailButtons.forEach(button => {
       button.addEventListener('click', function() {
-        // Récupérer l'ID de l'offre
+        // Get job ID
         const jobId = this.getAttribute('data-job-id');
-        // Sélectionner la section de détails correspondante
+        // Select corresponding details section
         const detailsSection = document.getElementById(`details-${jobId}`);
         
-        // Si la section est cachée, on l'affiche
+        // If section is hidden, show it
         if (detailsSection.style.display === 'none') {
-          // On ferme d'abord toutes les sections ouvertes
+          // First close all open sections
           document.querySelectorAll('.job-details').forEach(section => {
             section.style.display = 'none';
           });
           
-          // Réinitialiser le texte de tous les boutons
+          // Reset text of all buttons
           document.querySelectorAll('.job-details-btn').forEach(btn => {
-            btn.innerHTML = 'Voir détails <span class="icon flaticon-arrow-pointing-to-right"></span>';
+            btn.innerHTML = 'View details <span class="icon flaticon-arrow-pointing-to-right"></span>';
           });
           
-          // Puis on ouvre celle qu'on veut voir
+          // Then open the one we want to see
           detailsSection.style.display = 'block';
           
-          // On change le texte du bouton
-          this.innerHTML = 'Masquer les détails <span class="icon flaticon-arrow-pointing-to-right"></span>';
+          // Change button text
+          this.innerHTML = 'Hide details <span class="icon flaticon-arrow-pointing-to-right"></span>';
           
-          // On scroll jusqu'à la section de détails
+          // Scroll to details section
           setTimeout(() => {
             detailsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }, 100);
         } else {
-          // Si la section est visible, on la cache
+          // If section is visible, hide it
           detailsSection.style.display = 'none';
           
-          // On remet le texte original du bouton
-          this.innerHTML = 'Voir détails <span class="icon flaticon-arrow-pointing-to-right"></span>';
+          // Reset button text
+          this.innerHTML = 'View details <span class="icon flaticon-arrow-pointing-to-right"></span>';
         }
       });
     });
     
-    // Initialisation du carousel pour les témoignages (si Owl Carousel est disponible)
+    // Initialize carousel for testimonials (if Owl Carousel is available)
     if (typeof jQuery !== 'undefined' && typeof jQuery.fn.owlCarousel !== 'undefined') {
       jQuery('.testimonials-carousel').owlCarousel({
         loop: true,

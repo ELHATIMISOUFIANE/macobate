@@ -1,0 +1,125 @@
+---
+// Pas besoin de props ici, car les données sont incluses dans ce fichier
+const historyYears = [
+  1984, 1989, 1991, 1993, 1996, 1998, 2007, 2008, 2010, 2011, 2013, 2015,
+];
+
+const historyEvents = [
+   {
+    year: 1984,
+    title: "Création de la société MACOBATE",
+    date: "1984",
+    description:
+      "Création de la société Marocaine de la Construction de Bâtiments et de Traitement des Eaux « MACOBATE » et création du premier atelier de fabrication par Feu M'hamed TOUNSI, ancien Ingénieur Expert du traitement des Eaux à l'ONEP.",
+  },
+  {
+    year: 1989,
+    title: "Station d'épuration de Beni-Mellal",
+    date: "1989",
+    description:
+      "Fourniture et installation des équipements hydro-électromécaniques de la grande station d'épuration par lagunage de Beni-Mellal.",
+  },
+  {
+    year: 1991,
+    title: "Station de potabilisation AIN-ASSERDOUNE",
+    date: "1991",
+    description:
+      "Construction de la station de potabilisation de l'eau de la source AIN-ASSERDOUNE, pour le compte de la RADET Beni-Mellal.",
+  },
+  {
+    year: 1993,
+    title: "Extension des ateliers",
+    date: "1993",
+    description:
+      "Construction de l'extension N°1 des ateliers de fabrication de la société MACOBATE.",
+  },
+  {
+    year: 1996,
+    title: "Premier barrage Bouhouda & changement de direction",
+    date: "1996",
+    description:
+      "Réalisation des équipements hydro-électromécaniques du barrage Bouhouda dans la région de Taounate. Décès de M. M'hamed TOUNSI et accession de Mme Rachida TOUNSI à la tête de la société.",
+  },
+  {
+    year: 1998,
+    title: "Barrage Bab-Louta",
+    date: "1998",
+    description:
+      "Réalisation des équipements hydro-électromécaniques du barrage Bab-Louta dans la région de Taza pour le compte de la Direction des Aménagements Hydrauliques.",
+  },
+  {
+    year: 2007,
+    title: "Grand barrage Sfeissef",
+    date: "2007",
+    description:
+      "Étude, réalisation et installation des équipements hydro-électromécaniques du barrage Sfeissef dans la région de Figuig. Premier grand barrage réalisé par MACOBATE.",
+  },
+  {
+    year: 2008,
+    title: "Classe 2 - Secteur 9",
+    date: "2008",
+    description:
+      "Obtention de la classe 2 du secteur 9 du système de qualification et de classification du ministère de l'équipement et des transports.",
+  },
+  {
+    year: 2010,
+    title: "Croissance du chiffre d'affaires",
+    date: "2010",
+    description:
+      "Réalisation de plus de 65 Mdh de carnet de commande dans les divers secteurs d'activité de la société.",
+  },
+  {
+    year: 2011,
+    title: "Projet d'investissement et Certification ISO",
+    date: "2011",
+    description:
+      "Démarrage de l'extension N°2 : agrandissement des locaux, renouvellement de l'outil de production, recrutement et formation. Certification ISO 9001 – 2008.",
+  },
+  {
+    year: 2013,
+    title: "Agrément OCP",
+    date: "2013",
+    description:
+      "Agrément OCP dans les domaines de la chaudronnerie, de la charpente métallique et de la tuyauterie industrielle.",
+  },
+  {
+    year: 2015,
+    title: "Classe 1 - Secteur I",
+    date: "2015",
+    description:
+      "Obtention de la classe 1 du secteur I du système de qualification et de classification du ministère de l'équipement et des transports.",
+  },
+];
+---
+
+<section id="history-section" class="history-section">
+  <div class="auto-container">
+    <div class="sec-title centered">
+      <h2>Notre Histoire</h2>
+      <div class="separator"></div>
+    </div>
+
+    <div class="history-carousel">
+      <div class="carousel-outer">
+        <div class="thumbs-outer">
+          <ul class="thumbs-carousel owl-carousel owl-theme">
+            {historyYears.map((year) => (
+              <li>{year}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="content-carousel owl-carousel owl-theme">
+          {historyEvents.map((event) => (
+            <div class="content-slide">
+              <div class="content-inner">
+                <h3>{event.title}</h3>
+                <div class="date">{event.date}</div>
+                <div class="text">{event.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

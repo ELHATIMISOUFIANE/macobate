@@ -59,9 +59,16 @@
 		});
 		
 		//Disable dropdown parent link
-		$('.main-header .main-menu .navigation li.dropdown > a,.hidden-bar .side-menu li.dropdown > a').on('click', function(e) {
-			e.preventDefault();
-		});
+		$('.main-header .main-menu .navigation li.dropdown > a').on('click', function(e) {
+  const windowWidth = $(window).width();
+
+  // Sur mobile, on empêche le clic pour ouvrir le sous-menu
+  if (windowWidth <= 991) {
+    e.preventDefault();
+    $(this).siblings('ul').slideToggle(300); // toggle le sous-menu
+  }
+  // Sinon (desktop), on laisse le clic rediriger
+});
 	}
 	
 	

@@ -1,0 +1,125 @@
+---
+// Static data (years and events)
+const historyYears = [
+  1984, 1989, 1991, 1993, 1996, 1998, 2007, 2008, 2010, 2011, 2013, 2015,
+];
+
+const historyEvents = [
+  {
+    year: 1984,
+    title: "Establishment of MACOBATE",
+    date: "1984",
+    description:
+      "Founded by M'hamed TOUNSI, former Water Treatment Expert Engineer at ONEP, MACOBATE was established as the Moroccan company for Building Construction and Water Treatment, along with the creation of its first steel construction workshop.",
+  },
+  {
+    year: 1989,
+    title: "Beni-Mellal Wastewater Treatment Plant",
+    date: "1989",
+    description:
+      "Supply and installation of hydro-electromechanical equipment for the large wastewater treatment plant in Beni-Mellal.",
+  },
+  {
+    year: 1991,
+    title: "AIN-ASSERDOUNE Drinking Water Plant",
+    date: "1991",
+    description:
+      "Construction of the AIN-ASSERDOUNE drinking water treatment plant for RADET Beni-Mellal.",
+  },
+  {
+    year: 1993,
+    title: "Workshop Expansion",
+    date: "1993",
+    description:
+      "Construction of the first workshop extension for MACOBATE's steel construction operations.",
+  },
+  {
+    year: 1996,
+    title: "Bouhouda Dam & Leadership Change",
+    date: "1996",
+    description:
+      "Completion of hydro-electromechanical equipment for the Bouhouda Dam in the Taounate region. Following the passing of M'hamed TOUNSI, leadership was passed to Rachida TOUNSI.",
+  },
+  {
+    year: 1998,
+    title: "Bab-Louta Dam",
+    date: "1998",
+    description:
+      "Completion of hydro-electromechanical equipment for the Bab-Louta Dam in the Taza region.",
+  },
+  {
+    year: 2007,
+    title: "Sfeissef Dam",
+    date: "2007",
+    description:
+      "Design, production, and installation of hydro-electromechanical equipment for the Sfeissef Dam in the Figuig region. This was MACOBATE's first large dam project.",
+  },
+  {
+    year: 2008,
+    title: "Class 2 - Sector 9 Qualification",
+    date: "2008",
+    description:
+      "Achieved Class 2 qualification in Sector 9 of the Ministry of Equipment and Transport's qualification and classification system.",
+  },
+  {
+    year: 2010,
+    title: "Revenue Growth",
+    date: "2010",
+    description:
+      "Achieved over 65 million MAD in order intake across various sectors.",
+  },
+  {
+    year: 2011,
+    title: "Investment Project & ISO Certification",
+    date: "2011",
+    description:
+      "Initiated Extension No. 2: expansion of facilities, renewal of production equipment, recruitment, and training. Obtained ISO 9001:2008 certification.",
+  },
+  {
+    year: 2013,
+    title: "OCP Approval",
+    date: "2013",
+    description:
+      "Received approval from OCP in the fields of boiler making, steel structures, and industrial piping.",
+  },
+  {
+    year: 2015,
+    title: "Class 1 - Sector I Qualification",
+    date: "2015",
+    description:
+      "Achieved Class 1 qualification in Sector I of the Ministry of Equipment and Transport's qualification and classification system.",
+  },
+];
+---
+
+<section id="history-section" class="history-section">
+  <div class="auto-container">
+    <div class="sec-title centered">
+      <h2>Our History</h2>
+      <div class="separator"></div>
+    </div>
+
+    <div class="history-carousel">
+      <div class="carousel-outer">
+        <div class="thumbs-outer">
+          <ul class="thumbs-carousel owl-carousel owl-theme">
+            {historyYears.map((year) => (
+              <li>{year}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="content-carousel owl-carousel owl-theme">
+          {historyEvents.map((event) => (
+            <div class="content-slide">
+              <div class="content-inner">
+                <h3>{event.title}</h3>
+                <div class="date">{event.date}</div>
+                <div class="text">{event.description}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

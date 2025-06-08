@@ -1,0 +1,1069 @@
+<!-- Version anglaise (à traduire) -->
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Un tableau de slides
+const slides = [
+  {
+    index: "1",
+    title:
+      "Des moyens de pointe<br /> pour des produits de <br />grande qualité",
+    description: "",
+    buttonText: "Know More About Us",
+    buttonLink: "about.html",
+    image: "images/main-slider/image-1.jpg",
+    alignment: "left",
+  },
+  {
+    index: "2",
+    title:
+      "Nous répondons à tous <br /> vos besoins en structures <br /> métalliques complexes",
+    description: "",
+    buttonText: "Market Sectors",
+    buttonLink: "about.html",
+    image: "images/main-slider/image-2.jpg",
+    alignment: "right",
+  },
+  {
+    index: "3",
+    title:
+      "MACOBATE, leader des <br />équipements hydromécaniques<br />pour les infrastructures<br />hydro-électriques",
+    description: "",
+    buttonText: "Meet Our Expert team",
+    buttonLink: "about.html",
+    image: "images/main-slider/image-3.jpg",
+    alignment: "left",
+  },
+  {
+    index: "4",
+    title:
+      "Equipements<br /> électromécaniques pour <br /> le traitement et<br />  le pompage de l’eau",
+    description: "",
+    buttonText: "Meet Our Expert team",
+    buttonLink: "about.html",
+    image: "images/main-slider/image-3.jpg",
+    alignment: "left",
+  },
+  {
+    index: "5",
+    title: "Réservoirs sous-pressions,<br /> trémies, silos,<br />",
+    description:
+      "Acier inox ou au carbone.<br /> Nous construisons tous <br /> les types d’équipements <br /> chaudronnés et mécanosoudés",
+    buttonText: "Meet Our Expert team",
+    buttonLink: "about.html",
+    image: "images/main-slider/image-3.jpg",
+    alignment: "left",
+  },
+
+  {
+    index: "6",
+    title:
+      "Conception fabrication<br />et pose de passerelles<br />et ouvrage d’arts<br />métalliques",
+    description:
+      "Acier inox ou au carbone.<br /> Nous construisons tous <br /> les types d’équipements <br /> chaudronnés et mécanosoudés",
+    buttonText: "Meet Our Expert team",
+    buttonLink: "about.html",
+    image: "images/main-slider/image-3.jpg",
+    alignment: "left",
+  },
+];
+// Création du tableau des témoignages
+const testimonials = [
+  {
+    id: 1,
+    name: "Teena Venanda",
+    location: "Newyork City",
+    testimonial:
+      "Must explain to you how mistaken our denouncing pleasure & praising pain was born we will give expound human happiness pursue pleasure...",
+    image: "images/resource/author-1.png",
+    style: "", // Style normal (pour alterner les styles)
+  },
+  {
+    id: 2,
+    name: "Teena Venanda",
+    location: "Newyork City",
+    testimonial:
+      "Must explain to you how mistaken our denouncing pleasure & praising pain was born we will give expound human happiness pursue pleasure...",
+    image: "images/resource/author-2.png",
+    style: "style-two", // Style alternatif
+  },
+  {
+    id: 3,
+    name: "Teena Venanda",
+    location: "Newyork City",
+    testimonial:
+      "Must explain to you how mistaken our denouncing pleasure & praising pain was born we will give expound human happiness pursue pleasure...",
+    image: "images/resource/author-1.png",
+    style: "",
+  },
+  {
+    id: 4,
+    name: "Teena Venanda",
+    location: "Newyork City",
+    testimonial:
+      "Must explain to you how mistaken our denouncing pleasure & praising pain was born we will give expound human happiness pursue pleasure...",
+    image: "images/resource/author-2.png",
+    style: "style-two",
+  },
+  {
+    id: 5,
+    name: "Teena Venanda",
+    location: "Newyork City",
+    testimonial:
+      "Must explain to you how mistaken our denouncing pleasure & praising pain was born we will give expound human happiness pursue pleasure...",
+    image: "images/resource/author-1.png",
+    style: "",
+  },
+  {
+    id: 6,
+    name: "Teena Venanda",
+    location: "Newyork City",
+    testimonial:
+      "Must explain to you how mistaken our denouncing pleasure & praising pain was born we will give expound human happiness pursue pleasure...",
+    image: "images/resource/author-2.png",
+    style: "style-two",
+  },
+];
+
+// Création du tableau des clients/sponsors
+const clients = [
+  {
+    id: 1,
+    image: "images/clients/4.png",
+    name: "Client Partner 1",
+    link: "#",
+  },
+  {
+    id: 2,
+    image: "images/clients/5.png",
+    name: "Client Partner 2",
+    link: "#",
+  },
+  {
+    id: 3,
+    image: "images/clients/6.png",
+    name: "Client Partner 3",
+    link: "#",
+  },
+  {
+    id: 4,
+    image: "images/clients/7.png",
+    name: "Client Partner 4",
+    link: "#",
+  },
+  {
+    id: 5,
+    image: "images/clients/8.png",
+    name: "Client Partner 5",
+    link: "#",
+  },
+  {
+    id: 6,
+    image: "images/clients/9.png",
+    name: "Client Partner 6",
+    link: "#",
+  },
+  {
+    id: 7,
+    image: "images/clients/4.png",
+    name: "Client Partner 7",
+    link: "#",
+  },
+  {
+    id: 8,
+    image: "images/clients/5.png",
+    name: "Client Partner 8",
+    link: "#",
+  },
+  {
+    id: 9,
+    image: "images/clients/6.png",
+    name: "Client Partner 9",
+    link: "#",
+  },
+  {
+    id: 10,
+    image: "images/clients/7.png",
+    name: "Client Partner 10",
+    link: "#",
+  },
+];
+
+// Tableau des secteurs de marché sur la page d'accueil
+const homeMarketSectors = [
+  {
+    id: 1,
+    title: "Automotive",
+    subtitle: "Manufacturing",
+    description:
+      "Denouncing pleasure and praising pain was born give you a complete...",
+    icon: "flaticon-conveyor",
+    url: "market-sectors.html",
+  },
+  {
+    id: 2,
+    title: "Industrial",
+    subtitle: "Construction",
+    description:
+      "Denouncing pleasure and praising pain was born give you a complete...",
+    icon: "flaticon-demolishing",
+    url: "market-sectors.html",
+  },
+  {
+    id: 3,
+    title: "Oil & Gas",
+    subtitle: "Conswervation",
+    description:
+      "Denouncing pleasure and praising pain was born give you a complete...",
+    icon: "flaticon-valve",
+    url: "market-sectors.html",
+  },
+  {
+    id: 4,
+    title: "Marine",
+    subtitle: "Transportation",
+    description:
+      "Denouncing pleasure and praising pain was born give you a complete...",
+    icon: "flaticon-boat",
+    url: "market-sectors.html",
+  },
+  {
+    id: 5,
+    title: "Material",
+    subtitle: "Engineering",
+    description:
+      "Denouncing pleasure and praising pain was born give you a complete...",
+    icon: "flaticon-flasks",
+    url: "market-sectors.html",
+  },
+];
+
+// Tableau des réalisations
+const achievements = [
+  {
+    id: 1,
+    title: "International Organization for Standardization",
+    description:
+      "How all this mistaken idea denouncing pleasure and praising pain was born & will complete account of the system.",
+    logo: "images/clients/1.png",
+  },
+  {
+    id: 2,
+    title: "National Small Inustries Corporation",
+    description:
+      "Great explorer the truth master-builder human happiness one rejects, dislikes, seds avoids pleasure itself pleasure.",
+    logo: "images/clients/2.png",
+  },
+  {
+    id: 3,
+    title: "System Applications & Products",
+    description:
+      "Pursues or desires to obtain pain of itself, it but because occasionaly circumstances procure him some great.",
+    logo: "images/clients/3.png",
+  },
+];
+
+// Tableau des articles de blog pour la page d'accueil
+const latestNews = [
+  {
+    id: 1,
+    title: "We are best for any industrial & business solution.",
+    author: "Venanda",
+    date: "21st October 2017",
+    excerpt:
+      "Rationally encounter consequences seds ut that are extremely painful...",
+    url: "blog-detail.html",
+  },
+  {
+    id: 2,
+    title: "10 reason why should choose our industry.",
+    author: "Fernando",
+    date: "13th August 2017",
+    excerpt:
+      "Great explore of the truth ut work master builder of human happiness...",
+    url: "blog-detail.html",
+  },
+  {
+    id: 3,
+    title: "We won best factory award of the year 2015 & 16.",
+    author: "Richardson",
+    date: "05th July 2017",
+    excerpt:
+      "To take a trivial example, which of us ever undertakes laborious physical...",
+    url: "blog-detail.html",
+  },
+  {
+    id: 4,
+    title: "We are best for any industrial & business solution.",
+    author: "Venanda",
+    date: "21st October 2017",
+    excerpt:
+      "Rationally encounter consequences seds ut that are extremely painful...",
+    url: "blog-detail.html",
+  },
+  {
+    id: 5,
+    title: "10 reason why should choose our industry.",
+    author: "Fernando",
+    date: "13th August 2017",
+    excerpt:
+      "Great explore of the truth ut work master builder of human happiness...",
+    url: "blog-detail.html",
+  },
+  {
+    id: 6,
+    title: "We won best factory award of the year 2015 & 16.",
+    author: "Richardson",
+    date: "05th July 2017",
+    excerpt:
+      "To take a trivial example, which of us ever undertakes laborious physical...",
+    url: "blog-detail.html",
+  },
+];
+---
+
+<BaseLayout title="Home - Macobate " description="" pageType="Home">
+  <Header />
+  <main>
+    <!--Main Slider-->
+    <section class="main-slider">
+      <div
+        class="rev_slider_wrapper fullwidthbanner-container"
+        id="rev_slider_one_wrapper"
+        data-source="gallery"
+      >
+        <div
+          class="rev_slider fullwidthabanner"
+          id="rev_slider_one"
+          data-version="5.4.1"
+        >
+          <ul>
+            {
+              slides.map((slide, i) => (
+                <li
+                  key={i}
+                  data-description="Slide Description"
+                  data-easein="default"
+                  data-easeout="default"
+                  data-fsmasterspeed="1500"
+                  data-fsslotamount="7"
+                  data-fstransition="fade"
+                  data-hideafterloop="0"
+                  data-hideslideonmobile="off"
+                  data-index={slide.index}
+                  data-masterspeed="default"
+                  data-param1=""
+                  data-param10=""
+                  data-param2=""
+                  data-param3=""
+                  data-param4=""
+                  data-param5=""
+                  data-param6=""
+                  data-param7=""
+                  data-param8=""
+                  data-param9=""
+                  data-rotate="0"
+                  data-saveperformance="off"
+                  data-slotamount="default"
+                  data-thumb={slide.image}
+                  data-title="Slide Title"
+                  data-transition="parallaxvertical"
+                >
+                  <img
+                    alt=""
+                    class="rev-slidebg"
+                    data-bgfit="cover"
+                    data-bgparallax="10"
+                    data-bgposition="center center"
+                    data-bgrepeat="no-repeat"
+                    data-no-retina=""
+                    src={slide.image}
+                  />
+
+                  <div
+                    class="tp-caption"
+                    data-x={slide.alignment}
+                    data-y="middle"
+                    data-voffset="['-80','-90','-70','-80']"
+                    data-frames='[{"from":"y:[100%];z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0;y:0;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7;"
+                  >
+                    <h2 set:html={slide.title} />
+                  </div>
+
+                  <div
+                    class="tp-caption"
+                    data-x={slide.alignment}
+                    data-y="middle"
+                    data-voffset="['80','60','60','40']"
+                    data-frames='[{"from":"y:[100%];","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7;"
+                  >
+                    <div class="text" set:html={slide.description} />
+                  </div>
+
+                  <div
+                    class="tp-caption"
+                    data-x={slide.alignment}
+                    data-y="middle"
+                    data-voffset="['150','130','130','130']"
+                    data-frames='[{"from":"y:[100%];","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","ease":"Power3.easeInOut"}]'
+                    style="z-index: 7;"
+                  >
+                    <a href={slide.buttonLink} class="know_more">
+                      <span class="icon flaticon-right-arrow-1" />{" "}
+                      {slide.buttonText}
+                    </a>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--End Main Slider-->
+    <!--Services Section-->
+    <section
+      class="services-section"
+      style="background-image:url(/images/background/1.jpg); position: relative; z-index: 20; margin-top: -100px;"
+    >
+      <div class="auto-container">
+        <div class="inner-container">
+          <div class="row clearfix">
+            <!--Services Block-->
+            <div class="services-block col-md-3 col-sm-6 col-xs-12">
+              <div class="inner-box">
+                <div class="image">
+                  <img src="/images/resource/service-1.jpg" alt="" />
+                </div>
+                <div class="lower-content">
+                  <div class="icon-box">
+                    <span class="icon flaticon-alarm-clock"></span>
+                  </div>
+                  <h3>Punctual Delivery Time</h3>
+                </div>
+                <div class="overlay-box">
+                  <div class="overlay-inner">
+                    <div class="text">
+                      There anyone who loves or pursues or desires too obtains
+                      pain of itself, because it is workers all occur.
+                    </div>
+                    <a href="/market-single" class="know-more"
+                      >Know More <span class="icon flaticon-right-arrow-1"
+                      ></span></a
+                    >
+                    <div class="overlay-lower-inner">
+                      <div class="overlay-icon flaticon-alarm-clock"></div>
+                      <h4>
+                        <a href="/market-single">Punctual Delivery Time</a>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Services Block-->
+            <div class="services-block col-md-3 col-sm-6 col-xs-12">
+              <div class="inner-box">
+                <div class="image">
+                  <img src="/images/resource/service-3.jpg" alt="" />
+                </div>
+                <div class="lower-content">
+                  <div class="icon-box">
+                    <span class="icon flaticon-education"></span>
+                  </div>
+                  <h3>Smart Technology</h3>
+                </div>
+                <div class="overlay-box">
+                  <div class="overlay-inner">
+                    <div class="text">
+                      There anyone who loves or pursues or desires too obtains
+                      pain of itself, because it is workers all occur.
+                    </div>
+                    <a href="/market-single" class="know-more"
+                      >Know More <span class="icon flaticon-right-arrow-1"
+                      ></span></a
+                    >
+                    <div class="overlay-lower-inner">
+                      <div class="overlay-icon flaticon-education"></div>
+                      <h4><a href="/market-single">Smart Technology</a></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Services Block-->
+            <div class="services-block col-md-3 col-sm-6 col-xs-12">
+              <div class="inner-box">
+                <div class="image">
+                  <img src="/images/resource/service-2.jpg" alt="" />
+                </div>
+                <div class="lower-content">
+                  <div class="icon-box">
+                    <span class="icon flaticon-time"></span>
+                  </div>
+                  <h3>Easy and Affortable</h3>
+                </div>
+                <div class="overlay-box">
+                  <div class="overlay-inner">
+                    <div class="text">
+                      There anyone who loves or pursues or desires too obtains
+                      pain of itself, because it is workers all occur.
+                    </div>
+                    <a href="/market-single" class="know-more"
+                      >Know More <span class="icon flaticon-right-arrow-1"
+                      ></span></a
+                    >
+                    <div class="overlay-lower-inner">
+                      <div class="overlay-icon flaticon-time"></div>
+                      <h4><a href="/market-single">Easy and Affortable</a></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Services Block-->
+            <div class="services-block col-md-3 col-sm-6 col-xs-12">
+              <div class="inner-box">
+                <div class="image">
+                  <img src="/images/resource/service-3.jpg" alt="" />
+                </div>
+                <div class="lower-content">
+                  <div class="icon-box">
+                    <span class="icon flaticon-engineer"></span>
+                  </div>
+                  <h3>Team Of Professionals</h3>
+                </div>
+                <div class="overlay-box">
+                  <div class="overlay-inner">
+                    <div class="text">
+                      There anyone who loves or pursues or desires too obtains
+                      pain of itself, because it is workers all occur.
+                    </div>
+                    <a href="/market-single" class="know-more"
+                      >Know More <span class="icon flaticon-right-arrow-1"
+                      ></span></a
+                    >
+                    <div class="overlay-lower-inner">
+                      <div class="overlay-icon flaticon-engineer"></div>
+                      <h4>
+                        <a href="/market-single">Team Of Professionals</a>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Services Section-->
+
+    <!--Market Section-->
+    <section
+      class="market-section"
+      style="background-image:url(images/background/2.jpg)"
+    >
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Column-->
+          <div
+            class="title-column m-block col-lg-4 col-md-12 col-sm-12 col-xs-12"
+          >
+            <div class="inner-column">
+              <div class="sec-title light">
+                <h2>Market Sectors</h2>
+                <div class="separator"></div>
+              </div>
+              <div class="text">
+                Over 24 years experience & knowledge of international industrial
+                systems, dedicated to provide the best economical solutions.
+              </div>
+              <a href="market-sectors.html" class="view_all"
+                ><span class="icon flaticon-right-arrow-1"></span> View All Sectors</a
+              >
+            </div>
+          </div>
+
+          {/* Boucle sur le tableau des secteurs de marché */}
+          {
+            homeMarketSectors.map((sector) => (
+              <div class="market-block m-block col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                  <h3>
+                    <a href={sector.url}>
+                      {sector.title} <br /> {sector.subtitle}
+                    </a>
+                  </h3>
+                  <div class="text">{sector.description}</div>
+                  <div class="icon-box">
+                    <span class={`icon ${sector.icon}`} />
+                  </div>
+                  <a href={sector.url} class="view_all">
+                    Go Through <span class="icon flaticon-right-arrow-1" />
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!--End Market Section-->
+
+    <!--Projects Section-->
+    <section class="projects-section">
+      <div class="auto-container">
+        <div class="sec-title">
+          <div class="row clearfix">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <h2>Latest Projects</h2>
+              <div class="separator"></div>
+            </div>
+            <div class="col-md-9 col-sm-12 col-xs-12">
+              <div class="row clearfix">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                  <div class="text">
+                    Our Company has consistently embraced innovation to provide
+                    a superior level of excellence to cutomers.
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                  <a href="market-sectors.html" class="view_all"
+                    >View More Projects <span
+                      class="icon flaticon-right-arrow-1"></span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix">
+          <!--Project Block-->
+          <div class="project-block col-md-6 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="image">
+                <img src="images/gallery/project-1.jpg" alt="" />
+                <div class="overlay-box">
+                  <div class="content">
+                    <h3>
+                      <a href="projects-single.html">Boston Railway Station</a>
+                    </h3>
+                    <div class="text">
+                      Desires to obtain pain itself, because <span
+                        class="icon flaticon-right-arrow-1"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Project Block-->
+          <div class="project-block col-md-6 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="image">
+                <img src="images/gallery/project-2.jpg" alt="" />
+                <div class="overlay-box">
+                  <div class="content">
+                    <h3><a href="projects-single.html">Us Gas Company</a></h3>
+                    <div class="text">
+                      Desires to obtain pain itself, because <span
+                        class="icon flaticon-right-arrow-1"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Project Block-->
+          <div class="project-block col-md-6 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="image">
+                <img src="images/gallery/project-3.jpg" alt="" />
+                <div class="overlay-box">
+                  <div class="content">
+                    <h3>
+                      <a href="projects-single.html">Golden Gate Bridge</a>
+                    </h3>
+                    <div class="text">
+                      Desires to obtain pain itself, because <span
+                        class="icon flaticon-right-arrow-1"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Projects Section-->
+
+    <!--News Section-->
+    <section class="news-section">
+      <div class="auto-container">
+        <div class="sec-title">
+          <h2>Latest From Blog</h2>
+          <div class="separator"></div>
+        </div>
+        <div class="three-item-carousel owl-carousel owl-theme">
+          {/* Boucle sur le tableau des actualités */}
+          {
+            latestNews.map((news) => (
+              <div class="news-block">
+                <div class="inner-box">
+                  <h2>
+                    <a href={news.url}>{news.title}</a>
+                  </h2>
+                  <div class="title">Post Info</div>
+                  <div class="post-date">
+                    By {news.author}, On {news.date}
+                  </div>
+                  <div class="text">{news.excerpt}</div>
+                  <a class="read-more" href={news.url}>
+                    Read More{" "}
+                    <span class="icon flaticon-arrow-pointing-to-right" />
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!--End News Section-->
+
+    <!--Career Section-->
+    <section class="career-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Video Column-->
+          <div class="video-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="image">
+                <img src="images/resource/video-img.jpg" alt="" />
+                <a
+                  href="https://www.youtube.com/watch?v=kxPCFljwJws"
+                  class="lightbox-image play-btn"
+                >
+                  <span class="icon flaticon-play-button-3"></span>
+                  Play Video
+                </a>
+              </div>
+            </div>
+          </div>
+          <!--Content Column-->
+          <div class="content-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Find Your Career at <br /> Metro.</h2>
+                <div class="separator centered"></div>
+              </div>
+              <div class="text">
+                Idea of denouncing pleasure and praising pain was born and I
+                will give you a complete account of the system, and expound the
+                actual teachings of the explorer truth, the master-builder of
+                human happiness.
+              </div>
+              <ul class="list-style-one">
+                <li>
+                  <strong>Assembler / Fabricator</strong>Assemblers and
+                  fabricators put together pieces...
+                </li>
+                <li>
+                  <strong>Quality Control Inspector</strong>Quality control
+                  inspectors examine materials and products...
+                </li>
+              </ul>
+              <a class="see_all" href="#"
+                >See All Positions <span class="icon flaticon-right-arrow-1"
+                ></span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Career Section-->
+
+    <!--Informations Section-->
+    <section
+      class="informations-section"
+      style="background-image:url(images/background/3.jpg)"
+    >
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!--Info Block-->
+          <div class="info-block col-md-3 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="icon-box">
+                <span class="icon flaticon-layers"></span>
+              </div>
+              <h3><a href="#">1.Exploration</a></h3>
+            </div>
+          </div>
+
+          <!--Info Block-->
+          <div class="info-block col-md-3 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="icon-box">
+                <span class="icon flaticon-oil-platform"></span>
+              </div>
+              <h3><a href="#">2.Development</a></h3>
+            </div>
+          </div>
+
+          <!--Info Block-->
+          <div class="info-block col-md-3 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="icon-box">
+                <span class="icon flaticon-idea-1"></span>
+              </div>
+              <h3><a href="#">3.Production</a></h3>
+            </div>
+          </div>
+
+          <!--Info Block-->
+          <div class="info-block col-md-3 col-sm-6 col-xs-12">
+            <div class="inner-box">
+              <div class="icon-box">
+                <span class="icon flaticon-security"></span>
+              </div>
+              <h3><a href="#">4.Abandonment</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Informations Section-->
+
+    <!--Achivements Section-->
+    <section
+      class="achivements-section"
+      style="background-image:url(images/background/4.jpg)"
+    >
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Our Achivements</h2>
+          <div class="separator"></div>
+        </div>
+        <div class="row clearfix">
+          {/* Boucle sur le tableau des réalisations */}
+          {
+            achievements.map((achievement) => (
+              <div class="achivements-block col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                  <div class="upper-box">
+                    <div class="image">
+                      <img src={achievement.logo} alt={achievement.title} />
+                    </div>
+                  </div>
+                  <div class="lower-content">
+                    <h3>{achievement.title}</h3>
+                    <div class="text">{achievement.description}</div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!--End Achivements Section-->
+
+    <!--Testimonial Section-->
+    <section class="testimonial-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Testimonials</h2>
+          <div class="separator"></div>
+        </div>
+        <div class="testimonial-two-item owl-carousel owl-theme">
+          {/* Boucle sur le tableau des témoignages */}
+          {
+            testimonials.map((testimonial) => (
+              <div class={`testimonial-block ${testimonial.style}`}>
+                <div class="inner-box">
+                  <div class="author-img">
+                    <img
+                      src={testimonial.image}
+                      alt={`Témoignage de ${testimonial.name}`}
+                    />
+                  </div>
+                  <div class="quote-icon">
+                    <span class="icon flaticon-quotation" />
+                  </div>
+                  <h3>{testimonial.name}</h3>
+                  <div class="location">{testimonial.location}</div>
+                  <div class="text">{testimonial.testimonial}</div>
+                  <a href="#" class="read">
+                    Continue to Read{" "}
+                    <span class="icon flaticon-right-arrow-1" />
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <!--End Testimonial Section-->
+
+    <!--Clients Section-->
+    <section class="clients-section">
+      <div class="auto-container">
+        <div class="sponsors-outer">
+          <!--Sponsors Carousel-->
+          <ul class="sponsors-carousel owl-carousel owl-theme">
+            {/* Boucle sur le tableau des clients/sponsors */}
+            {
+              clients.map((client) => (
+                <li class="slide-item">
+                  <figure class="image-box">
+                    <a href={client.link}>
+                      <img src={client.image} alt={client.name} />
+                    </a>
+                  </figure>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!--End Clients Section-->
+
+    <!--Call To Action Section-->
+    <section
+      class="call-to-action-section"
+      style="background-image:url(images/background/5.jpg)"
+    >
+      <div class="auto-container">
+        <div class="row clearfix">
+          <div class="col-md-9 col-sm-12 col-xs-12">
+            <h2>
+              Quality service for construction projects and Automative service.
+            </h2>
+          </div>
+          <div class="link-column col-md-3 col-sm-12 col-xs-12">
+            <a class="apointment" href="#"
+              >Make an Appointment <span
+                class="icon flaticon-arrow-pointing-to-right"></span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Call To Action Section-->
+
+    <!--Appointment Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Get a Quote</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Get a free quote for your industrial or engineering
+                        business solutions, We are here 24/7.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form
+                    method="post"
+                    action="http://st.ourhtmldemo.com/new/metron/contact.html"
+                  >
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="text"
+                          placeholder="Your Name"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="text"
+                          placeholder="Company Name"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="text"
+                          placeholder="Phone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box">
+                          <option>Select Needed Service</option>
+                          <option>Services One</option>
+                          <option>Services Two</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea placeholder="Your Message..."></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Send Now <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="index.html" class="backhome"
+        >Back to Home <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>
+    <!-- End of #schedule-box -->
+  </main>
+  <Footer />
+</BaseLayout>

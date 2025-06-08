@@ -1,54 +1,53 @@
 ---
-// Composant Footer optimisé avec tableaux et boucles
+// Footer.astro - Version internationalisée
+import { getTranslations } from '../../i18n/translations.js';
+
+// Récupération de la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith('/fr');
+const lang = isfrench ? 'fr' : 'en';
+const t = getTranslations(lang);
 
 // Liens utiles dans le footer - première colonne
 const usefulLinks1 = [
-  { title: "Accueil", url: "/" },
-  { title: "Notre Équipe", url: "/about#team-section" },
- 
-  {
-    title: "Demander un Devis",
-    url: "/formDevis",
-    
-  },
-
-  { title: "Contact", url: "/contact" },
+  { title: t.footer.links.home, url: "/" },
+  { title: t.footer.links.team, url: "/about#team-section" },
+  { title: t.footer.links.quote, url: "/formDevis" },
+  { title: t.footer.links.contact, url: "/contact" },
 ];
 
 // Liens utiles dans le footer - deuxième colonne
 const usefulLinks2 = [
-  { title: "Secteurs d'Activité", url: "/market-sectors" },
-  { title: "Industries", url: "#" },
-  { title: "Actualités", url: "/blog" },
-  { title: "Pourquoi Nous Choisir", url: "#" },
-  { title: "Développement Durable", url: "#" },
+  { title: t.footer.links.services, url: "/services/allServices" },
+  { title: t.footer.links.news, url: "/blog/allBlog" },
+  { title: t.footer.links.whyChoose, url: "/quality" },
 ];
-
+  
 // Liens de réseaux sociaux
 const socialLinks = [
-  { icon: "fa-facebook", url: "#" },
-  { icon: "fa-twitter", url: "#" },
+  { icon: "fa-facebook", url: "https://www.facebook.com/macobate/#" },
+  { icon: "fa-twitter", url: "https://ma.linkedin.com/company/macobate" },
   { icon: "fa-linkedin", url: "#" },
 ];
 
-// Documents et ressources
+// Documents et ressources avec traductions
 const materials = [
   {
     icon: "flaticon-doc",
-    title: "Présentation Entreprise",
-    subtitle: "2025",
+    title: t.footer.materials[0].title,
+    subtitle: t.footer.materials[0].subtitle,
     url: "#",
   },
   {
     icon: "flaticon-doc",
-    title: "Formations Techniques",
-    subtitle: "Catalogue",
+    title: t.footer.materials[1].title,
+    subtitle: t.footer.materials[1].subtitle,
     url: "#",
   },
   {
     icon: "flaticon-pdf",
-    title: "Croissance de l'Entreprise",
-    subtitle: "Dernières Années",
+    title: t.footer.materials[2].title,
+    subtitle: t.footer.materials[2].subtitle,
     url: "#",
   },
 ];
@@ -70,14 +69,14 @@ const materials = [
             </div>
             <div class="widget-content">
               <div class="text">
-                48, Zone Industrielle Takadoum Quartier Bouregreg Rabat
+                {t.footer.address}
               </div>
               <ul class="list">
-                <li>Tél: +212 5 37 65 96 46</li>
-                <li>Contact@macobate.com</li>
+                <li>{t.footer.phone}</li>
+                <li>{t.footer.email}</li>
               </ul>
               <div class="timing">
-                <span>Horaires d'ouverture:</span>Lundi - Vendredi : 8h00 - 18h00
+                <span>{t.footer.hours}</span>{t.footer.hoursDetail}
               </div>
               <ul class="social-icon-one">
                 {/* Boucle sur les liens sociaux */}
@@ -99,7 +98,7 @@ const materials = [
         <div class="column col-md-4 col-sm-6 col-xs-12">
           <div class="footer-widget links-widget">
             <div class="footer-title">
-              <h2>Liens Rapides</h2>
+              <h2>{t.footer.quickLinks}</h2>
             </div>
             <div class="row clearfix">
               <div class="column col-md-6 col-sm-6 col-xs-12">
@@ -108,23 +107,13 @@ const materials = [
                   {
                     usefulLinks1.map((link) => (
                       <li>
-                        {link.dataToggle ? (
-                          <a
-                            href={link.url}
-                            data-toggle={link.dataToggle}
-                            data-target={link.dataTarget}
-                          >
-                            {link.title}
-                          </a>
-                        ) : (
-                          <a href={link.url}>{link.title}</a>
-                        )}
+                        <a href={link.url}>{link.title}</a>
                       </li>
                     ))
                   }
                 </ul>
               </div>
-              <!-- <div class="column col-md-6 col-sm-6 col-xs-12">
+              <div class="column col-md-6 col-sm-6 col-xs-12">
                 <ul class="links">
                   {/* Boucle sur la deuxième colonne de liens utiles */}
                   {
@@ -135,7 +124,7 @@ const materials = [
                     ))
                   }
                 </ul>
-              </div> -->
+              </div> 
             </div>
           </div>
         </div>
@@ -144,7 +133,7 @@ const materials = [
         <div class="column col-md-3 col-sm-6 col-xs-12">
           <div class="footer-widget material-widget">
             <div class="footer-title">
-              <h2>Nos Ressources</h2>
+              <h2>{t.footer.resources}</h2>
             </div>
             <ul class="list-style-two">
               {/* Boucle sur les matériaux */}
@@ -164,9 +153,8 @@ const materials = [
     </div>
   </div>
   <div class="footer-bottom">
-      <div class="copyright">
-        Copyright © 2012-2025 <a href="#">Macobate</a> | Tous droits réservés.
-      </div>
+    <div class="copyright">
+      {t.footer.copyright}
     </div>
   </div>
-</footer> 
+</footer>

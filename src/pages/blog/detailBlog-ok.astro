@@ -1,0 +1,1246 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CallToActionSection from '../../components/CallToActionSection.astro';
+
+// Base de données des articles de blog
+const blogArticles = {
+  "news-1": {
+    id: "news-1",
+    title: "MACOBATE remporte le contrat de la nouvelle station de traitement d'eau à Rabat",
+    author: "Équipe MACOBATE",
+    date: "15 Novembre 2024",
+    category: "Projets",
+    tags: ["Traitement d'eau", "Contrats", "Innovation"],
+    excerpt: "MACOBATE a été sélectionné pour concevoir et installer une station de traitement d'eau de dernière génération...",
+    image: "/images/resource/news-1.jpg",
+    readTime: "5 min",
+    content: `
+      <p>MACOBATE a récemment décroché un contrat majeur pour la conception et l'installation d'une station de traitement d'eau ultramoderne dans la région de Rabat. Ce projet d'envergure témoigne de notre expertise reconnue dans le domaine du traitement de l'eau et de notre capacité à livrer des solutions innovantes.</p>
+      
+      <h3>Un projet d'envergure nationale</h3>
+      <p>Cette nouvelle station de traitement aura une capacité de 50 000 m³/jour et desservira plus de 200 000 habitants. Le projet intègre les dernières technologies en matière de traitement de l'eau, notamment notre système MWS (Mobile Water Solutions) adapté aux besoins spécifiques de la région.</p>
+      
+      <blockquote>
+        <p>"Ce contrat confirme notre position de leader dans le secteur du traitement de l'eau au Maroc et en Afrique de l'Ouest. Nous sommes fiers de contribuer à l'amélioration de l'accès à l'eau potable pour les populations."</p>
+        <cite>- Ing. M'hamed TOUNSI, Fondateur MACOBATE</cite>
+      </blockquote>
+      
+      <h3>Technologies innovantes</h3>
+      <p>La station intégrera plusieurs innovations technologiques :</p>
+      <ul>
+        <li>Système de filtration avancée par osmose inverse</li>
+        <li>Automatisation complète avec supervision SCADA</li>
+        <li>Traitement intelligent des boues avec valorisation énergétique</li>
+        <li>Monitoring à distance via smartphone</li>
+      </ul>
+      
+      <h3>Impact environnemental positif</h3>
+      <p>Au-delà de l'aspect technique, ce projet s'inscrit dans une démarche de développement durable. La station sera équipée de panneaux solaires pour réduire sa consommation énergétique et intégrera un système de récupération des eaux de pluie.</p>
+      
+      <p>Les travaux débuteront en janvier 2025 pour une mise en service prévue fin 2025. Ce projet renforce notre engagement à fournir des solutions d'infrastructure durables pour le développement du continent africain.</p>
+    `
+  },
+  "news-2": {
+    id: "news-2",
+    title: "Innovation en charpente métallique : MACOBATE lance sa nouvelle gamme de structures préfabriquées",
+    author: "Service Commercial",
+    date: "08 Novembre 2024",
+    category: "Innovation",
+    tags: ["Charpente métallique", "Innovation", "Préfabrication"],
+    excerpt: "Découvrez notre nouvelle gamme de structures métalliques préfabriquées qui révolutionne la construction industrielle...",
+    image: "/images/resource/news-2.jpg",
+    readTime: "4 min",
+    content: `
+      <p>MACOBATE franchit une nouvelle étape dans l'innovation avec le lancement de sa gamme révolutionnaire de structures métalliques préfabriquées. Cette nouvelle offre répond aux besoins croissants du marché en matière de rapidité d'exécution et d'optimisation des coûts.</p>
+      
+      <h3>Une approche révolutionnaire</h3>
+      <p>Nos nouvelles structures préfabriquées combinent l'expertise traditionnelle de MACOBATE avec les technologies de modélisation 3D les plus avancées. Chaque élément est conçu avec Tekla Structures et fabriqué selon les normes ISO 9001 et EN 1090-2 EXC2/3.</p>
+      
+      <h3>Avantages pour nos clients</h3>
+      <ul>
+        <li><strong>Réduction des délais :</strong> Jusqu'à 40% de gain de temps sur les projets</li>
+        <li><strong>Optimisation des coûts :</strong> Économies substantielles grâce à la standardisation</li>
+        <li><strong>Qualité garantie :</strong> Contrôle qualité en atelier pour chaque composant</li>
+        <li><strong>Flexibilité :</strong> Adaptation possible aux besoins spécifiques du client</li>
+      </ul>
+      
+      <blockquote>
+        <p>"Cette innovation s'inscrit dans notre vision d'un avenir industriel plus efficace et plus durable. Nous offrons à nos clients la possibilité de construire plus vite, mieux et à moindre coût."</p>
+        <cite>- Directeur Technique MACOBATE</cite>
+      </blockquote>
+      
+      <h3>Applications multiples</h3>
+      <p>Cette nouvelle gamme s'adresse à tous les secteurs d'activité :</p>
+      <ul>
+        <li>Entrepôts et centres logistiques</li>
+        <li>Usines et ateliers de production</li>
+        <li>Bâtiments agricoles et hangars</li>
+        <li>Structures commerciales et bureaux</li>
+      </ul>
+      
+      <p>Les premiers projets pilotes ont déjà démontré l'efficacité de cette approche, avec des gains de productivité significatifs et une satisfaction client exceptionnelle.</p>
+    `
+  },
+  "news-3": {
+    id: "news-3",
+    title: "MACOBATE remporte le prix de l'excellence industrielle 2024",
+    author: "Relations Presse",
+    date: "28 Octobre 2024",
+    category: "Prix et Reconnaissances",
+    tags: ["Prix", "Excellence", "Reconnaissance"],
+    excerpt: "Notre entreprise a été distinguée par le prix de l'excellence industrielle pour son innovation et sa contribution au développement...",
+    image: "/images/resource/news-3.jpg",
+    readTime: "3 min",
+    content: `
+      <p>MACOBATE a été honoré du prestigieux prix de l'excellence industrielle 2024, une reconnaissance qui couronne plus de quatre décennies d'innovation et d'excellence dans le secteur de l'ingénierie industrielle au Maroc et en Afrique.</p>
+      
+      <h3>Une reconnaissance méritée</h3>
+      <p>Ce prix, décerné par la Confédération Générale des Entreprises du Maroc (CGEM), récompense les entreprises qui se distinguent par leur contribution exceptionnelle au développement industriel du pays et leur engagement en faveur de l'innovation.</p>
+      
+      <blockquote>
+        <p>"Cette distinction honore tous nos collaborateurs qui, jour après jour, font de MACOBATE un acteur incontournable de l'industrie marocaine. C'est aussi la reconnaissance de notre vision : montrer la voie à tout un continent à l'aube de sa renaissance industrielle."</p>
+        <cite>- Direction Générale MACOBATE</cite>
+      </blockquote>
+      
+      <h3>Les critères de sélection</h3>
+      <p>Le jury a particulièrement apprécié :</p>
+      <ul>
+        <li>Notre approche multidisciplinaire unique</li>
+        <li>L'innovation constante dans nos procédés</li>
+        <li>Notre engagement envers la qualité et la sécurité</li>
+        <li>Notre contribution au développement des compétences locales</li>
+        <li>Notre impact positif sur l'économie nationale</li>
+      </ul>
+      
+      <h3>Un tremplin vers l'avenir</h3>
+      <p>Cette récompense nous encourage à poursuivre nos efforts d'innovation et à renforcer notre position de leader sur le marché africain. Elle témoigne également de la confiance que nous accordent nos partenaires et clients.</p>
+      
+      <p>MACOBATE continuera à investir dans la recherche et développement, la formation de ses équipes et l'acquisition de technologies de pointe pour maintenir son avance technologique et répondre aux défis industriels de demain.</p>
+    `
+  }
+};
+
+// Fonction pour obtenir l'article actuel basé sur l'URL ou un paramètre
+function getCurrentArticle() {
+  // Pour l'instant, on retourne le premier article
+  // Dans une vraie application, vous récupéreriez l'ID depuis l'URL ou les paramètres
+  return blogArticles["news-1"];
+}
+
+// Fonction pour obtenir les articles suggérés
+function getSuggestedArticles(currentId, limit = 2) {
+  return Object.values(blogArticles)
+    .filter(article => article.id !== currentId)
+    .slice(0, limit);
+}
+
+const currentArticle = getCurrentArticle();
+const suggestedArticles = getSuggestedArticles(currentArticle.id);
+const allCategories = [...new Set(Object.values(blogArticles).map(article => article.category))];
+---
+
+<BaseLayout title={`${currentArticle.title} - MACOBATE Blog`} 
+  description={currentArticle.excerpt} 
+  pageType="article">
+  <Header />
+  <main>
+    <!-- Page Title -->
+    <section class="page-title" style="background-image:url(/images/background/6.jpg)">
+      <div class="auto-container">
+        <ul class="page-breadcrumb" aria-label="Fil d'Ariane">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog">Actualités</a></li>
+          <li>{currentArticle.title}</li>
+        </ul>
+        <h1>Actualités</h1>
+      </div>
+    </section>
+
+    <!-- Blog Detail Section -->
+    <section class="blog-detail-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          
+          <!-- Content Column -->
+          <div class="content-column col-lg-8 col-md-12 col-sm-12">
+            <div class="inner-column">
+              
+              <!-- Blog Detail -->
+              <div class="blog-detail">
+                
+                <!-- Article Header -->
+                <div class="article-header">
+                  <div class="category-badge">{currentArticle.category}</div>
+                  <h1 class="article-title">{currentArticle.title}</h1>
+                  
+                  <div class="article-meta">
+                    <div class="meta-item">
+                      <span class="icon flaticon-user"></span>
+                      <span>Par {currentArticle.author}</span>
+                    </div>
+                    <div class="meta-item">
+                      <span class="icon flaticon-calendar"></span>
+                      <span>{currentArticle.date}</span>
+                    </div>
+                    <div class="meta-item">
+                      <span class="icon flaticon-clock"></span>
+                      <span>{currentArticle.readTime} de lecture</span>
+                    </div>
+                  </div>
+                  <div class="separator"></div>
+                </div>
+
+                <!-- Featured Image -->
+                <div class="featured-image">
+                  <img src={currentArticle.image} alt={currentArticle.title} />
+                </div>
+
+                <!-- Article Content -->
+                <div class="article-content" set:html={currentArticle.content} />
+
+                <!-- Tags -->
+                <div class="article-tags">
+                  <h4>Tags :</h4>
+                  <div class="tags-list">
+                    {currentArticle.tags.map(tag => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Social Share -->
+                <div class="social-share">
+                  <h4>Partager cet article :</h4>
+                  <div class="share-buttons">
+                    <a href="#" class="share-btn facebook" title="Partager sur Facebook">
+                      <span class="fab fa-facebook-f"></span>
+                    </a>
+                    <a href="#" class="share-btn twitter" title="Partager sur Twitter">
+                      <span class="fab fa-twitter"></span>
+                    </a>
+                    <a href="#" class="share-btn linkedin" title="Partager sur LinkedIn">
+                      <span class="fab fa-linkedin-in"></span>
+                    </a>
+                    <a href="#" class="share-btn email" title="Partager par email">
+                      <span class="fas fa-envelope"></span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar Column -->
+          <div class="sidebar-column col-lg-4 col-md-12 col-sm-12">
+            <div class="inner-column">
+              
+              <!-- Search Widget -->
+              <div class="sidebar-widget search-widget">
+                <h3 class="widget-title">Rechercher</h3>
+                <div class="separator"></div>
+                <div class="search-form">
+                  <form action="/blog" method="get">
+                    <div class="form-group">
+                      <input type="search" name="search" placeholder="Rechercher un article..." required>
+                      <button type="submit">
+                        <span class="icon fa fa-search"></span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Categories Widget -->
+              <div class="sidebar-widget categories-widget">
+                <h3 class="widget-title">Catégories</h3>
+                <div class="separator"></div>
+                <ul class="categories-list">
+                  {allCategories.map(category => (
+                    <li>
+                      <a href={`/blog?category=${category}`}>{category}</a>
+                      <span class="count">({Object.values(blogArticles).filter(article => article.category === category).length})</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Recent Posts Widget -->
+              <div class="sidebar-widget recent-posts-widget">
+                <h3 class="widget-title">Articles récents</h3>
+                <div class="separator"></div>
+                <div class="recent-posts">
+                  {Object.values(blogArticles).slice(0, 3).map(article => (
+                    <div class="post-item">
+                      <div class="post-thumb">
+                        <a href={`/blog/detailBlog#${article.id}`}>
+                          <img src={article.image} alt={article.title} />
+                        </a>
+                      </div>
+                      <div class="post-content">
+                        <h4>
+                          <a href={`/blog/detailBlog#${article.id}`}>{article.title}</a>
+                        </h4>
+                        <div class="post-meta">
+                          <span class="date">{article.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Newsletter Widget -->
+              <div class="sidebar-widget newsletter-widget">
+                <h3 class="widget-title">Newsletter</h3>
+                <div class="separator"></div>
+                <div class="text">
+                  Restez informé de nos dernières actualités et innovations en vous abonnant à notre newsletter.
+                </div>
+                <div class="newsletter-form">
+                  <form action="#" method="post">
+                    <div class="form-group">
+                      <input type="email" name="email" placeholder="Votre adresse email" required>
+                      <button type="submit" class="theme-btn btn-style-one">
+                        S'abonner
+                        <span class="icon flaticon-arrow-pointing-to-right"></span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Related Articles Section -->
+        <div class="related-articles-section">
+          <div class="sec-title">
+            <h2>Articles similaires</h2>
+            <div class="separator"></div>
+          </div>
+          
+          <div class="row clearfix">
+            {suggestedArticles.map(article => (
+              <div class="related-article-block col-md-6 col-sm-12">
+                <div class="inner-box">
+                  <div class="image">
+                    <a href={`/blog/detailBlog#${article.id}`}>
+                      <img src={article.image} alt={article.title} />
+                    </a>
+                    <div class="category-label">{article.category}</div>
+                  </div>
+                  <div class="content">
+                    <h3>
+                      <a href={`/blog/detailBlog#${article.id}`}>{article.title}</a>
+                    </h3>
+                    <div class="meta-info">
+                      <span class="author">Par {article.author}</span>
+                      <span class="date">{article.date}</span>
+                    </div>
+                    <div class="text">{article.excerpt}</div>
+                    <a href={`/blog/detailBlog#${article.id}`} class="read-more">
+                      Lire la suite
+                      <span class="icon flaticon-arrow-pointing-to-right"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Component -->
+    <CallToActionSection />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Blog Detail Section */
+  .blog-detail-section {
+    position: relative;
+    padding: 80px 0;
+  }
+
+  /* Blog Detail */
+  .blog-detail {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    margin-bottom: 40px;
+  }
+
+  /* Article Header */
+  .article-header {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .category-badge {
+    display: inline-block;
+    background-color: #1720d7;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  .article-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .meta-item .icon {
+    margin-right: 8px;
+    color: #1720d7;
+  }
+
+  /* Featured Image */
+  .featured-image {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  .featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Article Content */
+  .article-content {
+    position: relative;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 40px;
+  }
+
+  .article-content h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 30px 0 15px;
+  }
+
+  .article-content p {
+    margin-bottom: 20px;
+  }
+
+  .article-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .article-content ul li {
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .article-content ul li:before {
+    content: "•";
+    color: #1720d7;
+    position: absolute;
+    left: -15px;
+  }
+
+  .article-content blockquote {
+    background-color: #f8f9fa;
+    border-left: 4px solid #1720d7;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .article-content blockquote p {
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+
+  .article-content blockquote cite {
+    font-size: 14px;
+    color: #1720d7;
+    font-weight: 600;
+  }
+
+  /* Tags */
+  .article-tags {
+    position: relative;
+    padding: 20px 0;
+    border-top: 1px solid #e9ecef;
+    margin-bottom: 30px;
+  }
+
+  .article-tags h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    background-color: #f8f9fa;
+    color: #666;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+  }
+
+  .tag:hover {
+    background-color: #1720d7;
+    color: #fff;
+    border-color: #1720d7;
+  }
+
+  /* Social Share */
+  .social-share {
+    position: relative;
+    padding: 20px 0;
+    border-top: 1px solid #e9ecef;
+  }
+
+  .social-share h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .share-btn.facebook {
+    background-color: #3b5998;
+  }
+
+  .share-btn.twitter {
+    background-color: #1da1f2;
+  }
+
+  .share-btn.linkedin {
+    background-color: #0077b5;
+  }
+
+  .share-btn.email {
+    background-color: #666;
+  }
+
+  .share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Sidebar */
+  .sidebar-widget {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  .widget-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  /* Search Widget */
+  .search-form .form-group {
+    position: relative;
+  }
+
+  .search-form input {
+    width: 100%;
+    height: 50px;
+    padding: 0 50px 0 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .search-form button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #1720d7;
+    cursor: pointer;
+  }
+
+  /* Categories Widget */
+  .categories-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .categories-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .categories-list li:last-child {
+    border-bottom: none;
+  }
+
+  .categories-list a {
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+  }
+
+  .categories-list a:hover {
+    color: #1720d7;
+  }
+
+  .categories-list .count {
+    color: #999;
+    font-size: 12px;
+  }
+
+  /* Recent Posts Widget */
+  .post-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .post-item:last-child {
+    border-bottom: none;
+  }
+
+  .post-thumb {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .post-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .post-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 5px;
+  }
+
+  .post-content h4 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .post-content h4 a:hover {
+    color: #1720d7;
+  }
+
+  .post-meta .date {
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* Newsletter Widget */
+  .newsletter-widget .text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    outline: none;
+  }
+
+  /* Related Articles */
+  .related-articles-section {
+    position: relative;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #e9ecef;
+  }
+
+  .related-article-block {
+    margin-bottom: 30px;
+  }
+
+  .related-article-block .inner-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .related-article-block .inner-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-article-block .image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .related-article-block .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .related-article-block .inner-box:hover .image img {
+    transform: scale(1.05);
+  }
+
+  .category-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #1720d7;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .related-article-block .content {
+    padding: 25px;
+  }
+
+  .related-article-block h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .related-article-block h3 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .related-article-block h3 a:hover {
+    color: #1720d7;
+  }
+
+  .meta-info {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 15px;
+  }
+
+  .meta-info .author,
+  .meta-info .date {
+    margin-right: 15px;
+  }
+
+  .related-article-block .text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .read-more {
+    color: #1720d7;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .read-more:hover {
+    color: #0d1aa3;
+  }
+
+  .read-more .icon {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover .icon {
+    transform: translateX(3px);
+  }
+
+  /* Responsive Styles */
+  @media only screen and (max-width: 991px) {
+    .blog-detail {
+      padding: 30px 20px;
+    }
+
+    .article-title {
+      font-size: 28px;
+    }
+
+    .article-meta {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .share-buttons {
+      justify-content: center;
+    }
+
+    .related-articles-section {
+      margin-top: 40px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .blog-detail {
+      padding: 20px 15px;
+    }
+
+    .article-title {
+      font-size: 24px;
+    }
+
+    .article-content {
+      font-size: 15px;
+    }
+
+    .article-content h3 {
+      font-size: 20px;
+    }
+
+    .sidebar-widget {
+      padding: 20px;
+    }
+
+    .post-item {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .post-thumb {
+      width: 100%;
+      height: 150px;
+    }
+
+    .tags-list {
+      justify-content: center;
+    }
+
+    .share-buttons {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .blog-detail-section {
+      padding: 40px 0;
+    }
+
+    .related-article-block .content {
+      padding: 20px;
+    }
+
+    .related-article-block h3 {
+      font-size: 16px;
+    }
+
+    .category-badge {
+      font-size: 11px;
+      padding: 4px 12px;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Script pour gérer la navigation entre les articles et les fonctionnalités interactives
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Gestion du changement d'article via hash
+    function loadArticleFromHash() {
+      const hash = window.location.hash.slice(1);
+      if (hash && window.blogArticles && window.blogArticles[hash]) {
+        updateArticleContent(window.blogArticles[hash]);
+        updateSuggestedArticles(hash);
+      }
+    }
+
+    // Fonction pour mettre à jour le contenu de l'article
+    function updateArticleContent(article) {
+      // Mise à jour du badge de catégorie
+      const categoryBadge = document.querySelector('.category-badge');
+      if (categoryBadge) categoryBadge.textContent = article.category;
+
+      // Mise à jour du titre
+      const articleTitle = document.querySelector('.article-title');
+      if (articleTitle) articleTitle.textContent = article.title;
+
+      // Mise à jour des métadonnées
+      const metaItems = document.querySelectorAll('.meta-item span:not(.icon)');
+      if (metaItems.length >= 3) {
+        metaItems[0].textContent = `Par ${article.author}`;
+        metaItems[1].textContent = article.date;
+        metaItems[2].textContent = `${article.readTime} de lecture`;
+      }
+
+      // Mise à jour de l'image
+      const featuredImage = document.querySelector('.featured-image img');
+      if (featuredImage) {
+        featuredImage.src = article.image;
+        featuredImage.alt = article.title;
+      }
+
+      // Mise à jour du contenu
+      const articleContent = document.querySelector('.article-content');
+      if (articleContent) articleContent.innerHTML = article.content;
+
+      // Mise à jour des tags
+      const tagsList = document.querySelector('.tags-list');
+      if (tagsList) {
+        tagsList.innerHTML = article.tags.map(tag => 
+          `<span class="tag">${tag}</span>`
+        ).join('');
+      }
+
+      // Mise à jour du titre de la page
+      document.title = `${article.title} - MACOBATE Blog`;
+
+      // Scroll vers le haut
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Fonction pour mettre à jour les articles suggérés
+    function updateSuggestedArticles(currentId) {
+      if (!window.blogArticles) return;
+      
+      const suggestedArticles = Object.values(window.blogArticles)
+        .filter(article => article.id !== currentId)
+        .slice(0, 2);
+
+      const relatedArticlesContainer = document.querySelector('.related-articles-section .row');
+      if (relatedArticlesContainer) {
+        relatedArticlesContainer.innerHTML = suggestedArticles.map(article => `
+          <div class="related-article-block col-md-6 col-sm-12">
+            <div class="inner-box">
+              <div class="image">
+                <a href="/blog/detailBlog#${article.id}">
+                  <img src="${article.image}" alt="${article.title}" />
+                </a>
+                <div class="category-label">${article.category}</div>
+              </div>
+              <div class="content">
+                <h3>
+                  <a href="/blog/detailBlog#${article.id}">${article.title}</a>
+                </h3>
+                <div class="meta-info">
+                  <span class="author">Par ${article.author}</span>
+                  <span class="date">${article.date}</span>
+                </div>
+                <div class="text">${article.excerpt}</div>
+                <a href="/blog/detailBlog#${article.id}" class="read-more">
+                  Lire la suite
+                  <span class="icon flaticon-arrow-pointing-to-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Gestion du changement de hash
+    window.addEventListener('hashchange', loadArticleFromHash);
+
+    // Chargement initial si hash présent
+    if (window.location.hash) {
+      loadArticleFromHash();
+    }
+
+    // Gestion des boutons de partage social
+    const shareButtons = document.querySelectorAll('.share-btn');
+    shareButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const currentUrl = window.location.href;
+        const currentTitle = document.querySelector('.article-title').textContent;
+        
+        if (this.classList.contains('facebook')) {
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`, '_blank', 'width=600,height=400');
+        } else if (this.classList.contains('twitter')) {
+          window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(currentTitle)}`, '_blank', 'width=600,height=400');
+        } else if (this.classList.contains('linkedin')) {
+          window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`, '_blank', 'width=600,height=400');
+        } else if (this.classList.contains('email')) {
+          const subject = encodeURIComponent(`Article intéressant: ${currentTitle}`);
+          const body = encodeURIComponent(`Je pensais que cet article pourrait vous intéresser: ${currentUrl}`);
+          window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        }
+      });
+    });
+
+    // Animation pour les éléments au scroll
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.sidebar-widget, .related-article-block');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    // Initialisation des styles pour l'animation
+    const animatedElements = document.querySelectorAll('.sidebar-widget, .related-article-block');
+    animatedElements.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(20px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+    // Écouteur de scroll
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Animation initiale
+    setTimeout(animateOnScroll, 100);
+
+    // Gestion du formulaire de newsletter
+    const newsletterForm = document.querySelector('.newsletter-form form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Ici vous pouvez ajouter la logique pour traiter l'inscription
+        alert('Merci pour votre inscription à notre newsletter !');
+        this.reset();
+      });
+    }
+
+    // Gestion du formulaire de recherche
+    const searchForm = document.querySelector('.search-form form');
+    if (searchForm) {
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchTerm = this.querySelector('input[type="search"]').value;
+        
+        // Redirection vers la page de blog avec le terme de recherche
+        window.location.href = `/blog?search=${encodeURIComponent(searchTerm)}`;
+      });
+    }
+
+    // Smooth scroll pour les liens internes
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+  });
+
+  // Données des articles disponibles (pour le changement dynamique)
+  window.blogArticles = {
+    "news-1": {
+      id: "news-1",
+      title: "MACOBATE remporte le contrat de la nouvelle station de traitement d'eau à Rabat",
+      author: "Équipe MACOBATE",
+      date: "15 Novembre 2024",
+      category: "Projets",
+      tags: ["Traitement d'eau", "Contrats", "Innovation"],
+      excerpt: "MACOBATE a été sélectionné pour concevoir et installer une station de traitement d'eau de dernière génération...",
+      image: "/images/resource/news-1.jpg",
+      readTime: "5 min",
+      content: `
+        <p>MACOBATE a récemment décroché un contrat majeur pour la conception et l'installation d'une station de traitement d'eau ultramoderne dans la région de Rabat. Ce projet d'envergure témoigne de notre expertise reconnue dans le domaine du traitement de l'eau et de notre capacité à livrer des solutions innovantes.</p>
+        
+        <h3>Un projet d'envergure nationale</h3>
+        <p>Cette nouvelle station de traitement aura une capacité de 50 000 m³/jour et desservira plus de 200 000 habitants. Le projet intègre les dernières technologies en matière de traitement de l'eau, notamment notre système MWS (Mobile Water Solutions) adapté aux besoins spécifiques de la région.</p>
+        
+        <blockquote>
+          <p>"Ce contrat confirme notre position de leader dans le secteur du traitement de l'eau au Maroc et en Afrique de l'Ouest. Nous sommes fiers de contribuer à l'amélioration de l'accès à l'eau potable pour les populations."</p>
+          <cite>- Ing. M'hamed TOUNSI, Fondateur MACOBATE</cite>
+        </blockquote>
+        
+        <h3>Technologies innovantes</h3>
+        <p>La station intégrera plusieurs innovations technologiques :</p>
+        <ul>
+          <li>Système de filtration avancée par osmose inverse</li>
+          <li>Automatisation complète avec supervision SCADA</li>
+          <li>Traitement intelligent des boues avec valorisation énergétique</li>
+          <li>Monitoring à distance via smartphone</li>
+        </ul>
+        
+        <h3>Impact environnemental positif</h3>
+        <p>Au-delà de l'aspect technique, ce projet s'inscrit dans une démarche de développement durable. La station sera équipée de panneaux solaires pour réduire sa consommation énergétique et intégrera un système de récupération des eaux de pluie.</p>
+        
+        <p>Les travaux débuteront en janvier 2025 pour une mise en service prévue fin 2025. Ce projet renforce notre engagement à fournir des solutions d'infrastructure durables pour le développement du continent africain.</p>
+      `
+    },
+    "news-2": {
+      id: "news-2",
+      title: "Innovation en charpente métallique : MACOBATE lance sa nouvelle gamme de structures préfabriquées",
+      author: "Service Commercial",
+      date: "08 Novembre 2024",
+      category: "Innovation",
+      tags: ["Charpente métallique", "Innovation", "Préfabrication"],
+      excerpt: "Découvrez notre nouvelle gamme de structures métalliques préfabriquées qui révolutionne la construction industrielle...",
+      image: "/images/resource/news-2.jpg",
+      readTime: "4 min",
+      content: `
+        <p>MACOBATE franchit une nouvelle étape dans l'innovation avec le lancement de sa gamme révolutionnaire de structures métalliques préfabriquées. Cette nouvelle offre répond aux besoins croissants du marché en matière de rapidité d'exécution et d'optimisation des coûts.</p>
+        
+        <h3>Une approche révolutionnaire</h3>
+        <p>Nos nouvelles structures préfabriquées combinent l'expertise traditionnelle de MACOBATE avec les technologies de modélisation 3D les plus avancées. Chaque élément est conçu avec Tekla Structures et fabriqué selon les normes ISO 9001 et EN 1090-2 EXC2/3.</p>
+        
+        <h3>Avantages pour nos clients</h3>
+        <ul>
+          <li><strong>Réduction des délais :</strong> Jusqu'à 40% de gain de temps sur les projets</li>
+          <li><strong>Optimisation des coûts :</strong> Économies substantielles grâce à la standardisation</li>
+          <li><strong>Qualité garantie :</strong> Contrôle qualité en atelier pour chaque composant</li>
+          <li><strong>Flexibilité :</strong> Adaptation possible aux besoins spécifiques du client</li>
+        </ul>
+        
+        <blockquote>
+          <p>"Cette innovation s'inscrit dans notre vision d'un avenir industriel plus efficace et plus durable. Nous offrons à nos clients la possibilité de construire plus vite, mieux et à moindre coût."</p>
+          <cite>- Directeur Technique MACOBATE</cite>
+        </blockquote>
+        
+        <h3>Applications multiples</h3>
+        <p>Cette nouvelle gamme s'adresse à tous les secteurs d'activité :</p>
+        <ul>
+          <li>Entrepôts et centres logistiques</li>
+          <li>Usines et ateliers de production</li>
+          <li>Bâtiments agricoles et hangars</li>
+          <li>Structures commerciales et bureaux</li>
+        </ul>
+        
+        <p>Les premiers projets pilotes ont déjà démontré l'efficacité de cette approche, avec des gains de productivité significatifs et une satisfaction client exceptionnelle.</p>
+      `
+    },
+    "news-3": {
+      id: "news-3",
+      title: "MACOBATE remporte le prix de l'excellence industrielle 2024",
+      author: "Relations Presse",
+      date: "28 Octobre 2024",
+      category: "Prix et Reconnaissances",
+      tags: ["Prix", "Excellence", "Reconnaissance"],
+      excerpt: "Notre entreprise a été distinguée par le prix de l'excellence industrielle pour son innovation et sa contribution au développement...",
+      image: "/images/resource/news-3.jpg",
+      readTime: "3 min",
+      content: `
+        <p>MACOBATE a été honoré du prestigieux prix de l'excellence industrielle 2024, une reconnaissance qui couronne plus de quatre décennies d'innovation et d'excellence dans le secteur de l'ingénierie industrielle au Maroc et en Afrique.</p>
+        
+        <h3>Une reconnaissance méritée</h3>
+        <p>Ce prix, décerné par la Confédération Générale des Entreprises du Maroc (CGEM), récompense les entreprises qui se distinguent par leur contribution exceptionnelle au développement industriel du pays et leur engagement en faveur de l'innovation.</p>
+        
+        <blockquote>
+          <p>"Cette distinction honore tous nos collaborateurs qui, jour après jour, font de MACOBATE un acteur incontournable de l'industrie marocaine. C'est aussi la reconnaissance de notre vision : montrer la voie à tout un continent à l'aube de sa renaissance industrielle."</p>
+          <cite>- Direction Générale MACOBATE</cite>
+        </blockquote>
+        
+        <h3>Les critères de sélection</h3>
+        <p>Le jury a particulièrement apprécié :</p>
+        <ul>
+          <li>Notre approche multidisciplinaire unique</li>
+          <li>L'innovation constante dans nos procédés</li>
+          <li>Notre engagement envers la qualité et la sécurité</li>
+          <li>Notre contribution au développement des compétences locales</li>
+          <li>Notre impact positif sur l'économie nationale</li>
+        </ul>
+        
+        <h3>Un tremplin vers l'avenir</h3>
+        <p>Cette récompense nous encourage à poursuivre nos efforts d'innovation et à renforcer notre position de leader sur le marché africain. Elle témoigne également de la confiance que nous accordent nos partenaires et clients.</p>
+        
+        <p>MACOBATE continuera à investir dans la recherche et développement, la formation de ses équipes et l'acquisition de technologies de pointe pour maintenir son avance technologique et répondre aux défis industriels de demain.</p>
+      `
+    }
+  };
+</script>   

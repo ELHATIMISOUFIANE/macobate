@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// You can import additional components as needed
+---
+
+<BaseLayout title="Contact - Macobate">
+  <Header />
+  <main>
+    <!--Location Section-->
+    <section class="location-section" style="background-image:url(/images/background/pattern-1.png)">
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Contact</li>
+        </ul>
+        <div class="sec-title centered light">
+          <h2>Notre Emplacement</h2>
+          <div class="separator"></div>
+        </div>
+        
+        <!--Map Outer-->
+        <div class="map-outer">
+          <!--Map Canvas-->
+         <div class="map-canvas"
+  data-zoom="15"
+  data-lat="34.021972"
+  data-lng="-6.836359"
+  data-type="roadmap"
+  data-hue="#ffc400"
+  data-title="Macobate"
+  data-icon-path="/images/icons/map-marker.png"
+  data-content="48 Zone Industrielle, Quartier Bouregreg, 10000 Rabat, Maroc<br><a href='mailto:contact@macobate.com'>contact@macobate.com</a>">
+</div>
+
+        </div>
+        
+      </div>
+    </section>
+    <!--End Location Section-->
+    
+    <section class="contact-section">
+      <div class="auto-container">
+        
+        <!--Title Box-->
+        <div class="sec-title">
+          <div class="clearfix">
+            <div class="pull-left">
+              <h2>Contact Rapide</h2>
+              <div class="separator"></div>
+            </div>
+            <div class="text">Vous avez des questions ? N'hésitez pas à nous contacter, notre équipe est là <br> pour vous aider 24h/7j.</div>
+          </div>
+        </div>
+      
+        <div class="inner-container">
+          <div class="clearfix">
+            
+            <!--Info Column-->
+            
+            <div class="info-column col-md-4 col-sm-12 col-xs-12">
+              <div class="inner-column">
+                <div class="upper-box">
+                  <ul class="list-style-three">
+                    <li><span class="icon flaticon-technology-2"></span><strong>Appelez-nous: </strong>+212 5 37 65 96 46</li>
+                    <li><span class="icon flaticon-envelope-1"></span><strong>Écrivez-nous: </strong>contact@macobate.com</li>
+                    <li><span class="icon flaticon-time-1"></span><strong>Heures de bureau: </strong>Lundi - Samedi: 9h00 à 18h00</li>
+                  </ul>
+                </div>
+                <div class="lower-box">
+                  <div class="lower-inner">
+                    <div class="image">
+                      <img src="/images/resource/author-7.jpg" alt="Manager Macobate" />
+                    </div>
+                    <h3>Achraf tounsi</h3>
+                    <div class="designation">Directeur</div>
+                    <div class="emailed">contact@macobate.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!--Form Column-->
+            <div class="form-column col-md-8 col-sm-12 col-xs-12">
+              <div class="inner-column">
+                
+                <!-- Contact Form -->
+                <div class="contact-form">
+                  <!--Default Form-->
+                  <form method="post" action="/api/contact" id="contact-form">
+                    <div class="row clearfix">
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                        <input type="text" name="name" placeholder="Nom" required>
+                      </div>
+                      
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                        <input type="email" name="email" placeholder="E-Mail" required>
+                      </div>
+                      
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                        <input type="text" name="phone" placeholder="Téléphone" required>
+                      </div>
+                      
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                        <input type="text" name="subject" placeholder="Société" required>
+                      </div>
+                      
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <textarea name="message" placeholder="Votre message"></textarea>
+                      </div>
+                      
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                        <button class="theme-btn submit-btn" type="submit" name="submit-form">Envoyer <span class="icon flaticon-right-arrow-1"></span></button>
+                      </div>
+                      
+                    </div>
+                  </form>
+                    
+                </div>
+                <!--End Contact Form -->
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!--Quote Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times" aria-hidden="true"></i></button>
+            <div class="get-quote-form" style="background-image:url(/images/background/13.jpg)">
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demandez un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">Obtenez un devis gratuit pour vos solutions industrielles, nous sommes disponibles 24h/7j.</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/api/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="name" placeholder="Votre Nom" required>
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="company" placeholder="Nom de l'Entreprise" required>
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="phone" placeholder="Téléphone" required>
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service</option>
+                          <option>Service Un</option>
+                          <option>Service Deux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button class="theme-btn btn-style-one" type="submit" name="submit-form">Envoyer <span class="icon flaticon-arrow-pointing-to-right"></span></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div> 
+        </div> 
+      </div> 
+      <a href="/" class="backhome">Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"></span></a>
+    </div>
+    <!-- End of Quote box -->
+  </main>
+  <Footer />
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=" defer></script>
+  <script src="/js/map-script.js" defer></script>
+</BaseLayout>

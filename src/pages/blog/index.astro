@@ -1,0 +1,445 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+import { blogArticles, blogUtils } from "../../data/blogs.js";
+import { FaCalendarAlt, FaUser, FaTag, FaSearch } from "react-icons/fa";
+
+// Get URL parameters
+const url = new URL(Astro.request.url);
+const currentPage = parseInt(url.searchParams.get("page") || "1");
+const selectedCategory = url.searchParams.get("category") || "";
+const searchQuery = url.searchParams.get("search") || "";
+
+// Pagination configuration
+const postsPerPage = 6;
+
+// Get paginated articles with filters
+const { articles, totalPages, hasNextPage, hasPrevPage, totalArticles } =
+  blogUtils.getPaginatedArticles(currentPage, postsPerPage, {
+    category: selectedCategory,
+    search: searchQuery,
+  });
+
+// Get categories and recent articles for sidebar
+const categories = blogUtils.getUniqueCategories();
+const articleCountByCategory = blogUtils.getArticleCountByCategory();
+const recentArticles = blogUtils.getRecentArticles(3);
+const tags = blogUtils.getUniqueTags();
+---
+
+<BaseLayout
+  title="Blog & News | MACOBATE"
+  description="Discover the latest news, projects and innovations from MACOBATE in the industrial field"
+  pageType="blog"
+>
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/7.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li>Blog</li>
+        </ul>
+        <h1>Blog & News</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Blog Section -->
+    <section class="blog-page-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <!-- Content Side -->
+          <div class="content-side col-lg-8 col-md-12 col-sm-12">
+            <div class="blog-classic">
+              <!-- Search bar -->
+              {
+                searchQuery && (
+                  <div class="search-results-info">
+                    <h3>Search results for: "{searchQuery}"</h3>
+                    <p>
+                      {totalArticles} article{totalArticles > 1 ? "s" : ""}{" "}
+                      found
+                    </p>
+                    <a href="/blog" class="clear-search">
+                      Clear search
+                    </a>
+                  </div>
+                )
+              }
+
+              {
+                selectedCategory && (
+                  <div class="category-results-info">
+                    <h3>Articles in category: "{selectedCategory}"</h3>
+                    <p>
+                      {totalArticles} article{totalArticles > 1 ? "s" : ""}{" "}
+                      in this category
+                    </p>
+                    <a href="/blog" class="clear-filter">
+                      View all articles
+                    </a>
+                  </div>
+                )
+              }
+
+              <!-- Articles -->
+              {
+                articles.length > 0 ? (
+                  articles.map((article) => (
+                    <div class="news-block-two">
+                      <div class="inner-box">
+                        <div class="image">
+                          <a href={`/blog/detail?id=${article.id}`}>
+                            <img src={article.image} alt={article.title} />
+                          </a>
+                          <div class="post-date">
+                            {article.date.split(" ")[0]}
+                            <span>{article.date.split(" ")[1]}</span>
+                          </div>
+                        </div>
+                        <div class="lower-content">
+                          <div class="post-meta">
+                            <ul>
+                              <li>
+                                <span class="icon">
+                                  <FaUser />
+                                </span>
+                                {article.author}
+                              </li>
+                              <li>
+                                <span class="icon">
+                                  <FaTag />
+                                </span>
+                                <a href={`/blog?category=${article.category}`}>
+                                  {article.category}
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <h3>
+                            <a href={`/blog/detail?id=${article.id}`}>
+                              {article.title}
+                            </a>
+                          </h3>
+                          <div class="text">{article.excerpt}</div>
+                          <div class="article-tags">
+                            {article.tags.map(tag => (
+                              <a href={`/blog?search=${tag}`} class="tag">
+                                #{tag}
+                              </a>
+                            ))}
+                          </div>
+                          <a
+                            href={`/blog/detail?id=${article.id}`}
+                            class="read-more"
+                          >
+                            Read more{" "}
+                            <span class="icon flaticon-arrow-pointing-to-right" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div class="no-results">
+                    <h3>No articles found</h3>
+                    <p>
+                      Sorry, no articles match your search criteria.
+                    </p>
+                    <a href="/blog" class="theme-btn btn-style-one">
+                      View all articles
+                    </a>
+                  </div>
+                )
+              }
+
+              <!-- Pagination -->
+              {
+                totalPages > 1 && (
+                  <div class="styled-pagination">
+                    <ul class="clearfix">
+                      {hasPrevPage && (
+                        <li class="prev">
+                          <a
+                            href={`/blog?page=${currentPage - 1}${selectedCategory ? `&category=${selectedCategory}` : ""}${searchQuery ? `&search=${searchQuery}` : ""}`}
+                          >
+                            <span class="fa fa-angle-left" /> Previous
+                          </a>
+                        </li>
+                      )}
+
+                      {[...Array(totalPages)].map((_, index) => {
+                        const pageNum = index + 1;
+                        return (
+                          <li class={pageNum === currentPage ? "active" : ""}>
+                            <a
+                              href={`/blog?page=${pageNum}${selectedCategory ? `&category=${selectedCategory}` : ""}${searchQuery ? `&search=${searchQuery}` : ""}`}
+                            >
+                              {pageNum}
+                            </a>
+                          </li>
+                        );
+                      })}
+
+                      {hasNextPage && (
+                        <li class="next">
+                          <a
+                            href={`/blog?page=${currentPage + 1}${selectedCategory ? `&category=${selectedCategory}` : ""}${searchQuery ? `&search=${searchQuery}` : ""}`}
+                          >
+                            Next <span class="fa fa-angle-right" />
+                          </a>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Sidebar Side -->
+          <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+            <aside class="sidebar default-sidebar">
+              <!-- Search -->
+              <div class="sidebar-widget search-box">
+                <form method="get" action="/blog">
+                  <div class="form-group">
+                    <input
+                      type="search"
+                      name="search"
+                      placeholder="Search articles..."
+                      value={searchQuery}
+                    />
+                    <button type="submit">
+                      <span class="icon fa fa-search"></span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Categories Widget -->
+              <!-- <div class="sidebar-widget categories-widget">
+                <div class="sidebar-title">
+                  <h3>Categories</h3>
+                  <div class="separator"></div>
+                </div>
+                <ul class="blog-cat">
+                  <li class={selectedCategory === "" ? "active" : ""}>
+                    <a href="/blog">
+                      All Articles <span>({blogArticles.length})</span>
+                    </a>
+                  </li>
+                  {categories.map((category) => (
+                    <li class={selectedCategory === category ? "active" : ""}>
+                      <a href={`/blog?category=${category}`}>
+                        {category} <span>({articleCountByCategory[category]})</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div> -->
+
+              <!-- Popular Posts -->
+              <div class="sidebar-widget popular-posts">
+                <div class="sidebar-title">
+                  <h3>Recent Articles</h3>
+                  <div class="separator"></div>
+                </div>
+                {
+                  recentArticles.map((article) => (
+                    <article class="post">
+                      <figure class="post-thumb">
+                        <a href={`/blog/detail?id=${article.id}`}>
+                          <img src={article.image} alt={article.title} />
+                        </a>
+                        <div class="overlay">
+                          <a
+                            href={`/blog/detail?id=${article.id}`}
+                            class="link"
+                          >
+                            <span class="icon fa fa-link" />
+                          </a>
+                        </div>
+                      </figure>
+                      <div class="text">
+                        <a href={`/blog/detail?id=${article.id}`}>
+                          {article.title}
+                        </a>
+                      </div>
+                      <div class="post-info">
+                        <span class="icon">
+                          <FaCalendarAlt />
+                        </span>{" "}
+                        {article.date}
+                      </div>
+                    </article>
+                  ))
+                }
+              </div>
+
+              <!-- Popular Tags -->
+              <!-- <div class="sidebar-widget popular-tags">
+                <div class="sidebar-title">
+                  <h3>Popular Tags</h3>
+                  <div class="separator"></div>
+                </div>
+                <div class="tags">
+                  {tags.map((tag) => (
+                    <a href={`/blog?search=${tag}`} class="tag-item">
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              </div> -->
+
+              <!-- Newsletter Widget -->
+              <!-- <div class="sidebar-widget newsletter-widget">
+                <div class="sidebar-title">
+                  <h3>Newsletter</h3>
+                  <div class="separator"></div>
+                </div>
+                <div class="text">
+                  Subscribe to receive our latest news and updates.
+                </div>
+                <form method="post" action="#" class="newsletter-form">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your email..."
+                      required
+                    />
+                    <button type="submit" class="theme-btn btn-style-one">
+                      Subscribe <span
+                        class="icon flaticon-arrow-pointing-to-right"></span>
+                    </button>
+                  </div>
+                </form>
+              </div> -->
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Blog Section -->
+
+    <!-- CTA Section -->
+    <CallToActionSection />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Import blog styles */
+  @import url("../../styles/blogs.css");
+  
+  /* Additional styles for better functionality */
+  .search-results-info,
+  .category-results-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 4px solid #1720d7;
+  }
+  
+  .search-results-info h3,
+  .category-results-info h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .search-results-info p,
+  .category-results-info p {
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .clear-search,
+  .clear-filter {
+    color: #1720d7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .clear-search:hover,
+  .clear-filter:hover {
+    text-decoration: underline;
+  }
+  
+  .article-tags {
+    margin: 15px 0;
+  }
+  
+  .article-tags .tag {
+    display: inline-block;
+    background-color: #f8f9fa;
+    color: #666;
+    padding: 4px 10px;
+    margin: 0 5px 5px 0;
+    border-radius: 12px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .article-tags .tag:hover {
+    background-color: #1720d7;
+    color: white;
+    transform: translateY(-1px);
+  }
+  
+  .post-meta a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .post-meta a:hover {
+    color: #1720d7;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .no-results h3 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .no-results p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+</style>
+
+<script>
+  // Newsletter form handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const emailInput = this.querySelector('input[name="email"]');
+        if (emailInput.value) {
+          alert('Thank you for subscribing to our newsletter!');
+          emailInput.value = '';
+        }
+      });
+    }
+  });
+</script>

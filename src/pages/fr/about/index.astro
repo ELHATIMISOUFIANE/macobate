@@ -1,8 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import CallToActionSection from "../../../components/CallToActionSection.astro";
+import QualitySection from "../../../components/QualitySection.astro";
 const teamMembers = [
   {
     id: 1,
@@ -210,7 +211,7 @@ const historyEvents = [
     <!--End Page Title-->
 
     <!--Company Section-->
-    <section class="company-section">
+    <section id="company-section" class="company-section">
       <div class="auto-container">
         <div class="row clearfix">
           <!--Content Column-->
@@ -247,7 +248,7 @@ const historyEvents = [
           <div class="image-column col-md-6 col-sm-12 col-xs-12">
             <div class="inner-column">
               <div class="image">
-                <img src="/images/resource/company.jpg" alt="MACOBATE - Installations" />
+                <img src="/images/resource/image-123.jpg" alt="MACOBATE - Installations" />
               </div>
               <div class="carousel-box">
                 <div class="single-item-carousel owl-carousel owl-box">
@@ -304,8 +305,8 @@ const historyEvents = [
                           <div class="image">
                             <img src="/images/resource/" alt="Directeur Technique" />
                           </div>
-                          <h3>Saad Berrada</h3>
-                          <div class="designation">Directeur Technique</div>
+                          <h3>Houda Tounsi</h3>
+                          <div class="designation">Directrice Administratif </div>
                         </div>
                       </div>
                     </div>
@@ -317,101 +318,6 @@ const historyEvents = [
         </div>
       </div>
     </section>
-    <!--End Company Section-->
-
-    <!--Highlights Section-->
-    <section class="highlights-section">
-      <div
-        class="image-layer"
-        style="background-image:url(/images/background/10.jpg)"
-      >
-      </div>
-      <div class="auto-container">
-        <div class="row clearfix">
-          <!--Content Column-->
-          <div class="content-column col-md-6 col-sm-12 col-xs-12">
-            <div class="inner-column">
-              <div class="sec-title">
-                <h2>Nos Valeurs Fondamentales</h2>
-                <div class="separator centered"></div>
-              </div>
-
-              <div class="row clearfix">
-                {/* Boucle sur le tableau des points forts */}
-                {
-                  highlights.map((item) => (
-                    <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
-                      <div class="hightlight-inner">
-                        <div class="icon-box">
-                          <span class={`icon ${item.icon}`} />
-                        </div>
-                        <h3>{item.title}</h3>
-                        <a href={item.link} class="overlay-link" />
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-
-          <!--Services Column-->
-          <div class="services-column col-md-6 col-sm-12 col-xs-12">
-            <div class="inner-column">
-              <div class="upper-box">
-                <div class="icon flaticon-target"></div>
-                <h2>Notre Mission</h2>
-              </div>
-              <div class="text">
-                Concevoir, fabriquer et installer des équipements industriels de haute qualité qui répondent aux exigences les plus strictes de nos clients. MACOBATE s'engage à fournir des solutions innovantes, durables et adaptées aux besoins spécifiques des secteurs de l'eau, de l'industrie et de l'environnement, tout en maintenant les standards les plus élevés en matière de sécurité et de respect de l'environnement.
-              </div>
-              <a href="/market-sectors" class="services"
-                >Nos Services <span
-                  class="icon flaticon-arrow-pointing-to-right"></span></a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--End Highlights Section-->
-
-    <!--History Section-->
-    <section class="history-section">
-      <div class="auto-container">
-        <div class="sec-title centered">
-          <h2>Notre Histoire</h2>
-          <div class="separator"></div>
-        </div>
-
-        <div class="history-carousel">
-          <div class="carousel-outer">
-            <div class="thumbs-outer">
-              <ul class="thumbs-carousel owl-carousel owl-theme">
-                {/* Boucle sur le tableau des années */}
-                {historyYears.map((year) => <li>{year}</li>)}
-              </ul>
-            </div>
-            <div class="content-carousel owl-carousel owl-theme">
-              {/* Boucle sur le tableau des événements historiques */}
-              {
-                historyEvents.map((event) => (
-                  <div class="content-slide">
-                    <div class="content-inner">
-                      <h3>{event.title}</h3>
-                      <div class="date">{event.date}</div>
-                      <div class="text">{event.description}</div>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--End History Section-->
-
     <!--Achived Section-->
     <section
       class="achived-section"
@@ -557,6 +463,102 @@ const historyEvents = [
       </div>
     </section>
     <!--End Achived Section-->
+    <!--End Company Section-->
+
+    <!-- Highlights Section-->
+    <!-- <section class="highlights-section">
+      <div
+        class="image-layer"
+        style="background-image:url(/images/background/10.jpg)"
+      >
+      </div>
+      <div class="auto-container">
+        <div class="row clearfix"> -->
+          <!--Content Column-->
+          <!-- <div class="content-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Nos Valeurs Fondamentales</h2>
+                <div class="separator centered"></div>
+              </div>
+
+              <div class="row clearfix"> -->
+                <!-- {/* Boucle sur le tableau des points forts */}
+                {
+                  highlights.map((item) => (
+                    <div class="hightlight-block col-md-4 col-sm-6 col-xs-12">
+                      <div class="hightlight-inner">
+                        <div class="icon-box">
+                          <span class={`icon ${item.icon}`} />
+                        </div>
+                        <h3>{item.title}</h3>
+                        <a href={item.link} class="overlay-link" />
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div> -->
+
+          <!--Services Column-->
+          <!-- <div class="services-column col-md-6 col-sm-12 col-xs-12">
+            <div class="inner-column">
+              <div class="upper-box">
+                <div class="icon flaticon-target"></div>
+                <h2>Notre Mission</h2>
+              </div>
+              <div class="text">
+                Concevoir, fabriquer et installer des équipements industriels de haute qualité qui répondent aux exigences les plus strictes de nos clients. MACOBATE s'engage à fournir des solutions innovantes, durables et adaptées aux besoins spécifiques des secteurs de l'eau, de l'industrie et de l'environnement, tout en maintenant les standards les plus élevés en matière de sécurité et de respect de l'environnement.
+              </div>
+              <a href="/market-sectors" class="services"
+                >Nos Services <span
+                  class="icon flaticon-arrow-pointing-to-right"></span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!--End Highlights Section -->
+
+    <!--History Section-->
+    <section class="history-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Notre Histoire</h2>
+          <div class="separator"></div>
+        </div>
+
+        <div class="history-carousel">
+          <div class="carousel-outer">
+            <div class="thumbs-outer">
+              <ul class="thumbs-carousel owl-carousel owl-theme">
+                {/* Boucle sur le tableau des années */}
+                {historyYears.map((year) => <li>{year}</li>)}
+              </ul>
+            </div>
+            <div class="content-carousel owl-carousel owl-theme">
+              {/* Boucle sur le tableau des événements historiques */}
+              {
+                historyEvents.map((event) => (
+                  <div class="content-slide">
+                    <div class="content-inner">
+                      <h3>{event.title}</h3>
+                      <div class="date">{event.date}</div>
+                      <div class="text">{event.description}</div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End History Section-->
+
+    <QualitySection />
 
     <!--Team Section-->
     <!--Team Section-->
@@ -611,127 +613,10 @@ const historyEvents = [
     </section>-->
     <!-- End Team Section--> 
     <!--Call To Action Section-->
-    <section
-      class="call-to-action-section"
-      style="background-image:url(/images/background/5.jpg)"
-    >
-      <div class="auto-container">
-        <div class="row clearfix">
-          <div class="col-md-9 col-sm-12 col-xs-12">
-            <h2>
-              Solutions métalliques de qualité supérieure pour l'industrie et les infrastructures hydrauliques.
-            </h2>
-          </div>
-          <div class="link-column col-md-3 col-sm-12 col-xs-12">
-            <a
-              class="apointment"
-              href="#"
-              data-toggle="modal"
-              data-target="#schedule-box"
-              >Demander un Devis <span
-                class="icon flaticon-arrow-pointing-to-right"></span></a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--End Call To Action Section-->
-
-    <!--Quote Form-->
-    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
-      <div class="modal-dialog popup-container container" role="document">
-        <div class="modal-content">
-          <div class="appoinment_form_wrapper clear_fix">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Fermer"
-              ><i class="fa fa-times" aria-hidden="true"></i></button
-            >
-            <div
-              class="get-quote-form"
-              style="background-image:url(/images/background/13.jpg)"
-            >
-              <div class="inner-box">
-                <!--Sec Title-->
-                <div class="sec-title">
-                  <div class="clearfix">
-                    <div class="pull-left">
-                      <h2>Demander un Devis</h2>
-                      <div class="separator centered"></div>
-                    </div>
-                    <div class="pull-left">
-                      <div class="text">
-                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Quote Form / Style Two-->
-                <div class="quote-form style-two">
-                  <!--Shipping Form-->
-                  <form method="post" action="/contact">
-                    <div class="row clearfix">
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="Votre Nom"
-                          required
-                        />
-                      </div>
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input
-                          type="text"
-                          name="company"
-                          placeholder="Nom de l'Entreprise"
-                          required
-                        />
-                      </div>
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input
-                          type="text"
-                          name="phone"
-                          placeholder="Téléphone"
-                          required
-                        />
-                      </div>
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <select class="custom-select-box" name="service">
-                          <option>Sélectionnez le Service Souhaité</option>
-                          <option>Construction Métallique</option>
-                          <option>Équipements Hydromécaniques</option>
-                          <option>Traitement des Eaux</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <textarea name="message" placeholder="Votre Message..."></textarea>
-                      </div>
-                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button
-                          class="theme-btn btn-style-one"
-                          type="submit"
-                          name="submit-form"
-                          >Envoyer <span
-                            class="icon flaticon-arrow-pointing-to-right"
-                          ></span></button
-                        >
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/" class="backhome"
-        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
-        ></span></a
-      >
+    
+      
     </div>
+    <CallToActionSection/>
     <!-- End of Quote box -->
   </main>
   <Footer />

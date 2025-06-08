@@ -1,0 +1,310 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { GiWaterRecycling, GiFactory , GiBarrel , GiScubaTanks ,GiElectricalResistance , GiClamp} from 'react-icons/gi';
+import { TbBuildingWarehouse } from "react-icons/tb";
+// Tableau des secteurs de marché
+const marketSectors = [
+  {
+    id: 1,
+    title: "Charpente Métallique",
+    description: "Conception et réalisation de charpentes métalliques, bâtiments industriels et structures complexes sur mesure...",
+    image: "/images/gallery/charpente-metallique.jpg",
+    icon: "TbBuildingWarehouse",
+    slug: "services/detailServices#charpente-metallique",
+  },
+  {
+    id: 2,
+    title: "Appareils à pression",
+    description: "Fabrication de réservoirs, silos, cuves et équipements sous pression selon les normes internationales les plus strictes...",
+    image: "/images/gallery/appareil-pression.jpeg",
+    icon: "GiClamp",
+    slug: "services/detailServices#appareils-pression",
+  },
+  {
+    id: 3,
+    title: "Réservoirs de Stockage",
+    description: "Équipements hydromécaniques pour barrages, centrales électriques et infrastructures de production d'énergie...",
+    image: "/images/gallery/reservoirs.png",
+    icon: "GiBarrel",
+    slug: "services/detailServices#reservoirs-stockage",
+  },
+  {
+    id: 4,
+    title: "Équipements Hydromécaniques",
+    description: "Sélection et mise en œuvre de matériaux adaptés aux environnements corrosifs, haute pression et conditions extrêmes...",
+    image: "/images/gallery/equipements-hydromecaniques.jpeg",
+    icon: "GiScubaTanks",
+    slug: "services/detailServices#equipements-hydromecaniques",
+  },
+  {
+    id: 5,
+    title: "Traitement de l'eau",
+    description: "Solutions complètes pour stations d'épuration, de potabilisation et systèmes de traitement des eaux industrielles...",
+    image: "/images/gallery/traitement-eau.jpg",
+    icon: "GiWaterRecycling",
+    slug: "services/detailServices#traitement-eau",
+  },
+  {
+    id: 6,
+    title: "Électricité & Automatismes",
+    description: "Équipements spécifiques pour ports, quais et installations maritimes répondant aux exigences des milieux salins...",
+    image: "/images/gallery/electricite-automatismes.jpg",
+    icon: "GiElectricalResistance",
+    slug: "services/detailServices#electricite-automatismes",
+  },
+  
+];
+
+// Tableau des autres services
+const otherServices = [
+  {
+    id: 1,
+    title: "Maintenance Industrielle",
+    subtitle: "services",
+    description:
+      "Prestations de maintenance préventive et corrective pour maximiser la durée de vie de vos installations industrielles et limiter les temps d'arrêt...",
+  },
+  {
+    id: 2,
+    title: "Systèmes Automatisés",
+    subtitle: "services",
+    description:
+      "Conception et intégration de systèmes de contrôle automatisés pour optimiser vos processus industriels et assurer un fonctionnement efficace...",
+  },
+  {
+    id: 3,
+    title: "Solutions d'Économie d'Énergie",
+    subtitle: "services",
+    description:
+      "Optimisation énergétique de vos installations existantes et conception de systèmes à haute efficacité pour réduire votre empreinte environnementale...",
+  },
+  {
+    id: 4,
+    title: "Bureau d'Études Techniques",
+    subtitle: "services",
+    description:
+      "Services d'études et de conception pour tous vos projets industriels, incluant calculs de structure, modélisation 3D et plans d'exécution détaillés...",
+  },
+];
+---
+
+<BaseLayout title="Secteurs d'Activité - Macobate" pageType="market">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Secteurs d'Activité</li>
+        </ul>
+        <h1>Secteurs d'Activité</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!--Market Page Section-->
+  <section class="market-page-section">
+  <div class="auto-container">
+    <div class="market-sectors">
+      {/* Boucle sur le tableau des secteurs de marché */}
+      {
+        marketSectors.map((sector) => (
+          <div class="market-block-four">
+            <div class="inner-box">
+              <div class="image">
+                <a href={`/${sector.slug}`}>
+                  <img
+                    src={sector.image}
+                    alt={`Secteur: ${sector.title}`}
+                    class="sector-image"
+                  />
+                </a>
+              </div>
+              <div class="lower-content">
+                <div class="icon-box">
+                  {sector.icon && (
+                    <span class="icon">
+                       {sector.icon === 'TbBuildingWarehouse' && <TbBuildingWarehouse  color="#007bff" />}
+                       {sector.icon === 'GiBarrel' && <GiBarrel  color="#007bff" />}
+                        {sector.icon === 'GiScubaTanks' && <GiScubaTanks  color="#007bff" />}
+                        {sector.icon === 'GiWaterRecycling' && <GiWaterRecycling  color="#007bff" />} 
+                        {sector.icon === 'GiElectricalResistance' && <GiElectricalResistance   color="#007bff" />}
+                        {sector.icon === 'GiClamp' && <GiClamp   color="#007bff" />}
+                    </span>
+                    )}
+                </div>
+                <h3>
+                  <a href={`/${sector.slug}`}>{sector.title}</a>
+                </h3>
+                <div class="text">{sector.description}</div>
+                <a class="link-box" href={`/${sector.slug}`}>
+                  Découvrir{" "}
+                  <span class="icon flaticon-arrow-pointing-to-right" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+    <!--End Market Section Four-->
+
+
+    <!--Quote Form-->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+              ><i class="fa fa-times" aria-hidden="true"></i></button
+            >
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <!--Sec Title-->
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quote Form / Style Two-->
+                <div class="quote-form style-two">
+                  <!--Shipping Form-->
+                  <form method="post" action="/api/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Construction Métallique</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Traitement des Eaux</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."
+                        ></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          >Envoyer <span
+                            class="icon flaticon-arrow-pointing-to-right"
+                          ></span></button
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/" class="backhome"
+        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
+        ></span></a
+      >
+    </div>
+    <style>
+   /* Style pour la section des secteurs de marché */
+.market-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espace entre les blocs */
+  justify-content: space-between;
+  
+}
+
+/* Style pour chaque bloc sectoriel */
+.market-block-four {
+  flex: 1 1 100%; /* Par défaut, chaque élément occupe toute la largeur sur petits écrans */
+  max-width: 20%; /* Limite la largeur à 25% pour 4 éléments par ligne */
+  box-sizing: border-box;
+  margin-bottom: 20px;
+ 
+}
+
+/* Sur les écrans plus larges (4 par ligne) */
+@media (min-width: 992px) {
+  .market-block-four {
+    max-width: 32%; /* Légèrement plus petit que 25% pour un espace entre les éléments */
+  }
+}
+
+/* Sur les écrans moyens (tablettes) */
+@media (max-width: 991px) {
+  .market-block-four {
+    max-width: 48%; /* Deux éléments par ligne */
+  }
+}
+
+/* Sur les écrans petits (mobiles) */
+@media (max-width: 767px) {
+  .market-block-four {
+    max-width: 100%; /* Un seul élément par ligne sur mobile */
+  }
+}
+
+.sector-image {
+  width: 100%;
+  height: 200px; /* Tu peux ajuster selon ton design */
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+</style>
+    <!-- End of Quote box -->
+  </main>
+  <Footer />
+</BaseLayout>

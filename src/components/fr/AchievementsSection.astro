@@ -1,0 +1,57 @@
+<!-- Composant anglais (à adapter) -->
+---
+// AchievementsSection.astro (Version française)
+// Tableau des réalisations adapté au secteur industriel marocain
+const achievements = [
+  {
+    id: 1,
+    title: "Certification ISO 9001:2015",
+    description: "Notre engagement envers la qualité s'illustre par notre certification ISO, garantissant des processus rigoureux et une amélioration continue dans tous nos projets.",
+    logo: "images/clients/1.png"
+  },
+  {
+    id: 2,
+    title: "Partenaire de l'Office National d'Électricité",
+    description: "Fournisseur agréé pour les équipements hydromécaniques des principaux barrages du Royaume, témoignant de notre expertise technique et notre fiabilité.",
+    logo: "images/clients/2.png"
+  },
+  {
+    id: 3,
+    title: "Exportation vers l'Afrique de l'Ouest",
+    description: "Expansion réussie de nos activités avec des projets majeurs de traitement des eaux et d'infrastructures hydrauliques dans plusieurs pays africains.",
+    logo: "images/clients/3.png"
+  }
+];
+---
+
+<!--Section Réalisations-->
+<section class="achivements-section" id ="realisation"  style="background-image:url(images/background/4.jpg)">
+  <div  class="auto-container">
+    <div class="sec-title centered">
+      <h2>Nos Réalisations</h2>
+      <div class="separator"></div>
+    </div>
+    <div class="row clearfix">
+      
+      {achievements.map((achievement) => (
+        <div class="achivements-block col-md-4 col-sm-6 col-xs-12">
+          <div class="inner-box">
+            <div class="upper-box">
+              <div class="image">
+                <img src={achievement.logo} alt={achievement.title} />
+              </div>
+            </div>
+            <div class="lower-content">
+              <h3>{achievement.title}</h3>
+              <div class="text">
+                {achievement.description}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+      
+    </div>
+  </div>
+</section>
+<!--Fin Section Réalisations-->

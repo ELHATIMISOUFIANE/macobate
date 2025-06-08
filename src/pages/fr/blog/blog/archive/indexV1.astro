@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+// Création d'un tableau de données pour les blogs
+const blogPosts = [
+  {
+    id: 1,
+    title: "10 reason why should choose our industry.",
+    author: "Fernando",
+    date: "13th August 2017",
+    excerpt: "Rationally encounter consequences seds ut that are extremely painful...",
+    image: "/images/resource/news-1.jpg",
+    slug: "blog/detailBlog#news-1"
+  },
+  {
+    id: 2,
+    title: "10 reason why should choose our industry.",
+    author: "Fernando",
+    date: "13th August 2017",
+    excerpt: "Great explorer of the truth, that master builder of human happiness...",
+    image: "/images/resource/news-2.jpg",
+    slug: "blog/detailBlog#news-2"
+  },
+  {
+    id: 3,
+    title: "We won best factory award of the year 2015 & 16.",
+    author: "Richardson",
+    date: "05th July 2017",
+    excerpt: "To take a trivial example, which of us ever undertakes laborious physical...",
+    image: "/images/resource/news-3.jpg",
+    slug: "blog/detailBlognews-3"
+  },
+  {
+    id: 4,
+    title: "10 reason why should choose our industry.",
+    author: "Fernando",
+    date: "13th August 2017",
+    excerpt: "Great explorer of the truth, that master builder of human happiness...",
+    image: "/images/resource/news-4.jpg",
+    slug: "blog/detailBlog#news-4"
+  },
+  {
+    id: 5,
+    title: "We won best factory award of the year 2015 & 16.",
+    author: "Richardson",
+    date: "05th July 2017",
+    excerpt: "To take a trivial example, which of us ever undertakes laborious physical...",
+    image: "/images/resource/news-6.jpg",
+    slug: "blog/detailBlog#news-6"
+  },
+  {
+    id: 6,
+    title: "We are best for any industrial & business solution.",
+    author: "Richardson",
+    date: "05th July 2017",
+    excerpt: "To take a trivial example, which of us ever undertakes laborious physical...",
+    image: "/images/resource/news-7.jpg",
+    slug: "blog/detailBlog#news-7"
+  },
+  {
+    id: 7,
+    title: "We won best factory award of the year 2015 & 16.",
+    author: "Richardson",
+    date: "05th July 2017",
+    excerpt: "To take a trivial example, which of us ever undertakes laborious physical...",
+    image: "/images/resource/news-8.jpg",
+    slug: "blog/detailBlog/news-8"
+  },
+  {
+    id: 8,
+    title: "We are best for any industrial & business solution.",
+    author: "Venanda",
+    date: "21st October 2017",
+    excerpt: "Rationally encounter consequences seds ut that are extremely painful...",
+    image: "/images/resource/news-9.jpg",
+    slug: "blog/detailBlognews-9"
+  },
+  {
+    id: 9,
+    title: "10 reason why should choose our industry.",
+    author: "Fernando",
+    date: "13th August 2017",
+    excerpt: "Great explorer of the truth, that master builder of human happiness...",
+    image: "/images/resource/news-10.jpg",
+    slug: "blog/detailBlognews-10"
+  }
+];
+
+// Pagination
+const postsPerPage = 9;
+const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+const currentPage = 1; // Vous pourriez le récupérer depuis un paramètre d'URL
+const startIndex = (currentPage - 1) * postsPerPage;
+const endIndex = startIndex + postsPerPage;
+const currentPosts = blogPosts.slice(startIndex, endIndex);
+---
+
+<BaseLayout title="Blog - Macobate " 
+  description="Découvrez les dernières nouvelles" 
+  pageType="blog">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(/images/background/6.jpg)">
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li>Actualités</li>
+        </ul>
+        <h1>Actualités</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+    
+    <!--Blog Page Section-->
+    <section class="blog-page-section">
+      <div class="auto-container">
+      
+        <div class="row clearfix">
+          
+          {/* Boucle sur le tableau de blogs */}
+          {currentPosts.map((post) => (
+            <div class="news-block-two col-md-4 col-sm-6 col-xs-12">
+              <div class="inner-box">
+                <div class="image">
+                  <a href={`/${post.slug}`}><img src={post.image} alt={post.title} /></a>
+                </div>
+                <div class="lower-content">
+                  <h3><a href={`/${post.slug}`}>{post.title}</a></h3>
+                  <div class="title">Post Info</div>
+                  <div class="post-date">By {post.author}, On {post.date}</div>
+                  <div class="text">{post.excerpt}</div>
+                  <a href={`/${post.slug}`} class="read-more">Read More <span class="icon flaticon-arrow-pointing-to-right"></span></a>
+                </div>
+              </div>
+            </div>
+          ))}
+          
+        </div>
+        
+        <!--Styled Pagination-->
+        <ul class="styled-pagination text-center">
+          {currentPage > 1 && (
+            <li class="prev"><a href={`/blog?page=${currentPage - 1}`}><span class="fa fa-angle-left"></span></a></li>
+          )}
+          
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <li>
+              <a href={`/blog?page=${index + 1}`} class={currentPage === index + 1 ? 'active' : ''}>
+                {index + 1}
+              </a>
+            </li>
+          ))}
+          
+          {currentPage < totalPages && (
+            <li class="next"><a href={`/blog?page=${currentPage + 1}`}><span class="fa fa-angle-right"></span></a></li>
+          )}
+        </ul>                
+        <!--End Styled Pagination-->
+        
+      </div>
+    </section>
+    <!--End Blog Section Four-->
+  </main>
+  
+  <Footer />
+</BaseLayout>

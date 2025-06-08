@@ -1,0 +1,1570 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import CallToActionSection from "../../../components/CallToActionSection.astro";
+
+// Tableau des projets adapté à MACOBATE avec descriptions enrichies
+const projects = [
+  {
+    id: 1,
+    title: "Barrage Sidi Mohammed Ben Abdellah",
+    location: "2023 / Rabat",
+    category: "Hydraulique",
+    description: "Équipements hydromécaniques complets pour ce barrage stratégique d'une capacité de 150 millions m³.",
+    image: "/images/projects/barrages-hydrauliques.jpg",
+    url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "Station d'Épuration OCP Khouribga",
+    location: "2022 / Khouribga",
+    category: "Traitement",
+    description: "Installation complète de traitement des eaux industrielles avec technologie MWS avancée.",
+    image: "/images/projects/stations-pompage-traitement.jpg",
+    url: "/projects/detailProjects#stations-pompage-traitement",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Centrale Solaire Noor",
+    location: "2018 / Ouarzazate",
+    category: "Énergie",
+    description: "Structures métalliques pour le plus grand complexe solaire au monde - 580 MW.",
+    image: "/images/gallery/21.jpg",
+    url: "/projects/detailProjects#energie-renouvelable",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Barrage Oued Martil",
+    location: "2020 / Tétouan",
+    category: "Hydraulique",
+    description: "Vannes segments et systèmes de contrôle hydraulique pour la gestion des eaux.",
+    image: "/images/gallery/20.jpg",
+    url: "/projects/detailProjects#barrages-amenagements-hydrauliques",
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Station de Potabilisation Bouregreg",
+    location: "2019 / Rabat",
+    category: "Traitement",
+    description: "Système de traitement d'eau potable haute capacité - 50 000 m³/jour.",
+    image: "/images/gallery/19.jpg",
+    url: "/projects/detailProjects#stations-pompage-traitement",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Station de pompage solaire Taroudant",
+    location: "2018 / Taroudant",
+    category: "Énergie",
+    description: "Solution de pompage autonome alimentée par énergie solaire - 50 kWc.",
+    image: "/images/projects/energie-renouvelable.jpg",
+    url: "/projects/detailProjects#energie-renouvelable",
+    featured: false
+  },
+  {
+    id: 7,
+    title: "Terminal Portuaire Tanger Med",
+    location: "2021 / Tanger",
+    category: "Maritime",
+    description: "Structures métalliques et équipements portuaires spécialisés résistants à la corrosion marine.",
+    image: "/images/projects/equipements-maritimes.jpg",
+    url: "/projects/detailProjects#equipements-maritimes",
+    featured: false
+  },
+  {
+    id: 8,
+    title: "Unité Industrielle Jorf Lasfar",
+    location: "2020 / El Jadida",
+    category: "Industriel",
+    description: "Charpentes métalliques et équipements de process pour l'industrie chimique.",
+    image: "/images/projects/infrastructures-industrielles.jpeg",
+    url: "/projects/detailProjects#industrie-process",
+    featured: false
+  },
+];
+
+// Fonctions utilitaires
+function getUniqueCategories() {
+  return [...new Set(projects.map(project => project.category))];
+}
+
+function getFeaturedProjects() {
+  return projects.filter(project => project.featured);
+}
+
+// Pagination
+const projectsPerPage = 6;
+const totalPages = Math.ceil(projects.length / projectsPerPage);
+const currentPage = 1;
+const startIndex = (currentPage - 1) * projectsPerPage;
+const endIndex = startIndex + projectsPerPage;
+const currentProjects = projects.slice(startIndex, endIndex);
+
+// Variables pour les composants
+const categories = getUniqueCategories();
+const featuredProjects = getFeaturedProjects();
+---
+
+<BaseLayout title="Réalisations - MACOBATE" 
+  description="Découvrez nos projets d'envergure en ingénierie et construction métallique" 
+  pageType="projects">
+  <Header />
+  <main>
+    <!-- Page Title -->
+    <section class="page-title" style="background-image:url(/images/background/6.jpg)">
+      <div class="auto-container">
+        <ul class="page-breadcrumb" aria-label="Fil d'Ariane">
+          <li><a href="/">Accueil</a></li>
+          <li>Nos Réalisations</li>
+        </ul>
+        <h1>Nos Réalisations</h1>
+      </div>
+    </section>
+
+    <!-- Projects Intro Section -->
+    <section class="projects-intro-section">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Plus de 40 ans d'excellence en ingénierie</h2>
+          <div class="separator"></div>
+          <div class="text">
+            Découvrez nos réalisations emblématiques qui témoignent de notre expertise technique 
+            et de notre engagement envers l'excellence dans tous nos domaines d'intervention.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    {featuredProjects.length > 0 && (
+      <section class="featured-projects-section">
+        <div class="auto-container">
+          <div class="sec-title">
+            <h2>Projets phares</h2>
+            <div class="separator"></div>
+          </div>
+          
+          <div class="featured-projects-container">
+            {featuredProjects.map((project, index) => (
+              <div class={`featured-project ${index === 0 ? 'main-featured' : 'secondary-featured'} fade-in`}>
+                <div class="inner-box">
+                  <div class="image-container">
+                    <a href={project.url}>
+                      <img 
+                        data-src={project.image} 
+                        alt={project.title}
+                        class="lazy-image"
+                        loading="lazy"
+                      />
+                    </a>
+                    <div class="category-badge">{project.category}</div>
+                    <div class="overlay-gradient"></div>
+                  </div>
+                  <div class="content-container">
+                    <h3>
+                      <a href={project.url}>{project.title}</a>
+                    </h3>
+                    <div class="project-meta">
+                      <span class="location">{project.location}</span>
+                    </div>
+                    <div class="description">{project.description}</div>
+                    <a href={project.url} class="read-more-btn">
+                      Voir le projet
+                      <span class="icon flaticon-arrow-pointing-to-right"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Projects Grid Section -->
+    <section class="projects-grid-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          
+          <!-- Content Column -->
+          <div class="content-column col-lg-9 col-md-12 col-sm-12">
+            <div class="inner-column">
+              
+              <!-- Filter Tabs -->
+              <div class="filter-tabs">
+                <ul class="filter-tabs-list">
+                  <li class="filter-tab active" data-filter="*">Tous les projets</li>
+                  {categories.map(category => (
+                    <li class="filter-tab" data-filter={`.${category.toLowerCase()}`}>
+                      {category}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Projects Grid -->
+              <div class="projects-grid masonry-items-container">
+                {projects.map((project, index) => (
+                  <div class={`project-block ${project.category.toLowerCase()} fade-in`} style={`animation-delay: ${index * 0.1}s`}>
+                    <div class="inner-box">
+                      <div class="image-container">
+                        <a href={project.url}>
+                          <img 
+                            data-src={project.image} 
+                            alt={project.title}
+                            class="lazy-image"
+                            loading="lazy"
+                          />
+                        </a>
+                        <div class="category-label">{project.category}</div>
+                        <div class="overlay-box">
+                          <div class="overlay-content">
+                            <h3>
+                              <a href={project.url}>{project.title}</a>
+                            </h3>
+                            <div class="location">
+                              {project.location}
+                              <span class="icon flaticon-arrow-pointing-to-right"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="content">
+                        <h3>
+                          <a href={project.url}>{project.title}</a>
+                        </h3>
+                        <div class="meta-info">
+                          <span class="location-text">{project.location}</span>
+                        </div>
+                        <div class="description">{project.description}</div>
+                        <a href={project.url} class="view-project">
+                          Voir le projet
+                          <span class="icon flaticon-arrow-pointing-to-right"></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Pagination -->
+              {totalPages > 1 && (
+                <div class="pagination-wrapper">
+                  <ul class="styled-pagination">
+                    {currentPage > 1 && (
+                      <li class="prev">
+                        <a href={`/projects/allProjects?page=${currentPage - 1}`}>
+                          <span class="fa fa-angle-left"></span>
+                        </a>
+                      </li>
+                    )}
+                    
+                    {Array.from({ length: totalPages }).map((_, index) => (
+                      <li>
+                        <a 
+                          href={`/projects/allProjects?page=${index + 1}`} 
+                          class={currentPage === index + 1 ? 'active' : ''}
+                        >
+                          {index + 1}
+                        </a>
+                      </li>
+                    ))}
+                    
+                    {currentPage < totalPages && (
+                      <li class="next">
+                        <a href={`/projects/allProjects?page=${currentPage + 1}`}>
+                          <span class="fa fa-angle-right"></span>
+                        </a>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              )}
+
+            </div>
+          </div>
+
+          <!-- Sidebar Column -->
+          <div class="sidebar-column col-lg-3 col-md-12 col-sm-12">
+            <div class="inner-column">
+              
+              <!-- Project Stats Widget -->
+              <div class="sidebar-widget stats-widget fade-in">
+                <h3 class="widget-title">En chiffres</h3>
+                <div class="separator"></div>
+                <div class="stats-container">
+                  <div class="stat-item">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Années d'expérience</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Projets réalisés</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Pays d'intervention</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Categories Widget -->
+              <div class="sidebar-widget categories-widget fade-in">
+                <h3 class="widget-title">Domaines d'expertise</h3>
+                <div class="separator"></div>
+                <ul class="categories-list">
+                  {categories.map(category => (
+                    <li>
+                      <a href="#" class="category-filter" data-category={category.toLowerCase()}>
+                        {category}
+                      </a>
+                      <span class="count">
+                        ({projects.filter(project => project.category === category).length})
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Contact CTA Widget -->
+              <div class="sidebar-widget contact-cta-widget fade-in">
+                <h3 class="widget-title">Votre projet</h3>
+                <div class="separator"></div>
+                <div class="cta-content">
+                  <div class="icon-container">
+                    <span class="icon flaticon-engineering"></span>
+                  </div>
+                  <div class="text">
+                    Vous avez un projet d'ingénierie ou de construction métallique ? 
+                    Parlons-en ensemble.
+                  </div>
+                  <a href="#" class="theme-btn btn-style-one" data-toggle="modal" data-target="#schedule-box">
+                    Demander un devis
+                    <span class="icon flaticon-arrow-pointing-to-right"></span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Recent Projects Widget -->
+              <div class="sidebar-widget recent-projects-widget fade-in">
+                <h3 class="widget-title">Projets récents</h3>
+                <div class="separator"></div>
+                <div class="recent-projects">
+                  {projects.slice(0, 3).map(project => (
+                    <div class="project-item">
+                      <div class="project-thumb">
+                        <a href={project.url}>
+                          <img 
+                            data-src={project.image} 
+                            alt={project.title}
+                            class="lazy-image"
+                            loading="lazy"
+                          />
+                        </a>
+                      </div>
+                      <div class="project-content">
+                        <h4>
+                          <a href={project.url}>{project.title}</a>
+                        </h4>
+                        <div class="project-meta">
+                          <span class="location">{project.location}</span>
+                          <span class="category">{project.category}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <CallToActionSection />
+
+    <!-- Quote Form Modal -->
+    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
+      <div class="modal-dialog popup-container container" role="document">
+        <div class="modal-content">
+          <div class="appoinment_form_wrapper clear_fix">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Fermer"
+            >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <div
+              class="get-quote-form"
+              style="background-image:url(/images/background/13.jpg)"
+            >
+              <div class="inner-box">
+                <div class="sec-title">
+                  <div class="clearfix">
+                    <div class="pull-left">
+                      <h2>Demander un Devis</h2>
+                      <div class="separator centered"></div>
+                    </div>
+                    <div class="pull-left">
+                      <div class="text">
+                        Obtenez un devis gratuit pour vos projets industriels ou
+                        d'ingénierie. Nous sommes disponibles 24h/7j.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="quote-form style-two">
+                  <form method="post" action="/api/contact">
+                    <div class="row clearfix">
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Votre Nom"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="company"
+                          placeholder="Nom de l'Entreprise"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Téléphone"
+                          required
+                        />
+                      </div>
+                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <select class="custom-select-box" name="service">
+                          <option>Sélectionnez le Service Souhaité</option>
+                          <option>Charpente Métallique</option>
+                          <option>Appareils à pression</option>
+                          <option>Réservoirs de Stockage</option>
+                          <option>Équipements Hydromécaniques</option>
+                          <option>Projets Clé en Main</option>
+                          <option>Traitement de l'eau</option>
+                          <option>Électricité & Automatismes</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <textarea name="message" placeholder="Votre Message..."></textarea>
+                      </div>
+                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                        >
+                          Envoyer 
+                          <span class="icon flaticon-arrow-pointing-to-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Projects Intro Section */
+  .projects-intro-section {
+    position: relative;
+    padding: 80px 0 40px;
+  }
+
+  /* Featured Projects Section */
+  .featured-projects-section {
+    position: relative;
+    padding: 0 0 80px;
+    background-color: #f8f9fa;
+  }
+
+  .featured-projects-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .featured-project.main-featured .inner-box {
+    height: 100%;
+  }
+
+  .featured-project.secondary-featured {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .featured-project .inner-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured-project .inner-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .featured-project .image-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .main-featured .image-container {
+    height: 300px;
+  }
+
+  .secondary-featured .image-container {
+    height: 200px;
+  }
+
+  .featured-project .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .featured-project .inner-box:hover .image-container img {
+    transform: scale(1.05);
+  }
+
+  .overlay-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    pointer-events: none;
+  }
+
+  .category-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #1720d7;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .featured-project .content-container {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secondary-featured .content-container {
+    padding: 20px;
+  }
+
+  .featured-project h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  .secondary-featured h3 {
+    font-size: 18px;
+  }
+
+  .featured-project h3 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .featured-project h3 a:hover {
+    color: #1720d7;
+  }
+
+  .featured-project .project-meta {
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #666;
+  }
+
+  .featured-project .description {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .main-featured .description {
+    font-size: 16px;
+  }
+
+  .secondary-featured .description {
+    font-size: 14px;
+  }
+
+  .read-more-btn {
+    color: #1720d7;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .read-more-btn:hover {
+    color: #0d1aa3;
+  }
+
+  .read-more-btn .icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .read-more-btn:hover .icon {
+    transform: translateX(3px);
+  }
+
+  /* Projects Grid Section */
+  .projects-grid-section {
+    position: relative;
+    padding: 80px 0;
+    background-color: #fff;
+  }
+
+  /* Filter Tabs */
+  .filter-tabs {
+    margin-bottom: 40px;
+  }
+
+  .filter-tabs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .filter-tab {
+    padding: 12px 24px;
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+  }
+
+  .filter-tab.active,
+  .filter-tab:hover {
+    background-color: #1720d7;
+    border-color: #1720d7;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .project-block {
+    transition: all 0.3s ease;
+  }
+
+  .project-block .inner-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-block .inner-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  .project-block .image-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .project-block .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .project-block .inner-box:hover .image-container img {
+    transform: scale(1.08);
+  }
+
+  .category-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(23, 32, 215, 0.9);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+  }
+
+  .overlay-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(23, 32, 215, 0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+  }
+
+  .project-block .inner-box:hover .overlay-box {
+    opacity: 1;
+  }
+
+  .overlay-content h3 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .overlay-content h3 a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .overlay-content .location {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+  }
+
+  .overlay-content .icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .overlay-box:hover .icon {
+    transform: translateX(3px);
+  }
+
+  .project-block .content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-block .content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .project-block .content h3 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .project-block .content h3 a:hover {
+    color: #1720d7;
+  }
+
+  .meta-info {
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #666;
+  }
+
+  .project-block .description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    font-size: 14px;
+  }
+
+  .view-project {
+    color: #1720d7;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .view-project:hover {
+    color: #0d1aa3;
+  }
+
+  .view-project .icon {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .view-project:hover .icon {
+    transform: translateX(3px);
+  }
+
+  /* Sidebar Styles */
+  .sidebar-widget {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar-widget:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .widget-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  /* Stats Widget */
+  .stats-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .stat-item:hover {
+    background-color: #1720d7;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+
+  .stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1720d7;
+    margin-bottom: 5px;
+  }
+
+  .stat-item:hover .stat-number {
+    color: #fff;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: #666;
+  }
+
+  .stat-item:hover .stat-label {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Categories Widget */
+  .categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .categories-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.3s ease;
+  }
+
+  .categories-list li:last-child {
+    border-bottom: none;
+  }
+
+  .categories-list li:hover {
+    background-color: #f8f9fa;
+    margin: 0 -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 8px;
+  }
+
+  .categories-list a {
+    color: #666;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .categories-list a:hover {
+    color: #1720d7;
+  }
+
+  .categories-list .count {
+    color: #999;
+    font-size: 12px;
+    background-color: #f8f9fa;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* Contact CTA Widget */
+  .contact-cta-widget {
+    background: linear-gradient(135deg, #1720d7 0%, #0d1aa3 100%);
+    color: #fff;
+  }
+
+  .contact-cta-widget .widget-title {
+    color: #fff;
+  }
+
+  .contact-cta-widget .separator:after {
+    background-color: #fff;
+  }
+
+  .contact-cta-widget .cta-content {
+    text-align: center;
+  }
+
+  .contact-cta-widget .icon-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .contact-cta-widget .icon-container .icon {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  .contact-cta-widget .text {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .contact-cta-widget .theme-btn {
+    background-color: #fff;
+    color: #1720d7;
+    border: 2px solid #fff;
+  }
+
+  .contact-cta-widget .theme-btn:hover {
+    background-color: transparent;
+    color: #fff;
+  }
+
+  /* Recent Projects Widget */
+  .project-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.3s ease;
+  }
+
+  .project-item:last-child {
+    border-bottom: none;
+  }
+
+  .project-item:hover {
+    background-color: #f8f9fa;
+    margin: 0 -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 8px;
+  }
+
+  .project-thumb {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .project-item:hover .project-thumb img {
+    transform: scale(1.1);
+  }
+
+  .project-content {
+    flex-grow: 1;
+  }
+
+  .project-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .project-content h4 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .project-content h4 a:hover {
+    color: #1720d7;
+  }
+
+  .project-content .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .project-content .location,
+  .project-content .category {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .project-content .category {
+    color: #1720d7;
+    font-weight: 500;
+  }
+
+  /* Pagination */
+  .pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .styled-pagination {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .styled-pagination li {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .styled-pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: #666;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .styled-pagination a:hover,
+  .styled-pagination a.active {
+    background-color: #1720d7;
+    border-color: #1720d7;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .styled-pagination .prev a,
+  .styled-pagination .next a {
+    border-radius: 50%;
+  }
+
+  /* Lazy Loading & Images */
+  .lazy-image {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .lazy-image.loaded {
+    opacity: 1;
+  }
+
+  .lazy-image.loading {
+    background-color: #f0f0f0;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Filter Animation */
+  .project-block {
+    transition: all 0.5s ease;
+  }
+
+  .project-block.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+
+  /* Loading State */
+  .loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Design */
+  @media only screen and (max-width: 1199px) {
+    .featured-projects-container {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-project.secondary-featured {
+      flex-direction: row;
+      gap: 30px;
+    }
+
+    .secondary-featured .inner-box {
+      flex-direction: row;
+    }
+
+    .secondary-featured .image-container {
+      width: 200px;
+      height: 150px;
+      flex-shrink: 0;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    .projects-intro-section {
+      padding: 60px 0 30px;
+    }
+
+    .featured-projects-section {
+      padding: 0 0 60px;
+    }
+
+    .projects-grid-section {
+      padding: 60px 0;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-tabs-list {
+      justify-content: center;
+    }
+
+    .featured-project.secondary-featured {
+      flex-direction: column;
+    }
+
+    .secondary-featured .inner-box {
+      flex-direction: column;
+    }
+
+    .secondary-featured .image-container {
+      width: 100%;
+      height: 200px;
+    }
+
+    .stats-container {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .sidebar-widget {
+      padding: 20px;
+    }
+
+    .featured-project .content-container {
+      padding: 20px;
+    }
+
+    .project-block .content {
+      padding: 20px;
+    }
+
+    .filter-tabs-list {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .filter-tab {
+      width: 100%;
+      text-align: center;
+      max-width: 250px;
+    }
+
+    .project-block .image-container {
+      height: 200px;
+    }
+
+    .stats-container {
+      grid-template-columns: 1fr;
+    }
+
+    .project-item {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 150px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .featured-project h3 {
+      font-size: 20px;
+    }
+
+    .project-block h3 {
+      font-size: 18px;
+    }
+
+    .pagination-wrapper {
+      margin-top: 30px;
+    }
+
+    .styled-pagination {
+      gap: 5px;
+    }
+
+    .styled-pagination a {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Lazy Loading avec IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            
+            // Ajouter classe de chargement
+            img.classList.add('loading');
+            
+            // Créer une nouvelle image pour le préchargement
+            const newImg = new Image();
+            newImg.onload = function() {
+              img.src = this.src;
+              img.classList.remove('loading');
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            };
+            
+            newImg.onerror = function() {
+              img.classList.remove('loading');
+              img.src = '/images/placeholder.jpg'; // Image de fallback
+              observer.unobserve(img);
+            };
+            
+            // Démarrer le chargement
+            newImg.src = img.dataset.src;
+          }
+        });
+      }, {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+      });
+
+      // Observer toutes les images lazy
+      document.querySelectorAll('.lazy-image').forEach(img => {
+        imageObserver.observe(img);
+      });
+    } else {
+      // Fallback pour les navigateurs sans IntersectionObserver
+      document.querySelectorAll('.lazy-image').forEach(img => {
+        img.src = img.dataset.src;
+        img.classList.add('loaded');
+      });
+    }
+
+    // Animations au scroll avec IntersectionObserver
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observer tous les éléments avec la classe fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+      animationObserver.observe(el);
+    });
+
+    // Filter functionality
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectBlocks = document.querySelectorAll('.project-block');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        filterTabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        this.classList.add('active');
+
+        const filter = this.getAttribute('data-filter');
+
+        // Filter projects with animation
+        projectBlocks.forEach((block, index) => {
+          if (filter === '*' || block.classList.contains(filter.replace('.', ''))) {
+            setTimeout(() => {
+              block.classList.remove('hidden');
+            }, index * 50);
+          } else {
+            block.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Category filter dans la sidebar
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    categoryFilters.forEach(filter => {
+      filter.addEventListener('click', function(e) {
+        e.preventDefault();
+        const category = this.getAttribute('data-category');
+        
+        // Trouver et activer l'onglet correspondant
+        const correspondingTab = Array.from(filterTabs).find(tab => 
+          tab.getAttribute('data-filter') === `.${category}`
+        );
+        
+        if (correspondingTab) {
+          correspondingTab.click();
+          
+          // Scroll vers la section des projets
+          document.querySelector('.projects-grid').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Enhanced hover effects avec throttling
+    let ticking = false;
+    
+    function updateHoverEffects() {
+      const cards = document.querySelectorAll('.inner-box, .sidebar-widget');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+      ticking = false;
+    }
+
+    if (!ticking) {
+      requestAnimationFrame(updateHoverEffects);
+      ticking = true;
+    }
+
+    // Smooth scroll pour les liens internes
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Performance optimization: Debounce scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(() => {
+        // Déclencher animations supplémentaires si nécessaire
+      }, 10);
+    });
+
+    // Preload critical images
+    const criticalImages = document.querySelectorAll('.featured-project img[data-src]');
+    criticalImages.forEach(img => {
+      const newImg = new Image();
+      newImg.onload = function() {
+        img.src = this.src;
+        img.classList.add('loaded');
+      };
+      newImg.src = img.dataset.src;
+    });
+
+    // Animation séquentielle pour les stats
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const animateStats = () => {
+      statNumbers.forEach((stat, index) => {
+        const finalValue = parseInt(stat.textContent);
+        const increment = finalValue / 50;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= finalValue) {
+            stat.textContent = finalValue + (stat.textContent.includes('+') ? '+' : '');
+            clearInterval(timer);
+          } else {
+            stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+          }
+        }, 30 + (index * 10));
+      });
+    };
+
+    // Observer pour les stats
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(animateStats, 300);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    const statsWidget = document.querySelector('.stats-widget');
+    if (statsWidget) {
+      statsObserver.observe(statsWidget);
+    }
+
+  });
+</script>

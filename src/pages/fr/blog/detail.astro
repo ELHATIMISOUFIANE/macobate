@@ -1,0 +1,354 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+import { blogUtils } from "../../data/blogs.js";
+import { FaCalendarAlt, FaUser, FaTag, FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+
+// Récupération de l'ID de l'article depuis l'URL
+const articleId = Astro.url.searchParams.get('id');
+
+// Récupération de l'article
+const article = blogUtils.getArticleById(articleId);
+
+// Redirection si l'article n'existe pas
+if (!article) {
+  return <Redirect to="/404" />; }
+
+// Récupération des articles similaires
+const similarArticles = blogUtils.getSimilarArticles(articleId, 3);
+
+// Navigation précédent/suivant
+const navigation = blogUtils.getArticleNavigation(articleId);
+
+// URL de partage
+const shareUrl = Astro.url.href;
+const shareTitle = encodeURIComponent(article.title);
+---
+
+<BaseLayout 
+  title={`${article.title} | MACOBATE Blog`}
+  description={article.excerpt}
+  pageType="blog"
+>
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/7.jpg)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li>{article.title}</li>
+        </ul>
+        <h1>{article.title}</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Blog Detail Section -->
+    <section class="blog-detail-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          
+          <!-- Content Side -->
+          <div class="content-side col-lg-8 col-md-12 col-sm-12">
+            <div class="blog-detail">
+              <div class="inner-box">
+                <!-- Image -->
+                <div class="image">
+                  <img src={article.image} alt={article.title} />
+                  <div class="post-date">{article.date.split(' ')[0]}<span>{article.date.split(' ')[1]}</span></div>
+                </div>
+                
+                <!-- Lower Content -->
+                <div class="lower-content">
+                  <!-- Post Meta -->
+                  <div class="post-meta">
+                    <ul>
+                      <li><span class="icon"><FaUser /></span>{article.author}</li>
+                      <li><span class="icon"><FaCalendarAlt /></span>{article.date}</li>
+                      <li><span class="icon"><FaTag /></span>{article.category}</li>
+                    </ul>
+                  </div>
+                  
+                  <!-- Tags -->
+                  <div class="post-tags">
+                    {article.tags.map(tag => (
+                      <a href={`/blog?search=${tag}`} class="tag">#{tag}</a>
+                    ))}
+                  </div>
+                  
+                  <!-- Content -->
+                  <div class="content" set:html={article.content}></div>
+                  
+                  <!-- Post Share Options -->
+                  <div class="post-share-options">
+                    <div class="post-share-inner clearfix">
+                      <div class="pull-left">
+                        <div class="title">Partager cet article :</div>
+                      </div>
+                      <ul class="social-box pull-right">
+                        <li>
+                          <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} 
+                             target="_blank" 
+                             rel="noopener noreferrer"
+                             class="facebook">
+                            <FaFacebook />
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`} 
+                             target="_blank" 
+                             rel="noopener noreferrer"
+                             class="twitter">
+                            <FaTwitter />
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} 
+                             target="_blank" 
+                             rel="noopener noreferrer"
+                             class="linkedin">
+                            <FaLinkedin />
+                          </a>
+                        </li>
+                        <li>
+                          <a href={`https://wa.me/?text=${shareTitle}%20${shareUrl}`} 
+                             target="_blank" 
+                             rel="noopener noreferrer"
+                             class="whatsapp">
+                            <FaWhatsapp />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <!-- Post Navigation -->
+                  <div class="post-navigation">
+                    <div class="clearfix">
+                      {navigation.prev && (
+                        <div class="pull-left prev-post">
+                          <a href={`/blog/detail?id=${navigation.prev.id}`}>
+                            <span class="icon fa fa-angle-left"></span>
+                            Article précédent
+                          </a>
+                          <h4>{navigation.prev.title}</h4>
+                        </div>
+                      )}
+                      
+                      {navigation.next && (
+                        <div class="pull-right next-post">
+                          <a href={`/blog/detail?id=${navigation.next.id}`}>
+                            Article suivant
+                            <span class="icon fa fa-angle-right"></span>
+                          </a>
+                          <h4>{navigation.next.title}</h4>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              
+              <!-- Similar Articles -->
+              {similarArticles.length > 0 && (
+                <div class="related-posts">
+                  <div class="group-title">
+                    <h3>Articles similaires</h3>
+                    <div class="separator"></div>
+                  </div>
+                  <div class="row clearfix">
+                    {similarArticles.map(relatedArticle => (
+                      <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="news-block-three">
+                          <div class="inner-box">
+                            <div class="image">
+                              <a href={`/blog/detail?id=${relatedArticle.id}`}>
+                                <img src={relatedArticle.image} alt={relatedArticle.title} />
+                              </a>
+                            </div>
+                            <div class="lower-content">
+                              <div class="post-date">
+                                <span class="icon"><FaCalendarAlt /></span> {relatedArticle.date}
+                              </div>
+                              <h4>
+                                <a href={`/blog/detail?id=${relatedArticle.id}`}>
+                                  {relatedArticle.title}
+                                </a>
+                              </h4>
+                              <div class="text">{relatedArticle.excerpt.substring(0, 100)}...</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              <!-- Contact Form -->
+              <div class="contact-form-section">
+                <div class="group-title">
+                  <h3>Laissez un commentaire</h3>
+                  <div class="separator"></div>
+                </div>
+                
+                <div class="contact-form">
+                  <form method="post" action="#" id="contact-form">
+                    <div class="row clearfix">
+                      <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                        <input type="text" name="username" placeholder="Votre nom *" required />
+                      </div>
+                      
+                      <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                        <input type="email" name="email" placeholder="Votre email *" required />
+                      </div>
+                      
+                      <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                        <textarea name="message" placeholder="Votre commentaire..." required></textarea>
+                      </div>
+                      
+                      <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                        <button class="theme-btn btn-style-one" type="submit" name="submit-form">
+                          Envoyer le commentaire <span class="icon flaticon-arrow-pointing-to-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Sidebar Side -->
+          <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+            <aside class="sidebar default-sidebar">
+              
+              <!-- About Widget -->
+              <div class="sidebar-widget about-widget">
+                <div class="sidebar-title">
+                  <h3>À propos de MACOBATE</h3>
+                  <div class="separator"></div>
+                </div>
+                <div class="text">
+                  MACOBATE est un leader dans le domaine de l'ingénierie industrielle, 
+                  spécialisé dans les solutions de traitement d'eau, les structures métalliques 
+                  et les équipements hydromécaniques.
+                </div>
+                <a href="/about" class="theme-btn btn-style-three">
+                  En savoir plus <span class="icon flaticon-arrow-pointing-to-right"></span>
+                </a>
+              </div>
+              
+              <!-- Categories Widget -->
+              <div class="sidebar-widget categories-widget">
+                <div class="sidebar-title">
+                  <h3>Catégories</h3>
+                  <div class="separator"></div>
+                </div>
+                <ul class="blog-cat">
+                  {blogUtils.getUniqueCategories().map(category => (
+                    <li class={article.category === category ? 'active' : ''}>
+                      <a href={`/blog?category=${category}`}>
+                        {category} <span>({blogUtils.getArticlesByCategory(category).length})</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <!-- Popular Posts -->
+              <div class="sidebar-widget popular-posts">
+                <div class="sidebar-title">
+                  <h3>Articles Populaires</h3>
+                  <div class="separator"></div>
+                </div>
+                {blogUtils.getFeaturedArticles(4).map(featuredArticle => (
+                  <article class="post">
+                    <figure class="post-thumb">
+                      <a href={`/blog/detail?id=${featuredArticle.id}`}>
+                        <img src={featuredArticle.image} alt={featuredArticle.title} />
+                      </a>
+                    </figure>
+                    <div class="text">
+                      <a href={`/blog/detail?id=${featuredArticle.id}`}>{featuredArticle.title}</a>
+                    </div>
+                    <div class="post-info">
+                      <span class="icon"><FaCalendarAlt /></span> {featuredArticle.date}
+                    </div>
+                  </article>
+                ))}
+              </div>
+              
+              <!-- Contact Widget -->
+              <div class="sidebar-widget contact-widget">
+                <div class="sidebar-title">
+                  <h3>Contactez-nous</h3>
+                  <div class="separator"></div>
+                </div>
+                <ul class="contact-list">
+                  <li>
+                    <span class="icon flaticon-pin"></span>
+                    48, Zone Industrielle Takadoum<br />
+                    Quartier Bouregreg, Rabat
+                  </li>
+                  <li>
+                    <span class="icon flaticon-call"></span>
+                    <a href="tel:+212537659646">+212 5 37 65 96 46</a>
+                  </li>
+                  <li>
+                    <span class="icon flaticon-envelope"></span>
+                    <a href="mailto:contact@macobate.com">contact@macobate.com</a>
+                  </li>
+                </ul>
+              </div>
+              
+            </aside>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <!-- End Blog Detail Section -->
+    
+    <!-- CTA Section -->
+    <CallToActionSection />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<link rel="stylesheet" href="../../styles/blogs.css">
+
+<style>
+  /* Import des styles du blog */
+  @import url('../../styles/blogs.css');
+</style>
+
+<script>
+  // Gestion du formulaire de commentaire
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simulation de l'envoi du commentaire
+        const formData = new FormData(form);
+        
+        // Afficher un message de confirmation
+        alert('Merci pour votre commentaire ! Il sera publié après validation.');
+        
+        // Réinitialiser le formulaire
+        form.reset();
+      });
+    }
+  });
+</script>

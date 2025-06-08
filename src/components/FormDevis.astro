@@ -1,97 +1,160 @@
+---
+// Footer.astro - Version internationalisée
+import { getTranslations } from '../../i18n/translations.js';
 
-<!--Quote Form-->
-    <div class="modal fade" id="schedule-box" tabindex="-1" role="dialog">
-      <div class="modal-dialog popup-container container" role="document">
-        <div class="modal-content">
-          <div class="appoinment_form_wrapper clear_fix">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Fermer"
-              ><i class="fa fa-times" aria-hidden="true"></i></button
-            >
-            <div
-              class="get-quote-form"
-              style="background-image:url(/images/background/13.jpg)"
-            >
-              <div class="inner-box">
-                <!--Sec Title-->
-                <div class="sec-title">
-                  <div class="clearfix">
-                    <div class="pull-left">
-                      <h2>Demander un Devis</h2>
-                      <div class="separator centered"></div>
-                    </div>
-                    <div class="pull-left">
-                      <div class="text">
-                        Obtenez un devis gratuit pour vos projets industriels ou d'ingénierie. Nous sommes disponibles 24h/7j.
-                      </div>
-                    </div>
-                  </div>
-                </div>
+// Récupération de la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith('/fr');
+const lang = isfrench ? 'fr' : 'en';
+const t = getTranslations(lang);
 
-                <!-- Quote Form / Style Two-->
-                <div class="quote-form style-two">
-                  <!--Shipping Form-->
-                  <form method="post" action="/api/contact">
-                    <div class="row clearfix">
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="Votre Nom"
-                          required
-                        />
-                      </div>
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input
-                          type="text"
-                          name="company"
-                          placeholder="Nom de l'Entreprise"
-                          required
-                        />
-                      </div>
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input
-                          type="text"
-                          name="phone"
-                          placeholder="Téléphone"
-                          required
-                        />
-                      </div>
-                      <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <select class="custom-select-box" name="service">
-                          <option>Sélectionnez le Service Souhaité</option>
-                          <option>Construction Métallique</option>
-                          <option>Équipements Hydromécaniques</option>
-                          <option>Traitement des Eaux</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <textarea name="message" placeholder="Votre Message..."
-                        ></textarea>
-                      </div>
-                      <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button
-                          class="theme-btn btn-style-one"
-                          type="submit"
-                          name="submit-form"
-                          >Envoyer <span
-                            class="icon flaticon-arrow-pointing-to-right"
-                          ></span></button
-                        >
-                      </div>
-                    </div>
-                  </form>
-                </div>
+// Liens utiles dans le footer - première colonne
+const usefulLinks1 = [
+  { title: t.footer.links.home, url: "/" },
+  { title: t.footer.links.team, url: "/about#team-section" },
+  { title: t.footer.links.quote, url: "/formDevis" },
+  { title: t.footer.links.contact, url: "/contact" },
+];
+
+// Liens utiles dans le footer - deuxième colonne
+const usefulLinks2 = [
+  { title: t.footer.links.services, url: "/services/allServices" },
+  { title: t.footer.links.news, url: "/blog/allBlog" },
+  { title: t.footer.links.whyChoose, url: "/quality" },
+];
+  
+// Liens de réseaux sociaux
+const socialLinks = [
+  { icon: "fa-facebook", url: "https://www.facebook.com/macobate/#" },
+  { icon: "fa-twitter", url: "https://ma.linkedin.com/company/macobate" },
+  { icon: "fa-linkedin", url: "#" },
+];
+
+// Documents et ressources avec traductions
+const materials = [
+  {
+    icon: "flaticon-doc",
+    title: t.footer.materials[0].title,
+    subtitle: t.footer.materials[0].subtitle,
+    url: "#",
+  },
+  {
+    icon: "flaticon-doc",
+    title: t.footer.materials[1].title,
+    subtitle: t.footer.materials[1].subtitle,
+    url: "#",
+  },
+  {
+    icon: "flaticon-pdf",
+    title: t.footer.materials[2].title,
+    subtitle: t.footer.materials[2].subtitle,
+    url: "#",
+  },
+];
+---
+
+<!--Pied de Page Principal-->
+<footer class="main-footer">
+  <div class="auto-container">
+    <!--Section Widgets-->
+    <div class="widgets-section">
+      <div class="row clearfix">
+        <!--Colonne-->
+        <div class="column col-md-5 col-sm-6 col-xs-12">
+          <div class="footer-widget logo-widget">
+            <div class="logo">
+              <a href="/"
+                ><img src="/images/logo.png" alt="Logo MACOBATE - Pied de page" /></a
+              >
+            </div>
+            <div class="widget-content">
+              <div class="text">
+                {t.footer.address}
               </div>
+              <ul class="list">
+                <li>{t.footer.phone}</li>
+                <li>{t.footer.email}</li>
+              </ul>
+              <div class="timing">
+                <span>{t.footer.hours}</span>{t.footer.hoursDetail}
+              </div>
+              <ul class="social-icon-one">
+                {/* Boucle sur les liens sociaux */}
+                {
+                  socialLinks.map((link) => (
+                    <li>
+                      <a href={link.url}>
+                        <span class={`fa ${link.icon}`} />
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
             </div>
           </div>
         </div>
+
+        <!--Colonne-->
+        <div class="column col-md-4 col-sm-6 col-xs-12">
+          <div class="footer-widget links-widget">
+            <div class="footer-title">
+              <h2>{t.footer.quickLinks}</h2>
+            </div>
+            <div class="row clearfix">
+              <div class="column col-md-6 col-sm-6 col-xs-12">
+                <ul class="links">
+                  {/* Boucle sur la première colonne de liens utiles */}
+                  {
+                    usefulLinks1.map((link) => (
+                      <li>
+                        <a href={link.url}>{link.title}</a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <div class="column col-md-6 col-sm-6 col-xs-12">
+                <ul class="links">
+                  {/* Boucle sur la deuxième colonne de liens utiles */}
+                  {
+                    usefulLinks2.map((link) => (
+                      <li>
+                        <a href={link.url}>{link.title}</a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div> 
+            </div>
+          </div>
+        </div>
+
+        <!--Colonne-->
+        <div class="column col-md-3 col-sm-6 col-xs-12">
+          <div class="footer-widget material-widget">
+            <div class="footer-title">
+              <h2>{t.footer.resources}</h2>
+            </div>
+            <ul class="list-style-two">
+              {/* Boucle sur les matériaux */}
+              {
+                materials.map((material) => (
+                  <li>
+                    <span class={`icon ${material.icon}`} />
+                    <a href={material.url}>{material.title}</a>
+                    {material.subtitle}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
       </div>
-      <a href="/" class="backhome"
-        >Retour à l'Accueil <span class="icon flaticon-arrow-pointing-to-right"
-        ></span></a
-      >
     </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="copyright">
+      {t.footer.copyright}
+    </div>
+  </div>
+</footer>

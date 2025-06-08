@@ -1,24 +1,31 @@
 ---
-// CallToActionSection.astro (Version française)
+// CallToActionSection.astro - Version internationalisée
+import { getTranslations } from "../../i18n/translations.js";
+
+// Récupération de la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith("/fr");
+const lang = isfrench ? "fr" : "en";
+const t = getTranslations(lang);
 ---
 
 <!--Section Appel à l'Action-->
 <section
   class="call-to-action-section"
-  style="background-image:url(images/background/5.jpg)"
+  style="background-image:url(/images/background/5.jpg)"
 >
   <div class="auto-container">
     <div class="row clearfix">
       <div class="col-md-9 col-sm-12 col-xs-12">
         <h2>
-         Nos équipes techniques & commerciales sont à votre écoute pour toute étude, appel d’offres ou demande spécifique.
+          {t.callToAction.title}
         </h2>
       </div>
       <div class="link-column col-md-3 col-sm-12 col-xs-12">
-        <a class="apointment" href="/contact" data-toggle="modal" 
-          >Contacter-Nous<span
-            class="icon flaticon-arrow-pointing-to-right"></span></a
-        >
+        <a class="apointment" href="../contact" >
+          {t.callToAction.buttonText}<span
+            class="icon flaticon-arrow-pointing-to-right"></span>
+        </a>
       </div>
     </div>
   </div>

@@ -4,62 +4,65 @@
 const clients = [
   {
     id: 1,
-    image: "images/clients/office.jpg",
+    image: "/images/clients/office.jpg",
     name: "Office National de l'Électricité et de l'Eau Potable",
     //link: "#",
   },
   {
     id: 2,
-    image: "images/clients/5.png",
-    name: "Groupe OCP",
+    image: "/images/clients/addoha.png" ,
+    name: "Groupe addoha",
     //link: "#",
   },
   {
     id: 3,
-    image: "images/clients/6.png",
+    image: "/images/clients/capep.png",
     name: "Ministère de l'Équipement et de l'Eau",
     //link: "#",
   },
   {
     id: 4,
-    image: "images/clients/7.png",
-    name: "Renault-Nissan Maroc",
+
+
+    image: "/images/clients/freyssinet.png",
+    name: "Freyssinet",
     //link: "#",
   },
   {
     id: 5,
-    image: "images/clients/8.png",
-    name: "Lafarge Holcim Maroc",
+    image: "/images/clients/ministere-de-lagriculture-et-de-la-peche.png",
+    name: "Ministere-de-lagriculture-et-de-la-peche",
+   
     //link: "#",
   },
   {
     id: 6,
-    image: "images/clients/9.png",
-    name: "Office Régional de Mise en Valeur Agricole",
+    image: "/images/clients/sahara-marbre.jfif",
+    name: "Sahara-marbre",
     //link: "#",
   },
   {
     id: 7,
-    image: "images/clients/4.png",
-    name: "Marsa Maroc",
+    image: "/images/clients/OCP-logo.jpg",
+    name: "OCP",
     //link: "#",
   },
   {
     id: 8,
-    image: "images/clients/5.png",
-    name: "Agence du Bassin Hydraulique",
+    image: "/images/clients/logo-onep.jpg",
+    name: "Onep",
     //link: "#",
   },
   {
     id: 9,
-    image: "images/clients/6.png",
-    name: "Maroc Telecom",
+     image: "/images/clients/sogea.png",
+    name: "Sogea",
     //link: "#",
   },
   {
     id: 10,
-    image: "images/clients/7.png",
-    name: "Royal Air Maroc",
+    image: "/images/clients/logo_emt.jpg",
+    name: "Emt",
     //link: "#",
   },
 ];
@@ -87,4 +90,24 @@ const clients = [
     </div>
   </div>
 </section>
+<style>
+  .image-box {
+  width: 200px;         /* ou la taille de votre choix */
+  height: 100px;        /* hauteur fixe */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;     /* cache ce qui dépasse */
+  border: 5px solid #ddd; /* optionnel : pour bien délimiter les images */
+  background-color: white;
+       /* espace intérieur */
+  box-sizing: border-box;
+}
+
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* ou "cover" si vous préférez que l’image remplisse toute la boîte */
+}
+</style>
 <!--Fin Section Clients-->

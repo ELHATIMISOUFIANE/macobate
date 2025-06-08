@@ -4,45 +4,45 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CallToActionSection from "../components/CallToActionSection.astro";
 
-// Options de services disponibles dans le formulaire
+// Service options available in the form
 const serviceOptions = [
   {
     value: "",
-    label: "Sélectionnez le Service Souhaité",
+    label: "Select Desired Service",
     disabled: true,
     selected: true,
   },
   {
-    value: "construction-metallique",
-    label: "Construction Métallique",
+    value: "steel-construction",
+    label: "Steel Construction",
   },
   {
-    value: "equipements-hydromecaniques",
-    label: "Équipements Hydromécaniques",
+    value: "hydromechanical-equipment",
+    label: "Hydromechanical Equipment",
   },
   {
-    value: "traitement-des-eaux",
-    label: "Traitement des Eaux",
+    value: "water-treatment",
+    label: "Water Treatment",
   },
   {
-    value: "gestion-de-projet",
-    label: "Gestion de Projet",
+    value: "project-management",
+    label: "Project Management",
   },
   {
-    value: "maintenance-industrielle",
-    label: "Maintenance Industrielle",
+    value: "industrial-maintenance",
+    label: "Industrial Maintenance",
   },
   {
-    value: "autre",
-    label: "Autre Service",
+    value: "other",
+    label: "Other Service",
   },
 ];
 
-// Endpoint pour l'envoi du formulaire
+// Endpoint for form submission
 const formEndpoint = "/api/contact";
 ---
 
-<BaseLayout title="Demande de Devis | MACOBATE">
+<BaseLayout title="Request a Quote | MACOBATE">
   <Header />
   <main>
     <!--Page Title-->
@@ -53,10 +53,10 @@ const formEndpoint = "/api/contact";
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
-          <li><a href="/">Accueil</a></li>
-          <li>Demande de Devis</li>
+          <li><a href="/">Home</a></li>
+          <li>Request a Quote</li>
         </ul>
-        <h1>Demande de Devis</h1>
+        <h1>Request a Quote</h1>
       </div>
     </section>
     <!--End Page Title-->
@@ -68,12 +68,10 @@ const formEndpoint = "/api/contact";
           <div class="form-column col-lg-8 col-md-12 col-sm-12">
             <div class="inner-column">
               <div class="sec-title">
-                <h2>Demandez votre devis personnalisé</h2>
+                <h2>Request your personalized quote</h2>
                 <div class="separator"></div>
                 <div class="text">
-                  Remplissez ce formulaire pour obtenir un devis gratuit et sans
-                  engagement pour votre projet. Notre équipe commerciale vous
-                  contactera dans les plus brefs délais.
+                  Fill out this form to get a free and no-obligation quote for your project. Our sales team will contact you as soon as possible.
                 </div>
               </div>
 
@@ -81,23 +79,23 @@ const formEndpoint = "/api/contact";
               <div class="default-form">
                 <form method="post" action={formEndpoint} id="quote-form">
                   <div class="row clearfix">
-                    <!-- Informations personnelles -->
+                    <!-- Personal information -->
                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <label>Nom <span class="required">*</span></label>
+                      <label>Name <span class="required">*</span></label>
                       <input
                         type="text"
                         name="name"
-                        placeholder="Votre nom complet"
+                        placeholder="Your full name"
                         required
                       />
                     </div>
 
                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <label>Entreprise <span class="required">*</span></label>
+                      <label>Company <span class="required">*</span></label>
                       <input
                         type="text"
                         name="company"
-                        placeholder="Nom de votre entreprise"
+                        placeholder="Your company name"
                         required
                       />
                     </div>
@@ -107,22 +105,22 @@ const formEndpoint = "/api/contact";
                       <input
                         type="email"
                         name="email"
-                        placeholder="Votre adresse email"
+                        placeholder="Your email address"
                         required
                       />
                     </div>
 
                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                      <label>Téléphone <span class="required">*</span></label>
+                      <label>Phone <span class="required">*</span></label>
                       <input
                         type="text"
                         name="phone"
-                        placeholder="Votre numéro de téléphone"
+                        placeholder="Your phone number"
                         required
                       />
                     </div>
 
-                    <!-- Informations du projet -->
+                    <!-- Project information -->
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                       <label>Service <span class="required">*</span></label>
                       <select class="custom-select-box" name="service" required>
@@ -142,33 +140,33 @@ const formEndpoint = "/api/contact";
 
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                       <label
-                        >Description du projet <span class="required">*</span
+                        >Project description <span class="required">*</span
                         ></label
                       >
                       <textarea
                         name="message"
-                        placeholder="Décrivez votre projet en détail (besoins, délais, spécifications techniques...)"
+                        placeholder="Describe your project in detail (requirements, deadlines, technical specifications...)"
                         rows="6"
                         required></textarea>
                     </div>
 
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                      <label>Comment avez-vous connu MACOBATE ?</label>
+                      <label>How did you hear about MACOBATE?</label>
                       <select class="custom-select-box" name="source">
                         <option value="" selected disabled
-                          >Sélectionnez une option</option
+                          >Select an option</option
                         >
-                        <option value="recherche">Moteur de recherche</option>
-                        <option value="recommandation">Recommandation</option>
-                        <option value="reseaux-sociaux">Réseaux sociaux</option>
-                        <option value="salon-professionnel"
-                          >Salon professionnel</option
+                        <option value="search-engine">Search engine</option>
+                        <option value="recommendation">Recommendation</option>
+                        <option value="social-media">Social media</option>
+                        <option value="trade-show"
+                          >Trade show</option
                         >
-                        <option value="autre">Autre</option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
 
-                    <!-- RGPD -->
+                    <!-- GDPR -->
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                       <div class="check-box">
                         <input
@@ -178,10 +176,9 @@ const formEndpoint = "/api/contact";
                           required
                         />
                         <label for="privacy_accepted">
-                          J'accepte que mes données soient utilisées pour
-                          traiter ma demande conformément à la <a
-                            href="/politique-confidentialite"
-                            target="_blank">politique de confidentialité</a
+                          I agree that my data may be used to process my request in accordance with the <a
+                            href="/privacy-policy"
+                            target="_blank">privacy policy</a
                           >
                           <span class="required">*</span>
                         </label>
@@ -197,7 +194,7 @@ const formEndpoint = "/api/contact";
                           name="submit-form"
                           id="submit-form"
                         >
-                          Envoyer ma demande
+                          Send my request
                           <span class="icon flaticon-arrow-pointing-to-right"
                           ></span>
                         </button>
@@ -211,11 +208,9 @@ const formEndpoint = "/api/contact";
                   <div class="success-icon">
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                   </div>
-                  <h3>Demande envoyée avec succès !</h3>
+                  <h3>Request sent successfully!</h3>
                   <p>
-                    Merci pour votre demande de devis. Notre équipe va examiner
-                    votre projet et vous contactera dans les plus brefs délais,
-                    généralement sous 24 à 48 heures ouvrées.
+                    Thank you for your quote request. Our team will review your project and contact you as soon as possible, usually within 24 to 48 business hours.
                   </p>
                 </div>
               </div>
@@ -227,27 +222,26 @@ const formEndpoint = "/api/contact";
             <div class="inner-column">
               <!-- Why Choose Us -->
               <div class="why-choose-us">
-                <h3>Pourquoi nous choisir</h3>
+                <h3>Why choose us</h3>
                 <div class="text">
-                  MACOBATE vous accompagne dans tous vos projets industriels
-                  avec une expertise reconnue depuis plus de 40 ans.
+                  MACOBATE supports you in all your industrial projects with recognized expertise for over 40 years.
                 </div>
                 <ul class="list-style-one">
-                  <li>Expertise technique certifiée</li>
-                  <li>Accompagnement personnalisé</li>
-                  <li>Réactivité et disponibilité</li>
-                  <li>Solutions sur-mesure</li>
-                  <li>Respect des délais et budgets</li>
+                  <li>Certified technical expertise</li>
+                  <li>Personalized support</li>
+                  <li>Responsiveness and availability</li>
+                  <li>Tailor-made solutions</li>
+                  <li>Respect for deadlines and budgets</li>
                 </ul>
               </div>
 
               <!-- Contact Info -->
               <div class="contact-info">
-                <h3>Contact direct</h3>
+                <h3>Direct contact</h3>
                 <ul>
                   <li>
                     <span class="icon flaticon-telephone"></span>
-                    <strong>Téléphone:</strong> +212 5 37 65 96 46
+                    <strong>Phone:</strong> +212 5 37 65 96 46
                   </li>
                   <li>
                     <span class="icon flaticon-envelope-1"></span>
@@ -255,23 +249,23 @@ const formEndpoint = "/api/contact";
                   </li>
                   <li>
                     <span class="icon flaticon-map"></span>
-                    <strong>Adresse:</strong> Zone Industrielle, Rabat, Maroc
+                    <strong>Address:</strong> Industrial Zone, Rabat, Morocco
                   </li>
                 </ul>
               </div>
 
               <!-- Business Hours -->
               <div class="business-hours">
-                <h3>Horaires de travail</h3>
+                <h3>Business hours</h3>
                 <ul>
                   <li>
-                    Lundi - Vendredi: <span>8h30 - 17h30</span>
+                    Monday - Friday: <span>8:30 AM - 5:30 PM</span>
                   </li>
                   <li>
-                    Samedi: <span>9h00 - 13h00</span>
+                    Saturday: <span>9:00 AM - 1:00 PM</span>
                   </li>
                   <li>
-                    Dimanche: <span>Fermé</span>
+                    Sunday: <span>Closed</span>
                   </li>
                 </ul>
               </div>
@@ -286,7 +280,7 @@ const formEndpoint = "/api/contact";
     <section class="faq-section" style="background-color: #f8f9fa;">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Questions fréquentes</h2>
+          <h2>Frequently asked questions</h2>
           <div class="separator"></div>
         </div>
 
@@ -297,18 +291,13 @@ const formEndpoint = "/api/contact";
                 <!-- Question 1 -->
                 <div class="accordion block">
                   <div class="acc-btn">
-                    Comment se déroule le processus de devis ?
+                    How does the quotation process work?
                     <div class="icon fa fa-plus"></div>
                   </div>
                   <div class="acc-content">
                     <div class="content">
                       <p>
-                        Après réception de votre demande, notre équipe
-                        commerciale examine votre projet et vous contacte pour
-                        clarifier certains points si nécessaire. Un devis
-                        détaillé vous est ensuite envoyé sous 3 à 5 jours
-                        ouvrés, incluant une description précise des
-                        prestations, des délais et des tarifs.
+                        After receiving your request, our sales team reviews your project and contacts you to clarify certain points if necessary. A detailed quote is then sent to you within 3 to 5 business days, including a precise description of services, deadlines and pricing.
                       </p>
                     </div>
                   </div>
@@ -317,25 +306,23 @@ const formEndpoint = "/api/contact";
                 <!-- Question 2 -->
                 <div class="accordion block">
                   <div class="acc-btn">
-                    Quelles informations fournir pour obtenir un devis précis ?
+                    What information should I provide to get an accurate quote?
                     <div class="icon fa fa-plus"></div>
                   </div>
                   <div class="acc-content">
                     <div class="content">
                       <p>
-                        Pour un devis optimal, nous vous recommandons de fournir
-                        les éléments suivants :
+                        For an optimal quote, we recommend providing the following elements:
                       </p>
                       <ul>
-                        <li>Description détaillée du projet</li>
-                        <li>Plans ou schémas techniques si disponibles</li>
-                        <li>Calendrier prévisionnel</li>
-                        <li>Contraintes spécifiques</li>
-                        <li>Budget indicatif</li>
+                        <li>Detailed project description</li>
+                        <li>Technical plans or diagrams if available</li>
+                        <li>Provisional schedule</li>
+                        <li>Specific constraints</li>
+                        <li>Indicative budget</li>
                       </ul>
                       <p>
-                        Plus les informations sont précises, plus notre
-                        proposition sera adaptée à vos besoins.
+                        The more precise the information, the better our proposal will be adapted to your needs.
                       </p>
                     </div>
                   </div>
@@ -344,16 +331,13 @@ const formEndpoint = "/api/contact";
                 <!-- Question 3 -->
                 <div class="accordion block">
                   <div class="acc-btn">
-                    Les devis sont-ils gratuits et sans engagement ?
+                    Are quotes free and without obligation?
                     <div class="icon fa fa-plus"></div>
                   </div>
                   <div class="acc-content">
                     <div class="content">
                       <p>
-                        Oui, tous nos devis sont entièrement gratuits et sans
-                        aucun engagement de votre part. Nous croyons en la
-                        transparence et souhaitons vous permettre de prendre une
-                        décision éclairée concernant votre projet.
+                        Yes, all our quotes are completely free and without any obligation on your part. We believe in transparency and want to enable you to make an informed decision about your project.
                       </p>
                     </div>
                   </div>
@@ -362,17 +346,13 @@ const formEndpoint = "/api/contact";
                 <!-- Question 4 -->
                 <div class="accordion block">
                   <div class="acc-btn">
-                    Quelle est la durée de validité d'un devis MACOBATE ?
+                    What is the validity period of a MACOBATE quote?
                     <div class="icon fa fa-plus"></div>
                   </div>
                   <div class="acc-content">
                     <div class="content">
                       <p>
-                        Nos devis sont généralement valables pour une durée de
-                        30 jours à compter de leur date d'émission. Passé ce
-                        délai, les prix peuvent être soumis à révision en
-                        fonction de l'évolution des coûts des matières premières
-                        et autres facteurs externes.
+                        Our quotes are generally valid for a period of 30 days from their date of issue. After this period, prices may be subject to revision based on the evolution of raw material costs and other external factors.
                       </p>
                     </div>
                   </div>
@@ -392,7 +372,7 @@ const formEndpoint = "/api/contact";
 </BaseLayout>
 
 <style>
-  /* Styles pour la page de demande de devis */
+  /* Styles for quote request page */
   .quote-form-section {
     position: relative;
     padding: 80px 0;
@@ -777,9 +757,9 @@ const formEndpoint = "/api/contact";
 </style>
 
 <script>
-  // Script pour gérer le formulaire et l'affichage des FAQs
+  // Script to handle form and FAQ display
   document.addEventListener("DOMContentLoaded", function () {
-    // Gérer la soumission du formulaire
+    // Handle form submission
     const quoteForm = document.getElementById("quote-form");
     const formSuccess = document.querySelector(".form-success");
 
@@ -787,50 +767,50 @@ const formEndpoint = "/api/contact";
       quoteForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        // Afficher un indicateur de chargement
+        // Show loading indicator
         const submitBtn = document.getElementById("submit-form");
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML =
-          'Envoi en cours... <i class="fa fa-spinner fa-spin"></i>';
+          'Sending... <i class="fa fa-spinner fa-spin"></i>';
         submitBtn.disabled = true;
 
-        // Créer un objet FormData pour récupérer les données du formulaire
+        // Create FormData object to retrieve form data
         const formData = new FormData(quoteForm);
 
         try {
-          // Simuler un délai d'envoi (à remplacer par votre véritable appel API)
-          // Dans un environnement de production, vous utiliseriez votre propre code d'envoi:
+          // Simulate sending delay (to be replaced with your actual API call)
+          // In a production environment, you would use your own sending code:
           // const response = await fetch(quoteForm.action, {
           //   method: 'POST',
           //   body: formData
           // });
 
-          // Simulation pour la démo
+          // Demo simulation
           await new Promise((resolve) => setTimeout(resolve, 1500));
 
-          // Masquer le formulaire et afficher le message de succès
+          // Hide form and show success message
           quoteForm.style.display = "none";
           formSuccess.style.display = "block";
 
-          // Faire défiler jusqu'au message de succès
+          // Scroll to success message
           formSuccess.scrollIntoView({ behavior: "smooth", block: "start" });
 
-          // Réinitialiser le formulaire (au cas où l'utilisateur revient en arrière)
+          // Reset form (in case user goes back)
           quoteForm.reset();
         } catch (error) {
-          console.error("Erreur:", error);
+          console.error("Error:", error);
           alert(
-            "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer ou nous contacter directement par téléphone."
+            "An error occurred while sending the form. Please try again or contact us directly by phone."
           );
 
-          // Réinitialiser le bouton
+          // Reset button
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
         }
       });
     }
 
-    // Gérer l'accordéon des FAQs
+    // Handle FAQ accordion
     const accordionBtns = document.querySelectorAll(".acc-btn");
 
     accordionBtns.forEach((btn) => {
@@ -838,7 +818,7 @@ const formEndpoint = "/api/contact";
         const currentContent = this.nextElementSibling;
         const isActive = this.classList.contains("active");
 
-        // Fermer tous les accordéons
+        // Close all accordions
         document.querySelectorAll(".acc-btn").forEach((otherBtn) => {
           otherBtn.classList.remove("active");
           otherBtn.querySelector(".icon").classList.remove("fa-minus");
@@ -849,7 +829,7 @@ const formEndpoint = "/api/contact";
           }
         });
 
-        // Si l'accordéon n'était pas actif, l'ouvrir
+        // If accordion wasn't active, open it
         if (!isActive) {
           this.classList.add("active");
           this.querySelector(".icon").classList.remove("fa-plus");
@@ -859,7 +839,7 @@ const formEndpoint = "/api/contact";
             currentContent.style.display = "block";
           }
         }
-      })    ;
+      });
     });
   });
 </script>

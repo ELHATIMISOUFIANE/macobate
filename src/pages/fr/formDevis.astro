@@ -1,0 +1,865 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import CallToActionSection from "../../components/CallToActionSection.astro";
+
+// Options de services disponibles dans le formulaire
+const serviceOptions = [
+  {
+    value: "",
+    label: "Sélectionnez le Service Souhaité",
+    disabled: true,
+    selected: true,
+  },
+  {
+    value: "construction-metallique",
+    label: "Construction Métallique",
+  },
+  {
+    value: "equipements-hydromecaniques",
+    label: "Équipements Hydromécaniques",
+  },
+  {
+    value: "traitement-des-eaux",
+    label: "Traitement des Eaux",
+  },
+  {
+    value: "gestion-de-projet",
+    label: "Gestion de Projet",
+  },
+  {
+    value: "maintenance-industrielle",
+    label: "Maintenance Industrielle",
+  },
+  {
+    value: "autre",
+    label: "Autre Service",
+  },
+];
+
+// Endpoint pour l'envoi du formulaire
+const formEndpoint = "/api/contact";
+---
+
+<BaseLayout title="Demande de Devis | MACOBATE">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/en">Accueil</a></li>
+          <li>Demande de Devis</li>
+        </ul>
+        <h1>Demande de Devis</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Form Section -->
+    <section class="quote-form-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <div class="form-column col-lg-8 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <div class="sec-title">
+                <h2>Demandez votre devis personnalisé</h2>
+                <div class="separator"></div>
+                <div class="text">
+                  Remplissez ce formulaire pour obtenir un devis gratuit et sans
+                  engagement pour votre projet. Notre équipe commerciale vous
+                  contactera dans les plus brefs délais.
+                </div>
+              </div>
+
+              <!-- Quote Form -->
+              <div class="default-form">
+                <form method="post" action={formEndpoint} id="quote-form">
+                  <div class="row clearfix">
+                    <!-- Informations personnelles -->
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                      <label>Nom <span class="required">*</span></label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Votre nom complet"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                      <label>Entreprise <span class="required">*</span></label>
+                      <input
+                        type="text"
+                        name="company"
+                        placeholder="Nom de votre entreprise"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                      <label>Email <span class="required">*</span></label>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Votre adresse email"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                      <label>Téléphone <span class="required">*</span></label>
+                      <input
+                        type="text"
+                        name="phone"
+                        placeholder="Votre numéro de téléphone"
+                        required
+                      />
+                    </div>
+
+                    <!-- Informations du projet -->
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label>Service <span class="required">*</span></label>
+                      <select class="custom-select-box" name="service" required>
+                        {
+                          serviceOptions.map((option) => (
+                            <option
+                              value={option.value}
+                              disabled={option.disabled}
+                              selected={option.selected}
+                            >
+                              {option.label}
+                            </option>
+                          ))
+                        }
+                      </select>
+                    </div>
+
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label
+                        >Description du projet <span class="required">*</span
+                        ></label
+                      >
+                      <textarea
+                        name="message"
+                        placeholder="Décrivez votre projet en détail (besoins, délais, spécifications techniques...)"
+                        rows="6"
+                        required></textarea>
+                    </div>
+
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                      <label>Comment avez-vous connu MACOBATE ?</label>
+                      <select class="custom-select-box" name="source">
+                        <option value="" selected disabled
+                          >Sélectionnez une option</option
+                        >
+                        <option value="recherche">Moteur de recherche</option>
+                        <option value="recommandation">Recommandation</option>
+                        <option value="reseaux-sociaux">Réseaux sociaux</option>
+                        <option value="salon-professionnel"
+                          >Salon professionnel</option
+                        >
+                        <option value="autre">Autre</option>
+                      </select>
+                    </div>
+
+                    <!-- RGPD -->
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                      <div class="check-box">
+                        <input
+                          type="checkbox"
+                          name="privacy_accepted"
+                          id="privacy_accepted"
+                          required
+                        />
+                        <label for="privacy_accepted">
+                          J'accepte que mes données soient utilisées pour
+                          traiter ma demande conformément à la <a
+                            href="/politique-confidentialite"
+                            target="_blank">politique de confidentialité</a
+                          >
+                          <span class="required">*</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                      <div class="text-right">
+                        <button
+                          class="theme-btn btn-style-one"
+                          type="submit"
+                          name="submit-form"
+                          id="submit-form"
+                        >
+                          Envoyer ma demande
+                          <span class="icon flaticon-arrow-pointing-to-right"
+                          ></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- Success Message (hidden by default) -->
+                <div class="form-success" style="display: none;">
+                  <div class="success-icon">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                  </div>
+                  <h3>Demande envoyée avec succès !</h3>
+                  <p>
+                    Merci pour votre demande de devis. Notre équipe va examiner
+                    votre projet et vous contactera dans les plus brefs délais,
+                    généralement sous 24 à 48 heures ouvrées.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Column -->
+          <div class="info-column col-lg-4 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <!-- Why Choose Us -->
+              <div class="why-choose-us">
+                <h3>Pourquoi nous choisir</h3>
+                <div class="text">
+                  MACOBATE vous accompagne dans tous vos projets industriels
+                  avec une expertise reconnue depuis plus de 40 ans.
+                </div>
+                <ul class="list-style-one">
+                  <li>Expertise technique certifiée</li>
+                  <li>Accompagnement personnalisé</li>
+                  <li>Réactivité et disponibilité</li>
+                  <li>Solutions sur-mesure</li>
+                  <li>Respect des délais et budgets</li>
+                </ul>
+              </div>
+
+              <!-- Contact Info -->
+              <div class="contact-info">
+                <h3>Contact direct</h3>
+                <ul>
+                  <li>
+                    <span class="icon flaticon-telephone"></span>
+                    <strong>Téléphone:</strong> +212 5 37 65 96 46
+                  </li>
+                  <li>
+                    <span class="icon flaticon-envelope-1"></span>
+                    <strong>Email:</strong> contact@macobate.com
+                  </li>
+                  <li>
+                    <span class="icon flaticon-map"></span>
+                    <strong>Adresse:</strong> Zone Industrielle, Rabat, Maroc
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Business Hours -->
+              <div class="business-hours">
+                <h3>Horaires de travail</h3>
+                <ul>
+                  <li>
+                    Lundi - Vendredi: <span>8h30 - 17h30</span>
+                  </li>
+                  <li>
+                    Samedi: <span>9h00 - 13h00</span>
+                  </li>
+                  <li>
+                    Dimanche: <span>Fermé</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Form Section -->
+
+    <!-- FAQ Section -->
+    <section class="faq-section" style="background-color: #f8f9fa;">
+      <div class="auto-container">
+        <div class="sec-title centered">
+          <h2>Questions fréquentes</h2>
+          <div class="separator"></div>
+        </div>
+
+        <div class="row clearfix">
+          <div class="col-lg-10 col-md-12 col-sm-12 offset-lg-1">
+            <div class="faq-block">
+              <div class="accordion-box">
+                <!-- Question 1 -->
+                <div class="accordion block">
+                  <div class="acc-btn">
+                    Comment se déroule le processus de devis ?
+                    <div class="icon fa fa-plus"></div>
+                  </div>
+                  <div class="acc-content">
+                    <div class="content">
+                      <p>
+                        Après réception de votre demande, notre équipe
+                        commerciale examine votre projet et vous contacte pour
+                        clarifier certains points si nécessaire. Un devis
+                        détaillé vous est ensuite envoyé sous 3 à 5 jours
+                        ouvrés, incluant une description précise des
+                        prestations, des délais et des tarifs.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="accordion block">
+                  <div class="acc-btn">
+                    Quelles informations fournir pour obtenir un devis précis ?
+                    <div class="icon fa fa-plus"></div>
+                  </div>
+                  <div class="acc-content">
+                    <div class="content">
+                      <p>
+                        Pour un devis optimal, nous vous recommandons de fournir
+                        les éléments suivants :
+                      </p>
+                      <ul>
+                        <li>Description détaillée du projet</li>
+                        <li>Plans ou schémas techniques si disponibles</li>
+                        <li>Calendrier prévisionnel</li>
+                        <li>Contraintes spécifiques</li>
+                        <li>Budget indicatif</li>
+                      </ul>
+                      <p>
+                        Plus les informations sont précises, plus notre
+                        proposition sera adaptée à vos besoins.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="accordion block">
+                  <div class="acc-btn">
+                    Les devis sont-ils gratuits et sans engagement ?
+                    <div class="icon fa fa-plus"></div>
+                  </div>
+                  <div class="acc-content">
+                    <div class="content">
+                      <p>
+                        Oui, tous nos devis sont entièrement gratuits et sans
+                        aucun engagement de votre part. Nous croyons en la
+                        transparence et souhaitons vous permettre de prendre une
+                        décision éclairée concernant votre projet.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="accordion block">
+                  <div class="acc-btn">
+                    Quelle est la durée de validité d'un devis MACOBATE ?
+                    <div class="icon fa fa-plus"></div>
+                  </div>
+                  <div class="acc-content">
+                    <div class="content">
+                      <p>
+                        Nos devis sont généralement valables pour une durée de
+                        30 jours à compter de leur date d'émission. Passé ce
+                        délai, les prix peuvent être soumis à révision en
+                        fonction de l'évolution des coûts des matières premières
+                        et autres facteurs externes.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End FAQ Section -->
+
+    <!-- CTA Component -->
+    <CallToActionSection />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Styles pour la page de demande de devis */
+  .quote-form-section {
+    position: relative;
+    padding: 80px 0;
+  }
+
+  .form-column .inner-column {
+    position: relative;
+    padding-right: 20px;
+  }
+
+  .info-column .inner-column {
+    position: relative;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .default-form {
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .default-form .form-group {
+    position: relative;
+    margin-bottom: 25px;
+  }
+
+  .default-form .form-group label {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .default-form .form-group .required {
+    color: #e63946;
+  }
+
+  .default-form .form-group input[type="text"],
+  .default-form .form-group input[type="email"],
+  .default-form .form-group select,
+  .default-form .form-group textarea {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    color: #333333;
+    padding: 10px 20px;
+    line-height: 28px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+
+  .default-form .form-group textarea {
+    height: 180px;
+    resize: none;
+  }
+
+  .default-form .form-group input:focus,
+  .default-form .form-group select:focus,
+  .default-form .form-group textarea:focus {
+    border-color: #1720d7;
+    box-shadow: 0 0 10px rgba(23, 32, 215, 0.1);
+  }
+
+  .check-box {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  .check-box label {
+    position: relative;
+    padding-left: 30px;
+    line-height: 22px;
+    cursor: pointer;
+    color: #666;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all 300ms ease;
+  }
+
+  .check-box input {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+  }
+
+  .check-box label:before {
+    position: absolute;
+    content: "";
+    left: 0px;
+    top: 0px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    transition: all 300ms ease;
+  }
+
+  .check-box label:after {
+    position: absolute;
+    content: "\f00c";
+    left: 0px;
+    top: 0px;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    font-family: "FontAwesome";
+    color: #1720d7;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+
+  .check-box input:checked + label:after {
+    opacity: 1;
+  }
+
+  .check-box label a {
+    color: #1720d7;
+    text-decoration: underline;
+  }
+
+  .check-box label a:hover {
+    text-decoration: none;
+  }
+
+  /* Success Message */
+  .form-success {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .success-icon {
+    font-size: 60px;
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+
+  .form-success h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .form-success p {
+    color: #666;
+  }
+
+  /* Why Choose Us */
+  .why-choose-us {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .why-choose-us h3 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .why-choose-us .text {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .list-style-one {
+    position: relative;
+  }
+
+  .list-style-one li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #666;
+  }
+
+  .list-style-one li:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+  }
+
+  /* Contact Info */
+  .contact-info {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .contact-info h3 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .contact-info ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #666;
+  }
+
+  .contact-info ul li .icon {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    color: #1720d7;
+  }
+
+  .contact-info ul li strong {
+    display: block;
+    color: #333;
+    margin-bottom: 3px;
+  }
+
+  /* Business Hours */
+  .business-hours {
+    position: relative;
+  }
+
+  .business-hours h3 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .business-hours ul li {
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .business-hours ul li span {
+    color: #1720d7;
+    font-weight: 600;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    position: relative;
+    padding: 80px 0;
+  }
+
+  .accordion-box {
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .accordion-box .block {
+    position: relative;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .accordion-box .acc-btn {
+    position: relative;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    line-height: 30px;
+    padding: 15px 50px 15px 30px;
+    cursor: pointer;
+    transition: all 500ms ease;
+  }
+
+  .accordion-box .acc-btn .icon {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    font-size: 16px;
+    color: #1720d7;
+    transition: all 500ms ease;
+  }
+
+  .accordion-box .acc-btn.active {
+    background-color: #1720d7;
+    color: #ffffff;
+  }
+
+  .accordion-box .acc-btn.active .icon {
+    color: #ffffff;
+    transform: rotate(180deg);
+  }
+
+  .accordion-box .acc-content {
+    position: relative;
+    display: none;
+  }
+
+  .accordion-box .acc-content.current {
+    display: block;
+  }
+
+  .accordion-box .acc-content .content {
+    position: relative;
+    padding: 20px 30px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .accordion-box .acc-content .content p {
+    position: relative;
+    font-size: 15px;
+    line-height: 1.8em;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .accordion-box .acc-content .content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .accordion-box .acc-content .content ul {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 20px;
+  }
+
+  .accordion-box .acc-content .content ul li {
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #666;
+  }
+
+  /* Responsive Styles */
+  @media only screen and (max-width: 991px) {
+    .form-column .inner-column {
+      padding-right: 0;
+      margin-bottom: 40px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .quote-form-section {
+      padding: 60px 0;
+    }
+
+    .faq-section {
+      padding: 60px 0;
+    }
+
+    .accordion-box .acc-btn {
+      font-size: 16px;
+      padding: 12px 40px 12px 20px;
+    }
+
+    .accordion-box .acc-btn .icon {
+      right: 20px;
+    }
+
+    .accordion-box .acc-content .content {
+      padding: 15px 20px;
+    }
+  }
+</style>
+
+<script>
+  // Script pour gérer le formulaire et l'affichage des FAQs
+  document.addEventListener("DOMContentLoaded", function () {
+    // Gérer la soumission du formulaire
+    const quoteForm = document.getElementById("quote-form");
+    const formSuccess = document.querySelector(".form-success");
+
+    if (quoteForm) {
+      quoteForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        // Afficher un indicateur de chargement
+        const submitBtn = document.getElementById("submit-form");
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          'Envoi en cours... <i class="fa fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+
+        // Créer un objet FormData pour récupérer les données du formulaire
+        const formData = new FormData(quoteForm);
+
+        try {
+          // Simuler un délai d'envoi (à remplacer par votre véritable appel API)
+          // Dans un environnement de production, vous utiliseriez votre propre code d'envoi:
+          // const response = await fetch(quoteForm.action, {
+          //   method: 'POST',
+          //   body: formData
+          // });
+
+          // Simulation pour la démo
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+
+          // Masquer le formulaire et afficher le message de succès
+          quoteForm.style.display = "none";
+          formSuccess.style.display = "block";
+
+          // Faire défiler jusqu'au message de succès
+          formSuccess.scrollIntoView({ behavior: "smooth", block: "start" });
+
+          // Réinitialiser le formulaire (au cas où l'utilisateur revient en arrière)
+          quoteForm.reset();
+        } catch (error) {
+          console.error("Erreur:", error);
+          alert(
+            "Une erreur est survenue lors de l'envoi du formulaire. Veuillez réessayer ou nous contacter directement par téléphone."
+          );
+
+          // Réinitialiser le bouton
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+
+    // Gérer l'accordéon des FAQs
+    const accordionBtns = document.querySelectorAll(".acc-btn");
+
+    accordionBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const currentContent = this.nextElementSibling;
+        const isActive = this.classList.contains("active");
+
+        // Fermer tous les accordéons
+        document.querySelectorAll(".acc-btn").forEach((otherBtn) => {
+          otherBtn.classList.remove("active");
+          otherBtn.querySelector(".icon").classList.remove("fa-minus");
+          otherBtn.querySelector(".icon").classList.add("fa-plus");
+
+          if (otherBtn.nextElementSibling) {
+            otherBtn.nextElementSibling.style.display = "none";
+          }
+        });
+
+        // Si l'accordéon n'était pas actif, l'ouvrir
+        if (!isActive) {
+          this.classList.add("active");
+          this.querySelector(".icon").classList.remove("fa-plus");
+          this.querySelector(".icon").classList.add("fa-minus");
+
+          if (currentContent) {
+            currentContent.style.display = "block";
+          }
+        }
+      })    ;
+    });
+  });
+</script>

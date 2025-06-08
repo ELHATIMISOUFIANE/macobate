@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import AppointmentForm from "../../components/AppointmentForm.astro";
 import CallToActionSection from "../../components/CallToActionSection.astro";
+
 import { PiEngineBold } from "react-icons/pi";
 import { BsFillMotherboardFill, BsSpeedometer } from "react-icons/bs";
 import {
@@ -22,7 +23,7 @@ import {
 } from "react-icons/gi";
 ---
 
-<BaseLayout title="CRANEX - Vannes et Équipements Hydromécaniques | MACOBATE">
+<BaseLayout title="CRANEX - Smart Lifting Solutions | MACOBATE">
   <Header />
   <main>
     <!--Page Title-->
@@ -33,8 +34,8 @@ import {
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
-          <li><a href="/">Accueil</a></li>
-          <li><a href="/#our-brands">Nos Marques</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#our-brands">Our Brands</a></li>
           <li>CRANEX</li>
         </ul>
         <h1>CRANEX</h1>
@@ -50,86 +51,49 @@ import {
             <div class="inner-column">
               <div class="brand-header">
                 <div class="brand-logo">
-                  <img
-                    src="/images/gallery/cranex-logo.png"
-                    alt="CRANEX Logo"
-                  />
+                  <img src="/images/gallery/cranex-logo.png" alt="CRANEX Logo" />
                 </div>
                 <div class="brand-intro">
-                  <h2>Élevez votre industrie.</h2>
+                  <h2>Elevate Your Industry.</h2>
                   <div class="separator"></div>
                 </div>
               </div>
 
               <div class="text">
                 <p class="lead">
-                  <strong>CRANEX</strong> est la marque de MACOBATE dédiée aux systèmes
-                  de levage et de manutention avancés. Nous concevons, fabriquons
-                  et installons des grues performantes adaptées aux secteurs industriel,
-                  infrastruc-turel et énergétique. Nos solutions allient ingénierie
-                  de précision, sécurité et automatisation intelligente.
+                  <strong>CRANEX</strong> is MACOBATE’s dedicated brand for advanced lifting and handling systems. We design, manufacture, and install high-performance cranes tailored to industrial, infrastructural, and energy sectors. Our solutions combine precision engineering, safety, and smart automation.
                 </p>
 
-                <h3>Expertise & Capacités</h3>
+                <h3>Expertise & Capabilities</h3>
                 <ul class="list-style-two">
-                  <li>
-                    Ingénierie : Conception sur mesure et analyse structurelle
-                  </li>
-                  <li>
-                    Fabrication : Production interne avec qualité certifiée
-                  </li>
-                  <li>
-                    Automatisation : Intégration de PLC, commande à distance et
-                    systèmes IoT
-                  </li>
-                  <li>Installation : Assemblage et mise en service sur site</li>
-                  <li>Maintenance : Services préventifs et correctifs</li>
+                  <li>Engineering: Custom design and structural analysis</li>
+                  <li>Manufacturing: In-house production with certified quality</li>
+                  <li>Automation: Integration of PLCs, remote control, and IoT systems</li>
+                  <li>Installation: On-site assembly and commissioning</li>
+                  <li> Maintenance: Preventive and corrective services</li>
                 </ul>
 
-                <h3>Gamme de Produits</h3>
+                <h3>Product Range</h3>
                 <ul class="list-style-two">
-                  <li>
-                    Ponts Roulants : Monopoutre et bipoutre jusqu'à 150 tonnes
-                  </li>
-                  <li>
-                    Portiques : Grues portiques mobiles et fixes pour
-                    applications lourdes
-                  </li>
-                  <li>
-                    Potences : Murales et sur fût pour l'efficacité des postes
-                    de travail
-                  </li>
-                  <li>
-                    Monorails : Pour la manutention linéaire des matériaux
-                  </li>
-                  <li>Palans : À câble et à chaîne électriques</li>
-                  <li>
-                    Composants de Grue : Chariots d'extrémité, blocs de roues et
-                    systèmes de contrôle
-                  </li>
+                  <li>Overhead Cranes: Single and double girder systems up to 150 tons</li>
+                  <li>Gantry Cranes: Mobile and fixed gantry cranes for heavy-duty applications</li>
+                  <li>Jib Cranes: Wall-mounted and pillar-mounted for workstation efficiency</li>
+                  <li>Monorail Systems: For linear material handling</li>
+                  <li>Hoists: Electric wire rope and chain hoists</li>
+                  <li>Crane Components: End carriages, wheel blocks, and control systems</li>
                 </ul>
 
                 <h3>Applications</h3>
                 <ul class="list-style-two">
-                  <li>
-                    Industrie Manufacturière : Lignes d'assemblage, entrepôts
-                  </li>
-                  <li>
-                    Construction : Béton préfabriqué, structures métalliques
-                  </li>
-                  <li>
-                    Secteur Énergétique : Centrales électriques, assemblage
-                    d'éoliennes
-                  </li>
-                  <li>Logistique : Ports, terminaux de fret</li>
+                  <li>Industrial Manufacturing: Assembly lines, warehouses</li>
+                  <li>Construction: Precast concrete, steel structures</li>
+                  <li>Energy Sector: Power plants, wind turbine assembly</li>
+                  <li>Logistics: Ports, freight terminals</li>
                 </ul>
 
-                <h3>Assurance Qualité</h3>
+                <h3>Quality Assurance</h3>
                 <p>
-                  Les produits CRANEX sont conformes aux normes internationales
-                  telles que ISO 9001, CE et les classifications FEM,
-                  garantissant sécurité et fiabilité dans des environnements
-                  exigeants.
+                  CRANEX products comply with international standards such as ISO 9001, CE, and FEM classifications, ensuring safety and reliability in demanding environments.
                 </p>
               </div>
             </div>
@@ -139,22 +103,19 @@ import {
             <div class="inner-column">
               <!-- Sidebar widgets -->
               <div class="sidebar-widget">
-                <h3>Nos autres marques</h3>
+                <h3>Our Other Brands</h3>
                 <ul class="brand-links">
                   <li>
-                    <a href="/our-brands/cranex"
-                      ><span class="icon flaticon-engineer"></span> ROBEX</a
-                    >
+                    <a href="/our-brands/robex"
+                      ><span class="icon flaticon-engineer"></span> ROBEX</a>
                   </li>
                   <li>
                     <a href="/our-brands/tanko"
-                      ><span class="icon flaticon-demolishing"></span> TANKO</a
-                    >
+                      ><span class="icon flaticon-demolishing"></span> TANKO</a>
                   </li>
                   <li>
                     <a href="/our-brands/mws"
-                      ><span class="icon flaticon-boat"></span> MWS</a
-                    >
+                      ><span class="icon flaticon-boat"></span> MWS</a>
                   </li>
                 </ul>
               </div>
@@ -162,20 +123,16 @@ import {
               <div class="sidebar-widget">
                 <div class="project-widget">
                   <div class="widget-content">
-                    <h3>Besoin d'un devis ?</h3>
+                    <h3>Need a Quote?</h3>
                     <p>
-                      Notre équipe commerciale est à votre disposition pour
-                      étudier votre projet et vous proposer la solution CRANEX
-                      adaptée à vos besoins.
+                      Our sales team is ready to discuss your project and offer the right CRANEX solution to fit your needs.
                     </p>
                     <a
-                      href="#"
+                      href="../formDevis"
                       class="theme-btn btn-style-one"
-                      data-toggle="modal"
-                      data-target="#schedule-box"
+                      
                     >
-                      Demander un devis <span
-                        class="icon flaticon-arrow-pointing-to-right"></span>
+                      Request a Quote <span class="icon flaticon-arrow-pointing-to-right"></span>
                     </a>
                   </div>
                 </div>
@@ -183,14 +140,13 @@ import {
 
               <div class="sidebar-widget">
                 <div class="contact-info">
-                  <h3>Contact direct</h3>
+                  <h3>Direct Contact</h3>
                   <ul>
                     <li>
-                      <span class="icon flaticon-telephone"></span> +212 5 37 65
-                      96 46
+                      <span class="icon flaticon-telephone"></span> +212 5 37 65 96 46
                     </li>
                     <li>
-                      <span class="icon flaticon-envelope-1"></span> CRANEX@macobate.com
+                      <span class="icon flaticon-envelope-1"></span> cranex@macobate.com
                     </li>
                   </ul>
                 </div>
@@ -203,10 +159,10 @@ import {
     <!-- End Brand Detail Section -->
 
     <!-- Project Gallery Section -->
-    <section class="project-gallery-section">
+    <!-- <section class="project-gallery-section">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Nos Réalisations CRANEX</h2>
+          <h2>CRANEX Projects</h2>
           <div class="separator"></div>
         </div>
 
@@ -216,14 +172,12 @@ import {
               <div class="image">
                 <img
                   src="/images/gallery/CRANEX-project-1.jpg"
-                  alt="Vanne segment barrage"
+                  alt="Segment Gate Dam"
                 />
                 <div class="overlay-box">
                   <div class="overlay-inner">
                     <div class="content">
-                      <h3>
-                        Vanne segment - Barrage Sidi Mohammed Ben Abdellah
-                      </h3>
+                      <h3>Segment Gate – Sidi Mohammed Ben Abdellah Dam</h3>
                     </div>
                   </div>
                 </div>
@@ -235,12 +189,12 @@ import {
               <div class="image">
                 <img
                   src="/images/gallery/CRANEX-project-2.jpg"
-                  alt="Vanne wagon"
+                  alt="Wagon Gates"
                 />
                 <div class="overlay-box">
                   <div class="overlay-inner">
                     <div class="content">
-                      <h3>Vannes wagon - Station de pompage Bouregreg</h3>
+                      <h3>Wagon Gates – Bouregreg Pumping Station</h3>
                     </div>
                   </div>
                 </div>
@@ -252,12 +206,12 @@ import {
               <div class="image">
                 <img
                   src="/images/gallery/CRANEX-project-3.jpg"
-                  alt="Batardeaux"
+                  alt="Cofferdams"
                 />
                 <div class="overlay-box">
                   <div class="overlay-inner">
                     <div class="content">
-                      <h3>Batardeaux - Barrage Oued Martil</h3>
+                      <h3>Cofferdams – Oued Martil Dam</h3>
                     </div>
                   </div>
                 </div>
@@ -266,7 +220,7 @@ import {
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- End Project Gallery Section -->
 
     <CallToActionSection />
@@ -274,6 +228,7 @@ import {
   </main>
   <Footer />
 </BaseLayout>
+
 
 <style>
   /* Styles spécifiques pour la page de marque */

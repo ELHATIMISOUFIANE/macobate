@@ -1,61 +1,62 @@
 ---
-// MainSlider.astro (Version optimisée pour SEO et responsive)
+import { getTranslations } from '../../i18n/translations.js';
 
-// Tableau des slides avec contenu optimisé pour MACOBATE
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith('/fr') ? 'fr' : 'en';
+const t = getTranslations(lang);
+
+// Générer les slides à partir des traductions
 const slides = [
   {
     index: "1",
-    title: "L'ingénierie de demain, dès aujourd'hui",
-    titleHTML: "L'ingénierie de demain, <br /> dès aujourd'hui",
-    description:
-      "MACOBATE est une entreprise marocaine d'ingénierie industrielle, spécialisée dans les projets complexes : charpente métallique, équipements hydromécaniques, appareils à pression, stations de traitement d'eau et projets EPC.",
-    descriptionHTML:
-      "MACOBATE est une entreprise marocaine d'ingénierie industrielle, spécialisée dans <br />les projets complexes : charpente métallique, équipements hydromécaniques, <br /> appareils à pression, stations de traitement d'eau et projets EPC.",
-    buttonText: "Découvrez notre savoir-faire",
+    title: t.slider.slides[0].title,
+    description: t.slider.slides[0].description,
+    buttonText: t.slider.slides[0].buttonText,
     buttonLink: "#projects",
-    image: "images/main-slider/image-1.jpg",
+    image: "/images/main-slider/image-1.jpg",
     imageAlt:
-      "Projet d'ingénierie industrielle MACOBATE - structures métalliques et équipements",
+      lang === 'fr'
+        ? "Projet d'ingénierie industrielle MACOBATE - structures métalliques et équipements"
+        : "MACOBATE industrial engineering project - steel structures and equipment",
     alignment: "left",
+    titleHTML: t.slider.slides[0].title.replace(/\n/g, '<br />'), // si besoin
+    descriptionHTML: t.slider.slides[0].description.replace(/\n/g, '<br />'),
   },
   {
     index: "2",
-    title:
-      "Solutions complètes en structures métalliques et équipements industriels",
-    titleHTML:
-      "Solutions complètes <br /> en structures métalliques <br /> et équipements industriels",
-    description:
-      "Forte de plus de 40 ans d'expérience, MACOBATE allie savoir-faire de terrain et rigueur technique certifiée.",
-    descriptionHTML:
-      "Forte de plus de 40 ans d'expérience, MACOBATE allie savoir-faire de terrain et<br /> rigueur technique certifiée.",
-    buttonText: "Nos secteurs d'activité",
+    title: t.slider.slides[1].title,
+    description: t.slider.slides[1].description,
+    buttonText: t.slider.slides[1].buttonText,
     buttonLink: "#activite",
-    image: "images/main-slider/image-2.jpg",
+    image: "/images/main-slider/image-8.jpg",
     imageAlt:
-      "Structures métalliques et équipements industriels MACOBATE - 40 ans d'expertise",
+      lang === 'fr'
+        ? "Structures métalliques et équipements industriels MACOBATE - 40 ans d'expertise"
+        : "MACOBATE metal structures and industrial equipment - 40 years expertise",
     alignment: "right",
+    titleHTML: t.slider.slides[1].title.replace(/\n/g, '<br />'),
+    descriptionHTML: t.slider.slides[1].description.replace(/\n/g, '<br />'),
   },
   {
     index: "3",
-    title:
-      "MACOBATE, leader des équipements hydromécaniques pour les infrastructures hydroélectriques",
-    titleHTML:
-      "MACOBATE, leader des <br />équipements hydromécaniques<br />pour les infrastructures<br />hydroélectriques",
-    description:
-      "Conception, fabrication et installation d'équipements pour barrages et stations de traitement des eaux",
-    descriptionHTML:
-      "Conception, fabrication et installation d'équipements pour barrages et stations de traitement des eaux",
-    buttonText: "Rejoignez l'équipe MACOBATE",
-    buttonLink: "#rejoignez-equipe",
-    image: "images/main-slider/image-3.jpg",
+    title: t.slider.slides[2].title,
+    description: t.slider.slides[2].description,
+    buttonText: t.slider.slides[2].buttonText,
+    buttonLink: "#activite",
+    image: "/images/main-slider/image-3.jpg",
     imageAlt:
-      "Équipements hydromécaniques MACOBATE pour barrages et infrastructures hydrauliques",
+      lang === 'fr'
+        ? "Structures métalliques et équipements industriels MACOBATE - 40 ans d'expertise"
+        : "MACOBATE metal structures and industrial equipment - 40 years expertise",
     alignment: "left",
+    titleHTML: t.slider.slides[2].title.replace(/\n/g, '<br />'),
+    descriptionHTML: t.slider.slides[2].description.replace(/\n/g, '<br />'),
   },
+  
 ];
 
-// Vérification de sécurité que slides est bien défini
 const safeSlides = slides || [];
+
 ---
 
 <!--Slider Principal-->
@@ -255,6 +256,9 @@ const safeSlides = slides || [];
     background-color: #fff;
     transform: scale(1.2);
   }
+  .slide-description .text {
+  color: #ffffff; 
+}
 
   /* Styles responsives pour le slider */
   @media only screen and (max-width: 767px) {

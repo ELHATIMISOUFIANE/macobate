@@ -1,5 +1,12 @@
 ---
-// CareerSection.astro (Version française)
+// CareerSection.astro - Version internationalisée
+import { getTranslations } from '../../i18n/translations.js';
+
+// Récupération de la langue depuis l'URL
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith('/fr');
+const lang = isfrench ? 'fr' : 'en';
+const t = getTranslations(lang);
 ---
 
 <!--Section Carrières-->
@@ -10,13 +17,13 @@
       <div class="video-column col-md-6 col-sm-12 col-xs-12">
         <div class="inner-column">
           <div class="image">
-            <img src="images/resource/career.png" alt="Vidéo de présentation MACOBATE" />
+            <img src="/images/resource/career.png" alt="Vidéo de présentation MACOBATE" />
             <a
               href="#"
               class="lightbox-image play-btn"
-            >
+            
               <span class="icon flaticon-play-button-3"></span>
-              Voir la vidéo
+              {t.career.videoLabel}
             </a>
           </div>
         </div>
@@ -25,24 +32,25 @@
       <div class="content-column col-md-6 col-sm-12 col-xs-12">
         <div class="inner-column">
           <div class="sec-title">
-            <h2>Rejoignez l'équipe <br /> MACOBATE</h2>
+            <h2 set:html={t.career.title.replace(' MACOBATE', '<br /> MACOBATE')}></h2>
             <div class="separator centered"></div>
           </div>
           <div class="text">
-            Nous recherchons constamment des talents passionnés et qualifiés pour renforcer nos équipes. MACOBATE offre un environnement de travail stimulant et des opportunités d'évolution dans un secteur en pleine croissance.
+            {t.career.description}
           </div>
           <ul class="list-style-one">
             <li>
-              <strong>Ingénieurs & Techniciens</strong>Conception, calcul de structures, suivi de projets, automatisation...
+              <strong>{t.career.positions.engineers}</strong>
+              {t.career.positions.engineersDesc}
             </li>
             <li>
-              <strong>Experts en Fabrication</strong>Chaudronniers, soudeurs qualifiés, opérateurs sur machines à commande numérique...
+              <strong>{t.career.positions.experts}</strong>
+              {t.career.positions.expertsDesc}
             </li>
           </ul>
-          <a class="see_all" href="career"
-            >Voir tous les postes <span class="icon flaticon-right-arrow-1"
-            ></span></a
-          >
+          <a class="see_all" href="career">
+            {t.career.seeAllButton} <span class="icon flaticon-right-arrow-1"></span>
+          </a>
         </div>
       </div>
     </div>

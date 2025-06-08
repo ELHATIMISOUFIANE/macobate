@@ -9,7 +9,7 @@ import MainSlider from "../components/MainSlider.astro";
 import Brands from "../components/Brands.astro";
 import Activite from "../components/Activite.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
-import NewsSection from "../components/NewsSection.astro";
+import BlogSection from "../components/blogSection.astro";
 import CareerSection from "../components/CareerSection.astro";
 import InformationsSection from "../components/InformationsSection.astro";
 import AchievementsSection from "../components/AchievementsSection.astro";
@@ -18,6 +18,10 @@ import ClientsSection from "../components/ClientsSection.astro";
 import CallToActionSection from "../components/CallToActionSection.astro";
 import AppointmentForm from "../components/AppointmentForm.astro";
 import QualitySection from "src/components/QualitySection.astro";
+const currentPath = Astro.url.pathname;
+const isfrench = currentPath.startsWith('/fr');
+const lang = isfrench ? 'fr' : 'en';
+
 ---
 
 <BaseLayout title="Home - Macobate " description="" pageType="Home">
@@ -29,10 +33,9 @@ import QualitySection from "src/components/QualitySection.astro";
     <ProjectsSection />
     <QualitySection/>
     <CareerSection />
-    <NewsSection />
+    <BlogSection />
     <ClientsSection />
     <CallToActionSection />
-    <AppointmentForm />
     <ScrollToTop />
   </main>
   <Footer />

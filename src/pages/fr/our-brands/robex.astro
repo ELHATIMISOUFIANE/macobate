@@ -1,0 +1,493 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import AppointmentForm from "../../../components/AppointmentForm.astro";
+import CallToActionSection from "../../../components/CallToActionSection.astro";
+import { PiEngineBold } from "react-icons/pi";
+import { BsFillMotherboardFill , BsSpeedometer  } from "react-icons/bs";
+import { FaAnchor, FaShip, FaClock ,FaHandHoldingWater , FaPrescriptionBottle ,FaIndustry  } from 'react-icons/fa';
+import { GiPulleyHook,GiWaterTank , GiScubaTanks ,GiValve  } from "react-icons/gi";
+---
+
+<BaseLayout title="ROBEX - Vannes et Équipements Hydromécaniques | MACOBATE">
+  <Header />
+  <main>
+    <!--Page Title-->
+    <section
+      class="page-title"
+      style="background-image:url(/images/background/6.jpg);
+      filter: brightness(1.5)"
+    >
+      <div class="auto-container">
+        <ul class="page-breadcrumb">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/#our-brands">Nos Marques</a></li>
+          <li>ROBEX</li>
+        </ul>
+        <h1>ROBEX</h1>
+      </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Brand Detail Section -->
+    <section class="market-single-section brand-section">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <div class="content-column col-lg-8 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <div class="brand-header">
+                <div class="brand-logo">
+                  <img
+                    src="/images/gallery/robex-logo.png"
+                    alt="ROBEX Logo"
+                  />
+                </div>
+                <div class="brand-intro">
+                  <h2>L'étanchéité au service de l'eau et de l'industrie</h2>
+                  <div class="separator"></div>
+                </div>
+              </div>
+
+              <div class="text">
+                <p class="lead">
+                  <strong>ROBEX</strong> est la marque phare de MACOBATE dédiée à
+                  la conception et à la fabrication de vannes industrielles, vannes
+                  murales et batardeaux pour les barrages, les réseaux urbains et
+                  l'industrie.
+                </p>
+
+                <h3> Expertise & Capacités</h3>
+                <br>
+                <p>
+                 Forte de plus de 40 ans d'expérience, ROBEX propose des solutions innovantes et fiables pour la gestion de l'eau et les applications industrielles.
+                </p>
+                <ul class="list-style-two">
+                  <li>Ingénierie : Conception sur mesure adaptée aux spécifications des clients</li>
+                  <li>Fabrication : Production en interne garantissant qualité et traçabilité</li>
+                  <li>Réhabilitation : Modernisation et rénovation des installations existantes</li>
+                  <li>Mise en service : Installation sur site et assistance à la mise en service</li>
+                </ul>
+                <br>
+                <h3> Gamme de Produits</h3>
+                      
+                <div class="products-grid">
+                  <div class="product-item">
+                    <div class="product-icon">
+                      <span ><GiValve size={50} color="#002bed" /></span>
+                    </div>
+                    <h4>Vannes pour l'eau & industrielles</h4>
+                    <ul class="list-style-one">
+                      <li>Vannes althimétriques</li>
+                      <li>Vannes de régulation de débit</li>
+                      <li>Sréducteurs de pression</li>
+                      <li> Vannes à opercule</li>
+                      <li>vannes papillon</li>
+                      <li>vannes à soupape</li>
+                    <br>  
+                    </ul>
+                  </div>
+
+                  <div class="product-item">
+                    <div class="product-icon">
+                      <span ><PiEngineBold size={50} color="#002bed"/></span>
+                    </div>
+                    <h4>Équipements hydromécaniques</h4>
+                    <ul class="list-style-one">
+                      <li>Vannes murales</li>
+                      <li>vannes segment </li>
+                      <li>batardeaux</li>
+                      
+                    </ul>
+                  </div>
+
+                  <div class="product-item">
+                    <div class="product-icon">
+                      <span ><BsFillMotherboardFill  size={50} color="#002bed"/></span>
+                    </div>
+                    <h4>Servomoteurs</h4>
+                    <ul class="list-style-one">
+                      <li>Solutions temporaires ou permanentes</li>
+                      <li>
+                        hydrauliques pour l'automatisation des vannes
+                      </li>
+                      
+                    </ul>
+                  </div>
+
+                  <div class="product-item">
+                    <div class="product-icon">
+                      <span ><BsSpeedometer size={50} color="#002bed"/></span>
+                    </div>
+                    <h4>Débitmètres électromagnétiques</h4>
+                    <ul class="list-style-one">
+                      <li>
+                        Champ magnétique
+                      </li>
+                      <li>Fluide conducteur</li>
+                      <li>Tension induite</li>
+                      <li>
+                       Mesure
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3> Applications</h3>
+               <br>
+                <ul class="list-style-two">
+                  <li>Infrastructures hydrauliques : Barrages, réservoirs et stations de traitement de l'eau</li>
+                  <li>Installations industrielles : Secteurs chimique, pétrochimique et énergétique</li>
+                  <li>Systèmes municipaux : Distribution d'eau urbaine et gestion des eaux usées</li>
+                  
+                </ul>
+
+                <h3>Certification et qualité</h3>
+                <p>
+                  Tous nos produits sont fabriqués selon les normes
+                  internationales les plus strictes et bénéficient d'une
+                  traçabilité complète, de tests rigoureux et d'une
+                  documentation technique exhaustive.
+                </p>
+
+                <h3>Service après-vente</h3>
+                <p>
+                  Notre équipe de maintenance assure le suivi, l'entretien et la
+                  réhabilitation de nos équipements pour garantir leur
+                  performance optimale tout au long de leur cycle de vie.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-column col-lg-4 col-md-12 col-sm-12">
+            <div class="inner-column">
+              <!-- Sidebar widgets -->
+              <div class="sidebar-widget">
+                <h3>Nos autres marques</h3>
+                <ul class="brand-links">
+                  
+                  <li><a href="our-brands/cranex"><span><GiPulleyHook size={20} color="#007bff"/></span> CRANEX</a></li>
+                   <li><a href="our-brands/tanko"><span ><GiWaterTank size={20} color="#007bff"/></span> TANKO</a></li>
+                  <li><a href="our-brands/mws"><span><FaHandHoldingWater size={20} color="#007bff"/></span> MWS</a></li>
+                </ul>
+              </div>
+
+             
+              <div class="sidebar-widget">
+                <div class="project-widget">
+                  <div class="widget-content">
+                    <h3>Besoin d'un devis ?</h3>
+                    <p>
+                      Notre équipe commerciale est à votre disposition pour
+                      étudier votre projet et vous proposer la solution ROBEX
+                      adaptée à vos besoins.
+                    </p>
+                    <a
+                      href="../formDevis"
+                      class="theme-btn btn-style-one"
+                      
+                    >
+                      Demander un devis <span
+                        class="icon flaticon-arrow-pointing-to-right"></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sidebar-widget">
+                <div class="contact-info">
+                  <h3>Contact direct</h3>
+                  <ul>
+                    <li>
+                      <span class="icon flaticon-telephone"></span> +212 5 37 65
+                      96 46
+                    </li>
+                    <li>
+                      <span class="icon flaticon-envelope-1"></span> robex@macobate.com
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Brand Detail Section -->
+
+
+    <CallToActionSection />
+    <AppointmentForm />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  
+  /* Styles spécifiques pour la page de marque */
+  .brand-section {
+    padding: 80px 0;
+  }
+
+  .brand-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .brand-logo {
+    flex: 0 0 200px;
+    margin-right: 30px;
+  }
+
+  .brand-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .brand-intro {
+    flex: 1;
+  }
+
+  .brand-intro h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #1720d7;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+  }
+
+  .product-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .product-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+  }
+
+  .product-icon {
+    margin-bottom: 20px;
+  }
+
+  .product-icon .icon {
+    font-size: 48px;
+    color: #1720d7;
+  }
+
+  .product-item h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .list-style-one li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .list-style-one li:before {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+  }
+
+  .list-style-two li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+
+  .list-style-two li:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #1720d7;
+  }
+
+  .brand-links li,
+  .download-links li {
+    position: relative;
+    padding: 12px 0;
+    padding-left: 25px;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .brand-links li:last-child,
+  .download-links li:last-child {
+    border-bottom: none;
+  }
+
+  .brand-links li a,
+  .download-links li a {
+    position: relative;
+    display: block;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .brand-links li a:hover,
+  .download-links li a:hover {
+    color: #1720d7;
+  }
+
+  .brand-links li a span.icon {
+    margin-right: 10px;
+    color: #1720d7;
+  }
+
+  .download-links li a i {
+    margin-right: 10px;
+    color: #1720d7;
+  }
+
+  .project-widget {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .project-widget .widget-content {
+    padding: 30px;
+  }
+
+  .project-widget h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .project-widget p {
+    margin-bottom: 20px;
+  }
+
+  .contact-info ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .contact-info ul li span.icon {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    color: #1720d7;
+  }
+
+  .gallery-item {
+    margin-bottom: 30px;
+  }
+
+  .gallery-item .inner-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .gallery-item .image {
+     width: 100%;
+  aspect-ratio: 4 / 3; /* ou 1 / 1 pour carré */
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  background-color: #ddd;
+  }
+
+  .gallery-item .image img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover; /* remplissage sans déformation */
+  object-position: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  }
+
+  .gallery-item .overlay-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(23, 32, 215, 0.8);
+    transition: all 0.3s ease;
+  }
+
+  .gallery-item:hover .overlay-box {
+    opacity: 1;
+  }
+
+  .gallery-item .overlay-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+    vertical-align: middle;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .gallery-item .content {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .gallery-item .content h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  @media only screen and (max-width: 991px) {
+    .brand-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .brand-logo {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+.brand-links li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-links li a span {
+  display: flex;
+  align-items: center;
+   margin-right: 15px; /* ajuste la valeur à ton besoin */
+}
+</style>

@@ -3,9 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CallToActionSection from "../components/CallToActionSection.astro";
+import { PiCertificateBold } from "react-icons/pi";
+import { GrValidate } from "react-icons/gr";
+import { FaPlaceOfWorship , FaHandHoldingWater } from "react-icons/fa";
+import { IoIosContacts } from "react-icons/io";
+import { MdOutlineSecurity } from "react-icons/md";
 ---
 
-<BaseLayout title="Excellence & Qualité | MACOBATE">
+<BaseLayout title="Excellence & Quality | MACOBATE">
   <Header />
   <main>
     <!--Page Title-->
@@ -15,10 +20,10 @@ import CallToActionSection from "../components/CallToActionSection.astro";
     >
       <div class="auto-container">
         <ul class="page-breadcrumb">
-          <li><a href="/">Accueil</a></li>
-          <li>Qualité</li>
+          <li><a href="/">Home</a></li>
+          <li>Quality</li>
         </ul>
-        <h1>Excellence & Qualité</h1>
+        <h1>Excellence & Quality</h1>
       </div>
     </section>
     <!--End Page Title-->
@@ -27,26 +32,26 @@ import CallToActionSection from "../components/CallToActionSection.astro";
     <section class="quality-section">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>🧠 Pourquoi choisir MACOBATE ?</h2>
+          <h2>🧠 Why choose MACOBATE?</h2>
           <div class="separator"></div>
           <div class="text">
-            MACOBATE se distingue par son engagement envers l'excellence technique et sa capacité à livrer des solutions d'ingénierie complexes avec une qualité irréprochable.
+            MACOBATE stands out for its commitment to technical excellence and its ability to deliver complex engineering solutions with impeccable quality.
           </div>
         </div>
 
         <div class="row clearfix">
-          <!-- Points Forts Grid -->
+          <!-- Strengths Grid -->
           <div class="col-lg-12">
             <div class="strengths-grid">
               <!-- Strength 1 -->
               <div class="strength-block">
                 <div class="inner-box">
                   <div class="icon-box" style="background-color: #0056b3;">
-                    <span class="icon">📐</span>
+                    <span class="icon"><PiCertificateBold /></span>
                   </div>
-                  <h3>Ingénierie certifiée</h3>
+                  <h3>Certified Engineering</h3>
                   <div class="text">
-                    Nos opérations sont conformes aux normes internationales les plus exigeantes, garantissant qualité et fiabilité à chaque projet.
+                    Our operations comply with the most demanding international standards, ensuring quality and reliability in every project.
                   </div>
                   <div class="certifications">
                     <span class="cert-badge">ISO 9001</span>
@@ -62,17 +67,17 @@ import CallToActionSection from "../components/CallToActionSection.astro";
               <div class="strength-block">
                 <div class="inner-box">
                   <div class="icon-box" style="background-color: #00879e;">
-                    <span class="icon">🧩</span>
+                    <span class="icon"><GrValidate /></span>
                   </div>
-                  <h3>Réalisation 100% intégrée</h3>
+                  <h3>100% Integrated Execution</h3>
                   <div class="text">
-                    De la conception à la mise en service, nous maîtrisons l'ensemble de la chaîne de valeur pour un contrôle total sur la qualité et les délais.
+                    From design to commissioning, we master the entire value chain for total control over quality and deadlines.
                   </div>
                   <ul class="list-style-two">
-                    <li>Conception</li>
-                    <li>Fabrication</li>
+                    <li>Design</li>
+                    <li>Manufacturing</li>
                     <li>Installation</li>
-                    <li>Mise en service</li>
+                    <li>Commissioning</li>
                     <li>Maintenance</li>
                   </ul>
                 </div>
@@ -82,17 +87,17 @@ import CallToActionSection from "../components/CallToActionSection.astro";
               <div class="strength-block">
                 <div class="inner-box">
                   <div class="icon-box" style="background-color: #e63946;">
-                    <span class="icon">🏭</span>
+                    <span class="icon"><FaPlaceOfWorship/></span>
                   </div>
-                  <h3>Atelier à la pointe de la technologie</h3>
+                  <h3>State-of-the-Art Workshop</h3>
                   <div class="text">
-                    Notre infrastructure moderne et nos équipements de dernière génération nous permettent de réaliser des fabrications complexes avec une précision exceptionnelle.
+                    Our modern infrastructure and latest generation equipment allow us to carry out complex manufacturing with exceptional precision.
                   </div>
                   <ul class="list-style-two">
-                    <li>Découpe plasma/laser CNC</li>
-                    <li>Soudage robotisé</li>
-                    <li>Usinage de précision</li>
-                    <li>Contrôle qualité avancé</li>
+                    <li>CNC plasma/laser cutting</li>
+                    <li>Robotic welding</li>
+                    <li>Precision machining</li>
+                    <li>Advanced quality control</li>
                   </ul>
                 </div>
               </div>
@@ -101,18 +106,18 @@ import CallToActionSection from "../components/CallToActionSection.astro";
               <div class="strength-block">
                 <div class="inner-box">
                   <div class="icon-box" style="background-color: #2a9d8f;">
-                    <span class="icon">🧭</span>
+                    <span class="icon"><FaHandHoldingWater/></span>
                   </div>
-                  <h3>Expertise en eau, énergie et industrie</h3>
+                  <h3>Expertise in Water, Energy and Industry</h3>
                   <div class="text">
-                    Notre savoir-faire technique s'étend à plusieurs secteurs stratégiques, nous permettant d'apporter des solutions adaptées à des problématiques variées.
+                    Our technical know-how extends to several strategic sectors, allowing us to provide solutions adapted to various challenges.
                   </div>
                   <ul class="list-style-two">
-                    <li>Hydraulique</li>
-                    <li>Hydroélectricité</li>
-                    <li>Traitement des eaux</li>
-                    <li>Structures industrielles</li>
-                    <li>Infrastructures</li>
+                    <li>Hydraulics</li>
+                    <li>Hydroelectricity</li>
+                    <li>Water treatment</li>
+                    <li>Industrial structures</li>
+                    <li>Infrastructure</li>
                   </ul>
                 </div>
               </div>
@@ -121,17 +126,37 @@ import CallToActionSection from "../components/CallToActionSection.astro";
               <div class="strength-block">
                 <div class="inner-box">
                   <div class="icon-box" style="background-color: #6a0dad;">
-                    <span class="icon">🌍</span>
+                    <span class="icon"><IoIosContacts/></span>
                   </div>
-                  <h3>Clients publics et partenaires internationaux</h3>
+                  <h3>Public Clients and International Partners</h3>
                   <div class="text">
-                    Nous collaborons avec des organisations gouvernementales et des partenaires internationaux sur des projets d'envergure à travers l'Afrique et au-delà.
+                    We collaborate with government organizations and international partners on major projects across Africa and beyond.
                   </div>
                   <ul class="list-style-two">
-                    <li>Gouvernements</li>
-                    <li>Agences de développement</li>
-                    <li>Groupes industriels</li>
-                    <li>Cabinets d'ingénierie internationaux</li>
+                    <li>Governments</li>
+                    <li>Development agencies</li>
+                    <li>Industrial groups</li>
+                    <li>International engineering firms</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Strength 6 -->
+              <div class="strength-block">
+                <div class="inner-box">
+                  <div class="icon-box" style="background-color: #f4a261;">
+                    <span class="icon"><MdOutlineSecurity /></span>
+                  </div>
+                  <h3>Priority on Safety and Sustainability</h3>
+                  <div class="text">
+                    The safety of our teams, partners and the environment is at the heart of our approach. Our projects systematically integrate sustainable and responsible practices.
+                  </div>
+                  <ul class="list-style-two">
+                    <li>Strict HSE standards</li>
+                    <li>Continuous safety training</li>
+                    <li>Carbon footprint reduction</li>
+                    <li>Use of sustainable materials</li>
+                    <li>Eco-conscious approach</li>
                   </ul>
                 </div>
               </div>
@@ -146,10 +171,10 @@ import CallToActionSection from "../components/CallToActionSection.astro";
     <section class="process-section" style="background-color: #f8f9fa;">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Notre engagement qualité</h2>
+          <h2>Our Quality Commitment</h2>
           <div class="separator"></div>
           <div class="text">
-            Chez MACOBATE, la qualité n'est pas simplement une norme à atteindre, c'est une philosophie qui guide chacune de nos actions.
+            At MACOBATE, quality is not simply a standard to reach, it's a philosophy that guides each of our actions.
           </div>
         </div>
 
@@ -159,9 +184,9 @@ import CallToActionSection from "../components/CallToActionSection.astro";
             <div class="process-block col-lg-3 col-md-6 col-sm-12">
               <div class="inner-box">
                 <div class="step-number">01</div>
-                <h3>Planification rigoureuse</h3>
+                <h3>Rigorous Planning</h3>
                 <div class="text">
-                  Chaque projet commence par une planification méticuleuse qui anticipe les défis et optimise les ressources.
+                  Every project begins with meticulous planning that anticipates challenges and optimizes resources.
                 </div>
               </div>
             </div>
@@ -170,9 +195,9 @@ import CallToActionSection from "../components/CallToActionSection.astro";
             <div class="process-block col-lg-3 col-md-6 col-sm-12">
               <div class="inner-box">
                 <div class="step-number">02</div>
-                <h3>Contrôle qualité systématique</h3>
+                <h3>Systematic Quality Control</h3>
                 <div class="text">
-                  Des inspections régulières et des tests approfondis garantissent la conformité à nos standards élevés.
+                  Regular inspections and thorough testing ensure compliance with our high standards.
                 </div>
               </div>
             </div>
@@ -181,9 +206,9 @@ import CallToActionSection from "../components/CallToActionSection.astro";
             <div class="process-block col-lg-3 col-md-6 col-sm-12">
               <div class="inner-box">
                 <div class="step-number">03</div>
-                <h3>Documentation complète</h3>
+                <h3>Complete Documentation</h3>
                 <div class="text">
-                  Tous les aspects du projet sont documentés avec précision pour assurer la traçabilité et la transparence.
+                  All aspects of the project are documented with precision to ensure traceability and transparency.
                 </div>
               </div>
             </div>
@@ -192,9 +217,9 @@ import CallToActionSection from "../components/CallToActionSection.astro";
             <div class="process-block col-lg-3 col-md-6 col-sm-12">
               <div class="inner-box">
                 <div class="step-number">04</div>
-                <h3>Amélioration continue</h3>
+                <h3>Continuous Improvement</h3>
                 <div class="text">
-                  Nous analysons chaque projet pour identifier les opportunités d'amélioration et perfectionner nos processus.
+                  We analyze every project to identify improvement opportunities and perfect our processes.
                 </div>
               </div>
             </div>
@@ -208,7 +233,7 @@ import CallToActionSection from "../components/CallToActionSection.astro";
     <section class="testimonials-section">
       <div class="auto-container">
         <div class="sec-title centered">
-          <h2>Ce que disent nos clients</h2>
+          <h2>What Our Clients Say</h2>
           <div class="separator"></div>
         </div>
 
@@ -220,11 +245,11 @@ import CallToActionSection from "../components/CallToActionSection.astro";
                 <span class="icon flaticon-quote"></span>
               </div>
               <div class="text">
-                "MACOBATE a démontré un professionnalisme et une expertise technique exceptionnels tout au long de notre collaboration sur le projet de barrage. Leur capacité à résoudre des problèmes complexes et à respecter les délais a été remarquable."
+                "MACOBATE demonstrated exceptional professionalism and technical expertise throughout our collaboration on the dam project. Their ability to solve complex problems and meet deadlines was remarkable."
               </div>
               <div class="author-info">
                 <h4>Ahmed Benali</h4>
-                <div class="designation">Directeur de projet, Ministère des Ressources Hydrauliques</div>
+                <div class="designation">Project Director, Ministry of Water Resources</div>
               </div>
             </div>
           </div>
@@ -236,11 +261,11 @@ import CallToActionSection from "../components/CallToActionSection.astro";
                 <span class="icon flaticon-quote"></span>
               </div>
               <div class="text">
-                "La qualité de fabrication des équipements fournis par MACOBATE pour notre usine de traitement des eaux a dépassé nos attentes. Leur approche intégrée nous a permis de simplifier la gestion du projet et d'obtenir un résultat final impeccable."
+                "The manufacturing quality of equipment supplied by MACOBATE for our water treatment plant exceeded our expectations. Their integrated approach allowed us to simplify project management and achieve an impeccable final result."
               </div>
               <div class="author-info">
                 <h4>Sophie Martin</h4>
-                <div class="designation">Responsable d'exploitation, Groupe industriel international</div>
+                <div class="designation">Operations Manager, International Industrial Group</div>
               </div>
             </div>
           </div>
@@ -252,11 +277,11 @@ import CallToActionSection from "../components/CallToActionSection.astro";
                 <span class="icon flaticon-quote"></span>
               </div>
               <div class="text">
-                "Nous avons apprécié l'engagement de MACOBATE envers l'excellence technique et leur capacité à s'adapter aux spécificités locales. Leur expertise en génie hydraulique a été un atout considérable pour la réussite de notre projet d'infrastructure."
+                "We appreciated MACOBATE's commitment to technical excellence and their ability to adapt to local specificities. Their expertise in hydraulic engineering was a considerable asset for the success of our infrastructure project."
               </div>
               <div class="author-info">
                 <h4>Ibrahim Diallo</h4>
-                <div class="designation">Chef de département, Agence de développement</div>
+                <div class="designation">Department Head, Development Agency</div>
               </div>
             </div>
           </div>
@@ -501,7 +526,7 @@ import CallToActionSection from "../components/CallToActionSection.astro";
 </style>
 
 <script>
-  // Initialisation du carousel pour les témoignages (si vous utilisez Owl Carousel)
+  // Initialize carousel for testimonials (if you use Owl Carousel)
   document.addEventListener('DOMContentLoaded', function() {
     if (typeof $.fn.owlCarousel !== 'undefined') {
       $('.testimonials-carousel').owlCarousel({

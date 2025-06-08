@@ -1,137 +1,136 @@
 ---
-// Header.astro - Barre de navigation améliorée pour MACOBATE
+import { getTranslations, getAlternateUrl } from "../../i18n/translations.js";
+
+// Déterminer la langue actuelle
+const currentPath = Astro.url.pathname;
+const lang = currentPath.startsWith("/fr") ? "fr" : "en";
+const t = getTranslations(lang);
+
+// Générer les URLs pour le menu
+const getUrl = (path) => {
+  return lang === "fr" ? "/fr" + path : path;
+};
+
+// Configuration du menu avec traductions
 const mainMenuItems = [
   {
-    title: "Accueil",
-    url: "/",
+    title: t.nav.home,
+    url: getUrl("/"),
     hasSubmenu: false,
     showInMainOnly: false,
   },
   {
-    title: "Qui sommes-nous",
-    url: "/about",
+    title: t.nav.about,
+    url: getUrl("/about"),
     hasSubmenu: true,
     showInMainOnly: false,
     submenu: [
-      { title: "Mot de la Direction", url: "/about#company-section" },
-      { title: "Nos Points Forts", url: "/about#highlights-section" },
-      { title: "Notre Histoire", url: "/about#history-section" },
-      { title: "Nos Réalisations", url: "/about#achived-section" },
-      //{ title: "Notre Équipe", url: "/about#team-section" },
+      { title: t.nav.aboutSubmenu.pride, url: getUrl("/about/pride") },
+      // { title: t.nav.aboutSubmenu.achievements, url: getUrl('/about#achived-section') },
       {
-        title: "Services",
-        url: "/services/allServices",
+        title: t.nav.aboutSubmenu.history,
+        url: getUrl("/about#history-section"),
       },
+      { title: t.nav.aboutSubmenu.strengths, url: getUrl("/quality") },
+      // { title: t.nav.aboutSubmenu.services, url: getUrl('/services/allServices') },
     ],
   },
   {
-    title: "Nos-Marques",
-    url: "/our-brands",
-    hasSubmenu: true,
-    showInMainOnly: false,
-    submenu: [
-      {
-        title: "ROBEX",
-        url: "/our-brands/robex",
-      },
-      {
-        title: "CRANEX",
-        url: "/our-brands/cranex",
-      },
-      {
-        title: "TANKO",
-        url: "/our-brands/tanko",
-      },
-      { title: "MWS", url: "/our-brands/mws" },
-    ],
-  },
-  {
-    title: "Activités",
-    url: "/services",
+    title: t.nav.activities,
+    url: getUrl("/services/detailServices"),
     hasSubmenu: true,
     showInMainOnly: false,
     submenu: [
       {
-        title: "Charpente Métallique",
-        url: "/services/detailServices#charpente-metallique",
+        title: t.nav.activitiesSubmenu.activity1,
+        url: getUrl("/services/detailServices#charpente-metallique"),
       },
       {
-        title: "Appareils à pression",
-        url: "/services/detailServices#appareils-pression",
+        title: t.nav.activitiesSubmenu.activity2,
+        url: getUrl("/services/detailServices#appareils-pression"),
       },
       {
-        title: "Réservoirs de Stockage",
-        url: "/services/detailServices#reservoirs-stockage",
+        title: t.nav.activitiesSubmenu.activity3,
+        url: getUrl("/services/detailServices#reservoirs-stockage"),
       },
       {
-        title: "Équipements Hydromécaniques",
-        url: "/services/detailServices#equipements-hydromecaniques",
+        title: t.nav.activitiesSubmenu.activity4,
+        url: getUrl("/services/detailServices#equipements-hydromecaniques"),
       },
       {
-        title: "Traitement de l'eau",
-        url: "/services/detailServices#traitement-eau",
+        title: t.nav.activitiesSubmenu.activity5,
+        url: getUrl("/services/detailServices#traitement-eau"),
       },
       {
-        title: "Électricité & Automatismes",
-        url: "/services/detailServices#electricite-automatismes",
+        title: t.nav.activitiesSubmenu.activity6,
+        url: getUrl("/services/detailServices#electricite-automatismes"),
       },
       {
-        title: "Projets",
-        url: "/projects/allProjects",
+        title: t.nav.activitiesSubmenu.activity7,
+        url: getUrl("/services/detailServices#traitement-eau"),
       },
     ],
   },
-  {
-    title: "Actualités",
-    url: "/blog/allBlog",
-    hasSubmenu: false,
-    showInMainOnly: true,
-  },
-  {
-    title: "Contact",
-    url: "/contact",
-    hasSubmenu: false,
-    showInMainOnly: true,
-  },
-];
 
-// Filtrer les éléments pour le menu principal (exclure les éléments marqués showInMainOnly = true)
+  {
+    title: t.nav.brands,
+    url: getUrl("/our-brands/robex"),
+    hasSubmenu: true,
+    showInMainOnly: false,
+    submenu: [
+      { title: t.nav.brandsSubmenu.robex, url: getUrl("/our-brands/robex") },
+      { title: t.nav.brandsSubmenu.cranex, url: getUrl("/our-brands/cranex") },
+      { title: t.nav.brandsSubmenu.tanko, url: getUrl("/our-brands/tanko") },
+      { title: t.nav.brandsSubmenu.mws, url: getUrl("/our-brands/mws") },
+    ],
+  },
+  {
+    title: t.nav.news,
+    url: getUrl("/blog"),
+    hasSubmenu: false,
+    showInMainOnly: false,
+  },
+  {
+    title: t.nav.careers,
+    url: getUrl("/career"),
+    hasSubmenu: false,
+    showInMainOnly: true,
+  },
+  // ... autres éléments
+];
 const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
 ---
 
-<!-- En-tête Principal-->
 <header class="main-header">
   <!-- Barre Supérieure -->
   <div class="header-top">
     <div class="auto-container">
       <div class="top-outer clearfix">
-        <!--Section Gauche-->
         <div class="top-left">
           <ul class="links clearfix">
             <li>
-              <a href="tel:+212537659646"
-                ><span class="icon fa fa-phone"></span>+212 5 37 65 96 46</a
-              >
+              <a href={`tel:${t.header.phone}`}>
+                <span class="icon fa fa-phone"></span>{t.header.phone}
+              </a>
             </li>
             <li>
-              <a href="mailto:contact@macobate.com"
-                ><span class="icon fa fa-envelope-o"
-                ></span>contact@macobate.com</a
-              >
+              <a href={`mailto:${t.header.email}`}>
+                <span class="icon fa fa-envelope-o"></span>{t.header.email}
+              </a>
             </li>
             <li>
-              <a href="https://www.google.com/maps?q=34.021972,-6.836359"
-                ><span class="icon flaticon-placeholder-2"></span>48, Zone
-                Industrielle Takadoum, Rabat</a
-              >
+              <a href="https://www.google.com/maps?q=34.021972,-6.836359">
+                <span class="icon flaticon-placeholder-2"></span>{
+                  t.header.address
+                }
+              </a>
             </li>
           </ul>
         </div>
 
-        <!--Section Droite-->
+        <!-- Sélecteur de langue -->
         <div class="top-right clearfix">
           <ul class="clearfix">
-            <!--Langue-->
             <li class="language dropdown">
               <a
                 class="btn btn-default dropdown-toggle"
@@ -140,17 +139,23 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                 aria-haspopup="true"
                 aria-expanded="true"
                 href="#"
-                ><span class="flag-img"
-                  ><img src="/images/icons/fr.gif" alt="Drapeau" /></span
-                >Français &nbsp;<span class="fa fa-angle-down"></span></a
               >
+                <span class="flag-img">
+                  <img src={`/images/icons/${lang}.png`} alt="Flag" />
+                </span>
+                {t.header.languageLabel}
+                &nbsp;<span class="fa fa-angle-down"></span>
+              </a>
               <ul
                 class="dropdown-menu style-one"
                 aria-labelledby="dropdownMenu2"
               >
-                <li><a href="#">Français</a></li>
-                <li><a href="#">Anglais</a></li>
-                <li><a href="#">Arabe</a></li>
+                <li>
+                  <a href={getAlternateUrl(currentPath, "fr")}>Français</a>
+                </li>
+                <li>
+                  <a href={getAlternateUrl(currentPath, "en")}>English</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -158,78 +163,35 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
       </div>
     </div>
   </div>
-  <!-- Fin Barre Supérieure -->
 
-  <!-- Boîte Principale -->
+  <!-- Menu principal -->
   <div class="main-box">
     <div class="auto-container">
       <div class="outer-container clearfix">
-        <!--Boîte Logo-->
         <div class="logo-box">
           <div class="logo">
-            <a href="/"><img src="/images/logo.png" alt="Logo MACOBATE" /></a>
+            <a href={getUrl("/")}>
+              <img src="/images/logo.png" alt="Logo MACOBATE" />
+            </a>
           </div>
         </div>
 
-        <!--Navigation Externe-->
         <div class="nav-outer clearfix">
-          <!-- Menu Principal avec sous-menus améliorés -->
           <nav class="main-menu">
-            <div class="navbar-header">
-              <!-- Bouton Toggle -->
-              <button
-                type="button"
-                class="navbar-toggle"
-                data-toggle="collapse"
-                data-target=".navbar-collapse"
-              >
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-
             <div class="navbar-collapse collapse clearfix">
               <ul class="navigation clearfix">
                 {
-                  /* Menu principal filtré - seulement les éléments principaux */
-                }
-                {
                   mainMenuFiltered.map((item) => (
                     <li class={item.hasSubmenu ? "dropdown" : ""}>
-                      <a href={item.url} class="menu-link" data-url={item.url}>
+                      <a href={item.url} class="menu-link"  data-url={item.url}>
                         {item.title}
-                        {item.hasSubmenu && <span class="fa fa-angle-down" />}
+                        {item.hasSubmenu && <span class="fa fa-angle-down " />}
                       </a>
                       {item.hasSubmenu && (
                         <ul>
                           {item.submenu.map((subItem) => (
-                            <li class={subItem.hasSubmenu ? "dropdown" : ""}>
-                              <a
-                                href={subItem.url}
-                                class="menu-link"
-                                data-url={subItem.url}
-                              >
-                                {subItem.title}
-                                {subItem.hasSubmenu && (
-                                  <span class="fa fa-angle-right" />
-                                )}
-                              </a>
-                              {subItem.hasSubmenu && (
-                                <ul>
-                                  {subItem.childSubmenu.map((childItem) => (
-                                    <li>
-                                      <a
-                                        href={childItem.url}
-                                        class="menu-link"
-                                        data-url={childItem.url}
-                                      >
-                                        {childItem.title}
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
+                            <li>
+                              <a href={subItem.url} class="menu-link">{subItem.title}</a>
                             </li>
                           ))}
                         </ul>
@@ -240,31 +202,30 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
               </ul>
             </div>
           </nav>
-          <!-- Fin Menu Principal-->
-
-          <!--Boîte Externe-->
           <div class="outer-box">
-            <a
-              href="/formDevis"
-              class="theme-btn quote-btn"
-              
-              >Demander un devis<span class="icon"></span></a
-            >
+            <a href={getUrl("/formDevis")} class="theme-btn quote-btn">
+              {t.header.requestQuote}<span class="icon"></span>
+            </a>
             <ul class="social-icon-one">
-              <li>
+              <!-- <li>
                 <a href="https://www.facebook.com/macobate/#"
                   ><span class="fa fa-facebook"></span></a>
+              </li> -->
+              <li>
+                <a href="https://ma.linkedin.com/company/macobate"><span class="fa fa-linkedin"></span></a>
               </li>
-              <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-              <li><a href="#"><span class="fa fa-youtube"></span></a></li>
+              
             </ul>
           </div>
+          <!-- <div class="outer-box">
+            <a href={getUrl('/formDevis')} class="theme-btn quote-btn">
+              {t.header.requestQuote}<span class="icon"></span>
+            </a>
+          </div> -->
         </div>
-        <!--Fin Navigation Externe-->
       </div>
     </div>
   </div>
-
   <!--En-tête Fixe-->
   <div class="sticky-header">
     <div class="auto-container">
@@ -272,9 +233,9 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
         <!--Boîte Logo-->
         <div class="logo-box pull-left">
           <div class="logo">
-            <a href="/"
-              ><img src="/images/logo-small.png" alt="Logo MACOBATE" /></a
-            >
+            <a href={getUrl("/")}>
+              <img src="/images/logo-small.png" alt="Logo MACOBATE" />
+            </a>
           </div>
         </div>
 
@@ -298,7 +259,6 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
 
             <div class="navbar-collapse collapse clearfix">
               <ul class="navigation clearfix">
-                {/* Menu complet - tous les éléments */}
                 {
                   mainMenuItems.map((item) => (
                     <li class={item.hasSubmenu ? "dropdown" : ""}>
@@ -309,32 +269,14 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
                       {item.hasSubmenu && (
                         <ul>
                           {item.submenu.map((subItem) => (
-                            <li class={subItem.hasSubmenu ? "dropdown" : ""}>
+                            <li>
                               <a
                                 href={subItem.url}
                                 class="menu-link"
                                 data-url={subItem.url}
                               >
                                 {subItem.title}
-                                {subItem.hasSubmenu && (
-                                  <span class="fa fa-angle-right" />
-                                )}
                               </a>
-                              {subItem.hasSubmenu && (
-                                <ul>
-                                  {subItem.childSubmenu.map((childItem) => (
-                                    <li>
-                                      <a
-                                        href={childItem.url}
-                                        class="menu-link"
-                                        data-url={childItem.url}
-                                      >
-                                        {childItem.title}
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
                             </li>
                           ))}
                         </ul>
@@ -351,7 +293,6 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
       </div>
     </div>
   </div>
-  <!--Fin En-tête Fixe-->
 </header>
 <!--Fin En-tête Principal -->
 
@@ -572,24 +513,22 @@ const mainMenuFiltered = mainMenuItems.filter((item) => !item.showInMainOnly);
     }
 
     const sectionMap = {
-  "company-section": ".company-section",
-  "highlights-section": ".highlights-section",
-  "history-section": ".history-section",
-  "achived-section": ".achived-section",
-  "team-section": ".team-section",
-  "allServices": ".services",
-  "charpente-metallique": ".charpente-metallique",
-  "electricite-automatismes": ".electricite-automatismes"
-};
+      "company-section": ".company-section",
+      "highlights-section": ".highlights-section",
+      "history-section": ".history-section",
+      "achived-section": ".achived-section",
+      "team-section": ".team-section",
+      allServices: ".services",
+      "charpente-metallique": ".charpente-metallique",
+      "electricite-automatismes": ".electricite-automatismes",
+    };
 
-if (window.location.pathname === "/about") {
-  for (const [id, selector] of Object.entries(sectionMap)) {
-    const section = document.querySelector(selector);
-    if (section) section.id = id;
-  }
-}
-
-
+    if (window.location.pathname === "/about") {
+      for (const [id, selector] of Object.entries(sectionMap)) {
+        const section = document.querySelector(selector);
+        if (section) section.id = id;
+      }
+    }
 
     // Gérer les clics sur les liens d'ancrage
     document.querySelectorAll(".menu-link").forEach((link) => {
@@ -601,7 +540,7 @@ if (window.location.pathname === "/about") {
           const parts = href.split("#");
           const pagePath = parts[0];
           const targetId = parts[1];
-        
+
           // Si nous sommes déjà sur la bonne page ou si c'est juste une ancre
           // if (pagePath === "" || pagePath === currentPath) {
           //   e.preventDefault();
@@ -617,9 +556,8 @@ if (window.location.pathname === "/about") {
 
           //   // Mettre à jour l'URL sans recharger la page
           //   history.pushState(null, null, `#${targetId}`);
-            
+
           // }
-          
         }
       });
     });
